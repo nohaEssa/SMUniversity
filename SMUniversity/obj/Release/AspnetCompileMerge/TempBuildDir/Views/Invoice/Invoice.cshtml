@@ -1,0 +1,507 @@
+﻿@model SMUModels.TblInvoice
+@{
+    ViewBag.Title = "Invoice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string CreatedDate = Model.CreatedDate.ToString("yyyy-MM-dd hh:mm tt");
+}
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header"></h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i></a></li>
+                    <li class="active"><a href="@Url.Action("Index", "Invoice")">الفواتير</a></li>
+                    <li>فاتوره رقم  @Model.Serial</li>
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                    </div>
+                    <div id="div_print">
+                        <div class="invoice">
+                            <div class="invoice" style=" border: 1px solid #ccc; margin: 20px auto; padding: 2px 20px;">
+                                <div class="row invoice-logo" style="margin-top: 0px;">
+                                    <div class="col-xs-3" style="float:right;">
+                                        <p style="text-align: center; font-size: 11px; margin-top: 55px;">
+
+                                            قام بالإدخال: @Model.TblEmployee.NameAr
+                                            <br />
+                                            رقم الفاتورة: @Model.Serial
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-6 invoice-logo-space" style="align-self:center;">
+
+                                        <img src="~/Content/Images/invoice_logo.png" class="img-responsive" alt="" style="align-self:center; width:100%" />
+                                        <p style="text-align:center; font-size:11px;">
+                                            فرع :    @Model.TblSubscription.TblStudent.TblBranch.NameAr
+                                            <br />
+                                            سنـــــــــد قبـــــــــــض
+                                            <br />
+                                            Receipt Voucher
+                                            <br />
+                                            التاريخ : @CreatedDate
+
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-3" style="float:left;">
+                                        <p style="text-align: center;  margin-top: 49px; border: 1px solid #bbb;padding: 10px;">
+                                            @Model.TblSubscription.Price  دينار كويتى
+                                            <br />
+                                            رقم النظام: @Model.ID
+                                        </p>
+                                    </div>
+                                </div>
+                                <hr style="margin-top: 0px;margin: 2px 0;" />
+
+
+                                <div class="row" style="margin-top: 0px;">
+                                    <p style="text-align: right; font-size: 11px; margin-top:2px; margin-right:20px;">
+                                        وصلنا من السيد / السادة: @Model.TblSubscription.TblStudent.FirstName @Model.TblSubscription.TblStudent.SecondName @Model.TblSubscription.TblStudent.ThirdName
+
+                                    </p>
+
+                                    <p style="text-align: right; font-size: 11px; margin-top: 10px; margin-right: 20px;">
+                                        مبلغ وقدره @Model.TblSubscription.Price دينار كويتي
+                                        :
+
+                                        @*@foreach (var Sub in DB.Tbl_Payment.Where(a => a.InvoiceID == invoice.InvoiceID).Select(a => a).ToList())
+                        {
+                            if (Sub.PaymentMethod == "cash")
+                            {
+                                <label style="font-size:11px;"> نقداً : @Sub.Amount </label>
+                            }
+                            else if (Sub.PaymentMethod == "knet")
+                            {
+                                <label style="font-size:11px;">  كى نت :@Sub.Amount  </label>
+                            }
+                            else
+                            {
+                                <label style="font-size:11px;">   بطاقة ائتمان :@Sub.Amount  </label>
+                            }
+                        }*@
+                                        <br />
+                                        @*خصم  :   @invoice.Tbl_Subscription.Discount*@
+
+                                    </p>
+
+                                    <p style="text-align: center; font-size: 11px; margin-top:2px;">
+
+                                        <b> وذلك عن تسجيل في محاضرة : </b>
+                                        @*@foreach (var item in DB.Tbl_SubscriptionItems.Where(a => a.SubscriptionID == invoice.SubscriptionID && a.IsWating == false).Select(a => a).ToList())
+                        {
+                            <label style="font-size: 11px">  @item.Tbl_Groups.Tbl_Subject.SubjectName &nbsp;  </label>
+                        }*@
+                                        <label style="font-size: 11px">  @Model.TblSubscription.TblSession.TblSubject.NameAr &nbsp;  </label>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>كلية : </b><label style="font-size: 17px">  @Model.TblSubscription.TblStudent.TblCollege.NameAr &nbsp;  </label>
+                                        <br />
+                                        @*@if (Model.Tbl_Subscription.Notes != "")
+                        {
+                            <label style="font-size: 11px"> <b> ملاحظات: </b> @invoice.Tbl_Subscription.Notes &nbsp;  </label>
+                        }*@
+
+                                        @*@if (invoice.Tbl_Subscription.StartDate != null && @invoice.Tbl_Subscription.EndDate != null)
+                        {
+                            <h5 style="text-align:center;">
+                                (
+
+                                تاريخ البداية: @invoice.Tbl_Subscription.StartDate.Value.ToString("yyyy-MM-dd") -
+
+                                تاريخ النهاية: @invoice.Tbl_Subscription.EndDate.Value.ToString("yyyy-MM-dd")
+                                )
+                            </h5>
+                        }*@
+                                        <h5 style="text-align:center;">
+                                            (
+
+                                            تاريخ البداية: @Model.TblSubscription.TblSession.FromDate.ToString("yyyy-MM-dd") -
+
+                                            تاريخ النهاية: @Model.TblSubscription.TblSession.ToDate.ToString("yyyy-MM-dd")
+                                            )
+                                        </h5>
+
+                                        @*@{
+                            if (invoice.Tbl_Subscription.Updatedat != null)
+                            {
+                            <p style="text-align:center;"> -تاريخ استحقاق الدين- @invoice.Tbl_Subscription.Updatedat</p>
+
+                        }*@
+                                        }
+                                    <p style="text-align:center;"></p>
+
+                                    <p style=" text-align: center;  "> اسم المستخدم : @Model.TblSubscription.TblStudent.TblUserCredential.UserName  -- كلمة المرور : @Model.TblSubscription.TblStudent.TblUserCredential.Password</p>
+
+                                    @*</p>*@
+                                </div>
+
+                                <div class="row" style="margin-top: 0px;">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align:center; font-size: 11px;"> رقم الفاتوره  </th>
+                                                <th style="text-align:center; font-size: 11px;">المبلغ الكلى</th>
+                                                @*<th style="text-align:center; font-size: 11px;">المبلغ المدفوع</th>
+                                <th style="text-align:center; font-size: 11px;"> الخصم </th>
+                                <th style="text-align:center; font-size: 11px;">المبلغ المتبقى</th>*@
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="text-align:center;">@Model.Serial</td>
+                                                <td style="text-align:center;">@Model.TblSubscription.Price</td>
+                                                @*<td style="text-align:center;">@DB.Tbl_Payment.Where(a => a.InvoiceID == invoice.InvoiceID).Sum(a => a.Amount)</td>
+                                <td style="text-align:center;"> @invoice.Tbl_Subscription.Discount  </td>
+                                @{
+                                    double Htyo = 0;
+                                    if (double.Parse(invoice.Tbl_Subscription.PaymentLeft.ToString()) > 0)
+                                    {
+                                        Htyo = double.Parse(invoice.Tbl_Subscription.PaymentLeft.ToString()) - double.Parse(DB.Tbl_Payment.Where(a => a.InvoiceID == invoice.InvoiceID).Sum(a => a.Amount).ToString());
+                                    }
+                                }
+                                <td style="text-align:center;">@PaymentLeft </td>*@
+
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row" style="margin-top: 0px;">
+                                    <table style="width: 100%; margin: 0px; " class="text-center">
+                                        <thead>
+                                            <tr>
+                                                <th width="50%" class="text-center">توقيع المستلم</th>
+                                                <th width="50%" class="text-center">توقيع المحاسب</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>------------------------------------</td>
+                                                <td>------------------------------------</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="text-center" style="font-size: 10px; margin:0;">
+                                        @Html.Raw(Model.TblSubscription.TblStudent.TblArea.NameAr)
+
+                                    </div>
+                                    @*<div class="row" style="text-align: center;"> <p> www.smartmindkw.com <i class="fa fa-instagram"></i> @invoice.Tbl_Branch.Instagram <i class="fa fa-globe"></i></p> </div>*@
+                                    <div class="row" style="text-align: center;"> <p>www.smartmindkw.com<i class="fa fa-instagram"></i> @Model.TblSubscription.TblStudent.TblBranch.NameAr<i class="fa fa-globe"></i></p> </div>
+                                </div>
+
+
+                            </div>
+                            <div class="invoice" style=" border: 1px solid #ccc; margin: 20px auto; padding: 2px 20px;">
+                                <div class="row invoice-logo" style="margin-top: 0px;">
+                                    <div class="col-xs-3" style="float:right;">
+                                        <p style="text-align: center; font-size: 11px; margin-top: 55px;">
+
+
+                                            قام بالإدخال: @Model.TblEmployee.NameAr
+                                            @*قام بالإدخال: @(invoice.UserID != null) ? @invoice.Tbl_Users.UserName : @DB.Tbl_Users.Where(a => a.UserID == invoice.Tbl_Subscription.UserID).Select(a => a.UserName).FirstOrDefault()*@
+                                            <br />
+                                            رقم الفاتورة: @Model.Serial
+
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-6 invoice-logo-space" style="align-self:center;">
+
+                                        <img src="~/Content/Images/invoice_logo.png" class="img-responsive" alt="" style="align-self:center; width:100%" />
+                                        <p style="text-align:center; font-size:11px;">
+                                            فرع :    @Model.TblSubscription.TblStudent.TblBranch.NameAr
+                                            <br />
+                                            سنـــــــــد قبـــــــــــض
+                                            <br />
+                                            Recepit Voucher
+                                            <br />
+                                            التاريخ : @CreatedDate
+
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-3" style="float:left;">
+                                        <p style="text-align: center;  margin-top: 49px; border: 1px solid #bbb;padding: 10px;">
+                                            @Model.TblSubscription.Price  دينار كويتى
+                                            <br />
+                                            رقم النظام: @Model.ID
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <hr style="margin-top: 0px;margin: 2px 0;" />
+
+
+                                <div class="row" style="margin-top: 0px;">
+                                    <p style="text-align: right; font-size: 11px; margin-top:2px; margin-right:20px;">
+                                        وصلنا من السيد / السادة: @Model.TblSubscription.TblStudent.FirstName @Model.TblSubscription.TblStudent.SecondName @Model.TblSubscription.TblStudent.ThirdName
+
+                                    </p>
+
+                                    <p style="text-align: right; font-size: 11px; margin-top: 10px; margin-right: 20px;">
+                                        مبلغ وقدره @Model.TblSubscription.Price دينار كويتي
+                                        :
+
+                                        @*@foreach (var Sub in DB.Tbl_Payment.Where(a => a.InvoiceID == invoice.InvoiceID).Select(a => a).ToList())
+                        {
+                            if (Sub.PaymentMethod == "cash")
+                            {
+                                <label style="font-size:11px;">   نقداً : @Sub.Amount </label>
+                            }
+                            else if (Sub.PaymentMethod == "knet")
+                            {
+                                <label style="font-size:11px;">  كى نت :@Sub.Amount  </label>
+                            }
+                            else
+                            {
+                                <label style="font-size:11px;">   بطاقة ائتمان :@Sub.Amount  </label>
+                            }
+                        }*@
+                                        <br />
+                                        @*خصم  :   @invoice.Tbl_Subscription.Discount*@
+
+                                    </p>
+
+                                    <p style="text-align: center; font-size: 11px; margin-top:2px;">
+
+                                        <b> وذلك عن تسجيل في محاضرة : </b>
+                                        @*@foreach (var item in DB.Tbl_SubscriptionItems.Where(a => a.SubscriptionID == invoice.SubscriptionID && a.IsWating == false).Select(a => a).ToList())
+                        {
+                            <label style="font-size: 11px">  @item.Tbl_Groups.Tbl_Subject.SubjectName &nbsp;  </label>
+                        }
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>المرحلة الدراسية : </b><label style="font-size: 17px">  @Student.Tbl_Stages.StageName &nbsp;  </label>*@
+                                        <label style="font-size: 11px">  @Model.TblSubscription.TblSession.TblSubject.NameAr &nbsp;  </label>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>كلية : </b><label style="font-size: 17px">  @Model.TblSubscription.TblStudent.TblCollege.NameAr &nbsp;  </label>
+
+                                        <br />
+
+                                        @*@if (invoice.Tbl_Subscription.Notes != "")
+                        {
+                            <label style="font-size: 11px"> <b> ملاحظات: </b> @invoice.Tbl_Subscription.Notes &nbsp;  </label>
+                        }*@
+
+                                        @*@if (invoice.Tbl_Subscription.StartDate != null && @invoice.Tbl_Subscription.EndDate != null)
+                        {
+                            <h5 style="text-align:center;">
+                                (
+
+                                تاريخ البداية: @invoice.Tbl_Subscription.StartDate.Value.ToString("yyyy-MM-dd") -
+
+                                تاريخ النهاية: @invoice.Tbl_Subscription.EndDate.Value.ToString("yyyy-MM-dd")
+                                )
+                            </h5>
+                        }*@
+                                        <h5 style="text-align:center;">
+                                            (
+
+                                            تاريخ البداية: @Model.TblSubscription.TblSession.FromDate.ToString("yyyy-MM-dd") -
+
+                                            تاريخ النهاية: @Model.TblSubscription.TblSession.ToDate.ToString("yyyy-MM-dd")
+                                            )
+                                        </h5>
+                                        @*@{
+                            if (invoice.Tbl_Subscription.Updatedat != null)
+                            {
+                            <p style="text-align:center;"> -تاريخ استحقاق الدين- @invoice.Tbl_Subscription.Updatedat</p>
+
+                        }
+                        }*@
+                                    <p style=" text-align: center; "> اسم المستخدم : @Model.TblSubscription.TblSession.TblLecturer.TblUserCredential.UserName  -- كلمة المرور : @Model.TblSubscription.TblStudent.TblUserCredential.Password</p>
+
+                                    @*</p>*@
+                                </div>
+
+                                <div class="row" style="margin-top: 0px;">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align:center; font-size: 11px;"> رقم الفاتوره  </th>
+                                                <th style="text-align:center; font-size: 11px;">المبلغ الكلى</th>
+                                                @*<th style="text-align:center; font-size: 11px;">المبلغ المدفوع</th>
+                                <th style="text-align:center; font-size: 11px;"> الخصم </th>
+                                <th style="text-align:center; font-size: 11px;">المبلغ المتبقى</th>*@
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="text-align:center;">@Model.Serial</td>
+                                                <td style="text-align:center;">@Model.TblSubscription.Price</td>
+                                                @*<td style="text-align:center;">@DB.Tbl_Payment.Where(a => a.InvoiceID == invoice.InvoiceID).Sum(a => a.Amount)</td>
+                                <td style="text-align:center;"> @invoice.Tbl_Subscription.Discount  </td>
+                                @{
+                                    double Htyop = 0;
+                                    if (double.Parse(invoice.Tbl_Subscription.PaymentLeft.ToString()) > 0)
+                                    {
+                                        Htyop = double.Parse(invoice.Tbl_Subscription.PaymentLeft.ToString()) - double.Parse(DB.Tbl_Payment.Where(a => a.InvoiceID == invoice.InvoiceID).Sum(a => a.Amount).ToString());
+                                    }
+                                }
+                                <td style="text-align:center;">@PaymentLeft </td>*@
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row" style="margin-top: 0px;">
+                                    <table style="width: 100%; margin: 0px; " class="text-center">
+                                        <thead>
+                                            <tr>
+                                                <th width="50%" class="text-center">توقيع المستلم</th>
+                                                <th width="50%" class="text-center">توقيع المحاسب</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>------------------------------------</td>
+                                                <td>------------------------------------</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="text-center" style="font-size: 10px; margin:0;">
+                                        @Html.Raw(Model.TblSubscription.TblStudent.TblArea.NameAr)
+                                    </div>
+                                    @*<div class="row" style="text-align: center;"> <p>www.smartmindkw.com<i class="fa fa-instagram"></i> @Model.TblSubscription.TblStudent.TblBranch.Instagram <i class="fa fa-globe"></i></p> </div>*@
+                                    <div class="row" style="text-align: center;"> <p>www.smartmindkw.com<i class="fa fa-instagram"></i> @Model.TblSubscription.TblStudent.TblBranch.NameAr<i class="fa fa-globe"></i></p> </div>
+                                </div>
+                            </div>
+                            <br />
+                            <hr />
+
+                            @*@if (Request.Params["Type"].ToString() != "1")
+            {
+
+                <div style=" border: 1px solid #ccc; margin: 20px auto; padding: 20px 20px;">
+
+                    <div class="row invoice-logo">
+
+                        <div class="col-xs-3" style="float:right;">
+                            <p style="text-align: center; font-size: 11px; margin-top: 55px;">
+
+                        </div>
+                        <div class="col-xs-6 invoice-logo-space" style="align-self:center;">
+
+                            <img src="~/Content/Images/invoice_logo.png" class="img-responsive" alt="" style="align-self:center; width:100%" />
+                            <p style="text-align:center; font-size:11px;">
+                                فرع :    @Model.TblSubscription.TblStudent.TblBranch.NameAr<span class="muted">
+                                    <br />
+
+                                    الجدول الأسبوعي للطالب @Student.firstName
+
+                            </p>
+                        </div>
+                        <div class="col-xs-3" style="float:left;">
+
+
+                        </div>
+
+                    </div>
+                    <hr style="margin-top: 0px;" />
+
+                    <table class="table table-bordered table-hover">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    اسم الطالب  :
+
+                                    @Student.firstName @Student.SecondName @Student.ThirdName
+
+                                </td>
+                                <td>
+                                    المرحله :
+                                    @Student.Tbl_Stages.StageName
+                                </td>
+                                <td>
+                                    فرع :    @Model.TblSubscription.TblStudent.TblBranch.NameAr
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="width: 37%; text-align: center;">
+                                    <label style="font-size: 11px"> الماده </label>
+                                </td>
+                                <td colspan="2" style="text-align:center;">
+                                    <label style="font-size: large"> الحصص </label>
+                                </td>
+                            </tr>
+                            @foreach (var item in DB.Tbl_SubscriptionItems.Where(a => a.SubscriptionID == invoice.SubscriptionID).Select(a => a).ToList())
+                            {
+                                <tr>
+                                    <td style="width: 37%; text-align: center;">
+                                        <label style="font-size: 17px"> @item.Tbl_Groups.Tbl_Subject.SubjectName </label>
+                                    </td>
+                                    <td colspan="2" style="text-align:center;">
+                                        @foreach (var Sub in DB.Tbl_Periods.Where(a => a.GroupID == item.GroupID).Select(a => a).ToList())
+                                        {
+                                            <label style="font-size: 11px; "> @Sub.PeriodDay  </label> <label>  &nbsp; &nbsp; &nbsp;من &nbsp; &nbsp; &nbsp;  </label> @Sub.Fromtime.Value.Minute <label>:</label> @Sub.Fromtime.Value.Hour if (@Sub.Fromtime.Value.ToString("tt", System.Globalization.CultureInfo.InvariantCulture) == "AM")
+                                            { <label> صباحاً </label> }
+                                            else
+                                            {<label> مساءاً </label> } <br />
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                            <tr>
+                                <td colspan="3">
+                                    @Html.Raw(Student.Tbl_Branch.Tbl_Descripton)
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+            }*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs-6 invoice-block">
+                <a class="btn btn-circle default purple-stripe hidden-print" style="width:160px;" onclick="javascript: printdiv('div_print');">
+                    طباعه <i class="fa fa-print"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="portlet light">
+        <div class="portlet-body">
+
+        </div>
+    </div>*@
+
+<script>
+    $('#AtInvoBillShowIN').addClass('active open');
+
+
+    var element = document.getElementById("AddNewAllInvo");
+    element.innerHTML = element.innerHTML + "<span class='selected'></span>";
+</script>
+
+
+<script language="javascript">
+    function printdiv(printpage) {
+        var headstr = "<html><head><title></title></head><body>";
+        var footstr = "</body>";
+        var newstr = document.all.item(printpage).innerHTML;
+        var oldstr = document.body.innerHTML;
+        document.body.innerHTML = headstr + newstr + footstr;
+        window.print();
+        document.body.innerHTML = oldstr;
+        return false;
+    }
+</script>
+
+

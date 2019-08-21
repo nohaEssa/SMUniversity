@@ -1,0 +1,218 @@
+﻿@model SMUModels.TblLecturer
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header">تعديل محاضر</h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="/Home/Index"><i class="fa fa-home"></i></a></li>
+                    <li><a href="/Lecturer/Index">الرئيسية</a></li>
+                    <li class="active"><a href="/Lecturer/Edit">تعديل محاضر</a></li>
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">تعديل محاضر</h3>
+                    </div>
+                    <form id="EditLecturer" action="/Lecturer/Edit" method="post" class="form-horizontal ls_form" enctype='multipart/form-data'>
+                        <input type="hidden" value="@Model.ID" id="LecturerID" name="LecturerID" />
+                        <div class="panel-body form_view">
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">الاسم عربي:* </label>
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-12">
+                                            <input type="text" name="FirstNameAr" value="@Model.FirstNameAr" placeholder="الاسم الاول" class="form-control ls-group-input" required>
+                                        </div>
+                                        <div class="col-md-3 col-sm-12">
+                                            <input type="text" name="SecondNameAr" value="@Model.SecondNameAr" placeholder="الاسم الثاني" class="form-control ls-group-input" required>
+                                        </div>
+                                        <div class="col-md-3 col-sm-12">
+                                            <input type="text" name="ThirdNameAr" value="@Model.ThirdNameAr" placeholder="الاسم الاخير" class="form-control ls-group-input" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">الاسم انجليزي:* </label>
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-12">
+                                            <input type="text" name="FirstNameEn" value="@Model.FirstNameEn" placeholder="الاسم الاول" class="form-control ls-group-input" required>
+                                        </div>
+                                        <div class="col-md-3 col-sm-12">
+                                            <input type="text" name="SecondNameEn" value="@Model.SecondNameEn" placeholder="الاسم الثاني" class="form-control ls-group-input" required>
+                                        </div>
+                                        <div class="col-md-3 col-sm-12">
+                                            <input type="text" name="ThirdNameEn" value="@Model.ThirdNameEn" placeholder="الاسم الاخير" class="form-control ls-group-input" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">كلمة المرور: </label>
+                                    <div class="col-md-10">
+                                        <input placeholder="ادخل كلمة المرور"
+                                               class="form-control validate[required] text-input"
+                                               type="password" name="Password" value="@Model.TblUserCredential.Password" id="password1" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">رقم التليفون</label>
+                                    <div class="col-md-10">
+                                        <input type="tel"
+                                               class="form-control validate[required] text-input"
+                                               id="PhoneNumber" name="PhoneNumber" value="@Model.PhoneNumber" placeholder="رقم التليفون" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">البريد الإلكتروني</label>
+                                    <div class="col-md-10">
+                                        <input type="email"
+                                               class="form-control validate[required] text-input"
+                                               id="Email" name="Email" value="@Model.Email" placeholder="البريد الإلكتروني" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">العنوان</label>
+                                    <div class="col-md-10">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="Address" name="Address" value="@Model.Address" placeholder="العنوان" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">النوع </label>
+                                    <div class="col-lg-5">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="Gender" value="true" required data-bv-notempty-message="The gender is required" /> ذكر
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="Gender" value="false" required /> انثي
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 control-label">طريقة الحساب</label>
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-4 col-xs-6">
+                                            <label class="radio">
+                                                <input class="icheck-red" type="radio" name="LecturerAccountMethod"
+                                                       id="radioRedCheckbox1" value="1" checked="checked"> حساب المحاضر بسعر الساعه
+                                                <input placeholder="ادخل سعر الساعه"
+                                                       class="form-control validate[required] text-input"
+                                                       type="number" name="PriceCost" id="PriceCost" />
+                                            </label>
+
+                                        </div>
+                                        <div class="col-md-3 col-sm-4 col-xs-6">
+
+                                            <label class="radio">
+                                                <input class="icheck-blue" type="radio" name="LecturerAccountMethod"
+                                                       id="radioRedCheckbox2" value="2"> حساب المحاضر بالنسبة %
+                                                <input placeholder="ادخل النسبه"
+                                                       class="form-control validate[required] text-input"
+                                                       type="number" name="LectPercentage" id="PriceCost" />
+                                            </label>
+
+                                        </div>
+                                        <div class="col-md-3 col-sm-4 col-xs-6">
+
+                                            <label class="radio">
+                                                <input class="icheck-aero" type="radio" name="LecturerAccountMethod"
+                                                       id="radioRedCheckbox3" value="3"> حسب المحاضر بسعر الكورس
+                                                <input placeholder="ادخل سعر الكورس"
+                                                       class="form-control validate[required] text-input"
+                                                       type="number" name="CoursePrice" id="CoursePrice" />
+                                            </label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-4 col-xs-6">
+
+                                            <label class="radio">
+                                                <input class="icheck-aero" type="radio" name="LecturerAccountMethod"
+                                                       id="radioRedCheckbox3" value="4"> نسبة طلاب المحاضر
+                                                <input placeholder="ادخل النسبه الطلاب"
+                                                       class="form-control validate[required] text-input"
+                                                       type="number" name="StudentPercentage" id="StudentPercentage" />
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-upload"></i> تحميل صورة طالب</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <section id="ls-wrapper">
+                                        <!--Image Drop & Upload Wrapper Start-->
+                                        <div id="droparea">
+                                            <div class="dropareainner">
+                                                <p class="dropfiletext">انزل ملف هنا</p>
+                                                <p>او</p>
+                                                <!--Upload Select Button-->
+                                                <p>
+                                                    <input id="uploadbtn" class="uploadbtn" type="button" value="اختر ملف">
+                                                </p>
+
+
+                                                <!--Image Effect Finish-->
+                                                <p id="err">تم التحميل اي كلام وكدة يعني (:</p>
+                                            </div>
+                                            <!--Image Upload Input-->
+                                            <input id="upload" name="ProfilePic" type="file" multiple />
+                                        </div>
+                                        <!--Image Drop & Upload Wrapper Finish-->
+                                        <p class="message"> حجم الملف <strong>400</strong>فقط</p>
+                                        <!--Upoload Image Preview Wrap Start-->
+                                        <div id="result">
+                                            <!--Upoload Image Preview Wrap Finish-->
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style=" margin: 20px 30px 40px 50px; ">
+                                <button class="submit btn-primary btn" type="submit" name="submit">حفظ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

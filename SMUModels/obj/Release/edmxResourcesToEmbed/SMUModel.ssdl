@@ -1,0 +1,3940 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="admin_SMUniversityModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TblArea">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GovernorateID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblAttendance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="Attend" Type="tinyint" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="SubscriptionID" Type="int" Nullable="false" />
+    <Property Name="SessionTimesID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblBalanceTransaction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="TitleAr" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="10" Scale="3" />
+    <Property Name="TransactionTypeID" Type="int" Nullable="false" />
+    <Property Name="Pending" Type="bit" Nullable="false" />
+    <Property Name="PaymentMethod" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="TitleEn" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="TblBranch">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DescriptionAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="ProfilePic" Type="nvarchar" MaxLength="255" />
+    <Property Name="AddressAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="PhoneNumber1" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNumber2" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber3" Type="nvarchar" MaxLength="50" />
+    <Property Name="MapLink" Type="nvarchar(max)" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DescriptionEn" Type="nvarchar" MaxLength="200" />
+    <Property Name="AddressEn" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="TblCardCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="TitleEn" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblChargeCard">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CardCategoryID" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="Valid" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblCollege">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UniversityID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblContactUsMsgs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Message" Type="nvarchar(max)" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblEmployee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="ProfilePic" Type="nvarchar" MaxLength="255" />
+    <Property Name="BranchID" Type="int" Nullable="false" />
+    <Property Name="UserCategoryID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="CredentialsID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblEvaluation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionID" Type="int" Nullable="false" />
+    <Property Name="AnswerID" Type="int" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="SessionID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="EvaluationNotes" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TblEvaluationQuestion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionAr" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="QuestionEn" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblEvaluationQuestionAnswer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AnswerAr" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AnswerEn" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Value" Type="tinyint" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblFavoriteSession">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SessionID" Type="int" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblGovernorate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblHall">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HallCodeAr" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="BranchID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="Capacity" Type="int" Nullable="false" />
+    <Property Name="HallCodeEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblHelpQuestions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionAr" Type="nvarchar" MaxLength="255" />
+    <Property Name="QuestionEn" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblInstitute">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AboutAr" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AboutEn" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TermsAndConditionsAr" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TermsAndConditionsEn" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Website" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="PrivacyPolicy" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TblInvoice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Serial" Type="bigint" Nullable="false" />
+    <Property Name="SubscriptionID" Type="int" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="Pending" Type="bit" Nullable="false" />
+    <Property Name="PaymentMethod" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblLecturer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstNameAr" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SecondNameAr" Type="nvarchar" MaxLength="100" />
+    <Property Name="ThirdNameAr" Type="nvarchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Gender" Type="bit" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="ProfilePic" Type="nvarchar" MaxLength="255" />
+    <Property Name="BranchID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="CredentialsID" Type="int" Nullable="false" />
+    <Property Name="FirstNameEn" Type="nvarchar" MaxLength="100" />
+    <Property Name="SecondNameEn" Type="nvarchar" MaxLength="100" />
+    <Property Name="ThirdNameEn" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="TblLecturerPaymentMethod">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentMethod" Type="tinyint" Nullable="false" />
+    <Property Name="Value" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+    <Property Name="LecturerID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblLecturerSubject">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectID" Type="int" Nullable="false" />
+    <Property Name="LecturerID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblMajor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CollegeID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblManualInvoice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LecturerID" Type="int" Nullable="false" />
+    <Property Name="HallID" Type="int" Nullable="false" />
+    <Property Name="FromDate" Type="datetime" Nullable="false" />
+    <Property Name="ToDate" Type="datetime" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblNotification">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="LecturerID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="TitleAr" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="DescriptionAr" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Picture" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="TitleEn" Type="nvarchar" MaxLength="255" />
+    <Property Name="DescriptionEn" Type="nvarchar" MaxLength="255" />
+    <Property Name="Type" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblPermission">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PermissionCategoryID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblPermissionCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblPermissionUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PermissionCategoryID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblPrivateSession">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="SubjectID" Type="int" Nullable="false" />
+    <Property Name="LecturerID" Type="int" Nullable="false" />
+    <Property Name="RequestMsg" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RequestDate" Type="datetime" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="Approved" Type="bit" />
+    <Property Name="IsCourse" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblProduct">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductCategoryID" Type="int" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="DescriptionAr" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="DescriptionEn" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Cost" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+    <Property Name="QRCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="Picture" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblProductCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Picture" Type="nvarchar" MaxLength="255" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblRevenue">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RevenueTypeAr" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Value" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="TeacherID" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="RevenueTypeEn" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblScreen">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="BranchID" Type="int" Nullable="false" />
+    <Property Name="CredentialsID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblScreenHall">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HallID" Type="int" Nullable="false" />
+    <Property Name="ScreenID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblSession">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BranchID" Type="int" />
+    <Property Name="SubjectID" Type="int" />
+    <Property Name="LecturerID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Type" Type="bit" Nullable="false" />
+    <Property Name="LecturesCount" Type="int" Nullable="false" />
+    <Property Name="FromDate" Type="datetime" Nullable="false" />
+    <Property Name="ToDate" Type="datetime" Nullable="false" />
+    <Property Name="HallID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="LecturerAccountMethod" Type="tinyint" Nullable="false" />
+    <Property Name="SessionCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="Cost" Type="decimal" Precision="10" Scale="3" />
+    <Property Name="Price1" Type="decimal" Precision="10" Scale="3" />
+    <Property Name="Price2" Type="decimal" Precision="10" Scale="3" />
+    <Property Name="Price3" Type="decimal" Precision="10" Scale="3" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="255" />
+    <Property Name="ForPublic" Type="bit" />
+    <Property Name="DescriptionEn" Type="nvarchar(max)" />
+    <Property Name="Picture" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TblSessionDetails">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QRCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="RevenueType" Type="nvarchar" MaxLength="20" />
+    <Property Name="SessionID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="Cost" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+    <Property Name="Price1" Type="decimal" Precision="10" Scale="3" />
+    <Property Name="Price2" Type="decimal" Precision="10" Scale="3" />
+    <Property Name="Price3" Type="decimal" Precision="10" Scale="3" />
+  </EntityType>
+  <EntityType Name="TblSessionPricing">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SessionID" Type="int" Nullable="false" />
+    <Property Name="Cost" Type="decimal" Precision="10" Scale="3" />
+    <Property Name="Price1" Type="decimal" Precision="10" Scale="3" />
+    <Property Name="Price2" Type="decimal" Precision="10" Scale="3" />
+    <Property Name="Price3" Type="decimal" Precision="10" Scale="3" />
+  </EntityType>
+  <EntityType Name="TblSessionTimes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LectureAr" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="LectureEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SessionID" Type="int" Nullable="false" />
+    <Property Name="FromTime" Type="datetime" Nullable="false" />
+    <Property Name="ToTime" Type="datetime" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="Ended" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblStudent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SecondName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ThirdName" Type="nvarchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Gender" Type="bit" Nullable="false" />
+    <Property Name="DateOfBirth" Type="date" Nullable="false" />
+    <Property Name="GovernorateID" Type="int" />
+    <Property Name="AreaID" Type="int" />
+    <Property Name="ProfilePic" Type="nvarchar" MaxLength="255" />
+    <Property Name="Balance" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="BranchID" Type="int" />
+    <Property Name="UniversityID" Type="int" />
+    <Property Name="CollegeID" Type="int" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="MajorID" Type="int" />
+    <Property Name="CredentialsID" Type="int" />
+    <Property Name="VerificationCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="Verified" Type="bit" Nullable="false" />
+    <Property Name="StudentType" Type="bit" />
+  </EntityType>
+  <EntityType Name="TblStudentComplaint">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="HelpQuestionID" Type="int" Nullable="false" />
+    <Property Name="Complaint" Type="nvarchar(max)" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblSubject">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MajorID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Picture" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TblSubscription">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="SessionID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="Ended" Type="bit" Nullable="false" />
+    <Property Name="Pending" Type="bit" Nullable="false" />
+    <Property Name="PriceType" Type="tinyint" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblUniversity">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="TblUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CredentialsID" Type="int" Nullable="false" />
+    <Property Name="BranchID" Type="int" Nullable="false" />
+    <Property Name="UserCategoryID" Type="int" Nullable="false" />
+    <Property Name="ProfilePic" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblUserCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblUserCredentials">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserType" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TblUserType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblVoucher">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Serial" Type="bigint" Nullable="false" />
+    <Property Name="LecturerID" Type="int" Nullable="false" />
+    <Property Name="HallID" Type="int" Nullable="false" />
+    <Property Name="FromDate" Type="datetime" Nullable="false" />
+    <Property Name="ToDate" Type="datetime" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+    <Property Name="Cost" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+    <Property Name="PaymentMethod" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransactionType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__TblArea__Governo__03BB8E22">
+    <End Role="TblGovernorate" Type="Self.TblGovernorate" Multiplicity="1" />
+    <End Role="TblArea" Type="Self.TblArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblGovernorate">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblArea">
+        <PropertyRef Name="GovernorateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblArea__Governo__04AFB25B">
+    <End Role="TblGovernorate" Type="Self.TblGovernorate" Multiplicity="1" />
+    <End Role="TblArea" Type="Self.TblArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblGovernorate">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblArea">
+        <PropertyRef Name="GovernorateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblArea__Governo__2F10007B">
+    <End Role="TblGovernorate" Type="Self.TblGovernorate" Multiplicity="1" />
+    <End Role="TblArea" Type="Self.TblArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblGovernorate">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblArea">
+        <PropertyRef Name="GovernorateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblArea__Governo__3493CFA7">
+    <End Role="TblGovernorate" Type="Self.TblGovernorate" Multiplicity="1" />
+    <End Role="TblArea" Type="Self.TblArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblGovernorate">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblArea">
+        <PropertyRef Name="GovernorateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblArea__Governo__3587F3E0">
+    <End Role="TblGovernorate" Type="Self.TblGovernorate" Multiplicity="1" />
+    <End Role="TblArea" Type="Self.TblArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblGovernorate">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblArea">
+        <PropertyRef Name="GovernorateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblArea__Governo__534D60F1">
+    <End Role="TblGovernorate" Type="Self.TblGovernorate" Multiplicity="1" />
+    <End Role="TblArea" Type="Self.TblArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblGovernorate">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblArea">
+        <PropertyRef Name="GovernorateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblAttend__Sessi__05A3D694">
+    <End Role="TblSessionTimes" Type="Self.TblSessionTimes" Multiplicity="1" />
+    <End Role="TblAttendance" Type="Self.TblAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSessionTimes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblAttendance">
+        <PropertyRef Name="SessionTimesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblAttend__Sessi__1AD3FDA4">
+    <End Role="TblSessionTimes" Type="Self.TblSessionTimes" Multiplicity="1" />
+    <End Role="TblAttendance" Type="Self.TblAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSessionTimes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblAttendance">
+        <PropertyRef Name="SessionTimesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblAttend__Sessi__367C1819">
+    <End Role="TblSessionTimes" Type="Self.TblSessionTimes" Multiplicity="1" />
+    <End Role="TblAttendance" Type="Self.TblAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSessionTimes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblAttendance">
+        <PropertyRef Name="SessionTimesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblAttend__Stude__0697FACD">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblAttendance" Type="Self.TblAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblAttendance">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblAttend__Stude__078C1F06">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblAttendance" Type="Self.TblAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblAttendance">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblAttend__Stude__30F848ED">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblAttendance" Type="Self.TblAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblAttendance">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblAttend__Stude__37703C52">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblAttendance" Type="Self.TblAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblAttendance">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblAttend__Stude__3864608B">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblAttendance" Type="Self.TblAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblAttendance">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblAttend__Stude__5535A963">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblAttendance" Type="Self.TblAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblAttendance">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblAttend__Subsc__0880433F">
+    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="1" />
+    <End Role="TblAttendance" Type="Self.TblAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSubscription">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblAttendance">
+        <PropertyRef Name="SubscriptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblAttend__Subsc__0D7A0286">
+    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="1" />
+    <End Role="TblAttendance" Type="Self.TblAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSubscription">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblAttendance">
+        <PropertyRef Name="SubscriptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblAttend__Subsc__395884C4">
+    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="1" />
+    <End Role="TblAttendance" Type="Self.TblAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSubscription">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblAttendance">
+        <PropertyRef Name="SubscriptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblBalanc__Stude__08B54D69">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblBalanceTransaction" Type="Self.TblBalanceTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblBalanceTransaction">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblBalanc__Stude__0A688BB1">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblBalanceTransaction" Type="Self.TblBalanceTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblBalanceTransaction">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblBalanc__Stude__3B40CD36">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblBalanceTransaction" Type="Self.TblBalanceTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblBalanceTransaction">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblBalanc__Trans__0A9D95DB">
+    <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="1" />
+    <End Role="TblBalanceTransaction" Type="Self.TblBalanceTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblBalanceTransaction">
+        <PropertyRef Name="TransactionTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblBalanc__Trans__0B5CAFEA">
+    <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="1" />
+    <End Role="TblBalanceTransaction" Type="Self.TblBalanceTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblBalanceTransaction">
+        <PropertyRef Name="TransactionTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblBalanc__Trans__3C34F16F">
+    <End Role="TransactionType" Type="Self.TransactionType" Multiplicity="1" />
+    <End Role="TblBalanceTransaction" Type="Self.TblBalanceTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblBalanceTransaction">
+        <PropertyRef Name="TransactionTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblBalanc__UserI__75F77EB0">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="0..1" />
+    <End Role="TblBalanceTransaction" Type="Self.TblBalanceTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblBalanceTransaction">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblCharge__CardC__0C50D423">
+    <End Role="TblCardCategory" Type="Self.TblCardCategory" Multiplicity="1" />
+    <End Role="TblChargeCard" Type="Self.TblChargeCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCardCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblChargeCard">
+        <PropertyRef Name="CardCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblCharge__CardC__3D2915A8">
+    <End Role="TblCardCategory" Type="Self.TblCardCategory" Multiplicity="1" />
+    <End Role="TblChargeCard" Type="Self.TblChargeCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCardCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblChargeCard">
+        <PropertyRef Name="CardCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblCharge__CardC__74AE54BC">
+    <End Role="TblCardCategory" Type="Self.TblCardCategory" Multiplicity="1" />
+    <End Role="TblChargeCard" Type="Self.TblChargeCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCardCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblChargeCard">
+        <PropertyRef Name="CardCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblColleg__Unive__0D44F85C">
+    <End Role="TblUniversity" Type="Self.TblUniversity" Multiplicity="1" />
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUniversity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblCollege">
+        <PropertyRef Name="UniversityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblColleg__Unive__0E391C95">
+    <End Role="TblUniversity" Type="Self.TblUniversity" Multiplicity="1" />
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUniversity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblCollege">
+        <PropertyRef Name="UniversityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblColleg__Unive__31EC6D26">
+    <End Role="TblUniversity" Type="Self.TblUniversity" Multiplicity="1" />
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUniversity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblCollege">
+        <PropertyRef Name="UniversityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblColleg__Unive__3E1D39E1">
+    <End Role="TblUniversity" Type="Self.TblUniversity" Multiplicity="1" />
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUniversity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblCollege">
+        <PropertyRef Name="UniversityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblColleg__Unive__3F115E1A">
+    <End Role="TblUniversity" Type="Self.TblUniversity" Multiplicity="1" />
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUniversity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblCollege">
+        <PropertyRef Name="UniversityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblColleg__Unive__5629CD9C">
+    <End Role="TblUniversity" Type="Self.TblUniversity" Multiplicity="1" />
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUniversity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblCollege">
+        <PropertyRef Name="UniversityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblContac__Stude__7720AD13">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="0..1" />
+    <End Role="TblContactUsMsgs" Type="Self.TblContactUsMsgs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblContactUsMsgs">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblEmploy__Branc__10216507">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblEmployee" Type="Self.TblEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblEmployee">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblEmploy__Branc__11158940">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblEmployee" Type="Self.TblEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblEmployee">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblEmploy__Branc__40F9A68C">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblEmployee" Type="Self.TblEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblEmployee">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblEmploy__Branc__41EDCAC5">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblEmployee" Type="Self.TblEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblEmployee">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblEmploy__Crede__0F2D40CE">
+    <End Role="TblUserCredentials" Type="Self.TblUserCredentials" Multiplicity="1" />
+    <End Role="TblEmployee" Type="Self.TblEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUserCredentials">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblEmployee">
+        <PropertyRef Name="CredentialsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblEmploy__Crede__40058253">
+    <End Role="TblUserCredentials" Type="Self.TblUserCredentials" Multiplicity="1" />
+    <End Role="TblEmployee" Type="Self.TblEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUserCredentials">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblEmployee">
+        <PropertyRef Name="CredentialsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblEmploy__Crede__6E01572D">
+    <End Role="TblUserCredentials" Type="Self.TblUserCredentials" Multiplicity="1" />
+    <End Role="TblEmployee" Type="Self.TblEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUserCredentials">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblEmployee">
+        <PropertyRef Name="CredentialsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblEvalua__Answe__6225902D">
+    <End Role="TblEvaluationQuestionAnswer" Type="Self.TblEvaluationQuestionAnswer" Multiplicity="1" />
+    <End Role="TblEvaluation" Type="Self.TblEvaluation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblEvaluationQuestionAnswer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblEvaluation">
+        <PropertyRef Name="AnswerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblEvalua__Quest__61316BF4">
+    <End Role="TblEvaluationQuestion" Type="Self.TblEvaluationQuestion" Multiplicity="1" />
+    <End Role="TblEvaluation" Type="Self.TblEvaluation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblEvaluationQuestion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblEvaluation">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblEvalua__Sessi__640DD89F">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblEvaluation" Type="Self.TblEvaluation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblEvaluation">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblEvalua__Stude__6319B466">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblEvaluation" Type="Self.TblEvaluation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblEvaluation">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblFavori__Sessi__10566F31">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblFavoriteSession" Type="Self.TblFavoriteSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblFavoriteSession">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblFavori__Sessi__1209AD79">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblFavoriteSession" Type="Self.TblFavoriteSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblFavoriteSession">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblFavori__Sessi__42E1EEFE">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblFavoriteSession" Type="Self.TblFavoriteSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblFavoriteSession">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblFavori__Stude__114A936A">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblFavoriteSession" Type="Self.TblFavoriteSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblFavoriteSession">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblFavori__Stude__12FDD1B2">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblFavoriteSession" Type="Self.TblFavoriteSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblFavoriteSession">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblFavori__Stude__43D61337">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblFavoriteSession" Type="Self.TblFavoriteSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblFavoriteSession">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblHall__BranchI__13F1F5EB">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblHall" Type="Self.TblHall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblHall">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblHall__BranchI__14E61A24">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblHall" Type="Self.TblHall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblHall">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblHall__BranchI__32E0915F">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblHall" Type="Self.TblHall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblHall">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblHall__BranchI__44CA3770">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblHall" Type="Self.TblHall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblHall">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblHall__BranchI__45BE5BA9">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblHall" Type="Self.TblHall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblHall">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblHall__BranchI__571DF1D5">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblHall" Type="Self.TblHall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblHall">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblInvoic__Emplo__3DB3258D">
+    <End Role="TblEmployee" Type="Self.TblEmployee" Multiplicity="1" />
+    <End Role="TblInvoice" Type="Self.TblInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblEmployee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblInvoice">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblInvoic__Subsc__3CBF0154">
+    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="1" />
+    <End Role="TblInvoice" Type="Self.TblInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSubscription">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblInvoice">
+        <PropertyRef Name="SubscriptionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblLectur__Branc__16CE6296">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblLecturer">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblLectur__Branc__17C286CF">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblLecturer">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblLectur__Branc__47A6A41B">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblLecturer">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblLectur__Branc__489AC854">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblLecturer">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblLectur__Crede__15DA3E5D">
+    <End Role="TblUserCredentials" Type="Self.TblUserCredentials" Multiplicity="1" />
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUserCredentials">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblLecturer">
+        <PropertyRef Name="CredentialsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblLectur__Crede__46B27FE2">
+    <End Role="TblUserCredentials" Type="Self.TblUserCredentials" Multiplicity="1" />
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUserCredentials">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblLecturer">
+        <PropertyRef Name="CredentialsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblLectur__Crede__6EF57B66">
+    <End Role="TblUserCredentials" Type="Self.TblUserCredentials" Multiplicity="1" />
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUserCredentials">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblLecturer">
+        <PropertyRef Name="CredentialsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblLectur__Lectu__6E565CE8">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblLecturerSubject" Type="Self.TblLecturerSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblLecturerSubject">
+        <PropertyRef Name="LecturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblLectur__Lectu__75035A77">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblLecturerPaymentMethod" Type="Self.TblLecturerPaymentMethod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblLecturerPaymentMethod">
+        <PropertyRef Name="LecturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblLectur__Subje__6D6238AF">
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="1" />
+    <End Role="TblLecturerSubject" Type="Self.TblLecturerSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSubject">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblLecturerSubject">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblMajor__Colleg__18B6AB08">
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="1" />
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCollege">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblMajor">
+        <PropertyRef Name="CollegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblMajor__Colleg__19AACF41">
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="1" />
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCollege">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblMajor">
+        <PropertyRef Name="CollegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblMajor__Colleg__33D4B598">
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="1" />
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCollege">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblMajor">
+        <PropertyRef Name="CollegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblMajor__Colleg__498EEC8D">
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="1" />
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCollege">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblMajor">
+        <PropertyRef Name="CollegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblMajor__Colleg__4A8310C6">
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="1" />
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCollege">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblMajor">
+        <PropertyRef Name="CollegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblMajor__Colleg__5812160E">
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="1" />
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCollege">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblMajor">
+        <PropertyRef Name="CollegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblManual__HallI__7167D3BD">
+    <End Role="TblHall" Type="Self.TblHall" Multiplicity="1" />
+    <End Role="TblManualInvoice" Type="Self.TblManualInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblHall">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblManualInvoice">
+        <PropertyRef Name="HallID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblManual__Lectu__7073AF84">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblManualInvoice" Type="Self.TblManualInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblManualInvoice">
+        <PropertyRef Name="LecturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblNotifi__Lectu__047AA831">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="0..1" />
+    <End Role="TblNotification" Type="Self.TblNotification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblNotification">
+        <PropertyRef Name="LecturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblNotifi__Stude__038683F8">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="0..1" />
+    <End Role="TblNotification" Type="Self.TblNotification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblNotification">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblNotifi__UserI__056ECC6A">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="0..1" />
+    <End Role="TblNotification" Type="Self.TblNotification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblNotification">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblPermis__Permi__436BFEE3">
+    <End Role="TblPermissionCategory" Type="Self.TblPermissionCategory" Multiplicity="1" />
+    <End Role="TblPermission" Type="Self.TblPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblPermissionCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblPermission">
+        <PropertyRef Name="PermissionCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblPermis__Permi__473C8FC7">
+    <End Role="TblPermissionCategory" Type="Self.TblPermissionCategory" Multiplicity="1" />
+    <End Role="TblPermissionUser" Type="Self.TblPermissionUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblPermissionCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblPermissionUser">
+        <PropertyRef Name="PermissionCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblPermis__UserI__4830B400">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblPermissionUser" Type="Self.TblPermissionUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblPermissionUser">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblPrivat__Lectu__2AA05119">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblPrivateSession" Type="Self.TblPrivateSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblPrivateSession">
+        <PropertyRef Name="LecturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblPrivat__Stude__28B808A7">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblPrivateSession" Type="Self.TblPrivateSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblPrivateSession">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblPrivat__Subje__29AC2CE0">
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="1" />
+    <End Role="TblPrivateSession" Type="Self.TblPrivateSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSubject">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblPrivateSession">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblProduc__Produ__74444068">
+    <End Role="TblProduct" Type="Self.TblProduct" Multiplicity="1" />
+    <End Role="TblProduct1" Type="Self.TblProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblProduct">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblProduct1">
+        <PropertyRef Name="ProductCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblRevenu__Teach__1A9EF37A">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblRevenue" Type="Self.TblRevenue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblRevenue">
+        <PropertyRef Name="TeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblRevenu__Teach__1B9317B3">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblRevenue" Type="Self.TblRevenue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblRevenue">
+        <PropertyRef Name="TeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblRevenu__Teach__34C8D9D1">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblRevenue" Type="Self.TblRevenue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblRevenue">
+        <PropertyRef Name="TeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblRevenu__Teach__4B7734FF">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblRevenue" Type="Self.TblRevenue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblRevenue">
+        <PropertyRef Name="TeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblRevenu__Teach__4C6B5938">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblRevenue" Type="Self.TblRevenue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblRevenue">
+        <PropertyRef Name="TeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblRevenu__Teach__59063A47">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblRevenue" Type="Self.TblRevenue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblRevenue">
+        <PropertyRef Name="TeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblScreen__Branc__65C116E7">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblScreen" Type="Self.TblScreen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblScreen">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblScreen__Crede__66B53B20">
+    <End Role="TblUserCredentials" Type="Self.TblUserCredentials" Multiplicity="1" />
+    <End Role="TblScreen" Type="Self.TblScreen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUserCredentials">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblScreen">
+        <PropertyRef Name="CredentialsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblScreen__HallI__6991A7CB">
+    <End Role="TblHall" Type="Self.TblHall" Multiplicity="1" />
+    <End Role="TblScreenHall" Type="Self.TblScreenHall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblHall">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblScreenHall">
+        <PropertyRef Name="HallID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblScreen__Scree__6A85CC04">
+    <End Role="TblScreen" Type="Self.TblScreen" Multiplicity="1" />
+    <End Role="TblScreenHall" Type="Self.TblScreenHall" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblScreen">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblScreenHall">
+        <PropertyRef Name="ScreenID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Branc__1C873BEC">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="0..1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Branc__1D7B6025">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="0..1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Branc__35BCFE0A">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="0..1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Branc__4D5F7D71">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="0..1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Branc__4E53A1AA">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="0..1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Branc__59FA5E80">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="0..1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__HallI__0C85DE4D">
+    <End Role="TblHall" Type="Self.TblHall" Multiplicity="1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblHall">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="HallID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__HallI__1E6F845E">
+    <End Role="TblHall" Type="Self.TblHall" Multiplicity="1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblHall">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="HallID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__HallI__4F47C5E3">
+    <End Role="TblHall" Type="Self.TblHall" Multiplicity="1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblHall">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="HallID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Lectu__214BF109">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="LecturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Lectu__22401542">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="LecturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Lectu__5224328E">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="LecturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Lectu__531856C7">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="LecturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Sessi__19DFD96B">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSessionTimes" Type="Self.TblSessionTimes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSessionTimes">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Sessi__2334397B">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSessionDetails" Type="Self.TblSessionDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSessionDetails">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Sessi__24285DB4">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSessionDetails" Type="Self.TblSessionDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSessionDetails">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Sessi__251C81ED">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSessionTimes" Type="Self.TblSessionTimes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSessionTimes">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Sessi__38996AB5">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSessionDetails" Type="Self.TblSessionDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSessionDetails">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Sessi__3BFFE745">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSessionPricing" Type="Self.TblSessionPricing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSessionPricing">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Sessi__540C7B00">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSessionDetails" Type="Self.TblSessionDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSessionDetails">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Sessi__55009F39">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSessionDetails" Type="Self.TblSessionDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSessionDetails">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Sessi__55F4C372">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSessionTimes" Type="Self.TblSessionTimes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSessionTimes">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Sessi__5CD6CB2B">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSessionDetails" Type="Self.TblSessionDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSessionDetails">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Subje__1F63A897">
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="0..1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSubject">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Subje__2057CCD0">
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="0..1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSubject">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Subje__36B12243">
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="0..1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSubject">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Subje__503BEA1C">
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="0..1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSubject">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Subje__51300E55">
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="0..1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSubject">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Subje__5AEE82B9">
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="0..1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSubject">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Teach__37A5467C">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="LecturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSessio__Teach__5BE2A6F2">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSession">
+        <PropertyRef Name="LecturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__AreaI__2610A626">
+    <End Role="TblArea" Type="Self.TblArea" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblArea">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="AreaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__AreaI__2704CA5F">
+    <End Role="TblArea" Type="Self.TblArea" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblArea">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="AreaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__AreaI__398D8EEE">
+    <End Role="TblArea" Type="Self.TblArea" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblArea">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="AreaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__AreaI__56E8E7AB">
+    <End Role="TblArea" Type="Self.TblArea" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblArea">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="AreaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__AreaI__57DD0BE4">
+    <End Role="TblArea" Type="Self.TblArea" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblArea">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="AreaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__AreaI__5DCAEF64">
+    <End Role="TblArea" Type="Self.TblArea" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblArea">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="AreaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Branc__27F8EE98">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Branc__28ED12D1">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Branc__3A81B327">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Branc__58D1301D">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Branc__59C55456">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Branc__5EBF139D">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Colle__29E1370A">
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCollege">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="CollegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Colle__2AD55B43">
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCollege">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="CollegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Colle__3B75D760">
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCollege">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="CollegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Colle__5AB9788F">
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCollege">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="CollegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Colle__5BAD9CC8">
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCollege">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="CollegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Colle__5FB337D6">
+    <End Role="TblCollege" Type="Self.TblCollege" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCollege">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="CollegeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Crede__0B91BA14">
+    <End Role="TblUserCredentials" Type="Self.TblUserCredentials" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUserCredentials">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="CredentialsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Crede__2BC97F7C">
+    <End Role="TblUserCredentials" Type="Self.TblUserCredentials" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUserCredentials">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="CredentialsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Crede__5CA1C101">
+    <End Role="TblUserCredentials" Type="Self.TblUserCredentials" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUserCredentials">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="CredentialsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Gover__2CBDA3B5">
+    <End Role="TblGovernorate" Type="Self.TblGovernorate" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblGovernorate">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="GovernorateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Gover__2DB1C7EE">
+    <End Role="TblGovernorate" Type="Self.TblGovernorate" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblGovernorate">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="GovernorateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Gover__3C69FB99">
+    <End Role="TblGovernorate" Type="Self.TblGovernorate" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblGovernorate">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="GovernorateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Gover__5D95E53A">
+    <End Role="TblGovernorate" Type="Self.TblGovernorate" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblGovernorate">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="GovernorateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Gover__5E8A0973">
+    <End Role="TblGovernorate" Type="Self.TblGovernorate" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblGovernorate">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="GovernorateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Gover__60A75C0F">
+    <End Role="TblGovernorate" Type="Self.TblGovernorate" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblGovernorate">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="GovernorateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__HelpQ__7EC1CEDB">
+    <End Role="TblHelpQuestions" Type="Self.TblHelpQuestions" Multiplicity="1" />
+    <End Role="TblStudentComplaint" Type="Self.TblStudentComplaint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblHelpQuestions">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudentComplaint">
+        <PropertyRef Name="HelpQuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Major__2EA5EC27">
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMajor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="MajorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Major__2F9A1060">
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMajor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="MajorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Major__3D5E1FD2">
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMajor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="MajorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Major__5F7E2DAC">
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMajor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="MajorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Major__607251E5">
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMajor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="MajorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Major__619B8048">
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMajor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="MajorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Stude__7DCDAAA2">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblStudentComplaint" Type="Self.TblStudentComplaint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudentComplaint">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Unive__308E3499">
+    <End Role="TblUniversity" Type="Self.TblUniversity" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUniversity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="UniversityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Unive__318258D2">
+    <End Role="TblUniversity" Type="Self.TblUniversity" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUniversity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="UniversityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Unive__3E52440B">
+    <End Role="TblUniversity" Type="Self.TblUniversity" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUniversity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="UniversityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Unive__6166761E">
+    <End Role="TblUniversity" Type="Self.TblUniversity" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUniversity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="UniversityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Unive__625A9A57">
+    <End Role="TblUniversity" Type="Self.TblUniversity" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUniversity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="UniversityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblStuden__Unive__628FA481">
+    <End Role="TblUniversity" Type="Self.TblUniversity" Multiplicity="0..1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUniversity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblStudent">
+        <PropertyRef Name="UniversityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubjec__Major__336AA144">
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="1" />
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMajor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubject">
+        <PropertyRef Name="MajorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubjec__Major__345EC57D">
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="1" />
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMajor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubject">
+        <PropertyRef Name="MajorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubjec__Major__3F466844">
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="1" />
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMajor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubject">
+        <PropertyRef Name="MajorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubjec__Major__6383C8BA">
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="1" />
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMajor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubject">
+        <PropertyRef Name="MajorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubjec__Major__6442E2C9">
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="1" />
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMajor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubject">
+        <PropertyRef Name="MajorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubjec__Major__65370702">
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="1" />
+    <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMajor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubject">
+        <PropertyRef Name="MajorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubscr__Sessi__3552E9B6">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubscription">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubscr__Sessi__36470DEF">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubscription">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubscr__Sessi__403A8C7D">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubscription">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubscr__Sessi__6477ECF3">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubscription">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubscr__Sessi__662B2B3B">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubscription">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubscr__Sessi__671F4F74">
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblSession">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubscription">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubscr__Stude__373B3228">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubscription">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubscr__Stude__382F5661">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubscription">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubscr__Stude__412EB0B6">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubscription">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubscr__Stude__656C112C">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubscription">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubscr__Stude__681373AD">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubscription">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSubscr__Stude__690797E6">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSubscription">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblTeache__Branc__4222D4EF">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblLecturer">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblTeache__Branc__66603565">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblLecturer">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblUser__BranchI__4316F928">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblEmployee" Type="Self.TblEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblEmployee">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblUser__BranchI__4589517F">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblUser">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblUser__BranchI__6754599E">
+    <End Role="TblBranch" Type="Self.TblBranch" Multiplicity="1" />
+    <End Role="TblEmployee" Type="Self.TblEmployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBranch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblEmployee">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblUser__Credent__44952D46">
+    <End Role="TblUserCredentials" Type="Self.TblUserCredentials" Multiplicity="1" />
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUserCredentials">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblUser">
+        <PropertyRef Name="CredentialsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblUser__UserCat__467D75B8">
+    <End Role="TblUserCategory" Type="Self.TblUserCategory" Multiplicity="1" />
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUserCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblUser">
+        <PropertyRef Name="UserCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblUserCr__UserT__39237A9A">
+    <End Role="TblUserType" Type="Self.TblUserType" Multiplicity="1" />
+    <End Role="TblUserCredentials" Type="Self.TblUserCredentials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUserType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblUserCredentials">
+        <PropertyRef Name="UserType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblUserCr__UserT__69FBBC1F">
+    <End Role="TblUserType" Type="Self.TblUserType" Multiplicity="1" />
+    <End Role="TblUserCredentials" Type="Self.TblUserCredentials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUserType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblUserCredentials">
+        <PropertyRef Name="UserType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblUserCr__UserT__6C190EBB">
+    <End Role="TblUserType" Type="Self.TblUserType" Multiplicity="1" />
+    <End Role="TblUserCredentials" Type="Self.TblUserCredentials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUserType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblUserCredentials">
+        <PropertyRef Name="UserType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblVouche__HallI__39E294A9">
+    <End Role="TblHall" Type="Self.TblHall" Multiplicity="1" />
+    <End Role="TblVoucher" Type="Self.TblVoucher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblHall">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblVoucher">
+        <PropertyRef Name="HallID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblVouche__Lectu__38EE7070">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblVoucher" Type="Self.TblVoucher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblVoucher">
+        <PropertyRef Name="LecturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblVouche__UserI__6F4A8121">
+    <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
+    <End Role="TblVoucher" Type="Self.TblVoucher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblVoucher">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="admin_SMUniversityModelStoreContainer">
+    <EntitySet Name="TblArea" EntityType="Self.TblArea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblAttendance" EntityType="Self.TblAttendance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblBalanceTransaction" EntityType="Self.TblBalanceTransaction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblBranch" EntityType="Self.TblBranch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblCardCategory" EntityType="Self.TblCardCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblChargeCard" EntityType="Self.TblChargeCard" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblCollege" EntityType="Self.TblCollege" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblContactUsMsgs" EntityType="Self.TblContactUsMsgs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblEmployee" EntityType="Self.TblEmployee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblEvaluation" EntityType="Self.TblEvaluation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblEvaluationQuestion" EntityType="Self.TblEvaluationQuestion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblEvaluationQuestionAnswer" EntityType="Self.TblEvaluationQuestionAnswer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblFavoriteSession" EntityType="Self.TblFavoriteSession" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblGovernorate" EntityType="Self.TblGovernorate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblHall" EntityType="Self.TblHall" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblHelpQuestions" EntityType="Self.TblHelpQuestions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblInstitute" EntityType="Self.TblInstitute" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblInvoice" EntityType="Self.TblInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblLecturer" EntityType="Self.TblLecturer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblLecturerPaymentMethod" EntityType="Self.TblLecturerPaymentMethod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblLecturerSubject" EntityType="Self.TblLecturerSubject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblMajor" EntityType="Self.TblMajor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblManualInvoice" EntityType="Self.TblManualInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblNotification" EntityType="Self.TblNotification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblPermission" EntityType="Self.TblPermission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblPermissionCategory" EntityType="Self.TblPermissionCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblPermissionUser" EntityType="Self.TblPermissionUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblPrivateSession" EntityType="Self.TblPrivateSession" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblProduct" EntityType="Self.TblProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblProductCategory" EntityType="Self.TblProductCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblRevenue" EntityType="Self.TblRevenue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblScreen" EntityType="Self.TblScreen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblScreenHall" EntityType="Self.TblScreenHall" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblSession" EntityType="Self.TblSession" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblSessionDetails" EntityType="Self.TblSessionDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblSessionPricing" EntityType="Self.TblSessionPricing" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblSessionTimes" EntityType="Self.TblSessionTimes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblStudent" EntityType="Self.TblStudent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblStudentComplaint" EntityType="Self.TblStudentComplaint" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblSubject" EntityType="Self.TblSubject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblSubscription" EntityType="Self.TblSubscription" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblUniversity" EntityType="Self.TblUniversity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblUser" EntityType="Self.TblUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblUserCategory" EntityType="Self.TblUserCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblUserCredentials" EntityType="Self.TblUserCredentials" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblUserType" EntityType="Self.TblUserType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblVoucher" EntityType="Self.TblVoucher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__TblArea__Governo__03BB8E22" Association="Self.FK__TblArea__Governo__03BB8E22">
+      <End Role="TblGovernorate" EntitySet="TblGovernorate" />
+      <End Role="TblArea" EntitySet="TblArea" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblArea__Governo__04AFB25B" Association="Self.FK__TblArea__Governo__04AFB25B">
+      <End Role="TblGovernorate" EntitySet="TblGovernorate" />
+      <End Role="TblArea" EntitySet="TblArea" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblArea__Governo__2F10007B" Association="Self.FK__TblArea__Governo__2F10007B">
+      <End Role="TblGovernorate" EntitySet="TblGovernorate" />
+      <End Role="TblArea" EntitySet="TblArea" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblArea__Governo__3493CFA7" Association="Self.FK__TblArea__Governo__3493CFA7">
+      <End Role="TblGovernorate" EntitySet="TblGovernorate" />
+      <End Role="TblArea" EntitySet="TblArea" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblArea__Governo__3587F3E0" Association="Self.FK__TblArea__Governo__3587F3E0">
+      <End Role="TblGovernorate" EntitySet="TblGovernorate" />
+      <End Role="TblArea" EntitySet="TblArea" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblArea__Governo__534D60F1" Association="Self.FK__TblArea__Governo__534D60F1">
+      <End Role="TblGovernorate" EntitySet="TblGovernorate" />
+      <End Role="TblArea" EntitySet="TblArea" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblAttend__Sessi__05A3D694" Association="Self.FK__TblAttend__Sessi__05A3D694">
+      <End Role="TblSessionTimes" EntitySet="TblSessionTimes" />
+      <End Role="TblAttendance" EntitySet="TblAttendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblAttend__Sessi__1AD3FDA4" Association="Self.FK__TblAttend__Sessi__1AD3FDA4">
+      <End Role="TblSessionTimes" EntitySet="TblSessionTimes" />
+      <End Role="TblAttendance" EntitySet="TblAttendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblAttend__Sessi__367C1819" Association="Self.FK__TblAttend__Sessi__367C1819">
+      <End Role="TblSessionTimes" EntitySet="TblSessionTimes" />
+      <End Role="TblAttendance" EntitySet="TblAttendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblAttend__Stude__0697FACD" Association="Self.FK__TblAttend__Stude__0697FACD">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblAttendance" EntitySet="TblAttendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblAttend__Stude__078C1F06" Association="Self.FK__TblAttend__Stude__078C1F06">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblAttendance" EntitySet="TblAttendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblAttend__Stude__30F848ED" Association="Self.FK__TblAttend__Stude__30F848ED">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblAttendance" EntitySet="TblAttendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblAttend__Stude__37703C52" Association="Self.FK__TblAttend__Stude__37703C52">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblAttendance" EntitySet="TblAttendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblAttend__Stude__3864608B" Association="Self.FK__TblAttend__Stude__3864608B">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblAttendance" EntitySet="TblAttendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblAttend__Stude__5535A963" Association="Self.FK__TblAttend__Stude__5535A963">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblAttendance" EntitySet="TblAttendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblAttend__Subsc__0880433F" Association="Self.FK__TblAttend__Subsc__0880433F">
+      <End Role="TblSubscription" EntitySet="TblSubscription" />
+      <End Role="TblAttendance" EntitySet="TblAttendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblAttend__Subsc__0D7A0286" Association="Self.FK__TblAttend__Subsc__0D7A0286">
+      <End Role="TblSubscription" EntitySet="TblSubscription" />
+      <End Role="TblAttendance" EntitySet="TblAttendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblAttend__Subsc__395884C4" Association="Self.FK__TblAttend__Subsc__395884C4">
+      <End Role="TblSubscription" EntitySet="TblSubscription" />
+      <End Role="TblAttendance" EntitySet="TblAttendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblBalanc__Stude__08B54D69" Association="Self.FK__TblBalanc__Stude__08B54D69">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblBalanceTransaction" EntitySet="TblBalanceTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblBalanc__Stude__0A688BB1" Association="Self.FK__TblBalanc__Stude__0A688BB1">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblBalanceTransaction" EntitySet="TblBalanceTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblBalanc__Stude__3B40CD36" Association="Self.FK__TblBalanc__Stude__3B40CD36">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblBalanceTransaction" EntitySet="TblBalanceTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblBalanc__Trans__0A9D95DB" Association="Self.FK__TblBalanc__Trans__0A9D95DB">
+      <End Role="TransactionType" EntitySet="TransactionType" />
+      <End Role="TblBalanceTransaction" EntitySet="TblBalanceTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblBalanc__Trans__0B5CAFEA" Association="Self.FK__TblBalanc__Trans__0B5CAFEA">
+      <End Role="TransactionType" EntitySet="TransactionType" />
+      <End Role="TblBalanceTransaction" EntitySet="TblBalanceTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblBalanc__Trans__3C34F16F" Association="Self.FK__TblBalanc__Trans__3C34F16F">
+      <End Role="TransactionType" EntitySet="TransactionType" />
+      <End Role="TblBalanceTransaction" EntitySet="TblBalanceTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblBalanc__UserI__75F77EB0" Association="Self.FK__TblBalanc__UserI__75F77EB0">
+      <End Role="TblUser" EntitySet="TblUser" />
+      <End Role="TblBalanceTransaction" EntitySet="TblBalanceTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblCharge__CardC__0C50D423" Association="Self.FK__TblCharge__CardC__0C50D423">
+      <End Role="TblCardCategory" EntitySet="TblCardCategory" />
+      <End Role="TblChargeCard" EntitySet="TblChargeCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblCharge__CardC__3D2915A8" Association="Self.FK__TblCharge__CardC__3D2915A8">
+      <End Role="TblCardCategory" EntitySet="TblCardCategory" />
+      <End Role="TblChargeCard" EntitySet="TblChargeCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblCharge__CardC__74AE54BC" Association="Self.FK__TblCharge__CardC__74AE54BC">
+      <End Role="TblCardCategory" EntitySet="TblCardCategory" />
+      <End Role="TblChargeCard" EntitySet="TblChargeCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblColleg__Unive__0D44F85C" Association="Self.FK__TblColleg__Unive__0D44F85C">
+      <End Role="TblUniversity" EntitySet="TblUniversity" />
+      <End Role="TblCollege" EntitySet="TblCollege" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblColleg__Unive__0E391C95" Association="Self.FK__TblColleg__Unive__0E391C95">
+      <End Role="TblUniversity" EntitySet="TblUniversity" />
+      <End Role="TblCollege" EntitySet="TblCollege" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblColleg__Unive__31EC6D26" Association="Self.FK__TblColleg__Unive__31EC6D26">
+      <End Role="TblUniversity" EntitySet="TblUniversity" />
+      <End Role="TblCollege" EntitySet="TblCollege" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblColleg__Unive__3E1D39E1" Association="Self.FK__TblColleg__Unive__3E1D39E1">
+      <End Role="TblUniversity" EntitySet="TblUniversity" />
+      <End Role="TblCollege" EntitySet="TblCollege" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblColleg__Unive__3F115E1A" Association="Self.FK__TblColleg__Unive__3F115E1A">
+      <End Role="TblUniversity" EntitySet="TblUniversity" />
+      <End Role="TblCollege" EntitySet="TblCollege" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblColleg__Unive__5629CD9C" Association="Self.FK__TblColleg__Unive__5629CD9C">
+      <End Role="TblUniversity" EntitySet="TblUniversity" />
+      <End Role="TblCollege" EntitySet="TblCollege" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblContac__Stude__7720AD13" Association="Self.FK__TblContac__Stude__7720AD13">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblContactUsMsgs" EntitySet="TblContactUsMsgs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblEmploy__Branc__10216507" Association="Self.FK__TblEmploy__Branc__10216507">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblEmployee" EntitySet="TblEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblEmploy__Branc__11158940" Association="Self.FK__TblEmploy__Branc__11158940">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblEmployee" EntitySet="TblEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblEmploy__Branc__40F9A68C" Association="Self.FK__TblEmploy__Branc__40F9A68C">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblEmployee" EntitySet="TblEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblEmploy__Branc__41EDCAC5" Association="Self.FK__TblEmploy__Branc__41EDCAC5">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblEmployee" EntitySet="TblEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblEmploy__Crede__0F2D40CE" Association="Self.FK__TblEmploy__Crede__0F2D40CE">
+      <End Role="TblUserCredentials" EntitySet="TblUserCredentials" />
+      <End Role="TblEmployee" EntitySet="TblEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblEmploy__Crede__40058253" Association="Self.FK__TblEmploy__Crede__40058253">
+      <End Role="TblUserCredentials" EntitySet="TblUserCredentials" />
+      <End Role="TblEmployee" EntitySet="TblEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblEmploy__Crede__6E01572D" Association="Self.FK__TblEmploy__Crede__6E01572D">
+      <End Role="TblUserCredentials" EntitySet="TblUserCredentials" />
+      <End Role="TblEmployee" EntitySet="TblEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblEvalua__Answe__6225902D" Association="Self.FK__TblEvalua__Answe__6225902D">
+      <End Role="TblEvaluationQuestionAnswer" EntitySet="TblEvaluationQuestionAnswer" />
+      <End Role="TblEvaluation" EntitySet="TblEvaluation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblEvalua__Quest__61316BF4" Association="Self.FK__TblEvalua__Quest__61316BF4">
+      <End Role="TblEvaluationQuestion" EntitySet="TblEvaluationQuestion" />
+      <End Role="TblEvaluation" EntitySet="TblEvaluation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblEvalua__Sessi__640DD89F" Association="Self.FK__TblEvalua__Sessi__640DD89F">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblEvaluation" EntitySet="TblEvaluation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblEvalua__Stude__6319B466" Association="Self.FK__TblEvalua__Stude__6319B466">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblEvaluation" EntitySet="TblEvaluation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblFavori__Sessi__10566F31" Association="Self.FK__TblFavori__Sessi__10566F31">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblFavoriteSession" EntitySet="TblFavoriteSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblFavori__Sessi__1209AD79" Association="Self.FK__TblFavori__Sessi__1209AD79">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblFavoriteSession" EntitySet="TblFavoriteSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblFavori__Sessi__42E1EEFE" Association="Self.FK__TblFavori__Sessi__42E1EEFE">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblFavoriteSession" EntitySet="TblFavoriteSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblFavori__Stude__114A936A" Association="Self.FK__TblFavori__Stude__114A936A">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblFavoriteSession" EntitySet="TblFavoriteSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblFavori__Stude__12FDD1B2" Association="Self.FK__TblFavori__Stude__12FDD1B2">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblFavoriteSession" EntitySet="TblFavoriteSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblFavori__Stude__43D61337" Association="Self.FK__TblFavori__Stude__43D61337">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblFavoriteSession" EntitySet="TblFavoriteSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblHall__BranchI__13F1F5EB" Association="Self.FK__TblHall__BranchI__13F1F5EB">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblHall" EntitySet="TblHall" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblHall__BranchI__14E61A24" Association="Self.FK__TblHall__BranchI__14E61A24">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblHall" EntitySet="TblHall" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblHall__BranchI__32E0915F" Association="Self.FK__TblHall__BranchI__32E0915F">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblHall" EntitySet="TblHall" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblHall__BranchI__44CA3770" Association="Self.FK__TblHall__BranchI__44CA3770">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblHall" EntitySet="TblHall" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblHall__BranchI__45BE5BA9" Association="Self.FK__TblHall__BranchI__45BE5BA9">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblHall" EntitySet="TblHall" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblHall__BranchI__571DF1D5" Association="Self.FK__TblHall__BranchI__571DF1D5">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblHall" EntitySet="TblHall" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblInvoic__Emplo__3DB3258D" Association="Self.FK__TblInvoic__Emplo__3DB3258D">
+      <End Role="TblEmployee" EntitySet="TblEmployee" />
+      <End Role="TblInvoice" EntitySet="TblInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblInvoic__Subsc__3CBF0154" Association="Self.FK__TblInvoic__Subsc__3CBF0154">
+      <End Role="TblSubscription" EntitySet="TblSubscription" />
+      <End Role="TblInvoice" EntitySet="TblInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblLectur__Branc__16CE6296" Association="Self.FK__TblLectur__Branc__16CE6296">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblLectur__Branc__17C286CF" Association="Self.FK__TblLectur__Branc__17C286CF">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblLectur__Branc__47A6A41B" Association="Self.FK__TblLectur__Branc__47A6A41B">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblLectur__Branc__489AC854" Association="Self.FK__TblLectur__Branc__489AC854">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblLectur__Crede__15DA3E5D" Association="Self.FK__TblLectur__Crede__15DA3E5D">
+      <End Role="TblUserCredentials" EntitySet="TblUserCredentials" />
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblLectur__Crede__46B27FE2" Association="Self.FK__TblLectur__Crede__46B27FE2">
+      <End Role="TblUserCredentials" EntitySet="TblUserCredentials" />
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblLectur__Crede__6EF57B66" Association="Self.FK__TblLectur__Crede__6EF57B66">
+      <End Role="TblUserCredentials" EntitySet="TblUserCredentials" />
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblLectur__Lectu__6E565CE8" Association="Self.FK__TblLectur__Lectu__6E565CE8">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblLecturerSubject" EntitySet="TblLecturerSubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblLectur__Lectu__75035A77" Association="Self.FK__TblLectur__Lectu__75035A77">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblLecturerPaymentMethod" EntitySet="TblLecturerPaymentMethod" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblLectur__Subje__6D6238AF" Association="Self.FK__TblLectur__Subje__6D6238AF">
+      <End Role="TblSubject" EntitySet="TblSubject" />
+      <End Role="TblLecturerSubject" EntitySet="TblLecturerSubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblMajor__Colleg__18B6AB08" Association="Self.FK__TblMajor__Colleg__18B6AB08">
+      <End Role="TblCollege" EntitySet="TblCollege" />
+      <End Role="TblMajor" EntitySet="TblMajor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblMajor__Colleg__19AACF41" Association="Self.FK__TblMajor__Colleg__19AACF41">
+      <End Role="TblCollege" EntitySet="TblCollege" />
+      <End Role="TblMajor" EntitySet="TblMajor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblMajor__Colleg__33D4B598" Association="Self.FK__TblMajor__Colleg__33D4B598">
+      <End Role="TblCollege" EntitySet="TblCollege" />
+      <End Role="TblMajor" EntitySet="TblMajor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblMajor__Colleg__498EEC8D" Association="Self.FK__TblMajor__Colleg__498EEC8D">
+      <End Role="TblCollege" EntitySet="TblCollege" />
+      <End Role="TblMajor" EntitySet="TblMajor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblMajor__Colleg__4A8310C6" Association="Self.FK__TblMajor__Colleg__4A8310C6">
+      <End Role="TblCollege" EntitySet="TblCollege" />
+      <End Role="TblMajor" EntitySet="TblMajor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblMajor__Colleg__5812160E" Association="Self.FK__TblMajor__Colleg__5812160E">
+      <End Role="TblCollege" EntitySet="TblCollege" />
+      <End Role="TblMajor" EntitySet="TblMajor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblManual__HallI__7167D3BD" Association="Self.FK__TblManual__HallI__7167D3BD">
+      <End Role="TblHall" EntitySet="TblHall" />
+      <End Role="TblManualInvoice" EntitySet="TblManualInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblManual__Lectu__7073AF84" Association="Self.FK__TblManual__Lectu__7073AF84">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblManualInvoice" EntitySet="TblManualInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblNotifi__Lectu__047AA831" Association="Self.FK__TblNotifi__Lectu__047AA831">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblNotification" EntitySet="TblNotification" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblNotifi__Stude__038683F8" Association="Self.FK__TblNotifi__Stude__038683F8">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblNotification" EntitySet="TblNotification" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblNotifi__UserI__056ECC6A" Association="Self.FK__TblNotifi__UserI__056ECC6A">
+      <End Role="TblUser" EntitySet="TblUser" />
+      <End Role="TblNotification" EntitySet="TblNotification" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblPermis__Permi__436BFEE3" Association="Self.FK__TblPermis__Permi__436BFEE3">
+      <End Role="TblPermissionCategory" EntitySet="TblPermissionCategory" />
+      <End Role="TblPermission" EntitySet="TblPermission" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblPermis__Permi__473C8FC7" Association="Self.FK__TblPermis__Permi__473C8FC7">
+      <End Role="TblPermissionCategory" EntitySet="TblPermissionCategory" />
+      <End Role="TblPermissionUser" EntitySet="TblPermissionUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblPermis__UserI__4830B400" Association="Self.FK__TblPermis__UserI__4830B400">
+      <End Role="TblUser" EntitySet="TblUser" />
+      <End Role="TblPermissionUser" EntitySet="TblPermissionUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblPrivat__Lectu__2AA05119" Association="Self.FK__TblPrivat__Lectu__2AA05119">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblPrivateSession" EntitySet="TblPrivateSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblPrivat__Stude__28B808A7" Association="Self.FK__TblPrivat__Stude__28B808A7">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblPrivateSession" EntitySet="TblPrivateSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblPrivat__Subje__29AC2CE0" Association="Self.FK__TblPrivat__Subje__29AC2CE0">
+      <End Role="TblSubject" EntitySet="TblSubject" />
+      <End Role="TblPrivateSession" EntitySet="TblPrivateSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblProduc__Produ__74444068" Association="Self.FK__TblProduc__Produ__74444068">
+      <End Role="TblProduct" EntitySet="TblProduct" />
+      <End Role="TblProduct1" EntitySet="TblProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblRevenu__Teach__1A9EF37A" Association="Self.FK__TblRevenu__Teach__1A9EF37A">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblRevenue" EntitySet="TblRevenue" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblRevenu__Teach__1B9317B3" Association="Self.FK__TblRevenu__Teach__1B9317B3">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblRevenue" EntitySet="TblRevenue" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblRevenu__Teach__34C8D9D1" Association="Self.FK__TblRevenu__Teach__34C8D9D1">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblRevenue" EntitySet="TblRevenue" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblRevenu__Teach__4B7734FF" Association="Self.FK__TblRevenu__Teach__4B7734FF">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblRevenue" EntitySet="TblRevenue" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblRevenu__Teach__4C6B5938" Association="Self.FK__TblRevenu__Teach__4C6B5938">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblRevenue" EntitySet="TblRevenue" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblRevenu__Teach__59063A47" Association="Self.FK__TblRevenu__Teach__59063A47">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblRevenue" EntitySet="TblRevenue" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblScreen__Branc__65C116E7" Association="Self.FK__TblScreen__Branc__65C116E7">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblScreen" EntitySet="TblScreen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblScreen__Crede__66B53B20" Association="Self.FK__TblScreen__Crede__66B53B20">
+      <End Role="TblUserCredentials" EntitySet="TblUserCredentials" />
+      <End Role="TblScreen" EntitySet="TblScreen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblScreen__HallI__6991A7CB" Association="Self.FK__TblScreen__HallI__6991A7CB">
+      <End Role="TblHall" EntitySet="TblHall" />
+      <End Role="TblScreenHall" EntitySet="TblScreenHall" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblScreen__Scree__6A85CC04" Association="Self.FK__TblScreen__Scree__6A85CC04">
+      <End Role="TblScreen" EntitySet="TblScreen" />
+      <End Role="TblScreenHall" EntitySet="TblScreenHall" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Branc__1C873BEC" Association="Self.FK__TblSessio__Branc__1C873BEC">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Branc__1D7B6025" Association="Self.FK__TblSessio__Branc__1D7B6025">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Branc__35BCFE0A" Association="Self.FK__TblSessio__Branc__35BCFE0A">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Branc__4D5F7D71" Association="Self.FK__TblSessio__Branc__4D5F7D71">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Branc__4E53A1AA" Association="Self.FK__TblSessio__Branc__4E53A1AA">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Branc__59FA5E80" Association="Self.FK__TblSessio__Branc__59FA5E80">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__HallI__0C85DE4D" Association="Self.FK__TblSessio__HallI__0C85DE4D">
+      <End Role="TblHall" EntitySet="TblHall" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__HallI__1E6F845E" Association="Self.FK__TblSessio__HallI__1E6F845E">
+      <End Role="TblHall" EntitySet="TblHall" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__HallI__4F47C5E3" Association="Self.FK__TblSessio__HallI__4F47C5E3">
+      <End Role="TblHall" EntitySet="TblHall" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Lectu__214BF109" Association="Self.FK__TblSessio__Lectu__214BF109">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Lectu__22401542" Association="Self.FK__TblSessio__Lectu__22401542">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Lectu__5224328E" Association="Self.FK__TblSessio__Lectu__5224328E">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Lectu__531856C7" Association="Self.FK__TblSessio__Lectu__531856C7">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Sessi__19DFD96B" Association="Self.FK__TblSessio__Sessi__19DFD96B">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblSessionTimes" EntitySet="TblSessionTimes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Sessi__2334397B" Association="Self.FK__TblSessio__Sessi__2334397B">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblSessionDetails" EntitySet="TblSessionDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Sessi__24285DB4" Association="Self.FK__TblSessio__Sessi__24285DB4">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblSessionDetails" EntitySet="TblSessionDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Sessi__251C81ED" Association="Self.FK__TblSessio__Sessi__251C81ED">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblSessionTimes" EntitySet="TblSessionTimes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Sessi__38996AB5" Association="Self.FK__TblSessio__Sessi__38996AB5">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblSessionDetails" EntitySet="TblSessionDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Sessi__3BFFE745" Association="Self.FK__TblSessio__Sessi__3BFFE745">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblSessionPricing" EntitySet="TblSessionPricing" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Sessi__540C7B00" Association="Self.FK__TblSessio__Sessi__540C7B00">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblSessionDetails" EntitySet="TblSessionDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Sessi__55009F39" Association="Self.FK__TblSessio__Sessi__55009F39">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblSessionDetails" EntitySet="TblSessionDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Sessi__55F4C372" Association="Self.FK__TblSessio__Sessi__55F4C372">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblSessionTimes" EntitySet="TblSessionTimes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Sessi__5CD6CB2B" Association="Self.FK__TblSessio__Sessi__5CD6CB2B">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblSessionDetails" EntitySet="TblSessionDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Subje__1F63A897" Association="Self.FK__TblSessio__Subje__1F63A897">
+      <End Role="TblSubject" EntitySet="TblSubject" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Subje__2057CCD0" Association="Self.FK__TblSessio__Subje__2057CCD0">
+      <End Role="TblSubject" EntitySet="TblSubject" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Subje__36B12243" Association="Self.FK__TblSessio__Subje__36B12243">
+      <End Role="TblSubject" EntitySet="TblSubject" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Subje__503BEA1C" Association="Self.FK__TblSessio__Subje__503BEA1C">
+      <End Role="TblSubject" EntitySet="TblSubject" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Subje__51300E55" Association="Self.FK__TblSessio__Subje__51300E55">
+      <End Role="TblSubject" EntitySet="TblSubject" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Subje__5AEE82B9" Association="Self.FK__TblSessio__Subje__5AEE82B9">
+      <End Role="TblSubject" EntitySet="TblSubject" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Teach__37A5467C" Association="Self.FK__TblSessio__Teach__37A5467C">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSessio__Teach__5BE2A6F2" Association="Self.FK__TblSessio__Teach__5BE2A6F2">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblSession" EntitySet="TblSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__AreaI__2610A626" Association="Self.FK__TblStuden__AreaI__2610A626">
+      <End Role="TblArea" EntitySet="TblArea" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__AreaI__2704CA5F" Association="Self.FK__TblStuden__AreaI__2704CA5F">
+      <End Role="TblArea" EntitySet="TblArea" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__AreaI__398D8EEE" Association="Self.FK__TblStuden__AreaI__398D8EEE">
+      <End Role="TblArea" EntitySet="TblArea" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__AreaI__56E8E7AB" Association="Self.FK__TblStuden__AreaI__56E8E7AB">
+      <End Role="TblArea" EntitySet="TblArea" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__AreaI__57DD0BE4" Association="Self.FK__TblStuden__AreaI__57DD0BE4">
+      <End Role="TblArea" EntitySet="TblArea" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__AreaI__5DCAEF64" Association="Self.FK__TblStuden__AreaI__5DCAEF64">
+      <End Role="TblArea" EntitySet="TblArea" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Branc__27F8EE98" Association="Self.FK__TblStuden__Branc__27F8EE98">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Branc__28ED12D1" Association="Self.FK__TblStuden__Branc__28ED12D1">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Branc__3A81B327" Association="Self.FK__TblStuden__Branc__3A81B327">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Branc__58D1301D" Association="Self.FK__TblStuden__Branc__58D1301D">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Branc__59C55456" Association="Self.FK__TblStuden__Branc__59C55456">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Branc__5EBF139D" Association="Self.FK__TblStuden__Branc__5EBF139D">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Colle__29E1370A" Association="Self.FK__TblStuden__Colle__29E1370A">
+      <End Role="TblCollege" EntitySet="TblCollege" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Colle__2AD55B43" Association="Self.FK__TblStuden__Colle__2AD55B43">
+      <End Role="TblCollege" EntitySet="TblCollege" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Colle__3B75D760" Association="Self.FK__TblStuden__Colle__3B75D760">
+      <End Role="TblCollege" EntitySet="TblCollege" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Colle__5AB9788F" Association="Self.FK__TblStuden__Colle__5AB9788F">
+      <End Role="TblCollege" EntitySet="TblCollege" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Colle__5BAD9CC8" Association="Self.FK__TblStuden__Colle__5BAD9CC8">
+      <End Role="TblCollege" EntitySet="TblCollege" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Colle__5FB337D6" Association="Self.FK__TblStuden__Colle__5FB337D6">
+      <End Role="TblCollege" EntitySet="TblCollege" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Crede__0B91BA14" Association="Self.FK__TblStuden__Crede__0B91BA14">
+      <End Role="TblUserCredentials" EntitySet="TblUserCredentials" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Crede__2BC97F7C" Association="Self.FK__TblStuden__Crede__2BC97F7C">
+      <End Role="TblUserCredentials" EntitySet="TblUserCredentials" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Crede__5CA1C101" Association="Self.FK__TblStuden__Crede__5CA1C101">
+      <End Role="TblUserCredentials" EntitySet="TblUserCredentials" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Gover__2CBDA3B5" Association="Self.FK__TblStuden__Gover__2CBDA3B5">
+      <End Role="TblGovernorate" EntitySet="TblGovernorate" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Gover__2DB1C7EE" Association="Self.FK__TblStuden__Gover__2DB1C7EE">
+      <End Role="TblGovernorate" EntitySet="TblGovernorate" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Gover__3C69FB99" Association="Self.FK__TblStuden__Gover__3C69FB99">
+      <End Role="TblGovernorate" EntitySet="TblGovernorate" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Gover__5D95E53A" Association="Self.FK__TblStuden__Gover__5D95E53A">
+      <End Role="TblGovernorate" EntitySet="TblGovernorate" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Gover__5E8A0973" Association="Self.FK__TblStuden__Gover__5E8A0973">
+      <End Role="TblGovernorate" EntitySet="TblGovernorate" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Gover__60A75C0F" Association="Self.FK__TblStuden__Gover__60A75C0F">
+      <End Role="TblGovernorate" EntitySet="TblGovernorate" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__HelpQ__7EC1CEDB" Association="Self.FK__TblStuden__HelpQ__7EC1CEDB">
+      <End Role="TblHelpQuestions" EntitySet="TblHelpQuestions" />
+      <End Role="TblStudentComplaint" EntitySet="TblStudentComplaint" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Major__2EA5EC27" Association="Self.FK__TblStuden__Major__2EA5EC27">
+      <End Role="TblMajor" EntitySet="TblMajor" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Major__2F9A1060" Association="Self.FK__TblStuden__Major__2F9A1060">
+      <End Role="TblMajor" EntitySet="TblMajor" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Major__3D5E1FD2" Association="Self.FK__TblStuden__Major__3D5E1FD2">
+      <End Role="TblMajor" EntitySet="TblMajor" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Major__5F7E2DAC" Association="Self.FK__TblStuden__Major__5F7E2DAC">
+      <End Role="TblMajor" EntitySet="TblMajor" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Major__607251E5" Association="Self.FK__TblStuden__Major__607251E5">
+      <End Role="TblMajor" EntitySet="TblMajor" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Major__619B8048" Association="Self.FK__TblStuden__Major__619B8048">
+      <End Role="TblMajor" EntitySet="TblMajor" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Stude__7DCDAAA2" Association="Self.FK__TblStuden__Stude__7DCDAAA2">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblStudentComplaint" EntitySet="TblStudentComplaint" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Unive__308E3499" Association="Self.FK__TblStuden__Unive__308E3499">
+      <End Role="TblUniversity" EntitySet="TblUniversity" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Unive__318258D2" Association="Self.FK__TblStuden__Unive__318258D2">
+      <End Role="TblUniversity" EntitySet="TblUniversity" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Unive__3E52440B" Association="Self.FK__TblStuden__Unive__3E52440B">
+      <End Role="TblUniversity" EntitySet="TblUniversity" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Unive__6166761E" Association="Self.FK__TblStuden__Unive__6166761E">
+      <End Role="TblUniversity" EntitySet="TblUniversity" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Unive__625A9A57" Association="Self.FK__TblStuden__Unive__625A9A57">
+      <End Role="TblUniversity" EntitySet="TblUniversity" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblStuden__Unive__628FA481" Association="Self.FK__TblStuden__Unive__628FA481">
+      <End Role="TblUniversity" EntitySet="TblUniversity" />
+      <End Role="TblStudent" EntitySet="TblStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubjec__Major__336AA144" Association="Self.FK__TblSubjec__Major__336AA144">
+      <End Role="TblMajor" EntitySet="TblMajor" />
+      <End Role="TblSubject" EntitySet="TblSubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubjec__Major__345EC57D" Association="Self.FK__TblSubjec__Major__345EC57D">
+      <End Role="TblMajor" EntitySet="TblMajor" />
+      <End Role="TblSubject" EntitySet="TblSubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubjec__Major__3F466844" Association="Self.FK__TblSubjec__Major__3F466844">
+      <End Role="TblMajor" EntitySet="TblMajor" />
+      <End Role="TblSubject" EntitySet="TblSubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubjec__Major__6383C8BA" Association="Self.FK__TblSubjec__Major__6383C8BA">
+      <End Role="TblMajor" EntitySet="TblMajor" />
+      <End Role="TblSubject" EntitySet="TblSubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubjec__Major__6442E2C9" Association="Self.FK__TblSubjec__Major__6442E2C9">
+      <End Role="TblMajor" EntitySet="TblMajor" />
+      <End Role="TblSubject" EntitySet="TblSubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubjec__Major__65370702" Association="Self.FK__TblSubjec__Major__65370702">
+      <End Role="TblMajor" EntitySet="TblMajor" />
+      <End Role="TblSubject" EntitySet="TblSubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubscr__Sessi__3552E9B6" Association="Self.FK__TblSubscr__Sessi__3552E9B6">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblSubscription" EntitySet="TblSubscription" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubscr__Sessi__36470DEF" Association="Self.FK__TblSubscr__Sessi__36470DEF">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblSubscription" EntitySet="TblSubscription" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubscr__Sessi__403A8C7D" Association="Self.FK__TblSubscr__Sessi__403A8C7D">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblSubscription" EntitySet="TblSubscription" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubscr__Sessi__6477ECF3" Association="Self.FK__TblSubscr__Sessi__6477ECF3">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblSubscription" EntitySet="TblSubscription" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubscr__Sessi__662B2B3B" Association="Self.FK__TblSubscr__Sessi__662B2B3B">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblSubscription" EntitySet="TblSubscription" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubscr__Sessi__671F4F74" Association="Self.FK__TblSubscr__Sessi__671F4F74">
+      <End Role="TblSession" EntitySet="TblSession" />
+      <End Role="TblSubscription" EntitySet="TblSubscription" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubscr__Stude__373B3228" Association="Self.FK__TblSubscr__Stude__373B3228">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblSubscription" EntitySet="TblSubscription" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubscr__Stude__382F5661" Association="Self.FK__TblSubscr__Stude__382F5661">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblSubscription" EntitySet="TblSubscription" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubscr__Stude__412EB0B6" Association="Self.FK__TblSubscr__Stude__412EB0B6">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblSubscription" EntitySet="TblSubscription" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubscr__Stude__656C112C" Association="Self.FK__TblSubscr__Stude__656C112C">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblSubscription" EntitySet="TblSubscription" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubscr__Stude__681373AD" Association="Self.FK__TblSubscr__Stude__681373AD">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblSubscription" EntitySet="TblSubscription" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSubscr__Stude__690797E6" Association="Self.FK__TblSubscr__Stude__690797E6">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblSubscription" EntitySet="TblSubscription" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblTeache__Branc__4222D4EF" Association="Self.FK__TblTeache__Branc__4222D4EF">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblTeache__Branc__66603565" Association="Self.FK__TblTeache__Branc__66603565">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblUser__BranchI__4316F928" Association="Self.FK__TblUser__BranchI__4316F928">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblEmployee" EntitySet="TblEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblUser__BranchI__4589517F" Association="Self.FK__TblUser__BranchI__4589517F">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblUser" EntitySet="TblUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblUser__BranchI__6754599E" Association="Self.FK__TblUser__BranchI__6754599E">
+      <End Role="TblBranch" EntitySet="TblBranch" />
+      <End Role="TblEmployee" EntitySet="TblEmployee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblUser__Credent__44952D46" Association="Self.FK__TblUser__Credent__44952D46">
+      <End Role="TblUserCredentials" EntitySet="TblUserCredentials" />
+      <End Role="TblUser" EntitySet="TblUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblUser__UserCat__467D75B8" Association="Self.FK__TblUser__UserCat__467D75B8">
+      <End Role="TblUserCategory" EntitySet="TblUserCategory" />
+      <End Role="TblUser" EntitySet="TblUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblUserCr__UserT__39237A9A" Association="Self.FK__TblUserCr__UserT__39237A9A">
+      <End Role="TblUserType" EntitySet="TblUserType" />
+      <End Role="TblUserCredentials" EntitySet="TblUserCredentials" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblUserCr__UserT__69FBBC1F" Association="Self.FK__TblUserCr__UserT__69FBBC1F">
+      <End Role="TblUserType" EntitySet="TblUserType" />
+      <End Role="TblUserCredentials" EntitySet="TblUserCredentials" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblUserCr__UserT__6C190EBB" Association="Self.FK__TblUserCr__UserT__6C190EBB">
+      <End Role="TblUserType" EntitySet="TblUserType" />
+      <End Role="TblUserCredentials" EntitySet="TblUserCredentials" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblVouche__HallI__39E294A9" Association="Self.FK__TblVouche__HallI__39E294A9">
+      <End Role="TblHall" EntitySet="TblHall" />
+      <End Role="TblVoucher" EntitySet="TblVoucher" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblVouche__Lectu__38EE7070" Association="Self.FK__TblVouche__Lectu__38EE7070">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblVoucher" EntitySet="TblVoucher" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblVouche__UserI__6F4A8121" Association="Self.FK__TblVouche__UserI__6F4A8121">
+      <End Role="TblUser" EntitySet="TblUser" />
+      <End Role="TblVoucher" EntitySet="TblVoucher" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

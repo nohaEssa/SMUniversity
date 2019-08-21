@@ -1,0 +1,216 @@
+﻿@model SMUModels.TblVoucher
+@{
+    ViewBag.Title = "VoucherTemplate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string CreatedDate = Model.CreatedDate.ToString("yyyy-MM-dd hh:mm tt");
+}
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header"></h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="/Home/Index"><i class="fa fa-home"></i></a></li>
+                    <li class="active"><a href="/Invoice/VoucherList">السندات</a></li>
+                    <li>سند رقم  @Model.Serial</li>
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                    </div>
+                    <div id="DivPage">
+                        <div class="invoice">
+                            <div class="invoice" style=" border: 1px solid #ccc; margin: 20px auto; padding: 20px 20px;">
+                                <div class="row invoice-logo" style="margin-top: 0px;">
+                                    <div class="col-xs-3" style="float:right;">
+                                        <p style="text-align: center; font-size: 15px; margin-top: 40px;">
+                                            <span style="padding: 5px 5px 5px 5px; width: 122px; font-size: 14px; border: 1px solid #bbb; background-color: #0DB8C0; text-align: center; margin-left: 135px; margin-right: 0px;    margin-bottom: 5px; float: right; "> سند يدوى </span>
+
+                                            قام بالإدخال: @Model.TblUser.NameAr
+                                            <br />
+                                            رقم الفاتورة: @Model.Serial
+
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-6 invoice-logo-space" style="align-self:center;">
+
+                                        <img src="~/Content/Images/invoice_logo.png" class="img-responsive" alt="" style="align-self:center; width:100%" />
+                                        <p style="text-align:center; font-size:15px;">
+                                            فرع :    @Model.TblHall.TblBranch.NameAr
+                                            <br />
+                                            <span>Receipt Voucher</span>
+                                            <br />
+                                            التاريخ : @CreatedDate
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-3" style="float:left;">
+                                        <p style="text-align: center; font-size: 15px; margin-top: 69px;">
+                                            @{
+#line 12 "D:\Al-Bait Design\Smart Mind ServerCopyBin-WithoutMokthaf\SmartMind\Views\Manual\Print.cshtml"
+                                            }
+
+                                            @Model.Cost  دينار كويتى
+                                            <br />
+                                            رقم النظام: @Model.ID
+                                        </p>
+                                    </div>
+                                </div>
+                                <hr style="margin-top: 0px;" />
+
+                                <div class="row" style="margin-top: 0px;">
+                                    <p style="text-align: center; font-size: 16px; margin-top:5px;">
+                                        وصلنا من السيد / السادة: @Model.TblLecturer.FirstNameAr @Model.TblLecturer.SecondNameAr @Model.TblLecturer.ThirdNameAr
+
+                                        <br />
+                                        مبلغ وقدره @Model.Cost دينار كويتي
+                                        :
+                                        <label style="font-size:15px;"> نقداً : @Model.Cost </label>
+                                    </p>
+                                </div>
+
+                                <div class="row" style="margin-top: 0px;">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align:center;">المبلغ </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="text-align:center;">@Model.Cost</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row" style="margin-top: 0px;">
+                                    <table style="width: 100%; margin: 0px; " class="text-center">
+                                        <thead>
+                                            <tr>
+                                                <th width="50%" class="text-center">توقيع المستلم</th>
+                                                <th width="50%" class="text-center">توقيع المحاسب</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>------------------------------------</td>
+                                                <td>------------------------------------</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-center" style="font-size: 10px; margin:0;">@Model.TblHall.TblBranch.AddressAr</p>
+                                </div>
+                                <div class="row" style="margin-top: 5px;text-align: center;    background-color: #f1efef;"> <p style=" margin-top: 9px; "> www.smartmindkw.com <i class="fa fa-instagram"></i> @Model.TblHall.TblBranch.AddressAr <i class="fa fa-globe"></i></p> </div>
+                            </div>
+
+                            <div class="invoice" style=" border: 1px solid #ccc; margin: 20px auto; padding: 20px 20px;">
+                                <div class="row invoice-logo" style="margin-top: 0px;">
+                                    <div class="col-xs-3" style="float:right;">
+                                        <p style="text-align: center; font-size: 15px; margin-top: 40px;">
+                                            <span style="padding: 5px 5px 5px 5px; width: 122px; font-size: 14px; border: 1px solid #bbb; background-color: #0DB8C0; text-align: center; margin-left: 135px; margin-right: 0px;    margin-bottom: 5px; float: right; "> سند يدوى </span>
+                                            قام بالإدخال: @Model.TblUser.NameAr
+                                            <br />
+                                            رقم الفاتورة: @Model.Serial
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-6 invoice-logo-space" style="align-self:center;">
+
+                                        <img src="~/Content/Images/invoice_logo.png" class="img-responsive" alt="" style="align-self:center; width:100%" />
+                                        <p style="text-align:center; font-size:15px;">
+                                            فرع :    @Model.TblHall.TblBranch.NameAr
+                                            <br />
+                                            <span>Receipt Voucher</span>
+                                            <br />
+                                            التاريخ : @CreatedDate
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-3" style="float:left;">
+                                        <p style="text-align: center; font-size: 15px; margin-top: 69px;">
+                                            @Model.Cost دينار كويتى
+                                            <br />
+                                            رقم النظام: @Model.ID
+                                        </p>
+                                    </div>
+                                </div>
+                                <hr style="margin-top: 0px;" />
+
+                                <div class="row" style="margin-top: 0px;">
+                                    <p style="text-align: center; font-size: 16px; margin-top:5px;">
+                                        وصلنا من السيد / السادة: @Model.TblLecturer.FirstNameAr @Model.TblLecturer.SecondNameAr @Model.TblLecturer.ThirdNameAr
+
+                                        <br />
+
+                                        مبلغ وقدره @Model.Cost دينار كويتي
+                                        :
+
+                                        <label style="font-size:15px;"> نقداً : @Model.Cost </label>
+                                    </p>
+                                </div>
+
+                                <div class="row" style="margin-top: 0px;">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align:center;">المبلغ </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="text-align:center;">@Model.Cost</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row" style="margin-top: 0px;">
+                                    <table style="width: 100%; margin: 0px; " class="text-center">
+                                        <thead>
+                                            <tr>
+                                                <th width="50%" class="text-center">توقيع المستلم</th>
+                                                <th width="50%" class="text-center">توقيع المحاسب</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>------------------------------------</td>
+                                                <td>------------------------------------</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-center" style="font-size: 10px; margin:0;">@Model.TblHall.TblBranch.AddressAr</p>
+                                </div>
+                                <div class="row" style="margin-top: 5px;text-align: center;    background-color: #f1efef;"> <p style=" margin-top: 9px; "> www.smartmindkw.com <i class="fa fa-instagram"></i> @Model.TblHall.TblBranch.AddressAr <i class="fa fa-globe"></i></p> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6 invoice-block">
+                <a class="btn btn-circle default purple-stripe hidden-print" style="width:160px;" onclick="javascript: printdiv('DivPage');">
+                    طباعه <i class="fa fa-print"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $('#AtInvoBillShowIN').addClass('active open');
+
+
+    var element = document.getElementById("AddNewAllInvo");
+    element.innerHTML = element.innerHTML + "<span class='selected'></span>";
+</script>

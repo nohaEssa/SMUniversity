@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "ChargeCardsList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    SMUModels.admin_SMUniversityEntities _Context = new SMUModels.admin_SMUniversityEntities();
+}
+
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+
+<script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+<script src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>
+@*<script src="~/Scripts/DataTables/dataTables.buttons.min.js"></script>*@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script src="~/Scripts/DataTables/buttons.html5.min.js"></script>
+
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header"></h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="/Home/Index"><i class="fa fa-home"></i></a></li>
+                    <li><a href="/CardCategory/Index">فئات الشحن</a></li>
+                    <li class="active"><a href="/CardCategory/ChargeCardsList">كروت الشحن</a></li>
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                    </div>
+                    <table id="myDataTable" class="table table-striped table-bordered table-hover display">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>سريال الكارت</th>
+                                <th>تم استخدامه؟</th>
+                                <th>تاريخ الإنشاء</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in _Context.TblChargeCards.ToList())
+                            {
+                            <tr>
+                                <td>@item.ID</td>
+                                <td>@item.Code</td>
+                                <td>@item.Valid</td>
+                                <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
+                                @*<td>
+            <a href="@Url.Action("Edit", "CardCategory", new { CardCatID = item.ID })" class="btn btn-xs btn-warning" title="تعديل المنطقه" id="btnEditCardCategory"><i class="fa fa-pencil-square-o"></i></a>
+            <a href="@Url.Action("Delete", "CardCategory", new { CardCatID = item.ID })" class="btn btn-xs btn-danger" title="حذف المنطقه" id="btnDeleteCardCategory"><i class="fa fa-minus"></i></a>
+            <a href="@Url.Action("ChargeCardsList", "CardCategory", new { SessionID = item.ID })" class="btn btn-xs btn-success" title="عرض المحاضرات" id="btnViewSessions"><i class="fa fa-eye fa-lg"></i></a>
+        </td>*@
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

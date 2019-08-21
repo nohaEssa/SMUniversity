@@ -1,0 +1,93 @@
+﻿@model SMUModels.TblScreen
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/Screen/Create.js"></script>
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header">تعديل شاشه</h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="/Home/Index"><i class="fa fa-home"></i></a></li>
+                    <li><a href="/Screen/Index">الرئيسية</a></li>
+                    <li class="active"><a href="/Screen/Edit">تعديل شاشه</a></li>
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">تعديل شاشه</h3>
+                    </div>
+                    <form id="EditScreen" action="/Screen/Edit" method="post" class="form-horizontal ls_form">
+                        <input type="hidden" name="ScreenID" value="@Model.ID" />
+                        <div class="panel-body form_view">
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">اسم الشاشه عربي</label>
+                                    <div class="col-md-10">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="NameAr" name="NameAr" placeholder="ادخل اسم الشاشه عربي" value="@Model.NameAr" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">اسم الشاشه إنجليزي</label>
+                                    <div class="col-md-10">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="NameEn" name="NameEn" placeholder="ادخل اسم الشاشه إنجليزي" value="@Model.NameEn" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">الرقم السري</label>
+                                    <div class="col-md-10">
+                                        <input type="password"
+                                               class="form-control validate[required] text-input"
+                                               id="Password" name="Password" placeholder="الرقم السري" value="@Model.TblUserCredential.Password" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">القاعه</label>
+                                    <div class="col-md-10">
+                                        <select id="HallIDs" name="HallIDs []" multiple="multiple">
+                                            @*<option value="0">اختر القاعه</option>*@
+                                            @foreach (var hall in ViewBag.HallsList)
+                                            {
+                                                <option value="@hall.ID">@hall.HallCodeAr</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style=" margin: 20px 30px 40px 50px; ">
+                                <button class="submit btn-primary btn" type="submit" name="submit">حفظ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

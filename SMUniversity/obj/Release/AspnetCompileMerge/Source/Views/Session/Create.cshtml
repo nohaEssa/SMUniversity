@@ -1,0 +1,298 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/Student/Create.js"></script>
+<script src="~/Scripts/Session/Create.js"></script>
+
+
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header">انشاء محاضره</h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="/Home/Index"><i class="fa fa-home"></i></a></li>
+                    <li><a href="/Session/Index">الرئيسية</a></li>
+                    <li class="active"><a href="/Session/Create">انشاء حصة</a></li>
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">انشاء محاضره</h3>
+                    </div>
+                    <form id="AddNewSession" action="/Session/Create" method="post" class="form-horizontal ls_form" enctype='multipart/form-data'>
+                        <div class="panel-body form_view">
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">اختر كورس / حصة</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="Type" name="Type" onchange="toogle()" required>
+                                            <option value="0">اختر كورس / حصة</option>
+                                            <option value="1">حصة</option>
+                                            <option value="2">كورس</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">اختر القاعه</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="Type" name="HallID" required>
+                                            <option value="0">اختر القاعه</option>
+                                            @foreach (var hall in ViewBag._HallsList)
+                                            {
+                                                <option value="@hall.ID">@hall.HallCodeAr</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">اسم الحصة عربي</label>
+                                    <div class="col-md-10">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="Name" name="Name" placeholder="اسم الحصة" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">اسم الحصة انجليزي</label>
+                                    <div class="col-md-10">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="NameEn" name="NameEn" placeholder="اسم الحصة" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">تفاصي عربي</label>
+                                    <div class="col-md-10">
+                                        <textarea class="animatedTextArea form-control"
+                                                  id="Description" name="Description"
+                                                  placeholder="اكتب تفاصيل الحصه"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">تفاصيل انجليزي</label>
+                                    <div class="col-md-10">
+                                        <textarea class="animatedTextArea form-control"
+                                                  id="DescriptionEn" name="DescriptionEn"
+                                                  placeholder="اكتب تفاصيل الحصه"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider CourseCost">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">سعر الحصة</label>
+                                    <div class="col-md-10">
+                                        <input type="number"
+                                               class="form-control validate[required] text-input"
+                                               id="Cost" name="Cost" value="0" placeholder="ادخل سعر الحصة" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider SessionPrice" hidden="hidden">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">السعر الأول</label>
+                                    <div class="col-md-2">
+                                        <input type="number"
+                                               class="form-control validate[required] text-input"
+                                               id="Price1" name="Price1" placeholder="ادخل السعر الأول">
+                                    </div>
+                                    <label class="col-md-2 control-label">السعر الثاني</label>
+                                    <div class="col-md-2">
+                                        <input type="number"
+                                               class="form-control validate[required] text-input"
+                                               id="Price2" name="Price2" placeholder="ادخل السعر الثاني">
+                                    </div>
+                                    <label class="col-md-2 control-label">السعر الثالث</label>
+                                    <div class="col-md-2">
+                                        <input type="number"
+                                               class="form-control validate[required] text-input"
+                                               id="Price3" name="Price3" placeholder="ادخل السعر الثالث">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 control-label">تفاصيل</label>
+                                <div class="col-md-10">
+                                    <div class="ls-button-group border-bottom">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5>من تاريخ</h5>
+                                                <input id="date_timepicker_start" class="form-control" type="text" name="FromDate" required />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>الي تاريخ</h5>
+                                                <input id="date_timepicker_end" class="form-control" type="text" name="ToDate" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider SessionPeriod" hidden="hidden">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">الأيام والأوقات</label>
+                                    <div id="Test" class="col-md-8"></div>
+                                    <div class="col-md-10">
+                                        <input type="hidden" id="count" value="0" />
+                                        <button type="button" class="btn btn-lg green" onclick="addtime()"> إضافه يوم / وقت <i class="fa fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">اسم الجامعة</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="UniversityID" name="UniversityID" onchange="getColleges()" required>
+                                            <option value="0">اسم الجامعة</option>
+                                            @foreach (var uni in ViewBag._UniversityList)
+                                            {
+                                                <option value="@uni.ID">@uni.NameAr</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">اسم الكلية</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="CollegeID" name="CollegeID" onchange="getMajors()" required>
+                                            <option value="0">اسم الكلية</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">التخصص</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control input-sm" id="MajorID" name="MajorID" onchange="getSubjects()" required>
+                                            <option value="0">التخصص</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">المادة</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control input-sm" id="SubjectID" name="SubjectID" onchange="getLecturers()" required>
+                                            <option value="0">اختر المادة</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">المحاضر</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control input-sm" id="LecturerID" name="LecturerID" required>
+                                            <option value="0">اختر المحاضر</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 control-label">حساب المحاضر</label>
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-4 col-xs-6">
+                                            <label class="radio">
+                                                <input class="icheck-red" type="radio" name="LecturerAccountMethod"
+                                                       id="radioRedCheckbox1" value="1" checked="checked"> حساب المحاضر بسعر الحصة
+                                            </label>
+
+                                        </div>
+                                        <div class="col-md-3 col-sm-4 col-xs-6">
+
+                                            <label class="radio">
+                                                <input class="icheck-blue" type="radio" name="LecturerAccountMethod"
+                                                       id="radioRedCheckbox2" value="2"> حساب المحاضر بالنسبة %
+                                            </label>
+
+                                        </div>
+                                        <div class="col-md-3 col-sm-4 col-xs-6">
+
+                                            <label class="radio">
+                                                <input class="icheck-aero" type="radio" name="LecturerAccountMethod"
+                                                       id="radioRedCheckbox3" value="3"> حسب المحاضر بسعر الكورس
+                                            </label>
+                                        </div>
+                                        <div class="col-md-3 col-sm-4 col-xs-6">
+
+                                            <label class="radio">
+                                                <input class="icheck-aero" type="radio" name="LecturerAccountMethod"
+                                                       id="radioRedCheckbox3" value="4"> نسبة طلاب المحاضر
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-upload"></i> تحميل صورة طالب</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <section id="ls-wrapper">
+                                        <!--Image Drop & Upload Wrapper Start-->
+                                        <div id="droparea">
+                                            <div class="dropareainner">
+                                                <p class="dropfiletext">انزل ملف هنا</p>
+                                                <p>او</p>
+                                                <!--Upload Select Button-->
+                                                <p>
+                                                    <input id="uploadbtn" class="uploadbtn" type="button" value="اختر ملف">
+                                                </p>
+
+
+                                                <!--Image Effect Finish-->
+                                                <p id="err">تم التحميل اي كلام وكدة يعني (:</p>
+                                            </div>
+                                            <!--Image Upload Input-->
+                                            <input id="upload" name="Picture" type="file" multiple />
+                                        </div>
+                                        <!--Image Drop & Upload Wrapper Finish-->
+                                        <p class="message"> حجم الملف <strong>400</strong>فقط</p>
+                                        <!--Upoload Image Preview Wrap Start-->
+                                        <div id="result">
+                                            <!--Upoload Image Preview Wrap Finish-->
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style=" margin: 20px 30px 40px 50px; ">
+                                <button class="submit btn-primary btn" type="submit" name="submit">حفظ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

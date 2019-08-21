@@ -1,0 +1,147 @@
+﻿@model List<SMUModels.TblLecturer>
+
+@{
+    ViewBag.Title = "RentHall";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/Hall/RentHall.js"></script>
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header">تأجير قاعه</h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="/Home/Index"><i class="fa fa-home"></i></a></li>
+                    <li><a href="/Hall/RentHallList">الرئيسية</a></li>
+                    <li class="active"><a href="/Hall/RentHall">تأجير قاعه</a></li>
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">تأجير قاعه</h3>
+                    </div>
+                    <form id="RentHall" action="/Hall/RentHall" method="post" class="form-horizontal ls_form" enctype='multipart/form-data'>
+                        <div class="panel-body form_view">
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">المحاضرين</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="LecturerID" name="LecturerID" onchange="toogle()" required>
+                                            <option value="0">اسم المحاضر</option>
+                                            @foreach (var lect in Model)
+                                            {
+                                                <option value="@lect.ID">@lect.FirstNameAr @lect.SecondNameAr @lect.ThirdNameAr</option>
+                                            }
+                                            <option value="-1">محاضر جديد</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row LecturerData" hidden="hidden">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">الأسم الأول</label>
+                                    <div class="col-md-2">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="FirstName" name="FirstName" placeholder="ادخل الأسم الأول">
+                                    </div>
+                                    <label class="col-md-2 control-label">الأسم الثاني</label>
+                                    <div class="col-md-2">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="SecondName" name="SecondName" placeholder="ادخل الأسم الثاني">
+                                    </div>
+                                    <label class="col-md-2 control-label">الأسم الثالث</label>
+                                    <div class="col-md-2">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="ThirdName" name="ThirdName" placeholder="ادخل الأسم الثالث">
+                                    </div>
+                                </div>
+                                <div class="row ls_divider">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">رقم الهاتف</label>
+                                        <div class="col-md-10">
+                                            <input value=""
+                                                   class="validate[required,custom[phone]] form-control"
+                                                   type="text" name="PhoneNumber" id="PhoneNumber" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ls_divider">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">الايميل</label>
+                                        <div class="col-md-10">
+                                            <input placeholder="someone@mail.com" value=""
+                                                   class="validate[required,custom[email]] form-control"
+                                                   type="text" name="Email" id="Email" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">رقم القاعه</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="HallID" name="HallID" required>
+                                            <option value="0">رقم القاعه</option>
+                                            @foreach (var hall in ViewBag.HallsList)
+                                            {
+                                                <option value="@hall.ID">@hall.HallCodeAr</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">التكلفه</label>
+                                    <div class="col-md-10">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="Cost" name="Cost" placeholder="ادخل تكلفه التأجير">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <label class="col-md-2 control-label">التاريخ</label>
+                                <div class="col-md-10">
+                                    <div class="ls-button-group border-bottom">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5>من تاريخ</h5>
+                                                <input id="date_timepicker_start" class="form-control" type="text" name="FromDate" required />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>الي تاريخ</h5>
+                                                <input id="date_timepicker_end" class="form-control" type="text" name="ToDate" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style=" margin: 20px 30px 40px 50px; ">
+                                <button class="submit btn-primary btn" type="submit" name="submit">حفظ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

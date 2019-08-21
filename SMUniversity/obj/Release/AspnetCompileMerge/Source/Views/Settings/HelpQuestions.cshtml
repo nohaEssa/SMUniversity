@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "HelpQuestions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    SMUModels.admin_SMUniversityEntities _Context = new SMUModels.admin_SMUniversityEntities();
+}
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header"></h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="/Home/Index"><i class="fa fa-home"></i></a></li>
+                    <li class="active"><a href="/Settings/HelpQuestions">اسئلة المساعده</a></li>
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                    </div>
+                    <table id="myDataTable" class="table table-striped table-bordered table-hover display">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>اسم الجامعه عربي</th>
+                                <th>اسم الجامعه انجليزي</th>
+                                <th>تاريخ الإنشاء</th>
+                                <th>الأدوات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in _Context.TblHelpQuestions.Where(a => a.IsDeleted != true).ToList())
+                            {
+                                <tr>
+                                    <td>@item.ID</td>
+                                    <td>@item.QuestionAr</td>
+                                    <td>@item.QuestionAr</td>
+                                    <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
+                                    <td>
+                                        <a href="@Url.Action("Edit", "University", new { UniversityID = item.ID })" class="btn btn-xs btn-warning" title="تعديل الجامعه" id="btnEditUniversity"><i class="fa fa-pencil-square-o"></i></a>
+                                        <a href="@Url.Action("Delete", "University", new { UniversityID = item.ID })" class="btn btn-xs btn-danger" title="حذف الجامعه" id="btnDeleteUniversity"><i class="fa fa-minus"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

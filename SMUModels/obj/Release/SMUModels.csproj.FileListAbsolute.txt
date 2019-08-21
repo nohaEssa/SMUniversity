@@ -1,0 +1,12 @@
+D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\bin\Release\SMUModels.dll.config
+D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\bin\Release\SMUModels.dll
+D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\bin\Release\SMUModels.pdb
+D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\bin\Release\EntityFramework.dll
+D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\bin\Release\EntityFramework.SqlServer.dll
+D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\bin\Release\EntityFramework.xml
+D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\bin\Release\EntityFramework.SqlServer.xml
+D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\obj\Release\SMUModels.csprojAssemblyReference.cache
+D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\obj\Release\SMUModels.csproj.CoreCompileInputs.cache
+D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\obj\Release\SMUModels.csproj.CopyComplete
+D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\obj\Release\SMUModels.dll
+D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\obj\Release\SMUModels.pdb

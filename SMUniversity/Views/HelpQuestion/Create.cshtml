@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header">اضافة سؤال مساعده</h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="/Home/Index"><i class="fa fa-home"></i></a></li>
+                    <li><a href="/HelpQuestion/Index">الرئيسية</a></li>
+                    <li class="active"><a href="/HelpQuestion/Create">اضافة سؤال مساعده</a></li>
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">اضافة جامعة</h3>
+                    </div>
+                    <form id="AddNewHelpQuestion" action="/HelpQuestion/Create" method="post" class="form-horizontal ls_form" enctype='multipart/form-data'>
+                        <div class="panel-body form_view">
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">السؤال عربي</label>
+                                    <div class="col-md-10">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="QuestionAr" name="QuestionAr" placeholder="السؤال عربي" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">السؤال إنجليزي</label>
+                                    <div class="col-md-10">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="QuestionEn" name="QuestionEn" placeholder="السؤال إنجليزي" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style=" margin: 20px 30px 40px 50px; ">
+                                <button class="submit btn-primary btn" type="submit" name="submit">حفظ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

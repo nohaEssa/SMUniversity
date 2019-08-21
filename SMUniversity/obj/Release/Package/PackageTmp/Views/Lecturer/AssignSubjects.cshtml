@@ -1,0 +1,101 @@
+﻿@model List<SMUModels.TblSubject>
+@{
+    ViewBag.Title = "Assign Subjects";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/Lecturer/AssignSubjects.js"></script>
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header">تعيين مواد</h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="/Home/Index"><i class="fa fa-home"></i></a></li>
+                    <li><a href="/Lecturer/Index">الرئيسية</a></li>
+                    <li class="active"><a href="/Lecturer/AssignSubjects">تعيين مواد</a></li>
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">تعيين مواد</h3>
+                    </div>
+                    <form id="AssignSubjectsCreate" action="/Lecturer/AssignSubjects" method="post" class="form-horizontal ls_form" enctype='multipart/form-data'>
+                        <div class="panel-body form_view">
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">الكليه</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="CollegeID" name="CollegeID" onchange="getMajors()" required>
+                                            <option value="0">الكليه</option>
+                                            @foreach (var college in ViewBag.CollegesList)
+                                            {
+                                                <option value="@college.ID">@college.NameAr</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">التخصص</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="MajorID" name="MajorID" onchange="getSubjects()" required>
+                                            <option value="0">التخصص</option>
+                                            @*@foreach (var college in ViewBag.CollegesList)
+                                                {
+                                                    <option value="@college.ID">@college.NameAr</option>
+                                                }*@
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">المواد</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="SubjectID" name="SubjectID" @*onchange="getLecturers()"*@ required>
+                                            <option value="0">الماده</option>
+                                            @*@foreach (var subject in Model)
+                                                {
+                                                    <option value="@subject.ID">@subject.NameAr</option>
+                                                }*@
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">المحاضر</label>
+                                    <div class="col-md-10">
+                                        <select id="LecturerIDs" name="LecturerIDs []" multiple="multiple">
+                                            @*<option value="0">اسم المحاضر</option>*@
+                                            @foreach (var lect in ViewBag.LecturersList)
+                                            {
+                                                <option value="@lect.ID">@lect.FirstNameAr @lect.SecondNameAr @lect.ThirdNameAr</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style=" margin: 20px 30px 40px 50px; ">
+                                <button class="submit btn-primary btn" type="submit" name="submit">حفظ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

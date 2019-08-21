@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header">اضافة مستخدم</h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="/Home/Index"><i class="fa fa-home"></i></a></li>
+                    <li><a href="/User/Index">الرئيسية</a></li>
+                    <li class="active"><a href="/User/Create">اضافة مستخدم</a></li>
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">اضافة مستخدم</h3>
+                    </div>
+                    <form id="AddNewUser" action="/User/Create" method="post" class="form-horizontal ls_form" enctype='multipart/form-data'>
+                        <div class="panel-body form_view">
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">اسم المستخدم عربي</label>
+                                    <div class="col-md-10">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="NameAr" name="NameAr" placeholder="ادخل اسم المستخدم عربي" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">اسم المستخدم إنجليزي</label>
+                                    <div class="col-md-10">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="NameEn" name="NameEn" placeholder="ادخل اسم المستخدم إنجليزي" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">رقم الهاتف</label>
+                                    <div class="col-md-10">
+                                        <input type="tel"
+                                               class="form-control validate[required] text-input"
+                                               id="PhoneNumber" name="PhoneNumber" placeholder="ادخل رقم الهاتف" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">البريد الإلكتروني</label>
+                                    <div class="col-md-10">
+                                        <input type="email"
+                                               class="form-control validate[required] text-input"
+                                               id="Email" name="Email" placeholder="ادخل البريد الإلكتروني" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">اسم المستخدم</label>
+                                    <div class="col-md-10">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="UserName" name="UserName" placeholder="ادخل اسم المستخدم" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">الرقم السري</label>
+                                    <div class="col-md-10">
+                                        <input type="password"
+                                               class="form-control validate[required] text-input"
+                                               id="Password" name="Password" placeholder="ادخل الرقم السري" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">الفرع</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="BranchID" name="BranchID" required>
+                                            <option value="0">الفرع</option>
+                                            @foreach (var branch in ViewBag.Branches)
+                                            {
+                                                <option value="@branch.ID">@branch.NameAr</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">فئة المستخدم</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="UserCategoryID" name="UserCategoryID" required>
+                                            <option value="0">فئة المستخدم</option>
+                                            @foreach (var userCat in ViewBag.UserCategories)
+                                            {
+                                                <option value="@userCat.ID">@userCat.NameAr</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style=" margin: 20px 30px 40px 50px; ">
+                                <button class="submit btn-primary btn" type="submit" name="submit">حفظ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

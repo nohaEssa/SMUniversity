@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "PendedChargeRequest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    SMUModels.admin_SMUniversityEntities _Context = new SMUModels.admin_SMUniversityEntities();
+}
+
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/buttons.dataTables.min.css" rel="stylesheet" />
+
+<script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+<script src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>
+@*<script src="~/Scripts/DataTables/dataTables.buttons.min.js"></script>*@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script src="~/Scripts/DataTables/but@*t*@ons.html5.min.js"></script>
+
+<script src="~/Scripts/BalanceTransaction/PendedChargeRequest.js"></script>
+
+<input type="hidden" id="TransactionID" />
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header"></h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="/Home/Index"><i class="fa fa-home"></i></a></li>
+                    <li class="active"><a href="/BalanceTransaction/PendedChargeRequest">الرئيسية</a></li>
+                    @*<li class="active"><a href="/BalanceTransaction/PendedChargeRequest">اضافة تخصص</a></li>*@
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                    </div>
+                    <table id="myDataTable" class="table table-striped table-bordered table-hover display">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>الطالب</th>
+                                <th>الهاتف الرئيسى</th>
+                                <th>طريقه الدفع</th>
+                                <th>السعر</th>
+                                <th>التاريخ</th>
+                                <th>الأدوات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in _Context.TblBalanceTransactions.Where(a => a.IsDeleted != true && a.Pending == true).ToList())
+                            {
+                                string STDName = item.TblStudent.FirstName + ' ' + item.TblStudent.SecondName + ' ' + item.TblStudent.ThirdName;
+                                <tr>
+                                    <td>@item.ID</td>
+                                    <td>@STDName</td>
+                                    <td>@item.TblStudent.PhoneNumber</td>
+                                    <td>@item.PaymentMethod</td>
+                                    <td><span class="label label-success ">@item.Price KD</span></td>
+                                    <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
+                                    <td>
+                                        @*<a href="@Url.Action("ConfirmTransaction", "BalanceTransaction", new { id = item.ID })" class="btn btn-xs btn-success" title="تأكيد الشحن" id="btnConfirmTransaction"><i class="fa fa-money fa-lg"></i></a>*@
+                                        @*<a href="#reModalRed" class="btn btn-xs btn-warning" id="btnConfirmTransaction">تأكيد الشحن</a>*@
+                                        <a href="javascript:showModal('@item.ID','@item.Price','@STDName')" @*href="showModal('@item.Price','@STDName')"*@ class="btn btn-xs btn-warning" id="btnConfirmTransaction_@item.ID">تأكيد الشحن</a>
+                                        @*<button onclick="showModal('@item.Price','@STDName')" class="btn btn-xs btn-warning" title="تأكيد الشحن" id="btnConfirmTransaction"><i class="fa fa-money fa-lg"></i></button>*@
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div class="remodal label-red white" data-remodal-id="reModalRed">
+        <h3 id="HModalTitle">تأكيد شحن كارت</h3>
+        <p id="PModalBody">
+            سيتم تأكيد شحن مبلغ @Model.Price د.ك الي حساب الطال @Model.
+        </p>
+        <br>
+        <a class="remodal-cancel btn-danger btn" href="#">Cancel</a>
+        <a class="remodal-confirm ls-light-green-btn btn" id="submitModalRequest" href="#">OK</a>
+    </div>*@

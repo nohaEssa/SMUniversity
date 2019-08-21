@@ -1,0 +1,158 @@
+﻿@model List<SMUModels.TblProductCategory>
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header">انشاء منتج</h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="/Home/Index"><i class="fa fa-home"></i></a></li>
+                    <li><a href="/Product/Index">الرئيسية</a></li>
+                    <li class="active"><a href="/Product/Create">انشاء منتج</a></li>
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+
+        <form id="AddNewProduct" action="/Product/Create" method="post" class="form-horizontal ls_form" enctype='multipart/form-data'>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">برجاء تعبئة البيانات</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form id="formid2" class="formular form-horizontal ls_form" method="post" action="">
+                                        <div id="wizard" class="swMain">
+                                            <ul>
+                                                <li>
+                                                    <a href="#step-Login">
+                                                        <span class="stepNumber">1</span>
+                                                        <span class="stepDesc">
+                                                            الخطوة 1<br />
+                                                            <small>معلومات الحصة</small>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#step-user">
+                                                        <span class="stepNumber">2</span>
+                                                        <span class="stepDesc">
+                                                            الخطوة 2<br />
+                                                            <small>معلومات الجامعة</small>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#step-bio">
+                                                        <span class="stepNumber">3</span>
+                                                        <span class="stepDesc">
+                                                            الخطوة 3<br />
+                                                            <small>حساب المعلم</small>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div id="step-Login">
+                                                <h2 class="StepTitle">معلومات الحصة</h2>
+
+                                                <div class="container-fluid">
+                                                    
+                                                    <div class="row">
+                                                        <label class="col-md-2 control-label"> اختر الفئة</label>
+                                                        <div class="col-md-10 ls-group-input">
+                                                            <select class="form-control" id="ProductCategoryID" name="ProductCategoryID" required>
+                                                                <option value="0">اختر الفئة</option>
+                                                                @foreach (var item in Model)
+                                                                {
+                                                                    <option value="@item.ID">@item.NameAr</option>
+                                                                }
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <label class="col-md-2 control-label">اسم المنتج عربي</label>
+                                                            <div class="col-md-10">
+                                                                <input type="text"
+                                                                       class="form-control validate[required] text-input"
+                                                                       id="NameAr" name="NameAr" placeholder="اسم المنتج عربي" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <label class="col-md-2 control-label">اسم المنتج انجليزي</label>
+                                                            <div class="col-md-10">
+                                                                <input type="text"
+                                                                       class="form-control validate[required] text-input"
+                                                                       id="NameEn" name="NameEn" placeholder="اسم المنتج انجليزي" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <label class="col-md-2 control-label">تفاصيل المنتج عربي</label>
+                                                            <div class="col-md-10">
+                                                                <textarea class="animatedTextArea form-control"
+                                                                          id="DescriptionAr" name="DescriptionAr"
+                                                                          placeholder="اكتب تفاصيل المنتج عربي"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <label class="col-md-2 control-label">تفاصيل المنتج انجليزي</label>
+                                                            <div class="col-md-10">
+                                                                <textarea class="animatedTextArea form-control"
+                                                                          id="DescriptionEn" name="DescriptionEn"
+                                                                          placeholder="اكتب تفاصيل المنتج انجليزي"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row CourseCost">
+                                                        <div class="form-group">
+                                                            <label class="col-md-2 control-label">سعر المنتج</label>
+                                                            <div class="col-md-10">
+                                                                <input type="number"
+                                                                       class="form-control validate[required] text-input"
+                                                                       id="Cost" name="Cost" value="0" placeholder="ادخل سعر المنتج" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    @*<div class="form-group">
+            <label class="col-md-2 control-label"> صورة الحصة</label>
+
+            <div class="col-md-10 ls-group-input">
+                <input id="file-3" type="file" multiple="true">
+            </div>
+        </div>*@
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style=" margin: 20px 30px 40px 50px; ">
+                                                <button class="submit btn-primary btn" type="submit" name="submit">حفظ</button>
+                                            </div>
+                                        </div>
+                                        <!-- End SmartWizard Content -->
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

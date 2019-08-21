@@ -1,0 +1,694 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header">Dashboard</h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-home"></i></a></li>
+                    <li class="active">Dashboard</li>
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+        <div class="row">
+            <div class="col-md-3">
+                <div class="current-status-widget">
+                    <ul>
+                        <li>
+                            <div class="status-box">
+                                <div class="status-box-icon label-light-green white">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </div>
+                            </div>
+                            <div class="status-box-content">
+                                <h5 id="sale-view">2129</h5>
+                                <p class="lightGreen"><i class="fa fa-arrow-up lightGreen"></i> مبيعات اليوم</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li>
+                            <div class="status-box">
+                                <div class="status-box-icon label-red white">
+                                    <i class="fa fa-download"></i>
+                                </div>
+                            </div>
+                            <div class="status-box-content">
+                                <h5 id="download-show">5340</h5>
+                                <p class="light-blue"><i class="fa fa-arrow-down light-blue"></i> دورات اليوم</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li>
+                            <div class="status-box">
+                                <div class="status-box-icon label-lightBlue white">
+                                    <i class="fa fa-truck"></i>
+                                </div>
+                            </div>
+                            <div class="status-box-content">
+                                <h5 id="deliver-show">10490</h5>
+                                <p class="light-blue"><i class="fa fa-arrow-up light-blue"></i> جميع الطلاب</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li>
+                            <div class="status-box">
+                                <div class="status-box-icon label-light-green white">
+                                    <i class="fa fa-users"></i>
+                                </div>
+                            </div>
+                            <div class="status-box-content">
+                                <h5 id="user-show">132129</h5>
+                                <p class="lightGreen"><i class="fa fa-arrow-up lightGreen"></i>جميع المستخدمين</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li>
+                            <div class="status-box">
+                                <div class="status-box-icon label-success white">
+                                    <i class="fa fa-github"></i>
+                                </div>
+                            </div>
+                            <div class="status-box-content">
+                                <h5 id="product-up">29</h5>
+                                <p class="text-success"><i class="fa fa-arrow-up text-success"></i> المحاضرات</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li>
+                            <div class="status-box">
+                                <div class="status-box-icon label-light-green white">
+                                    <i class="fa fa-dollar"></i>
+                                </div>
+                            </div>
+                            <div class="status-box-content">
+                                <h5 id="income-show">10299 </h5>
+                                <p class="lightGreen"><i class="fa fa-arrow-up lightGreen"></i>الاجمالي</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9">
+
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-bell-o"></i> اخر المستجدات </h3>
+                        <ul class="panel-control">
+                            <li><a class="minus" href="javascript:void(0)"><i class="fa fa-minus"></i></a></li>
+                            <li><a class="refresh" href="javascript:void(0)"><i class="fa fa-refresh"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="panel-body no-padding">
+
+                        <div class="nano nano-recent-activities has-scrollbar" style="height: 316px;">
+
+                            <div class="nano-content nano-activities" tabindex="0" style="right: 5px; !important">
+                                <div class="feed-box">
+                                    <ul class="ls-feed">
+                                        <li>
+                                            <span class="label label-red">
+                                                <i class="fa fa-check white"></i>
+                                            </span>
+                                            You have 4 pending tasks.
+                                            <span class="date">
+                                                Just now
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-light-green">
+                                                <i class="fa fa-bar-chart-o"></i>
+                                            </span>
+                                            Finance Report for year 2013.
+                                            <span class="date">
+                                                30 min
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-lightBlue">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </span>
+                                            New order received with <span class="red">ID: DR23923</span>
+                                            <span class="date">
+                                                45 min
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-lightBlue">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                            You have 5 pending membership <a class="">view</a>
+                                            <span class="date">
+                                                50 min
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-red">
+                                                <i class="fa fa-bell"></i>
+                                            </span>
+                                            Web server hardware upgraded. <a class="">view page</a>
+                                            <span class="date">
+                                                1 hr
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-blue">
+                                                <i class="fa fa-briefcase"></i>
+                                            </span>
+                                            IPO Report for year <a class="lightGreen">2014</a>
+                                            <span class="date">
+                                                5 hrs
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-red">
+                                                <i class="fa fa-check white"></i>
+                                            </span>
+                                            You have 4 pending tasks.
+                                            <span class="date">
+                                                Just now
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-light-green">
+                                                <i class="fa fa-bar-chart-o"></i>
+                                            </span>
+                                            Finance Report for year 2013.
+                                            <span class="date">
+                                                30 min
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-lightBlue">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </span>
+                                            New order received with <span class="red">ID: DR23923</span>
+                                            <span class="date">
+                                                45 min
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-lightBlue">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                            You have 5 pending membership <a class="">view</a>
+                                            <span class="date">
+                                                50 min
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-red">
+                                                <i class="fa fa-bell"></i>
+                                            </span>
+                                            Web server hardware upgraded <a class="">view page</a>
+                                            <span class="date">
+                                                1 hr
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-blue">
+                                                <i class="fa fa-briefcase"></i>
+                                            </span>
+                                            IPO Report for year <a class="lightGreen">2014</a>
+                                            <span class="date">
+                                                5 hrs
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-red">
+                                                <i class="fa fa-check white"></i>
+                                            </span>
+                                            You have 4 pending tasks.
+                                            <span class="date">
+                                                Just now
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-light-green">
+                                                <i class="fa fa-bar-chart-o"></i>
+                                            </span>
+                                            Finance Report for year 2013.
+                                            <span class="date">
+                                                30 min
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-lightBlue">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </span>
+                                            New order received with <span class="red">ID: DR23923</span>
+                                            <span class="date">
+                                                45 min
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-lightBlue">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                            You have 5 pending membership <a class="">view</a>
+                                            <span class="date">
+                                                50 min
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-red">
+                                                <i class="fa fa-bell"></i>
+                                            </span>
+                                            Web server hardware upgraded. <a class="">view page</a>
+                                            <span class="date">
+                                                1 hr
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-blue">
+                                                <i class="fa fa-briefcase"></i>
+                                            </span>
+                                            IPO Report for year <a class="lightGreen">2014</a>
+                                            <span class="date">
+                                                5 hrs
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-red">
+                                                <i class="fa fa-check white"></i>
+                                            </span>
+                                            You have 4 pending tasks.
+                                            <span class="date">
+                                                Just now
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-light-green">
+                                                <i class="fa fa-bar-chart-o"></i>
+                                            </span>
+                                            Finance Report for year 2013.
+                                            <span class="date">
+                                                30 min
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-lightBlue">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </span>
+                                            New order received with <span class="red">ID: DR23923</span>
+                                            <span class="date">
+                                                45 min
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-lightBlue">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                            You have 5 pending membership <a class="">view</a>
+                                            <span class="date">
+                                                50 min
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-red">
+                                                <i class="fa fa-bell"></i>
+                                            </span>
+                                            Web server hardware upgraded. <a class="">view page</a>
+                                            <span class="date">
+                                                1 hr
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-blue">
+                                                <i class="fa fa-briefcase"></i>
+                                            </span>
+                                            IPO Report for year <a class="lightGreen">2014</a>
+                                            <span class="date">
+                                                5 hrs
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-red">
+                                                <i class="fa fa-check white"></i>
+                                            </span>
+                                            You have 4 pending tasks.
+                                            <span class="date">
+                                                Just now
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-light-green">
+                                                <i class="fa fa-bar-chart-o"></i>
+                                            </span>
+                                            Finance Report for year 2013.
+                                            <span class="date">
+                                                30 min
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-lightBlue">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </span>
+                                            New order received with <span class="red">ID: DR23923</span>
+                                            <span class="date">
+                                                45 min
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-lightBlue">
+                                                <i class="fa fa-user"></i>
+                                            </span>
+                                            You have 5 pending membership <a class="">view</a>
+                                            <span class="date">
+                                                50 min
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-red">
+                                                <i class="fa fa-bell"></i>
+                                            </span>
+                                            Web server hardware upgraded. <a class="">view page</a>
+                                            <span class="date">
+                                                1 hr
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="label label-blue">
+                                                <i class="fa fa-briefcase"></i>
+                                            </span>
+                                            IPO Report for year <a class="lightGreen">2014</a>
+                                            <span class="date">
+                                                5 hrs
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="row home-row-top">
+            <div class="col-md-3 col-sm-3 col-xs-6 col-lg-3">
+                <div class="pie-widget">
+                    <div id="pie-widget-1" class="chart-pie-widget" data-percent="73">
+                        <span class="pie-widget-count-1 pie-widget-count"></span>
+                    </div>
+                    <p>
+                        عدد الدورات
+                    </p>
+                    <h5><i class="fa fa-bomb"></i> 240 </h5>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 col-lg-3">
+                <div class="pie-widget">
+                    <div id="pie-widget-2" class="chart-pie-widget" data-percent="93">
+                        <span class="pie-widget-count-2 pie-widget-count"></span>
+                    </div>
+                    <p>
+                        مستخدمين جدد
+                    </p>
+                    <h5><i class="fa fa-child"></i> 1240 </h5>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 col-lg-3">
+                <div class="pie-widget">
+                    <div id="pie-widget-3" class="chart-pie-widget" data-percent="23">
+                        <span class="pie-widget-count-3 pie-widget-count"></span>
+                    </div>
+                    <p>
+                        الرصيد الاجمالي
+                    </p>
+                    <h5><i class="fa fa-dollar"></i> 1200,000 </h5>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 col-lg-3">
+                <div class="pie-widget">
+                    <div id="pie-widget-4" class="chart-pie-widget" data-percent="33">
+                        <span class="pie-widget-count-4 pie-widget-count"></span>
+                    </div>
+                    <p>
+                        تقاير االمبيعات
+                    </p>
+                    <h5><i class="fa fa-file-excel-o"></i> 40</h5>
+                </div>
+            </div>
+        </div>
+        <div class="row home-row-top">
+            <div class="col-md-12">
+                <p class="bg-primary bg-label">اخر الفواتير</p>
+                <!--Table Wrapper Start-->
+                <div class="table-responsive ls-table">
+                    <table class="table table-bordered table-striped table-responsive">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Product</th>
+                                <th>Info</th>
+                                <th>Progress</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>PSD Design</td>
+                                <td>Lorem ipsum dolor sit amet</td>
+                                <td class="ls-table-progress">
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuetransitiongoal="50"></div>
+                                    </div>
+                                </td>
+                                <td><span class="label label-warning">Pending</span></td>
+                                <td>
+                                    <button class="btn btn-xs btn-info"><i class="fa fa-eye"></i></button>
+                                    <button class="btn btn-xs ls-light-green-btn"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-xs ls-red-btn"><i class="fa fa-trash-o"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>PSD</td>
+                                <td>Lorem ipsum dolor sit amet</td>
+                                <td class="ls-table-progress">
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuetransitiongoal="90"></div>
+                                    </div>
+                                </td>
+                                <td><span class="label label-light-green">On Way</span></td>
+                                <td>
+                                    <button class="btn btn-xs btn-info"><i class="fa fa-eye"></i></button>
+                                    <button class="btn btn-xs ls-light-green-btn"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-xs ls-red-btn"><i class="fa fa-trash-o"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>PSD Theme</td>
+                                <td>Lorem ipsum dolor sit amet</td>
+                                <td class="ls-table-progress">
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuetransitiongoal="80"></div>
+                                    </div>
+                                </td>
+                                <td><span class="label label-warning">Pending</span></td>
+                                <td>
+                                    <button class="btn btn-xs btn-info"><i class="fa fa-eye"></i></button>
+                                    <button class="btn btn-xs ls-light-green-btn"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-xs ls-red-btn"><i class="fa fa-trash-o"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Wordpress Theme</td>
+                                <td>Lorem ipsum dolor sit amet</td>
+                                <td class="ls-table-progress">
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuetransitiongoal="80"></div>
+                                    </div>
+                                </td>
+                                <td><span class="label label-red">Error</span></td>
+                                <td>
+                                    <button class="btn btn-xs btn-info"><i class="fa fa-eye"></i></button>
+                                    <button class="btn btn-xs ls-light-green-btn"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-xs ls-red-btn"><i class="fa fa-trash-o"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>HTML Template</td>
+                                <td>Lorem ipsum dolor sit amet</td>
+                                <td class="ls-table-progress">
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuetransitiongoal="70"></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="label label-light-green">On Way</span>
+                                </td>
+                                <td>
+                                    <button class="btn btn-xs btn-info"><i class="fa fa-eye"></i></button>
+                                    <button class="btn btn-xs ls-light-green-btn"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-xs ls-red-btn"><i class="fa fa-trash-o"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Plugin</td>
+                                <td>Lorem ipsum dolor sit amet</td>
+                                <td class="ls-table-progress">
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuetransitiongoal="90"></div>
+                                    </div>
+                                </td>
+                                <td><span class="label label-success">Successfull</span></td>
+                                <td>
+                                    <button class="btn btn-xs btn-info"><i class="fa fa-eye"></i></button>
+                                    <button class="btn btn-xs ls-light-green-btn"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-xs ls-red-btn"><i class="fa fa-trash-o"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!--Table Wrapper Finish-->
+            </div>
+        </div>
+
+
+        <div class="row home-row-top">
+
+            <div class="col-md-12">
+                <p class="bg-primary bg-label">مستخدمين جدد</p>
+                <!--Table Wrapper Start-->
+                <div class="ls-editable-table table-responsive ls-table">
+                    <table class="table table-bordered table-striped table-bottomless" id="ls-editable-table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">عدد</th>
+                                <th class="text-center">الاسم</th>
+                                <th class="text-center">المرحلة</th>
+                                <th class="text-center">رقم الهاتف</th>
+                                <th class="text-center">اسم الجامعة</th>
+                                <th class="text-center">الرصيد</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td>مازن عاطف محمد توفيق</td>
+                                <td class="text-center">الرابعة</td>
+                                <td class="text-center">98776070</td>
+                                <td class="text-center">خالد</td>
+                                <td class="text-center">
+                                    <span class="label label-success ">100 KD</span>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td>مازن عاطف محمد توفيق</td>
+                                <td class="text-center">الرابعة</td>
+                                <td class="text-center">98776070</td>
+                                <td class="text-center">جامعة الخليج</td>
+                                <td class="text-center">
+                                    <span class="label label-success ">100 KD</span>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td>مازن عاطف محمد توفيق</td>
+                                <td class="text-center">الرابعة</td>
+                                <td class="text-center">98776070</td>
+                                <td class="text-center">جامعة الخليج</td>
+                                <td class="text-center">
+                                    <span class="label label-success ">100 KD</span>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td>مازن عاطف محمد توفيق</td>
+                                <td class="text-center">الرابعة</td>
+                                <td class="text-center">98776070</td>
+                                <td class="text-center">جامعة الخليج</td>
+                                <td class="text-center">
+                                    <span class="label label-success ">100 KD</span>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td>مازن عاطف محمد توفيق</td>
+                                <td class="text-center">الرابعة</td>
+                                <td class="text-center">98776070</td>
+                                <td class="text-center">جامعة الخليج</td>
+                                <td class="text-center">
+                                    <span class="label label-success ">100 KD</span>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td>مازن عاطف محمد توفيق</td>
+                                <td class="text-center">الرابعة</td>
+                                <td class="text-center">98776070</td>
+                                <td class="text-center">جامعة الخليج</td>
+                                <td class="text-center">
+                                    <span class="label label-success ">100 KD</span>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td>مازن عاطف محمد توفيق</td>
+                                <td class="text-center">الرابعة</td>
+                                <td class="text-center">98776070</td>
+                                <td class="text-center">جامعة الخليج</td>
+                                <td class="text-center">
+                                    <span class="label label-success ">100 KD</span>
+                                </td>
+
+                            </tr>
+
+                    </table>
+                </div>
+                <!--Table Wrapper Finish-->
+                <div class="text-center">
+                    شاهد المزيد
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main Content Element  End-->
+</div>
+<!--Page main section end -->
+<div id="change-color">
+    <div id="change-color-control">
+        <a href="javascript:void(0)"><i class="fa fa-magic"></i></a>
+    </div>
+    <div class="change-color-box">
+        <ul>
+            <li class="default active"></li>
+            <li class="red-color"></li>
+            <li class="blue-color"></li>
+            <li class="light-green-color"></li>
+            <li class="black-color"></li>
+            <li class="deep-blue-color"></li>
+        </ul>
+    </div>
+</div>

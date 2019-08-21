@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2770432a7ead4a2e8bb6399fcdcef9cd" Name="Diagram1">
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblArea" Width="1.5" PointX="6.75" PointY="38.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblAttendance" Width="1.5" PointX="16.5" PointY="65.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblBalanceTransaction" Width="1.5" PointX="14.25" PointY="56.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblBranch" Width="1.5" PointX="0.75" PointY="47.625" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblCardCategory" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblChargeCard" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblCollege" Width="1.5" PointX="4.5" PointY="30.75" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblContactUsMsg" Width="1.5" PointX="11.25" PointY="51.125" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblEmployee" Width="1.5" PointX="3" PointY="55.875" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblEvaluation" Width="1.5" PointX="17.25" PointY="60.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblEvaluationQuestion" Width="1.5" PointX="15" PointY="71.125" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblEvaluationQuestionAnswer" Width="1.5" PointX="15" PointY="74.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblFavoriteSession" Width="1.5" PointX="11.25" PointY="60.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblGovernorate" Width="1.5" PointX="4.5" PointY="38.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblHall" Width="1.5" PointX="3" PointY="94.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblHelpQuestion" Width="1.5" PointX="12" PointY="43.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblInstitute" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblInvoice" Width="1.5" PointX="5.25" PointY="59" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblLecturer" Width="1.5" PointX="6" PointY="47.875" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblLecturerPaymentMethod" Width="1.5" PointX="8.25" PointY="62.875" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblLecturerSubject" Width="1.5" PointX="11.25" PointY="47.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblMajor" Width="1.5" PointX="6.75" PointY="30.75" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblManualInvoice" Width="1.5" PointX="11.25" PointY="71.875" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblNotification" Width="1.5" PointX="14.25" PointY="50.625" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblPermission" Width="1.5" PointX="5.25" PointY="27.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblPermissionCategory" Width="1.5" PointX="3" PointY="27.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblPermissionUser" Width="1.5" PointX="5.25" PointY="44.125" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblPrivateSession" Width="1.5" PointX="11.25" PointY="55.75" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblProduct" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblProductCategory" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblRevenue" Width="1.5" PointX="8.25" PointY="81.125" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblScreen" Width="1.5" PointX="3" PointY="46" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblScreenHall" Width="1.5" PointX="5.25" PointY="71.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSession" Width="1.5" PointX="8.25" PointY="66.625" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSessionDetail" Width="1.5" PointX="10.5" PointY="90.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSessionPricing" Width="1.5" PointX="10.5" PointY="82.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSessionTime" Width="1.5" PointX="10.5" PointY="85.5" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblStudent" Width="1.5" PointX="9" PointY="43.875" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblStudentComplaint" Width="1.5" PointX="14.25" PointY="46.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSubject" Width="1.5" PointX="9" PointY="31" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSubscription" Width="1.5" PointX="14.25" PointY="62" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblUniversity" Width="1.5" PointX="2.25" PointY="31.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblUser" Width="1.5" PointX="3" PointY="50.125" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblUserCategory" Width="1.5" PointX="0.75" PointY="58.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblUserCredential" Width="1.5" PointX="0.75" PointY="41.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblUserType" Width="1.5" PointX="1.5" PointY="37.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblVoucher" Width="1.5" PointX="11.25" PointY="66.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TransactionType" Width="1.5" PointX="12" PointY="39.5" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblArea__Governo__03BB8E22" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblArea__Governo__04AFB25B" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblArea__Governo__2F10007B" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblArea__Governo__3493CFA7" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblArea__Governo__3587F3E0" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblArea__Governo__534D60F1" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__AreaI__2610A626" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__AreaI__2704CA5F" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__AreaI__398D8EEE" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__AreaI__56E8E7AB" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__AreaI__57DD0BE4" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__AreaI__5DCAEF64" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblAttend__Sessi__05A3D694" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblAttend__Sessi__1AD3FDA4" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblAttend__Sessi__367C1819" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblAttend__Stude__0697FACD" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblAttend__Stude__078C1F06" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblAttend__Stude__30F848ED" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblAttend__Stude__37703C52" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblAttend__Stude__3864608B" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblAttend__Stude__5535A963" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblAttend__Subsc__0880433F" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblAttend__Subsc__0D7A0286" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblAttend__Subsc__395884C4" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblBalanc__Stude__08B54D69" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblBalanc__Stude__0A688BB1" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblBalanc__Stude__3B40CD36" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblBalanc__Trans__0A9D95DB" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblBalanc__Trans__0B5CAFEA" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblBalanc__Trans__3C34F16F" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblBalanc__UserI__75F77EB0" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblEmploy__Branc__10216507" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblEmploy__Branc__11158940" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblEmploy__Branc__40F9A68C" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblEmploy__Branc__41EDCAC5" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblHall__BranchI__13F1F5EB" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblHall__BranchI__14E61A24" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblHall__BranchI__32E0915F" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblHall__BranchI__44CA3770" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblHall__BranchI__45BE5BA9" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblHall__BranchI__571DF1D5" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblLectur__Branc__16CE6296" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblLectur__Branc__17C286CF" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblLectur__Branc__47A6A41B" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblLectur__Branc__489AC854" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblScreen__Branc__65C116E7" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Branc__1C873BEC" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Branc__1D7B6025" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Branc__35BCFE0A" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Branc__4D5F7D71" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Branc__4E53A1AA" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Branc__59FA5E80" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Branc__27F8EE98" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Branc__28ED12D1" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Branc__3A81B327" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Branc__58D1301D" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Branc__59C55456" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Branc__5EBF139D" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblTeache__Branc__4222D4EF" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblTeache__Branc__66603565" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblUser__BranchI__4316F928" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblUser__BranchI__4589517F" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblUser__BranchI__6754599E" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblCharge__CardC__0C50D423" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblCharge__CardC__3D2915A8" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblCharge__CardC__74AE54BC" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblColleg__Unive__0D44F85C" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblColleg__Unive__0E391C95" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblColleg__Unive__31EC6D26" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblColleg__Unive__3E1D39E1" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblColleg__Unive__3F115E1A" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblColleg__Unive__5629CD9C" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblMajor__Colleg__18B6AB08" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblMajor__Colleg__19AACF41" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblMajor__Colleg__33D4B598" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblMajor__Colleg__498EEC8D" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblMajor__Colleg__4A8310C6" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblMajor__Colleg__5812160E" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Colle__29E1370A" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Colle__2AD55B43" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Colle__3B75D760" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Colle__5AB9788F" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Colle__5BAD9CC8" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Colle__5FB337D6" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblContac__Stude__7720AD13" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblEmploy__Crede__0F2D40CE" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblEmploy__Crede__40058253" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblEmploy__Crede__6E01572D" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblInvoic__Emplo__3DB3258D" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblEvalua__Answe__6225902D" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblEvalua__Quest__61316BF4" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblEvalua__Sessi__640DD89F" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblEvalua__Stude__6319B466" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblFavori__Sessi__10566F31" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblFavori__Sessi__1209AD79" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblFavori__Sessi__42E1EEFE" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblFavori__Stude__114A936A" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblFavori__Stude__12FDD1B2" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblFavori__Stude__43D61337" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Gover__2CBDA3B5" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Gover__2DB1C7EE" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Gover__3C69FB99" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Gover__5D95E53A" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Gover__5E8A0973" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Gover__60A75C0F" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblManual__HallI__7167D3BD" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblScreen__HallI__6991A7CB" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__HallI__0C85DE4D" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__HallI__1E6F845E" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__HallI__4F47C5E3" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblVouche__HallI__39E294A9" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__HelpQ__7EC1CEDB" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblInvoic__Subsc__3CBF0154" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblLectur__Crede__15DA3E5D" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblLectur__Crede__46B27FE2" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblLectur__Crede__6EF57B66" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblLectur__Lectu__6E565CE8" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblLectur__Lectu__75035A77" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblManual__Lectu__7073AF84" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblNotifi__Lectu__047AA831" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblPrivat__Lectu__2AA05119" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblRevenu__Teach__1A9EF37A" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblRevenu__Teach__1B9317B3" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblRevenu__Teach__34C8D9D1" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblRevenu__Teach__4B7734FF" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblRevenu__Teach__4C6B5938" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblRevenu__Teach__59063A47" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Lectu__214BF109" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Lectu__22401542" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Lectu__5224328E" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Lectu__531856C7" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Teach__37A5467C" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Teach__5BE2A6F2" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblVouche__Lectu__38EE7070" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblLectur__Subje__6D6238AF" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Major__2EA5EC27" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Major__2F9A1060" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Major__3D5E1FD2" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Major__5F7E2DAC" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Major__607251E5" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Major__619B8048" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubjec__Major__336AA144" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubjec__Major__345EC57D" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubjec__Major__3F466844" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubjec__Major__6383C8BA" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubjec__Major__6442E2C9" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubjec__Major__65370702" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblNotifi__Stude__038683F8" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblNotifi__UserI__056ECC6A" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblPermis__Permi__436BFEE3" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblPermis__Permi__473C8FC7" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblPermis__UserI__4830B400" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblPrivat__Stude__28B808A7" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblPrivat__Subje__29AC2CE0" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblProduc__Produ__74444068" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblScreen__Crede__66B53B20" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblScreen__Scree__6A85CC04" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Sessi__19DFD96B" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Sessi__2334397B" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Sessi__24285DB4" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Sessi__251C81ED" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Sessi__38996AB5" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Sessi__3BFFE745" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Sessi__540C7B00" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Sessi__55009F39" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Sessi__55F4C372" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Sessi__5CD6CB2B" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Subje__1F63A897" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Subje__2057CCD0" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Subje__36B12243" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Subje__503BEA1C" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Subje__51300E55" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Subje__5AEE82B9" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubscr__Sessi__3552E9B6" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubscr__Sessi__36470DEF" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubscr__Sessi__403A8C7D" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubscr__Sessi__6477ECF3" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubscr__Sessi__662B2B3B" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubscr__Sessi__671F4F74" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Crede__0B91BA14" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Crede__2BC97F7C" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Crede__5CA1C101" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Stude__7DCDAAA2" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Unive__308E3499" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Unive__318258D2" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Unive__3E52440B" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Unive__6166761E" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Unive__625A9A57" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__Unive__628FA481" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubscr__Stude__373B3228" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubscr__Stude__382F5661" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubscr__Stude__412EB0B6" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubscr__Stude__656C112C" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubscr__Stude__681373AD" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubscr__Stude__690797E6" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblUser__Credent__44952D46" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblUser__UserCat__467D75B8" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblVouche__UserI__6F4A8121" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblUserCr__UserT__39237A9A" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblUserCr__UserT__69FBBC1F" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblUserCr__UserT__6C190EBB" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

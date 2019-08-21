@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="664d9aca-46f6-40da-a31f-35aad252859d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://live.gotapnow.com/webservice/PayGatewayService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="paygatewayservice.xsd" MetadataType="Schema" ID="380b7ff9-aed0-4815-b0af-70c7573cf2f6" SourceId="1" SourceUrl="http://live.gotapnow.com/webservice/paygatewayservice.svc?xsd=xsd1" />
+    <MetadataFile FileName="paygatewayservice.disco" MetadataType="Disco" ID="77dd385f-61a8-4064-b505-ee0f0f2da1af" SourceId="1" SourceUrl="http://live.gotapnow.com/webservice/paygatewayservice.svc?disco" />
+    <MetadataFile FileName="paygatewayservice1.xsd" MetadataType="Schema" ID="1ff9b81a-f2e6-4eae-aa9c-11cc4269b234" SourceId="1" SourceUrl="http://live.gotapnow.com/webservice/paygatewayservice.svc?xsd=xsd0" />
+    <MetadataFile FileName="paygatewayservice2.xsd" MetadataType="Schema" ID="d47e4549-1900-4411-86e5-c432b2f02250" SourceId="1" SourceUrl="http://live.gotapnow.com/webservice/paygatewayservice.svc?xsd=xsd2" />
+    <MetadataFile FileName="PayGatewayServiceCall.wsdl" MetadataType="Wsdl" ID="48b64515-52a3-4bfa-96ef-afd46e259baf" SourceId="1" SourceUrl="http://live.gotapnow.com/webservice/paygatewayservice.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

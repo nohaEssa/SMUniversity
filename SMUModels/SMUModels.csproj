@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EC62896A-59BF-46EF-8998-A77D76F060E5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SMUModels</RootNamespace>
+    <AssemblyName>SMUModels</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AreaData.cs" />
+    <Compile Include="AttendanceData.cs" />
+    <Compile Include="BranchData.cs" />
+    <Compile Include="CardCategoryData.cs" />
+    <Compile Include="ChargeCardData.cs" />
+    <Compile Include="Classes\CustomServerSideSearchAction.cs" />
+    <Compile Include="Classes\DateTimeDependsOnTimeZone.cs" />
+    <Compile Include="Classes\jQueryDataTableParamModel.cs" />
+    <Compile Include="CollegeData.cs" />
+    <Compile Include="EmployeeData.cs" />
+    <Compile Include="Enum\EnumCollection.cs" />
+    <Compile Include="EvalAnsData.cs" />
+    <Compile Include="EvalQuesData.cs" />
+    <Compile Include="EvaluationListData.cs" />
+    <Compile Include="EvaluationQuesData.cs" />
+    <Compile Include="GovernorateData.cs" />
+    <Compile Include="HallData.cs" />
+    <Compile Include="Handlers\UploadFileResponse.cs" />
+    <Compile Include="HelpQuestion.cs" />
+    <Compile Include="HelpQuestionData.cs" />
+    <Compile Include="MajorData.cs" />
+    <Compile Include="NotificationData.cs" />
+    <Compile Include="ObjectData\ChargeCardObj.cs" />
+    <Compile Include="ObjectData\ComplaintObj.cs" />
+    <Compile Include="ObjectData\ContactUsMsgObj.cs" />
+    <Compile Include="ObjectData\EmployeeObj.cs" />
+    <Compile Include="ObjectData\EvaluationData.cs" />
+    <Compile Include="ObjectData\EvaluationObj.cs" />
+    <Compile Include="ObjectData\HallObj.cs" />
+    <Compile Include="ObjectData\LecturerObj.cs" />
+    <Compile Include="ObjectData\LoginData.cs" />
+    <Compile Include="ObjectData\PaymentObj.cs" />
+    <Compile Include="ObjectData\PrivateSessionObj.cs" />
+    <Compile Include="ObjectData\ScreenObj.cs" />
+    <Compile Include="ObjectData\SessionObj.cs" />
+    <Compile Include="ObjectData\StudentSessionObj.cs" />
+    <Compile Include="ObjectData\SubscriptionObj.cs" />
+    <Compile Include="ObjectData\ReChargeCardObj.cs" />
+    <Compile Include="ObjectData\SessionDescriptionObj.cs" />
+    <Compile Include="ObjectData\StudentKeyObj.cs" />
+    <Compile Include="ObjectData\StudentObj.cs" />
+    <Compile Include="ObjectData\VoucherObj.cs" />
+    <Compile Include="ObjectData\TimelineSessionsObj.cs" />
+    <Compile Include="ObjectData\TokenObj.cs" />
+    <Compile Include="ObjectData\UserCategoryObj.cs" />
+    <Compile Include="ObjectData\UserObj.cs" />
+    <Compile Include="ProductObj.cs" />
+    <Compile Include="ProductCategoryData.cs" />
+    <Compile Include="HallRentObj.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScreenData.cs" />
+    <Compile Include="SessionCourseData.cs" />
+    <Compile Include="SessionData.cs" />
+    <Compile Include="SessionTimesData.cs" />
+    <Compile Include="SMUModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SMUModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SMUModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SMUModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SMUModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="StudentData.cs" />
+    <Compile Include="SubjectData.cs" />
+    <Compile Include="LecturerData.cs" />
+    <Compile Include="SubscriptionData.cs" />
+    <Compile Include="TblArea.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblAttendance.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblBalanceTransaction.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblBranch.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblCardCategory.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblChargeCard.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblCollege.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblContactUsMsg.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblEmployee.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblEvaluation.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblEvaluationQuestion.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblEvaluationQuestionAnswer.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblFavoriteSession.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblGovernorate.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblHall.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblHelpQuestion.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblInstitute.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblInvoice.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblLecturer.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblLecturerPaymentMethod.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblLecturerSubject.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblMajor.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblManualInvoice.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblNotification.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblPermission.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblPermissionCategory.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblPermissionUser.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblPrivateSession.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblProduct.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblProductCategory.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblRevenue.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblScreen.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblScreenHall.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblSession.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblSessionDetail.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblSessionPricing.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblSessionTime.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblStudent.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblStudentComplaint.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblSubject.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblSubscription.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblUniversity.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblUser.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblUserCategory.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblUserCredential.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblUserType.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TblVoucher.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TimelineSessionData.cs" />
+    <Compile Include="TimelineSessionDetailsData.cs" />
+    <Compile Include="TransactionsData.cs" />
+    <Compile Include="TransactionType.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UniversityData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <EntityDeploy Include="SMUModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SMUModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SMUModel.edmx.diagram">
+      <DependentUpon>SMUModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SMUModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SMUModel.edmx</DependentUpon>
+      <LastGenOutput>SMUModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SMUModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SMUModel.edmx</DependentUpon>
+      <LastGenOutput>SMUModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

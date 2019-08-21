@@ -1,0 +1,64 @@
+﻿@model SMUModels.TblEvaluationQuestion
+@{
+    ViewBag.Title = "EditEvaluationQues";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header">تعديل سؤال تقييم</h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="/Home/Index"><i class="fa fa-home"></i></a></li>
+                    <li><a href="/University/Index">الرئيسية</a></li>
+                    <li class="active"><a href="/Evaluation/EditEvaluationQues">تعديل سؤال تقييم</a></li>
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">تعديل سؤال تقييم</h3>
+                    </div>
+                    <form id="EditEvaluationQuesForm" action="/Evaluation/EditEvaluationQues" method="post" class="form-horizontal ls_form" enctype='multipart/form-data'>
+                        <input type="hidden" name="EvaluationQuesID" value="@Model.ID" />
+                        <div class="panel-body form_view">
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">سؤال التقييم عربي</label>
+                                    <div class="col-md-10">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="QuestionAr" name="QuestionAr" value="@Model.QuestionAr" placeholder="ادخل السؤال عربي" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">اسم سؤال التقييم إنجليزي</label>
+                                    <div class="col-md-10">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="QuestionEn" name="QuestionEn" value="@Model.QuestionEn" placeholder="ادخل السؤال إنجليزي" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style=" margin: 20px 30px 40px 50px; ">
+                                <button class="submit btn-primary btn" type="submit" name="submit">حفظ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿@*@model System.Web.Mvc.HandleErrorInfo
+
+    @{
+        ViewBag.Title = "Error";
+    }
+
+    <h1 class="text-danger">Error.</h1>
+    <h2 class="text-danger">An error occurred while processing your request.</h2>*@
+
+@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div id="outer-wrapper">
+                <div id="inner-wrapper">
+                    <div class="not-found">
+                        <h1>5  <i class="fa fa-meh-o"></i> <i class="fa fa-meh-o"></i></h1>
+                        <p>Sorry, its not you, it's us</p>
+                        <a href="index.html"><i class="fa fa-arrow-left"></i> Go Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

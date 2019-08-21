@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header">اضافة منطقه</h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="/Home/Index"><i class="fa fa-home"></i></a></li>
+                    <li><a href="/Area/Index">الرئيسية</a></li>
+                    <li class="active"><a href="/Area/Create">اضافة منطقه</a></li>
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">اضافة منطقه</h3>
+                    </div>
+                    <form id="AddNewArea" action="/Area/Create" method="post" class="form-horizontal ls_form" enctype='multipart/form-data'>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

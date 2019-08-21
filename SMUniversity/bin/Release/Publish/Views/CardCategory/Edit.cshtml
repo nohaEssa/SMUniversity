@@ -1,0 +1,86 @@
+﻿@model SMUModels.TblCardCategory
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header">تعديل فئة كارت</h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="/Home/Index"><i class="fa fa-home"></i></a></li>
+                    <li><a href="/CardCategory/Index">الرئيسية</a></li>
+                    <li class="active"><a href="/CardCategory/Edit">تعديل فئة كارت</a></li>
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">تعديل فئة كارت</h3>
+                    </div>
+                    <form id="EditCardCategory" action="/CardCategory/Edit" method="post" class="form-horizontal ls_form" enctype='multipart/form-data'>
+                        <input type="hidden" value="@Model.ID" name="ID" />
+                        <div class="panel-body form_view">
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">اسم فئة كارت عربي</label>
+                                    <div class="col-md-10">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="Title" name="Title" placeholder="ادخل اسم فئة كارت عربي" value="@Model.Title" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">اسم الفئة كارت إنجليزي</label>
+                                    <div class="col-md-10">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="TitleEn" name="TitleEn" placeholder="ادخل اسم الفئة كارت إنجليزي" value="@Model.TitleEn" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">السعر</label>
+                                    <div class="col-md-10">
+                                        <input type="number"
+                                               class="form-control validate[required] text-input"
+                                               id="Price" name="Price" placeholder="السعر" value="@Model.Price" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">عدد الكروت</label>
+                                    <div class="col-md-10">
+                                        <input type="number"
+                                               class="form-control validate[required] text-input"
+                                               id="ChargeCardsNo" name="ChargeCardsNo" placeholder="ادخل عدد الكروت من هذه الفئه">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style=" margin: 20px 30px 40px 50px; ">
+                                <button class="submit btn-primary btn" type="submit" name="submit">حفظ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
