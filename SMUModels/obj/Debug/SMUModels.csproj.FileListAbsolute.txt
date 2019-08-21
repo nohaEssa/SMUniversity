@@ -9,3 +9,15 @@ D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\obj\Debug\SMUModels.csproj
 D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\obj\Debug\SMUModels.csproj.CopyComplete
 D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\obj\Debug\SMUModels.dll
 D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\obj\Debug\SMUModels.pdb
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\SMUModels.dll.config
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\SMUModels.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\SMUModels.pdb
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\EntityFramework.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\EntityFramework.xml
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\obj\Debug\SMUModels.csprojAssemblyReference.cache
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\obj\Debug\SMUModels.csproj.CoreCompileInputs.cache
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\obj\Debug\SMUModels.csproj.CopyComplete
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\obj\Debug\SMUModels.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\obj\Debug\SMUModels.pdb
