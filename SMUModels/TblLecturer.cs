@@ -35,6 +35,7 @@ namespace SMUModels
             this.TblSessions4 = new HashSet<TblSession>();
             this.TblSessions5 = new HashSet<TblSession>();
             this.TblVouchers = new HashSet<TblVoucher>();
+            this.TblRegisterDevices = new HashSet<TblRegisterDevice>();
         }
     
         public int ID { get; set; }
@@ -100,5 +101,7 @@ namespace SMUModels
         public virtual ICollection<TblSession> TblSessions5 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblVoucher> TblVouchers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblRegisterDevice> TblRegisterDevices { get; set; }
     }
 }

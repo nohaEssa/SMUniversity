@@ -242,5 +242,49 @@ namespace SMUniversity.Controllers
             }
         }
 
+        public JsonResult Delete(int ProductID)
+        {
+            try
+            {
+                if (ProductID > 0)
+                {
+                    TblProduct ProductObj = _Context.TblProducts.Where(a => a.ID == ProductID).SingleOrDefault();
+                    if (ProductObj != null)
+                    {
+                        try
+                        {
+                            TempData["notice"] = "تم حذف المنتج بنجاح";
+
+                            _Context.TblProducts.Remove(ProductObj);
+                            _Context.SaveChanges();
+
+                            return Json("OK");
+                        }
+                        catch (Exception ex)
+                        {
+                            TempData["notice"] = "غير قادر علي الحذف, المنتج مرتبط ببيانات خاصه بالفواتير";
+                            return Json("OK");
+                        }
+
+                    }
+                    else
+                    {
+                        TempData["notice"] = "Product not found!";
+                        return Json("ERROR");
+                    }
+                }
+                else
+                {
+                    TempData["notice"] = "Product not found!";
+                    return Json("ERROR");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["notice"] = "ERROR while processing!";
+                return Json("ERROR");
+            }
+        }
+
     }
 }

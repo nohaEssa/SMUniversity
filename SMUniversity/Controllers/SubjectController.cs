@@ -249,5 +249,49 @@ namespace SMUniversity.Controllers
             }
         }
 
+        public JsonResult Delete(int SubjectID)
+        {
+            try
+            {
+                if (SubjectID > 0)
+                {
+                    TblSubject SubjectObj = _Context.TblSubjects.Where(a => a.ID == SubjectID).SingleOrDefault();
+                    if (SubjectObj != null)
+                    {
+                        try
+                        {
+                            TempData["notice"] = "تم حذف الماده : " + SubjectObj.NameAr + " بنجاح";
+
+                            _Context.TblSubjects.Remove(SubjectObj);
+                            _Context.SaveChanges();
+
+                            return Json("OK");
+                        }
+                        catch (Exception ex)
+                        {
+                            TempData["notice"] = "غير قادر علي الحذف, الماده مرتبطه ببيانات خاصه بالمحاضرات الخاصه والمحاضرين";
+                            return Json("OK");
+                        }
+
+                    }
+                    else
+                    {
+                        TempData["notice"] = "Subject not found!";
+                        return Json("ERROR");
+                    }
+                }
+                else
+                {
+                    TempData["notice"] = "Subject not found!";
+                    return Json("ERROR");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["notice"] = "ERROR while processing!";
+                return Json("ERROR");
+            }
+        }
+
     }
 }

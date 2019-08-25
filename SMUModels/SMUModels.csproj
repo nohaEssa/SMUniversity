@@ -37,8 +37,33 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PushSharp.Amazon, Version=4.0.10.0, Culture=neutral, PublicKeyToken=cf74b75eab2c0170, processorArchitecture=MSIL">
+      <HintPath>..\packages\PushSharp.4.0.10\lib\net45\PushSharp.Amazon.dll</HintPath>
+    </Reference>
+    <Reference Include="PushSharp.Apple, Version=4.0.10.0, Culture=neutral, PublicKeyToken=cf74b75eab2c0170, processorArchitecture=MSIL">
+      <HintPath>..\packages\PushSharp.4.0.10\lib\net45\PushSharp.Apple.dll</HintPath>
+    </Reference>
+    <Reference Include="PushSharp.Blackberry, Version=4.0.10.0, Culture=neutral, PublicKeyToken=cf74b75eab2c0170, processorArchitecture=MSIL">
+      <HintPath>..\packages\PushSharp.4.0.10\lib\net45\PushSharp.Blackberry.dll</HintPath>
+    </Reference>
+    <Reference Include="PushSharp.Core, Version=4.0.10.0, Culture=neutral, PublicKeyToken=cf74b75eab2c0170, processorArchitecture=MSIL">
+      <HintPath>..\packages\PushSharp.4.0.10\lib\net45\PushSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="PushSharp.Firefox, Version=4.0.10.0, Culture=neutral, PublicKeyToken=cf74b75eab2c0170, processorArchitecture=MSIL">
+      <HintPath>..\packages\PushSharp.4.0.10\lib\net45\PushSharp.Firefox.dll</HintPath>
+    </Reference>
+    <Reference Include="PushSharp.Google, Version=4.0.10.0, Culture=neutral, PublicKeyToken=cf74b75eab2c0170, processorArchitecture=MSIL">
+      <HintPath>..\packages\PushSharp.4.0.10\lib\net45\PushSharp.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="PushSharp.Windows, Version=4.0.10.0, Culture=neutral, PublicKeyToken=cf74b75eab2c0170, processorArchitecture=MSIL">
+      <HintPath>..\packages\PushSharp.4.0.10\lib\net45\PushSharp.Windows.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -55,9 +80,11 @@
     <Compile Include="BranchData.cs" />
     <Compile Include="CardCategoryData.cs" />
     <Compile Include="ChargeCardData.cs" />
+    <Compile Include="Classes\AndroidGCMPushNotification.cs" />
     <Compile Include="Classes\CustomServerSideSearchAction.cs" />
     <Compile Include="Classes\DateTimeDependsOnTimeZone.cs" />
     <Compile Include="Classes\jQueryDataTableParamModel.cs" />
+    <Compile Include="Classes\PushNotification.cs" />
     <Compile Include="CollegeData.cs" />
     <Compile Include="EmployeeData.cs" />
     <Compile Include="Enum\EnumCollection.cs" />
@@ -100,6 +127,7 @@
     <Compile Include="ProductCategoryData.cs" />
     <Compile Include="HallRentObj.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveTokenData.cs" />
     <Compile Include="ScreenData.cs" />
     <Compile Include="SessionCourseData.cs" />
     <Compile Include="SessionData.cs" />
@@ -213,6 +241,9 @@
     <Compile Include="TblProductCategory.cs">
       <DependentUpon>SMUModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TblRegisterDevice.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TblRevenue.cs">
       <DependentUpon>SMUModel.tt</DependentUpon>
     </Compile>
@@ -266,6 +297,7 @@
     </Compile>
     <Compile Include="TimelineSessionData.cs" />
     <Compile Include="TimelineSessionDetailsData.cs" />
+    <Compile Include="TodaysSessionData.cs" />
     <Compile Include="TransactionsData.cs" />
     <Compile Include="TransactionType.cs">
       <DependentUpon>SMUModel.tt</DependentUpon>
@@ -298,5 +330,6 @@
       <LastGenOutput>SMUModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

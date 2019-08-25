@@ -138,5 +138,51 @@ namespace SMUniversity.Controllers
                 return RedirectToAction("Edit", new { GovernorateID = _Data.GovernorateID });
             }
         }
+
+        public JsonResult Delete(int GovernorateID)
+        {
+            try
+            {
+                if (GovernorateID > 0)
+                {
+                    //TempData["notice"] = "غير قادر علي الحذف, المحافظه مرتيطه ببيانات في المناطق والطلاب";
+                    //return Json("OK");
+                    TblGovernorate GovernorateObj = _Context.TblGovernorates.Where(a => a.ID == GovernorateID).SingleOrDefault();
+                    if (GovernorateObj != null)
+                    {
+                        try
+                        {
+                            TempData["notice"] = "تم حذف محافظة " + GovernorateObj.NameAr + " بنجاح";
+
+                            _Context.TblGovernorates.Remove(GovernorateObj);
+                            _Context.SaveChanges();
+
+                            return Json("OK");
+                        }
+                        catch (Exception ex)
+                        {
+                            TempData["notice"] = "غير قادر علي الحذف, المحافظه مرتيطه ببيانات في المناطق والطلاب";
+                            return Json("OK");
+                        }
+
+                    }
+                    else
+                    {
+                        TempData["notice"] = "Governorate not found!";
+                        return Json("ERROR");
+                    }
+                }
+                else
+                {
+                    TempData["notice"] = "Governorate not found!";
+                    return Json("ERROR");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["notice"] = "ERROR while processing!";
+                return Json("ERROR");
+            }
+        }
     }
 }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "273923501686",
+    "firebase_url": "https://smart-mind-uni.firebaseio.com",
+    "project_id": "smart-mind-uni",
+    "storage_bucket": "smart-mind-uni.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273923501686:android:16f7893271f8fb98",
+        "android_client_info": {
+          "package_name": "com.albaitgroup.smartmindKW"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "273923501686-f3obehn53l7e544ll8oc5qhodosjm09i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXzs-ohLMwNhYuorwk_kswsmcn1dPl-zg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "273923501686-f3obehn53l7e544ll8oc5qhodosjm09i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

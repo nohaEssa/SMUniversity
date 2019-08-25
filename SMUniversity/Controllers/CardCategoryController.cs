@@ -194,5 +194,23 @@ namespace SMUniversity.Controllers
             }
         }
 
+        public JsonResult Delete(int CardCatID)
+        {
+            try
+            {
+                TblCardCategory _CardCategory = _Context.TblCardCategories.Where(a => a.ID == CardCatID).FirstOrDefault();
+
+                _Context.TblCardCategories.Remove(_CardCategory);
+                _Context.SaveChanges();
+
+                return Json("OK");
+            }
+            catch (Exception ex)
+            {
+                TempData["notice"] = "لم يتم حذف فئة الكارت لإرتباطها ببيانات اخري";
+                return Json("OK");
+            }
+        }
+
     }
 }

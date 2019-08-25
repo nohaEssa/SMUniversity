@@ -254,6 +254,9 @@
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblUserCr__UserT__39237A9A" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblUserCr__UserT__69FBBC1F" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblUserCr__UserT__6C190EBB" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblRegisterDevice" Width="1.5" PointX="17.25" PointY="51.125" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblRegist__Lectu__0169315C" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblRegist__Stude__00750D23" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

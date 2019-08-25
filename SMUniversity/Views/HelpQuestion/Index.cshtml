@@ -15,6 +15,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 
+<input type="hidden" id="HelpQuesID" />
+
 <div id="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -58,7 +60,8 @@
                                     <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
                                     <td>
                                         <a href="@Url.Action("Edit", "HelpQuestion", new { HelpQuesID = item.ID })" class="btn btn-xs btn-warning" title="تعديل السؤال" id="btnEditHelpQues"><i class="fa fa-pencil-square-o"></i></a>
-                                        <a href="@Url.Action("Delete", "HelpQuestion", new { HelpQuesID = item.ID })" class="btn btn-xs btn-danger" title="حذف السؤال" id="btnDeleteHelpQues"><i class="fa fa-minus"></i></a>
+                                        @*<a href="@Url.Action("Delete", "HelpQuestion", new { HelpQuesID = item.ID })" class="btn btn-xs btn-danger" title="حذف السؤال" id="btnDeleteHelpQues"><i class="fa fa-minus"></i></a>*@
+                                        <a href="javascript:showModal('@item..ID')" class="btn btn-xs btn-danger" id="DeleteHelpQues_@item.ID"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
                             }
@@ -69,3 +72,46 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    function showModal(ID, Name) {
+        debugger
+        //$('#submitModalRequest').hide();
+        //$('.remodal-cancel').text('Close');
+
+        $('#HModalTitle').text('حذف فئة الكارت ' + Name);
+        $('#PModalBody').text('سيتم الحذف فقط اذا كان السؤال غير مرتبط ببيانات خاصه بشكاوي الطلبه');
+        $("#DeleteHelpQues_" + ID).attr("href", "#reModalRed");
+        $('#HelpQuesID').val(ID);
+        clickOnModal(ID);
+        return false;
+    }
+
+    function clickOnModal(ID) {
+        var href = $('#DeleteHelpQues_' + ID).attr('href');
+        window.location.href = href; //causes the browser to refresh and load the requested url
+        return false;
+    }
+
+    $(document).on('confirm', '.remodal', function () {
+        debugger
+        $.ajax({
+            type: "POST",
+            url: "/HelpQuestion/Delete",
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: "{HelpQuesID:'" + $('#HelpQuesID').val() +
+                "'}",
+            dataType: "json",
+            processData: false,
+            success: function (response) {
+                debugger
+                location.reload();
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });
+    });
+</script>

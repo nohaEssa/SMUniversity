@@ -14,8 +14,17 @@ C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\SMUModels.dll
 C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\SMUModels.pdb
 C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\EntityFramework.dll
 C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\Newtonsoft.Json.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\PushSharp.Amazon.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\PushSharp.Apple.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\PushSharp.Blackberry.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\PushSharp.Core.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\PushSharp.Firefox.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\PushSharp.Google.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\PushSharp.Windows.dll
 C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\EntityFramework.xml
 C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Debug\Newtonsoft.Json.xml
 C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\obj\Debug\SMUModels.csprojAssemblyReference.cache
 C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\obj\Debug\SMUModels.csproj.CoreCompileInputs.cache
 C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\obj\Debug\SMUModels.csproj.CopyComplete

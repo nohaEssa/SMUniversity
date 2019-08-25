@@ -262,5 +262,51 @@ namespace SMUniversity.Controllers
             }
         }
 
+        public JsonResult Delete(int HallID)
+        {
+            try
+            {
+                if (HallID > 0)
+                {
+                    //TempData["notice"] = "غير قادر علي الحذف, المحافظه مرتيطه ببيانات في المناطق والطلاب";
+                    //return Json("OK");
+                    TblHall HallObj = _Context.TblHalls.Where(a => a.ID == HallID).SingleOrDefault();
+                    if (HallObj != null)
+                    {
+                        try
+                        {
+                            TempData["notice"] = "تم حذف قاعه " + HallObj.HallCodeAr + " بنجاح";
+
+                            _Context.TblHalls.Remove(HallObj);
+                            _Context.SaveChanges();
+
+                            return Json("OK");
+                        }
+                        catch (Exception ex)
+                        {
+                            TempData["notice"] = "غير قادر علي الحذف, القاعه مرتيطه ببيانات في ببيانات الفروع او المحاضرات او السندات اليدوية او الفواتير او الشاشات";
+                            return Json("OK");
+                        }
+
+                    }
+                    else
+                    {
+                        TempData["notice"] = "Hall not found!";
+                        return Json("ERROR");
+                    }
+                }
+                else
+                {
+                    TempData["notice"] = "Hall not found!";
+                    return Json("ERROR");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["notice"] = "ERROR while processing!";
+                return Json("ERROR");
+            }
+        }
+
     }
 }

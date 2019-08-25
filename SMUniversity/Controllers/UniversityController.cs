@@ -159,5 +159,49 @@ namespace SMUniversity.Controllers
             }
         }
 
+        public JsonResult Delete(int UniversityID)
+        {
+            try
+            {
+                if (UniversityID > 0)
+                {
+                    TblUniversity UniversityObj = _Context.TblUniversities.Where(a => a.ID == UniversityID).SingleOrDefault();
+                    if (UniversityObj != null)
+                    {
+                        try
+                        {
+                            TempData["notice"] = "تم حذف الجامعه : " + UniversityObj.NameAr + " بنجاح";
+
+                            _Context.TblUniversities.Remove(UniversityObj);
+                            _Context.SaveChanges();
+
+                            return Json("OK");
+                        }
+                        catch (Exception ex)
+                        {
+                            TempData["notice"] = "غير قادر علي الحذف, الجامعه مرتبطه ببيانات خاصه بالكليات والطلاب";
+                            return Json("OK");
+                        }
+
+                    }
+                    else
+                    {
+                        TempData["notice"] = "University not found!";
+                        return Json("ERROR");
+                    }
+                }
+                else
+                {
+                    TempData["notice"] = "University not found!";
+                    return Json("ERROR");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["notice"] = "ERROR while processing!";
+                return Json("ERROR");
+            }
+        }
+
     }
 }

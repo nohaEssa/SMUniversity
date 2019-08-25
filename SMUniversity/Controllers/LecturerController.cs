@@ -67,6 +67,10 @@ namespace SMUniversity.Controllers
                                 LecturerObj.ProfilePic = Respo.Message;
                             }
                         }
+                        else
+                        {
+                            LecturerObj.ProfilePic = "https://smuapitest.smartmindkw.com/Content/Images/Lecturer/DefaultLecturerPhoto.png";
+                        }
 
                         _Context.TblLecturers.Add(LecturerObj);
 
@@ -408,5 +412,55 @@ namespace SMUniversity.Controllers
                 return Respo;
             }
         }
+
+        public JsonResult Delete(int LecturerID)
+        {
+            try
+            {
+                if (LecturerID > 0)
+                {
+                    //TempData["notice"] = "غير قادر علي الحذف, المحافظه مرتيطه ببيانات في المناطق والطلاب";
+                    //return Json("OK");
+                    TblLecturer LecturerObj = _Context.TblLecturers.Where(a => a.ID == LecturerID).SingleOrDefault();
+                    if (LecturerObj != null)
+                    {
+                        try
+                        {
+                            TempData["notice"] = "تم حذف المحاضر بنجاح";
+
+                            _Context.TblUserCredentials.Remove(_Context.TblUserCredentials.Where(a => a.ID == LecturerID).FirstOrDefault());
+                            _Context.SaveChanges();
+
+                            _Context.TblLecturers.Remove(LecturerObj);
+                            _Context.SaveChanges();
+
+                            return Json("OK");
+                        }
+                        catch (Exception ex)
+                        {
+                            TempData["notice"] = "غير قادر علي الحذف, المحاضر مرتبط ببيانات خاصه بالمواد وطرق الحساب والمحاضرات والسندات اليدوية والحصص الخاصه";
+                            return Json("OK");
+                        }
+
+                    }
+                    else
+                    {
+                        TempData["notice"] = "Lecturer not found!";
+                        return Json("ERROR");
+                    }
+                }
+                else
+                {
+                    TempData["notice"] = "Lecturer not found!";
+                    return Json("ERROR");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["notice"] = "ERROR while processing!";
+                return Json("ERROR");
+            }
+        }
+
     }
 }

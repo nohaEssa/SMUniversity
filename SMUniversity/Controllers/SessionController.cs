@@ -574,5 +574,59 @@ namespace SMUniversity.Controllers
                 return Respo;
             }
         }
+
+        public JsonResult Delete(int SessionID)
+        {
+            try
+            {
+                if (SessionID > 0)
+                {
+                    TblSession SessionObj = _Context.TblSessions.Where(a => a.ID == SessionID).SingleOrDefault();
+                    if (SessionObj != null)
+                    {
+                        try
+                        {
+                            TempData["notice"] = "تم حذف المحاضره بنجاح";
+
+                            _Context.TblSessionPricings.RemoveRange(_Context.TblSessionPricings.Where(a => a.SessionID == SessionID).ToList());
+                            _Context.SaveChanges();
+
+                            _Context.TblSessionTimes.RemoveRange(_Context.TblSessionTimes.Where(a => a.SessionID == SessionID).ToList());
+                            _Context.SaveChanges();
+
+                            _Context.TblSessionDetails.RemoveRange(_Context.TblSessionDetails.Where(a => a.SessionID == SessionID).ToList());
+                            _Context.SaveChanges();
+
+                            _Context.TblSessions.Remove(SessionObj);
+                            _Context.SaveChanges();
+
+                            return Json("OK");
+                        }
+                        catch (Exception ex)
+                        {
+                            TempData["notice"] = "غير قادر علي الحذف, المحاضره مرتبط ببيانات خاصه بالفواتير";
+                            return Json("OK");
+                        }
+
+                    }
+                    else
+                    {
+                        TempData["notice"] = "Session not found!";
+                        return Json("ERROR");
+                    }
+                }
+                else
+                {
+                    TempData["notice"] = "Session not found!";
+                    return Json("ERROR");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["notice"] = "ERROR while processing!";
+                return Json("ERROR");
+            }
+        }
+
     }
 }

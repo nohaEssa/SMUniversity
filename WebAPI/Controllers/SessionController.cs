@@ -764,7 +764,7 @@ namespace WebAPI.Controllers
                         LecturerID = item.LecturerID,
                         LecturerName = item.TblLecturer.FirstNameAr + " " + item.TblLecturer.SecondNameAr + " " + item.TblLecturer.ThirdNameAr,
                         LecturerNameEn = item.TblLecturer.FirstNameEn + " " + item.TblLecturer.SecondNameEn + " " + item.TblLecturer.ThirdNameEn,
-                        LecturerPic = item.TblLecturer.ProfilePic,
+                        LecturerPic = item.TblLecturer.ProfilePic.StartsWith("http://") ? item.TblLecturer.ProfilePic : ("http://smuapitest.smartmindkw.com" + item.TblLecturer.ProfilePic),
                         //LecturerRate = _Context.TblEvaluations.Where(a => a.TblSession.LecturerID == item.ID).GroupBy(a => a.TblEvaluationQuestionAnswer.Value).OrderByDescending(a => a.Key).Max(a => a.Key),
                         LecturerRate = 4.5,
                         LecturesCount = item.LecturesCount,
@@ -781,8 +781,8 @@ namespace WebAPI.Controllers
                     }
                     else
                     {
-                        data.SubjectPicture = "http://smuapitest.smartmindkw.com" + item.Picture;
-                        data.SessionPicture = "http://smuapitest.smartmindkw.com" + item.Picture;
+                        data.SubjectPicture = "http://smuapitest.smartmindkw.com/" + item.Picture;
+                        data.SessionPicture = "http://smuapitest.smartmindkw.com/" + item.Picture;
                     }
                     Data.Add(data);
                 }

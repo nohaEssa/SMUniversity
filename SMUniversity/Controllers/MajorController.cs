@@ -164,5 +164,50 @@ namespace SMUniversity.Controllers
                 return RedirectToAction("Edit", new { MajorID = _Data.MajorID });
             }
         }
+
+        public JsonResult Delete(int MajorID)
+        {
+            try
+            {
+                if (MajorID > 0)
+                {
+                    TblMajor MajorObj = _Context.TblMajors.Where(a => a.ID == MajorID).SingleOrDefault();
+                    if (MajorObj != null)
+                    {
+                        try
+                        {
+                            TempData["notice"] = "تم حذف التخصص بنجاح";
+
+                            _Context.TblMajors.Remove(MajorObj);
+                            _Context.SaveChanges();
+
+                            return Json("OK");
+                        }
+                        catch (Exception ex)
+                        {
+                            TempData["notice"] = "غير قادر علي الحذف, التخصص مرتبط ببيانات خاصه بالكليات والمواد والطلبه";
+                            return Json("OK");
+                        }
+
+                    }
+                    else
+                    {
+                        TempData["notice"] = "Major not found!";
+                        return Json("ERROR");
+                    }
+                }
+                else
+                {
+                    TempData["notice"] = "Major not found!";
+                    return Json("ERROR");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["notice"] = "ERROR while processing!";
+                return Json("ERROR");
+            }
+        }
+
     }
 }

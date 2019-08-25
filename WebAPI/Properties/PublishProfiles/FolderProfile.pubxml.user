@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\Al-Bait Design\SMUniversity\SMUniversity\WebAPI\bin\Release\Publish</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\SOFTCUT\source\repos\SMUniversity\WebAPI\bin\Release\Publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/HelpPage/HelpPage.css">
@@ -286,13 +286,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2018 23:38:24</publishTime>
     </File>
     <File Include="bin/SMUModels.dll">
-      <publishTime>08/16/2019 15:17:10</publishTime>
+      <publishTime>08/25/2019 08:39:39</publishTime>
     </File>
     <File Include="bin/SMUModels.dll.config">
-      <publishTime>06/29/2019 15:29:59</publishTime>
+      <publishTime>08/25/2019 07:27:02</publishTime>
     </File>
     <File Include="bin/SMUModels.pdb">
-      <publishTime>08/16/2019 15:17:10</publishTime>
+      <publishTime>08/25/2019 08:39:39</publishTime>
     </File>
     <File Include="bin/Swashbuckle.Core.dll">
       <publishTime>07/08/2017 01:30:56</publishTime>
@@ -346,10 +346,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/08/2013 16:42:28</publishTime>
     </File>
     <File Include="bin/WebAPI.dll">
-      <publishTime>08/16/2019 15:17:11</publishTime>
+      <publishTime>08/25/2019 08:39:44</publishTime>
     </File>
     <File Include="bin/WebAPI.pdb">
-      <publishTime>08/16/2019 15:17:11</publishTime>
+      <publishTime>08/25/2019 08:39:44</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>01/23/2014 23:57:34</publishTime>
@@ -478,7 +478,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2019 16:12:57</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/05/2019 08:55:23</publishTime>
+      <publishTime>08/25/2019 08:39:47</publishTime>
     </File>
   </ItemGroup>
 </Project>

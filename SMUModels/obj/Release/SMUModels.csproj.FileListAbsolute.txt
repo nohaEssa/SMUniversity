@@ -10,3 +10,24 @@ D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\obj\Release\SMUModels.cspr
 D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\obj\Release\SMUModels.csproj.CopyComplete
 D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\obj\Release\SMUModels.dll
 D:\Al-Bait Design\SMUniversity\SMUniversity\SMUModels\obj\Release\SMUModels.pdb
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Release\SMUModels.dll.config
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Release\SMUModels.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Release\SMUModels.pdb
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Release\EntityFramework.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Release\Newtonsoft.Json.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Release\PushSharp.Amazon.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Release\PushSharp.Apple.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Release\PushSharp.Blackberry.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Release\PushSharp.Core.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Release\PushSharp.Firefox.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Release\PushSharp.Google.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Release\PushSharp.Windows.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Release\EntityFramework.xml
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\bin\Release\Newtonsoft.Json.xml
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\obj\Release\SMUModels.csprojAssemblyReference.cache
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\obj\Release\SMUModels.csproj.CoreCompileInputs.cache
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\obj\Release\SMUModels.csproj.CopyComplete
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\obj\Release\SMUModels.dll
+C:\Users\SOFTCUT\source\repos\SMUniversity\SMUModels\obj\Release\SMUModels.pdb

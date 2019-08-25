@@ -206,5 +206,56 @@ namespace SMUniversity.Controllers
                 return RedirectToAction("Edit", new { ScreenID = _Data["ScreenID"] });
             }
         }
+
+        public JsonResult Delete(int ScreenID)
+        {
+            try
+            {
+                if (ScreenID > 0)
+                {
+                    TblScreen ScreenObj = _Context.TblScreens.Where(a => a.ID == ScreenID).SingleOrDefault();
+                    if (ScreenObj != null)
+                    {
+                        try
+                        {
+                            TempData["notice"] = "تم حذف الشاشه بنجاح";
+
+                            _Context.TblUserCredentials.Remove(_Context.TblUserCredentials.Where(a => a.ID == ScreenObj.CredentialsID).FirstOrDefault());
+                            _Context.SaveChanges();
+
+                            _Context.TblScreenHalls.RemoveRange(_Context.TblScreenHalls.Where(a => a.ScreenID == ScreenID).ToList());
+                            _Context.SaveChanges();
+
+                            _Context.TblScreens.Remove(ScreenObj);
+                            _Context.SaveChanges();
+
+                            return Json("OK");
+                        }
+                        catch (Exception ex)
+                        {
+                            TempData["notice"] = "غير قادر علي الحذف, الشاشه مرتبط ببيانات خاصه بالفواتير";
+                            return Json("OK");
+                        }
+
+                    }
+                    else
+                    {
+                        TempData["notice"] = "Screen not found!";
+                        return Json("ERROR");
+                    }
+                }
+                else
+                {
+                    TempData["notice"] = "Screen not found!";
+                    return Json("ERROR");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["notice"] = "ERROR while processing!";
+                return Json("ERROR");
+            }
+        }
+
     }
 }

@@ -73,5 +73,6 @@ namespace SMUModels
         public virtual DbSet<TblUserType> TblUserTypes { get; set; }
         public virtual DbSet<TblVoucher> TblVouchers { get; set; }
         public virtual DbSet<TransactionType> TransactionTypes { get; set; }
+        public virtual DbSet<TblRegisterDevice> TblRegisterDevices { get; set; }
     }
 }

@@ -12,6 +12,7 @@ using System.Web.Script.Serialization;
 using System.Configuration;
 using System.Web.Configuration;
 using System.Web;
+using SMUModels.Classes;
 
 namespace WebAPI.Controllers
 {
@@ -113,6 +114,15 @@ namespace WebAPI.Controllers
                                         //AccessToken = _AccessToken
                                     };
 
+                                        string AddTokenResult = AddDevice(_Student.ID, 0, _Params.Token, _Params.DeviceTypeID);
+                                        string TitleAr = "مرحبا بكم في تطبيق معهد سمارت مايند الجامعه";
+                                        string TitleEn = "Welcome to Smart Mind University";
+                                        string DescriptionAr = "نحرص على تقديم أفضل معايير الجودة بالتعليم بمتابعة حريصة لمستويات أبنائنا الطلاب";
+                                        string DescriptionEn = "We are keen to provide the best quality standards in education by following carefully the levels of our students";
+
+                                        Push(_Student.ID, 0, TitleAr, TitleEn, DescriptionAr, DescriptionEn, 0);
+
+
                                     _resultHandler.IsSuccessful = true;
                                     _resultHandler.Result = Data;
                                     _resultHandler.MessageAr = "OK";
@@ -153,6 +163,15 @@ namespace WebAPI.Controllers
                                         UserType = _UserCred.UserType,
                                         //AccessToken = _AccessToken
                                     };
+
+                                    string AddTokenResult = AddDevice(0, _Lecturer.ID, _Params.Token, _Params.DeviceTypeID);
+                                    string TitleAr = "مرحبا بك معلم الأجيال يسعدنا تعاونك معنا";
+                                    string TitleEn = "Welcome to the teacher of generations";
+                                    string DescriptionAr = "نحرص على تقديم أفضل معايير الجودة بالتعليم بمتابعة حريصة لمستويات أبنائنا الطلاب";
+                                    string DescriptionEn = "We are keen to provide the best quality standards in education by following carefully the levels of our students";
+
+                                    Push(0, _Lecturer.ID, TitleAr, TitleEn, DescriptionAr, DescriptionEn, 0);
+
 
                                     _resultHandler.IsSuccessful = true;
                                     _resultHandler.Result = Data;
@@ -232,6 +251,8 @@ namespace WebAPI.Controllers
                                         UserType = _UserCred.UserType,
                                         //AccessToken = _AccessToken
                                     };
+
+                                    string AddTokenResult = AddDevice(0, _Employee.ID, _Params.Token, _Params.DeviceTypeID);
 
                                     _resultHandler.IsSuccessful = true;
                                     _resultHandler.Result = Data;
@@ -397,5 +418,82 @@ namespace WebAPI.Controllers
 
         //    return _TokenObj;
         //}
+
+        private string AddDevice(int? StudentID, int? LecturerID, string Token, int DeviceTypeID)
+        {
+            string Result = "";
+            try
+            {
+                if ((StudentID > 0 || LecturerID > 0) && !string.IsNullOrEmpty(Token) && DeviceTypeID > 0)
+                {
+                    TblRegisterDevice obj = new TblRegisterDevice();
+                    if (StudentID > 0)
+                    {
+                        obj = _Context.TblRegisterDevices.Where(a => (a.Token.Equals(Token) && a.LecturerID == null) || (a.Token.Equals(Token) && a.StudentID == StudentID && a.LecturerID == null)).FirstOrDefault();
+                        //obj = _Context.TblRegisterDevices.Where(a => a.Token.Equals(Token) && a.StudentID == StudentID).FirstOrDefault();
+                    }
+                    else if (LecturerID > 0)
+                    {
+                        obj = _Context.TblRegisterDevices.Where(a => (a.Token.Equals(Token) && a.StudentID == null) || (a.Token.Equals(Token) && a.LecturerID == LecturerID && a.StudentID == null)).FirstOrDefault();
+                        //obj = _Context.TblRegisterDevices.Where(a => a.Token.Equals(Token) && a.LecturerID == LecturerID).FirstOrDefault();
+                    }
+
+                    if (obj != null)
+                    {
+                        obj.UpdatedDate = DateTime.Now;
+                    }
+                    else
+                    {
+                        obj = new TblRegisterDevice();
+
+                        obj.IsDeleted = false;
+                        obj.CreatedDate = DateTime.Now;
+
+                        _Context.TblRegisterDevices.Add(obj);
+                    }
+
+                    obj.Token = Token;
+                    obj.DeviceTypeID = DeviceTypeID;
+                    obj.StudentID = StudentID > 0 ? StudentID : null;
+                    obj.LecturerID = LecturerID > 0 ? LecturerID : null;
+
+                    _Context.SaveChanges();
+
+                    return "OK";
+                }
+                else
+                {
+                    Result = "Please Provide user data or notification data";
+
+                    return Result;
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        private void Push(int StudentID, int LecturerID, string TitleAr, string TitleEn, string DescriptionAr, string DescriptionEn, int NotTypeID)
+        {
+            try
+            {
+                bool res = PushNotification.Push(StudentID, LecturerID, TitleAr, TitleEn, DescriptionAr, DescriptionEn, NotTypeID);
+
+                //if (res)
+                //{
+
+                //}
+                var regNotification = new TblNotification { StudentID = StudentID, TitleAr = TitleAr, TitleEn = TitleEn, DescriptionAr = DescriptionAr, DescriptionEn = DescriptionEn, CreatedDate = DateTime.Now };
+
+                _Context.TblNotifications.Add(regNotification);
+                _Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+            }
+            
+        }
+
     }
 }

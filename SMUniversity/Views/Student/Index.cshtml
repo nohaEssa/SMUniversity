@@ -17,7 +17,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 <script src="~/Scripts/DataTables/buttons.html5.min.js"></script>
 
-
+<input type="hidden" id="StudentID" />
 
 <div id="main-content">
     <div class="container-fluid">
@@ -72,7 +72,8 @@
                                     <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
                                     <td>
                                         <a href="@Url.Action("Edit", "Student", new { StudentID = item.ID })" class="btn btn-xs btn-warning" title="تعديل الطالب" id="btnEditStudent"><i class="fa fa-pencil-square-o"></i></a>
-                                        <a href="@Url.Action("Delete", "Student", new { StudentID = item.ID })" class="btn btn-xs btn-danger" title="حذف الطالب" id="btnDeleteStudent"><i class="fa fa-minus"></i></a>
+                                        @*<a href="@Url.Action("Delete", "Student", new { StudentID = item.ID })" class="btn btn-xs btn-danger" title="حذف الطالب" id="btnDeleteStudent"><i class="fa fa-minus"></i></a>*@
+                                        <a href="javascript:showModal('@item.ID','@item.FirstName')" class="btn btn-xs btn-danger" id="DeleteStudent_@item.ID"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
                             }
@@ -83,3 +84,49 @@
         </div>
     </div>
 </div>
+
+<script>
+    function showModal(ID, Name) {
+        debugger
+        //$('#submitModalRequest').hide();
+        //$('.remodal-cancel').text('Close');
+
+        $('#HModalTitle').text('حذف الطالب ' + Name);
+        $('#PModalBody').text('سيتم الحذف فقط اذا كان الطالب غير مرتبط ببيانات خاصه بالحضور والغياب والتعاملات الماليه و شكاوي الطلبه والأشتراكات والحصص الخاصه ');
+        $("#DeleteStudent_" + ID).attr("href", "#reModalRed");
+        $('#StudentID').val(ID);
+        clickOnModal(ID);
+
+        return false;
+    }
+
+    function clickOnModal(ID) {
+        var href = $('#DeleteStudent_' + ID).attr('href');
+        window.location.href = href; //causes the browser to refresh and load the requested url
+        return false;
+    }
+
+    $(document).on('confirm', '.remodal', function () {
+        debugger
+        $.ajax({
+            type: "POST",
+            url: "/Student/Delete",
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: "{StudentID:'" + $('#StudentID').val() +
+                "'}",
+            dataType: "json",
+            processData: false,
+            success: function (response) {
+                debugger
+                location.reload();
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });
+    });
+</script>
+
+
+

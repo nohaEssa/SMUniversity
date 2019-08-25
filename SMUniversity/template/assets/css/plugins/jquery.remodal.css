@@ -63,7 +63,7 @@ html.remodal_lock, body.remodal_lock {
 
 /* Default theme font */
 
-@import url(http://fonts.googleapis.com/css?family=Exo+2:700,400&subset=latin,cyrillic);
+@import url(https://fonts.googleapis.com/css?family=Exo+2:700,400&subset=latin,cyrillic);
 
 .remodal, .remodal * {
     font-family: 'Exo 2', sans-serif;

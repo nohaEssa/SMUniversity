@@ -28,6 +28,8 @@ namespace SMUModels.ObjectData
         public int BranchID { get; set; }
         public bool StudentType { get; set; }
         public int CardCategoryID { get; set; }
+        public string Token { get; set; }
+        public int DeviceTypeID { get; set; }
     }
 
     public class NameAndDOBObj

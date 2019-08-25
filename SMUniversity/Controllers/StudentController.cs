@@ -87,6 +87,10 @@ namespace SMUniversity.Controllers
                                 StudentObj.ProfilePic = Respo.Message;
                             }
                         }
+                        else
+                        {
+                            StudentObj.ProfilePic = "https://smuapitest.smartmindkw.com/Content/Images/Student/DefaultStudentPhoto.png";
+                        }
 
                         _Context.TblStudents.Add(StudentObj);
                         _Context.SaveChanges();
@@ -294,5 +298,54 @@ namespace SMUniversity.Controllers
                 return Respo;
             }
         }
+
+        public JsonResult Delete(int StudentID)
+        {
+            try
+            {
+                if (StudentID > 0)
+                {
+                    TblStudent StudentObj = _Context.TblStudents.Where(a => a.ID == StudentID).SingleOrDefault();
+                    if (StudentObj != null)
+                    {
+                        try
+                        {
+                            TempData["notice"] = "تم حذف الطالب " + (StudentObj.FirstName + " " + StudentObj.SecondName + " " + StudentObj.ThirdName);
+
+                            _Context.TblUserCredentials.Remove(_Context.TblUserCredentials.Where(a => a.ID == StudentObj.CredentialsID).FirstOrDefault());
+
+                            _Context.TblNotifications.RemoveRange(_Context.TblNotifications.Where(a => a.StudentID == StudentID).ToList());
+
+                            _Context.TblStudents.Remove(StudentObj);
+                            _Context.SaveChanges();
+
+                            return Json("OK");
+                        }
+                        catch (Exception ex)
+                        {
+                            TempData["notice"] = "غير قادر علي الحذف, الطالب مرتبط ببيانات خاصه بالحضور والغياب والتعاملات الماليه و شكاوي الطلبه والأشتراكات والحصص الخاصه";
+                            return Json("OK");
+                        }
+
+                    }
+                    else
+                    {
+                        TempData["notice"] = "Student not found!";
+                        return Json("ERROR");
+                    }
+                }
+                else
+                {
+                    TempData["notice"] = "Student not found!";
+                    return Json("ERROR");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["notice"] = "ERROR while processing!";
+                return Json("ERROR");
+            }
+        }
+
     }
 }

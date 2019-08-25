@@ -15,6 +15,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 
+<input type="hidden" id="EvaluationQuesID" />
+
 <div id="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -58,7 +60,8 @@
                                     <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
                                     <td>
                                         <a href="@Url.Action("EditEvaluationQues", "Evaluation", new { EvaluationQuesID = item.ID })" class="btn btn-xs btn-warning" title="تعديل سؤال التقييم" id="btnEditEvaluationQues"><i class="fa fa-pencil-square-o"></i></a>
-                                        <a href="@Url.Action("DeleteEvaluationQues", "Evaluation", new { EvaluationQuesID = item.ID })" class="btn btn-xs btn-danger" title="حذف سؤال التقييم" id="btnDeleteEvaluationQues"><i class="fa fa-minus"></i></a>
+                                        @*<a href="@Url.Action("DeleteEvaluationQues", "Evaluation", new { EvaluationQuesID = item.ID })" class="btn btn-xs btn-danger" title="حذف سؤال التقييم" id="btnDeleteEvaluationQues"><i class="fa fa-minus"></i></a>*@
+                                        <a href="javascript:showModal('@item.ID')" class="btn btn-xs btn-danger" id="DeleteEvaluationQues_@item.ID"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
                             }
@@ -69,3 +72,43 @@
         </div>
     </div>
 </div>
+
+<script>
+    function showModal(ID) {
+        debugger
+        $('#HModalTitle').text('حذف سؤال تقييم ');
+        $('#PModalBody').text('عند الضغط علي موافقه سيتم حذف السؤال وتقييمات الطلبه الخاصه به');
+        $("#DeleteEvaluationQues_" + ID).attr("href", "#reModalRed");
+        $('#EvaluationQuesID').val(ID);
+        clickOnModal(ID);
+        return false;
+    }
+
+    function clickOnModal(ID) {
+        var href = $('#DeleteEvaluationQues_' + ID).attr('href');
+        window.location.href = href; //causes the browser to refresh and load the requested url
+        return false;
+    }
+
+    $(document).on('confirm', '.remodal', function () {
+        debugger
+        $.ajax({
+            type: "POST",
+            url: "/Evaluation/DeleteEvaluationQues",
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: "{EvaluationQuesID:'" + $('#EvaluationQuesID').val() +
+                "'}",
+            dataType: "json",
+            processData: false,
+            success: function (response) {
+                debugger
+                location.reload();
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });
+    });
+
+</script>

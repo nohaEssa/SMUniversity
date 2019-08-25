@@ -16,6 +16,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 <script src="~/Scripts/DataTables/buttons.html5.min.js"></script>
 
+<input type="hidden" id="CardCatID" />
 
 <div id="main-content">
     <div class="container-fluid">
@@ -66,8 +67,9 @@
                                     <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
                                     <td>
                                         <a href="@Url.Action("Edit", "CardCategory", new { CardCatID = item.ID })" class="btn btn-xs btn-warning" title="تعديل المنطقه" id="btnEditCardCategory"><i class="fa fa-pencil-square-o"></i></a>
-                                        <a href="@Url.Action("Delete", "CardCategory", new { CardCatID = item.ID })" class="btn btn-xs btn-danger" title="حذف المنطقه" id="btnDeleteCardCategory"><i class="fa fa-minus"></i></a>
+                                        @*<a href="@Url.Action("Delete", "CardCategory", new { CardCatID = item.ID })" class="btn btn-xs btn-danger" title="حذف المنطقه" id="btnDeleteCardCategory"><i class="fa fa-minus"></i></a>*@
                                         <a href="@Url.Action("ChargeCardsList", "CardCategory", new { SessionID = item.ID })" class="btn btn-xs btn-success" title="كروت الشحن" id="btnViewSessions"><i class="fa fa-eye fa-lg"></i></a>
+                                        <a href="javascript:showModal('@item.ID','@item.Price')" class="btn btn-xs btn-danger" id="DeleteCardCategory_@item.ID"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
                             }
@@ -78,3 +80,45 @@
         </div>
     </div>
 </div>
+
+<script>
+    function showModal(ID, Name) {
+        debugger
+        //$('#submitModalRequest').hide();
+        //$('.remodal-cancel').text('Close');
+
+        $('#HModalTitle').text('حذف فئة الكارت ' + Name);
+        $('#PModalBody').text('سيتم الحذف فقط اذا كانت فئه الكارت غير مرتبطه ببيانات خاصه بكروت شحن');
+        $("#DeleteCardCategory_" + ID).attr("href", "#reModalRed");
+        $('#CardCatID').val(ID);
+        clickOnModal(ID);
+        return false;
+    }
+
+    function clickOnModal(ID) {
+        var href = $('#DeleteCardCategory_' + ID).attr('href');
+        window.location.href = href; //causes the browser to refresh and load the requested url
+        return false;
+    }
+
+    $(document).on('confirm', '.remodal', function () {
+        debugger
+        $.ajax({
+            type: "POST",
+            url: "/CardCategory/Delete",
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: "{CardCatID:'" + $('#CardCatID').val() +
+                "'}",
+            dataType: "json",
+            processData: false,
+            success: function (response) {
+                debugger
+                location.reload();
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });
+    });
+</script>

@@ -56,5 +56,62 @@ namespace WebAPI.Controllers
             }
         }
 
+        [HttpPost]
+        public HttpResponseMessage SaveToken(SaveTokenData _SaveTokenData)
+        {
+            var _resultHandler = new ResultHandler();
+            TblRegisterDevice token;
+            try
+            {
+                if (!string.IsNullOrEmpty(_SaveTokenData.Token))
+                {
+                    token = _Context.TblRegisterDevices.Where(a => a.Token.Equals(_SaveTokenData.Token)).SingleOrDefault();
+                    if (token == null)
+                    {
+                        if (_SaveTokenData.Token.Length <= 74)
+                        {
+                            var newToken = new TblRegisterDevice { Token = _SaveTokenData.Token, DeviceTypeID = 2, IsDeleted = false, CreatedDate = DateTime.Now };
+                            _Context.TblRegisterDevices.Add(newToken);//android
+                        }
+                        else if (_SaveTokenData.Token.Length > 64)
+                        {
+                            var newToken = new TblRegisterDevice { Token = _SaveTokenData.Token, DeviceTypeID = 1, IsDeleted = false, CreatedDate = DateTime.Now };
+                            _Context.TblRegisterDevices.Add(newToken);//iphone
+                        }
+                    }
+                    else
+                    {
+                        token.UpdatedDate = DateTime.Now;
+                    }
+
+                    _Context.SaveChanges();
+
+                    _resultHandler.IsSuccessful = true;
+                    _resultHandler.Result = "Done";
+                    _resultHandler.MessageAr = "OK";
+                    _resultHandler.MessageAr = "OK";
+
+                    return Request.CreateResponse(HttpStatusCode.OK, _resultHandler);
+                }
+                else
+                {
+
+                    _resultHandler.IsSuccessful = false;
+                    _resultHandler.MessageAr = "Token is empty or null";
+                    _resultHandler.MessageEn = "Token is empty or null";
+
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, _resultHandler);
+                }
+            }
+            catch (Exception ex)
+            {
+                _resultHandler.IsSuccessful = false;
+                _resultHandler.MessageAr = ex.Message;
+                _resultHandler.MessageEn = ex.Message;
+
+                return Request.CreateResponse(HttpStatusCode.BadRequest, _resultHandler);
+            }
+        }
+
     }
 }

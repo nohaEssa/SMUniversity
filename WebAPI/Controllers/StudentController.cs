@@ -44,6 +44,7 @@ namespace WebAPI.Controllers
                                 AreaID = _Params.AreaID,
                                 BranchID = _Params.BranchID == 0 ? 3 : _Params.BranchID,
                                 //CredentialsID = _UserCred.ID,
+                                ProfilePic = "https://smuapitest.smartmindkw.com/Content/Images/Student/DefaultStudentPhoto.png",
                                 Verified = false,
                                 StudentType = _Params.StudentType, //true isa normal student, false is a course student
                                 CreatedDate = DateTime.Now,
@@ -77,6 +78,132 @@ namespace WebAPI.Controllers
 
                             StudentObj.CredentialsID = _UserCred.ID;
                             _Context.SaveChanges();
+
+                            string AddTokenResult = AddDevice(StudentObj.ID, _Params.Token, _Params.DeviceTypeID);
+
+                            ResultHandler res = SendCodeSMS(StudentObj.PhoneNumber);
+                            if (res.IsSuccessful)
+                            {
+                                StudentObj.Verified = true;
+                                StudentObj.VerificationCode = res.Result.ToString();
+
+                                _Context.SaveChanges();
+                            }
+
+                            _resultHandler.IsSuccessful = true;
+                            _resultHandler.MessageAr = "OK";
+                            _resultHandler.MessageEn = "OK";
+
+                            return Request.CreateResponse(HttpStatusCode.OK, _resultHandler);
+                        }
+                        else
+                        {
+                            _resultHandler.IsSuccessful = false;
+                            _resultHandler.MessageAr = "تم ادخال رقم التليفون من قبل, أدخل رقم آخر";
+                            _resultHandler.MessageEn = "Phone Number is already exists, please provide another one";
+
+                            return Request.CreateResponse(HttpStatusCode.BadRequest, _resultHandler);
+                        }
+
+                    }
+                    else
+                    {
+                        _resultHandler.IsSuccessful = false;
+                        _resultHandler.MessageAr = "Username is already used, please enter another one";
+                        _resultHandler.MessageEn = "اسم المستخدم موجود بالفعل, من فضلك ادخل واحد آخر";
+
+                        return Request.CreateResponse(HttpStatusCode.BadRequest, _resultHandler);
+                    }
+                }
+                else
+                {
+                    _resultHandler.IsSuccessful = false;
+                    _resultHandler.MessageAr = "Not Valid";
+                    _resultHandler.MessageEn = "Not Valid";
+                    _resultHandler.Result = ModelState.Values.Select(a => a.Errors);
+
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, _resultHandler);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                _resultHandler.IsSuccessful = false;
+                _resultHandler.MessageAr = ex.InnerException.Message;
+                _resultHandler.MessageEn = ex.InnerException.Message;
+
+                return Request.CreateResponse(HttpStatusCode.BadRequest, _resultHandler);
+            }
+
+
+        }
+
+        [HttpPost]
+        public HttpResponseMessage RegisterV2(StudentObj _Params)
+        {
+            var _resultHandler = new ResultHandler();
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    TblUserCredential _UserCred = _Context.TblUserCredentials.Where(a => a.UserName == _Params.UserName && a.UserType == 1).SingleOrDefault();
+                    if (_UserCred == null)
+                    {
+                        TblStudent Std = _Context.TblStudents.Where(a => a.PhoneNumber == _Params.PhoneNumber).FirstOrDefault();
+                        if (Std == null)
+                        {
+                            TblStudent StudentObj = new TblStudent()
+                            {
+                                FirstName = _Params.FirstName,
+                                SecondName = _Params.SecondName,
+                                ThirdName = _Params.ThirdName,
+                                PhoneNumber = _Params.PhoneNumber,
+                                Email = _Params.Email,
+                                Gender = _Params.Gender, // 0 : Female , 1 : Male
+                                UniversityID = _Params.UniversityID,
+                                CollegeID = _Params.CollegeID,
+                                MajorID = _Params.MajorID,
+                                GovernorateID = _Params.GovernorateID,
+                                AreaID = _Params.AreaID,
+                                BranchID = _Params.BranchID == 0 ? 3 : _Params.BranchID,
+                                //CredentialsID = _UserCred.ID,
+                                Verified = false,
+                                StudentType = _Params.StudentType, //true isa normal student, false is a course student
+                                CreatedDate = DateTime.Now,
+                            };
+                            try
+                            {
+                                //StudentObj.DateOfBirth = DateTime.Parse(_Params.DateOfBirth).Date;
+                                StudentObj.DateOfBirth = _Params.DateOfBirth.Date;
+                            }
+                            catch (Exception ex)
+                            {
+                                _resultHandler.IsSuccessful = false;
+                                _resultHandler.MessageAr = ex.Message;
+                                _resultHandler.MessageEn = "Not Valid";
+                                _resultHandler.Result = ex;
+
+                                return Request.CreateResponse(HttpStatusCode.BadRequest, _resultHandler);
+                            }
+                            _Context.TblStudents.Add(StudentObj);
+                            _Context.SaveChanges();
+
+                            _UserCred = new TblUserCredential()
+                            {
+                                UserName = _Params.UserName,
+                                Password = _Params.Password,
+                                UserType = 1,
+                            };
+
+                            _Context.TblUserCredentials.Add(_UserCred);
+                            _Context.SaveChanges();
+
+                            StudentObj.CredentialsID = _UserCred.ID;
+                            _Context.SaveChanges();
+
+                            string AddTokenResult = AddDevice(StudentObj.ID, _Params.Token, _Params.DeviceTypeID);
 
                             ResultHandler res = SendCodeSMS(StudentObj.PhoneNumber);
                             if (res.IsSuccessful)
@@ -416,14 +543,11 @@ namespace WebAPI.Controllers
 
                         std.ProfilePic = "/Content/Images/Student/" + imageName;
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                     }
                 }
-                else
-                {
-                    std.ProfilePic = "";
-                }
+
                 std.Gender = _Params.Gender; // 0 : Female , 1 : Male
                 std.UpdatedDate = DateTime.Now;
 
@@ -727,6 +851,49 @@ namespace WebAPI.Controllers
             catch (Exception ex)
             {
                 return ex;
+            }
+        }
+
+        private string AddDevice(int StudentID, string Token, int DeviceTypeID)
+        {
+            string Result = "";
+            try
+            {
+                if (StudentID > 0 && !string.IsNullOrEmpty(Token) && DeviceTypeID > 0)
+                {
+                    //TblRegisterDevice obj = _Context.TblRegisterDevices.Where(a => a.Token.Equals(Token) || (a.Token.Equals(Token) && a.LecturerID == null)).FirstOrDefault();
+                    TblRegisterDevice obj = _Context.TblRegisterDevices.Where(a => a.Token.Equals(Token) && a.StudentID == StudentID).FirstOrDefault();
+
+                    if (obj != null)
+                    {
+                        obj.UpdatedDate = DateTime.Now;
+                    }
+                    else
+                    {
+                        obj = new TblRegisterDevice();
+
+                        obj.IsDeleted = false;
+                        obj.CreatedDate = DateTime.Now;
+
+                        _Context.TblRegisterDevices.Add(obj);
+                    }
+
+                    obj.Token = Token;
+                    obj.DeviceTypeID = DeviceTypeID;
+                    obj.StudentID = StudentID;
+
+                    return "OK";
+                }
+                else
+                {
+                    Result = "Please Provide user data or notification data";
+
+                    return Result;
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
             }
         }
     }

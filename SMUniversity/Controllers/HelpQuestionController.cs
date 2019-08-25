@@ -148,5 +148,51 @@ namespace SMUniversity.Controllers
             return View();
         }
 
+        public JsonResult Delete(int HelpQuesID)
+        {
+            try
+            {
+                if (HelpQuesID > 0)
+                {
+                    //TempData["notice"] = "غير قادر علي الحذف, المحافظه مرتيطه ببيانات في المناطق والطلاب";
+                    //return Json("OK");
+                    TblHelpQuestion HelpQuestionObj = _Context.TblHelpQuestions.Where(a => a.ID == HelpQuesID).SingleOrDefault();
+                    if (HelpQuestionObj != null)
+                    {
+                        try
+                        {
+                            TempData["notice"] = "تم حذف السؤال بنجاح";
+
+                            _Context.TblHelpQuestions.Remove(HelpQuestionObj);
+                            _Context.SaveChanges();
+
+                            return Json("OK");
+                        }
+                        catch (Exception ex)
+                        {
+                            TempData["notice"] = "غير قادر علي الحذف, السؤال مرتيط ببيانات خاصه بشكاوي الطلبه";
+                            return Json("OK");
+                        }
+
+                    }
+                    else
+                    {
+                        TempData["notice"] = "HelpQuestion not found!";
+                        return Json("ERROR");
+                    }
+                }
+                else
+                {
+                    TempData["notice"] = "HelpQuestion not found!";
+                    return Json("ERROR");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["notice"] = "ERROR while processing!";
+                return Json("ERROR");
+            }
+        }
+
     }
 }

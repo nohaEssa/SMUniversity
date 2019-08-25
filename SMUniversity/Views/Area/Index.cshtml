@@ -16,6 +16,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 <script src="~/Scripts/DataTables/but@*t*@ons.html5.min.js"></script>
 
+<input type="hidden" id="AreaID" />
+
 <div id="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -61,7 +63,8 @@
                                     <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
                                     <td>
                                         <a href="@Url.Action("Edit", "Area", new { AreaID = item.ID })" class="btn btn-xs btn-warning" title="تعديل المنطقه" id="btnEditArea"><i class="fa fa-pencil-square-o"></i></a>
-                                        <a href="@Url.Action("Delete", "Area", new { AreaID = item.ID })" class="btn btn-xs btn-danger" title="حذف المنطقه" id="btnDeleteArea"><i class="fa fa-minus"></i></a>
+                                        @*<a href="@Url.Action("Delete", "Area", new { AreaID = item.ID })" class="btn btn-xs btn-danger" title="حذف المنطقه" id="btnDeleteArea"><i class="fa fa-minus"></i></a>*@
+                                        <a href="javascript:showModal('@item.ID','@item.NameAr')" class="btn btn-xs btn-danger" id="DeleteArea_@item.ID"><i class="fa fa-trash-o"></i></a>
                                         @*<a href="#reModalRed" class="btn btn-round ls-red-btn">Red</a>*@
                                     </td>
                                 </tr>
@@ -74,13 +77,44 @@
     </div>
 </div>
 
-<div class="remodal label-red white" data-remodal-id="reModalRed">
-    <h3>Modal Title</h3>
-    <p>
-        Flat, responsive, lightweight, fast, easy customizable modal window
-        with declarative state notation and hash tracking.
-    </p>
-    <br>
-    <a class="remodal-cancel btn-danger btn" href="#">Cancel</a>
-    <a class="remodal-confirm ls-light-green-btn btn" href="#">OK</a>
-</div>
+<script>
+    function showModal(ID, Name) {
+        debugger
+        //$('#submitModalRequest').hide();
+        //$('.remodal-cancel').text('Close');
+
+        $('#HModalTitle').text('حذف منطقة ' + Name);
+        $('#PModalBody').text('سيتم الحذف فقط اذا كانت المنطقه غير مرتبطه ببيانات خاصه بالطلبه او بالمحافظات');
+        $("#DeleteArea_" + ID).attr("href", "#reModalRed");
+        $('#AreaID').val(ID);
+        clickOnModal(ID);
+        return false;
+    }
+
+    function clickOnModal(ID) {
+        var href = $('#DeleteArea_' + ID).attr('href');
+        window.location.href = href; //causes the browser to refresh and load the requested url
+        return false;
+    }
+
+    $(document).on('confirm', '.remodal', function () {
+        debugger
+        $.ajax({
+            type: "POST",
+            url: "/Area/Delete",
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: "{AreaID:'" + $('#AreaID').val() +
+                "'}",
+            dataType: "json",
+            processData: false,
+            success: function (response) {
+                debugger
+                location.reload();
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });
+    });
+</script>

@@ -18,6 +18,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 <script src="~/Scripts/DataTables/but@*t*@ons.html5.min.js"></script>
 
+<input type="hidden" id="SessionID" />
 
 <div id="main-content">
     <div class="container-fluid">
@@ -64,31 +65,32 @@
                             @foreach (var item in _Context.TblSessions.Where(a => a.IsDeleted != true).ToList())
                             {
                                 var SessionDetails = _Context.TblSessionDetails.Where(a => a.SessionID == item.ID).FirstOrDefault();
-                            <tr>
-                                <td>@item.ID</td>
-                                <td>@item.SessionCode</td>
-                                <td>@item.Name</td>
-                                <td>@item.TblLecturer.FirstNameAr @item.TblLecturer.SecondNameAr @item.TblLecturer.ThirdNameAr</td>
-                                <td><span class="label label-success">@(item.Type ? SessionDetails.Cost : SessionDetails.Price1) KD</span></td>
-                                <td><span class="label label-success">@(item.Type ? 0 : SessionDetails.Price2) KD</span></td>
-                                <td><span class="label label-success">@(item.Type ? 0 : SessionDetails.Price3) KD</span></td>
-                                <td>@item.TblHall.HallCodeAr</td>
-                                <td>@item.FromDate.ToString("yyyy-MM-dd")</td>
-                                <td>@item.ToDate.ToString("yyyy-MM-dd")</td>
-                                @if (item.Type)
-                                {
-                                    <td>دوره</td>
-                                }
-                                else
-                                {
-                                    <td>محاضره</td>
-                                }
-                                <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
-                                <td>
-                                    <a href="@Url.Action("ViewSessions", "Session", new { SessionID = item.ID })" class="btn btn-xs btn-success" title="عرض المحاضرات" id="btnViewSessions"><i class="fa fa-eye fa-lg"></i></a>
-                                    <a href="@Url.Action("Edit", "Session", new { SessionID = item.ID })" class="btn btn-xs btn-success" title="تعديل المحاضره" id="btnEditSessions"><i class="fa fa-pencil-square-o"></i></a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>@item.ID</td>
+                                    <td>@item.SessionCode</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.TblLecturer.FirstNameAr @item.TblLecturer.SecondNameAr @item.TblLecturer.ThirdNameAr</td>
+                                    <td><span class="label label-success">@(item.Type ? SessionDetails.Cost : SessionDetails.Price1) KD</span></td>
+                                    <td><span class="label label-success">@(item.Type ? 0 : SessionDetails.Price2) KD</span></td>
+                                    <td><span class="label label-success">@(item.Type ? 0 : SessionDetails.Price3) KD</span></td>
+                                    <td>@item.TblHall.HallCodeAr</td>
+                                    <td>@item.FromDate.ToString("yyyy-MM-dd")</td>
+                                    <td>@item.ToDate.ToString("yyyy-MM-dd")</td>
+                                    @if (item.Type)
+                                    {
+                                        <td>دوره</td>
+                                    }
+                                    else
+                                    {
+                                        <td>محاضره</td>
+                                    }
+                                    <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
+                                    <td>
+                                        <a href="@Url.Action("ViewSessions", "Session", new { SessionID = item.ID })" class="btn btn-xs btn-success" title="عرض المحاضرات" id="btnViewSessions"><i class="fa fa-eye fa-lg"></i></a>
+                                        <a href="@Url.Action("Edit", "Session", new { SessionID = item.ID })" class="btn btn-xs btn-success" title="تعديل المحاضره" id="btnEditSessions"><i class="fa fa-pencil-square-o"></i></a>
+                                        <a href="javascript:showModal('@item.ID','@item..Name')" class="btn btn-xs btn-danger" id="DeleteSession_@item.ID"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -97,3 +99,45 @@
         </div>
     </div>
 </div>
+
+<script>
+    function showModal(ID, Name) {
+        debugger
+        //$('#submitModalRequest').hide();
+        //$('.remodal-cancel').text('Close');
+
+        $('#HModalTitle').text('حذف محاضرة ' + Name);
+        $('#PModalBody').text('سيتم الحذف فقط اذا كانت المحاضره غير مرتبطه ببيانات خاصه بالتقييمات او المحاضرات المفضله او الإشتراكات');
+        $("#DeleteSession_" + ID).attr("href", "#reModalRed");
+        $('#SessionID').val(ID);
+        clickOnModal(ID);
+        return false;
+    }
+
+    function clickOnModal(ID) {
+        var href = $('#DeleteSession_' + ID).attr('href');
+        window.location.href = href; //causes the browser to refresh and load the requested url
+        return false;
+    }
+
+    $(document).on('confirm', '.remodal', function () {
+        debugger
+        $.ajax({
+            type: "POST",
+            url: "/Session/Delete",
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: "{SessionID:'" + $('#SessionID').val() +
+                "'}",
+            dataType: "json",
+            processData: false,
+            success: function (response) {
+                debugger
+                location.reload();
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });
+    });
+</script>

@@ -145,5 +145,24 @@ namespace SMUniversity.Controllers
                 return RedirectToAction("Edit", new { CollegeID = _Data.CollegeID });
             }
         }
+
+        public JsonResult Delete(int CollegeID)
+        {
+            try
+            {
+                TblCollege _College = _Context.TblColleges.Where(a => a.ID == CollegeID).FirstOrDefault();
+
+                _Context.TblColleges.Remove(_College);
+                _Context.SaveChanges();
+
+                return Json("OK");
+            }
+            catch (Exception ex)
+            {
+                TempData["notice"] = "لم يتم حذف الكلية لإرتباطها ببيانات اخري";
+                return Json("OK");
+            }
+        }
+
     }
 }

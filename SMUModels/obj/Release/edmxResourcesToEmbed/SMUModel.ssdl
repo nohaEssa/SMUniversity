@@ -412,6 +412,20 @@
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="UpdatedDate" Type="datetime" />
   </EntityType>
+  <EntityType Name="TblRegisterDevice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Token" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DeviceTypeID" Type="int" Nullable="false" />
+    <Property Name="StudentID" Type="int" />
+    <Property Name="LecturerID" Type="int" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="BadgeNo" Type="int" />
+  </EntityType>
   <EntityType Name="TblRevenue">
     <Key>
       <PropertyRef Name="ID" />
@@ -1724,6 +1738,30 @@
       </Principal>
       <Dependent Role="TblProduct1">
         <PropertyRef Name="ProductCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblRegist__Lectu__0169315C">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="0..1" />
+    <End Role="TblRegisterDevice" Type="Self.TblRegisterDevice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblRegisterDevice">
+        <PropertyRef Name="LecturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblRegist__Stude__00750D23">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="0..1" />
+    <End Role="TblRegisterDevice" Type="Self.TblRegisterDevice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblRegisterDevice">
+        <PropertyRef Name="StudentID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -3114,6 +3152,7 @@
     <EntitySet Name="TblPrivateSession" EntityType="Self.TblPrivateSession" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblProduct" EntityType="Self.TblProduct" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblProductCategory" EntityType="Self.TblProductCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblRegisterDevice" EntityType="Self.TblRegisterDevice" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblRevenue" EntityType="Self.TblRevenue" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblScreen" EntityType="Self.TblScreen" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblScreenHall" EntityType="Self.TblScreenHall" Schema="dbo" store:Type="Tables" />
@@ -3483,6 +3522,14 @@
     <AssociationSet Name="FK__TblProduc__Produ__74444068" Association="Self.FK__TblProduc__Produ__74444068">
       <End Role="TblProduct" EntitySet="TblProduct" />
       <End Role="TblProduct1" EntitySet="TblProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblRegist__Lectu__0169315C" Association="Self.FK__TblRegist__Lectu__0169315C">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblRegisterDevice" EntitySet="TblRegisterDevice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblRegist__Stude__00750D23" Association="Self.FK__TblRegist__Stude__00750D23">
+      <End Role="TblStudent" EntitySet="TblStudent" />
+      <End Role="TblRegisterDevice" EntitySet="TblRegisterDevice" />
     </AssociationSet>
     <AssociationSet Name="FK__TblRevenu__Teach__1A9EF37A" Association="Self.FK__TblRevenu__Teach__1A9EF37A">
       <End Role="TblLecturer" EntitySet="TblLecturer" />

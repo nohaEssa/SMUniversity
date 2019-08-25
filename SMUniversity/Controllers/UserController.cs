@@ -354,5 +354,52 @@ namespace SMUniversity.Controllers
             }
         }
 
+        public JsonResult Delete(int UserID)
+        {
+            try
+            {
+                if (UserID > 0)
+                {
+                    TblUser UserObj = _Context.TblUsers.Where(a => a.ID == UserID).SingleOrDefault();
+                    if (UserObj != null)
+                    {
+                        try
+                        {
+                            TempData["notice"] = "تم حذف المستخدم : " + UserObj.NameAr + " بنجاح";
+
+                            _Context.TblUserCredentials.Remove(_Context.TblUserCredentials.Where(a => a.ID == UserObj.CredentialsID).FirstOrDefault());
+                            _Context.SaveChanges();
+
+                            _Context.TblUsers.Remove(UserObj);
+                            _Context.SaveChanges();
+
+                            return Json("OK");
+                        }
+                        catch (Exception ex)
+                        {
+                            TempData["notice"] = "غير قادر علي الحذف, المستخدم مرتبط ببيانات خاصه بالتعاملات الماليه";
+                            return Json("OK");
+                        }
+
+                    }
+                    else
+                    {
+                        TempData["notice"] = "User not found!";
+                        return Json("ERROR");
+                    }
+                }
+                else
+                {
+                    TempData["notice"] = "User not found!";
+                    return Json("ERROR");
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["notice"] = "ERROR while processing!";
+                return Json("ERROR");
+            }
+        }
+
     }
 }

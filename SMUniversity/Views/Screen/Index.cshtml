@@ -14,6 +14,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 
+<input type="hidden" id="ScreenID" />
 
 <div id="main-content">
     <div class="container-fluid">
@@ -51,16 +52,17 @@
                         <tbody>
                             @foreach (var item in _Context.TblScreens.Where(a => a.IsDeleted != true).ToList())
                             {
-                            <tr>
-                                <td>@item.ID</td>
-                                <td>@item.NameAr</td>
-                                <td>@item.NameEn</td>
-                                <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
-                                <td>
-                                    <a href="@Url.Action("Edit", "Screen", new { ScreenID = item.ID })" class="btn btn-xs btn-warning" title="تعديل الشاشه" id="btnEditScreen"><i class="fa fa-pencil-square-o"></i></a>
-                                    <a href="@Url.Action("Delete", "Screen", new { ScreenID = item.ID })" class="btn btn-xs btn-danger" title="حذف الشاشه" id="btnDeleteScreen"><i class="fa fa-minus"></i></a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>@item.ID</td>
+                                    <td>@item.NameAr</td>
+                                    <td>@item.NameEn</td>
+                                    <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
+                                    <td>
+                                        <a href="@Url.Action("Edit", "Screen", new { ScreenID = item.ID })" class="btn btn-xs btn-warning" title="تعديل الشاشه" id="btnEditScreen"><i class="fa fa-pencil-square-o"></i></a>
+                                        @*<a href="@Url.Action("Delete", "Screen", new { ScreenID = item.ID })" class="btn btn-xs btn-danger" title="حذف الشاشه" id="btnDeleteScreen"><i class="fa fa-minus"></i></a>*@
+                                        <a href="javascript:showModal('@item.ID','@item.NameAr')" class="btn btn-xs btn-danger" id="DeleteScreen_@item.ID"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -69,3 +71,45 @@
         </div>
     </div>
 </div>
+
+<script>
+    function showModal(ID, Name) {
+        debugger
+        //$('#submitModalRequest').hide();
+        //$('.remodal-cancel').text('Close');
+
+        $('#HModalTitle').text('حذف فئة الكارت ' + Name);
+        $('#PModalBody').text('سيتم الحذف فقط اذا كانت الشاشه غير مرتبطه ببيانات خاصه بالفواتير');
+        $("#DeleteScreen_" + ID).attr("href", "#reModalRed");
+        $('#ScreenID').val(ID);
+        clickOnModal(ID);
+        return false;
+    }
+
+    function clickOnModal(ID) {
+        var href = $('#DeleteScreen_' + ID).attr('href');
+        window.location.href = href; //causes the browser to refresh and load the requested url
+        return false;
+    }
+
+    $(document).on('confirm', '.remodal', function () {
+        debugger
+        $.ajax({
+            type: "POST",
+            url: "/Screen/Delete",
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: "{ScreenID:'" + $('#ScreenID').val() +
+                "'}",
+            dataType: "json",
+            processData: false,
+            success: function (response) {
+                debugger
+                location.reload();
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });
+    });
+</script>

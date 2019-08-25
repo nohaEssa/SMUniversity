@@ -164,5 +164,23 @@ namespace SMUniversity.Controllers
                 return RedirectToAction("Edit", new { AreaID = _Data.AreaID });
             }
         }
+
+        public JsonResult Delete(int AreaID)
+        {
+            try
+            {
+                TblArea _Area = _Context.TblAreas.Where(a => a.ID == AreaID).FirstOrDefault();
+
+                _Context.TblAreas.Remove(_Area);
+                _Context.SaveChanges();
+
+                return Json("OK");
+            }
+            catch (Exception ex)
+            {
+                TempData["notice"] = "لم يتم حذف المنطقه لإرتباطها ببيانات اخري";
+                return Json("OK");
+            }
+        }
     }
 }
