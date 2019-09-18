@@ -567,7 +567,7 @@ $.extend( RowReorder.prototype, {
 		var that = this;
 		var dt = this.s.dt;
 		var scroll = this.s.scroll;
-		var runInterval = false;
+		var runinterval = false;
 		var scrollSpeed = 5;
 		var buffer = 65;
 		var
@@ -604,7 +604,7 @@ $.extend( RowReorder.prototype, {
 		if ( windowVert || dtVert ) {
 			scroll.windowVert = windowVert;
 			scroll.dtVert = dtVert;
-			runInterval = true;
+			runinterval = true;
 		}
 		else if ( this.s.scrollInterval ) {
 			// Don't need to scroll - remove any existing timer
@@ -614,7 +614,7 @@ $.extend( RowReorder.prototype, {
 
 		// If we need to run the interval to scroll and there is no existing
 		// interval (if there is an existing one, it will continue to run)
-		if ( ! this.s.scrollInterval && runInterval ) {
+		if ( ! this.s.scrollInterval && runinterval ) {
 			this.s.scrollInterval = setInterval( function () {
 				// Don't need to worry about setting scroll <0 or beyond the
 				// scroll bound as the browser will just reject that.

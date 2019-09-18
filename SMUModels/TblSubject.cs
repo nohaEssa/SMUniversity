@@ -28,13 +28,15 @@ namespace SMUModels
         }
     
         public int ID { get; set; }
-        public int MajorID { get; set; }
+        public Nullable<int> MajorID { get; set; }
         public bool IsDeleted { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string NameAr { get; set; }
         public string NameEn { get; set; }
         public string Picture { get; set; }
+        public bool GeneralSubject { get; set; }
+        public string SubjectCode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblLecturerSubject> TblLecturerSubjects { get; set; }

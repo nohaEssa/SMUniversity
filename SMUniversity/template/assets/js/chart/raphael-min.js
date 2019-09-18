@@ -1706,7 +1706,7 @@
                     if (D) {
                         z = q("pattern");
                         var F = q("image");
-                        z.id = a.createUUID(), q(z, {x: 0, y: 0, patternUnits: "userSpaceOnUse", height: 1, width: 1}), q(F, {x: 0, y: 0, "xlink:href": D[1]}), z.appendChild(F), function (b) {
+                        z.id = a.createUUID(), q(z, {x: 0, y: 0, patternunits: "userSpaceOnUse", height: 1, width: 1}), q(F, {x: 0, y: 0, "xlink:href": D[1]}), z.appendChild(F), function (b) {
                             a._preload(D[1], function () {
                                 var a = this.offsetWidth, c = this.offsetHeight;
                                 q(b, {width: a, height: c}), q(F, {width: a, height: c}), d.paper.safari()

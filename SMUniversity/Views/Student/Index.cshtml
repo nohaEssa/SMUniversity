@@ -57,23 +57,42 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in _Context.TblStudents.Where(a => a.IsDeleted != true).ToList())
+                            @foreach (var item in _Context.TblStudents.Where(a => a.IsDeleted != true).OrderByDescending(a => a.ID).ToList())
                             {
+                                //string Picture = item.ProfilePic.StartsWith("http://") ? item.ProfilePic : "http://smuapitest.smartmindkw.com" + item.ProfilePic;
+                                string Picture = "";
+                                if (item.ProfilePic != null)
+                                {
+                                    if (item.ProfilePic.StartsWith("https://"))
+                                    {
+                                        Picture = item.ProfilePic;
+                                    }
+                                    else
+                                    {
+                                        Picture = "http://smuapitest.smartmindkw.com" + item.ProfilePic;
+                                    }
+                                }
+                                else
+                                {
+                                    Picture = "https://uni.smartmindkw.com/Content/Images/Student/DefaultStudentPhoto.png";
+                                }
+                                string Verified = item.Verified ? "نعم" : "لا";
                                 <tr>
                                     <td>@item.ID</td>
                                     <td>
-                                        <img src=@item.ProfilePic width='107' height='75'>
+                                        <img src='@Picture' width='107' height='75'>
                                     </td>
                                     <td>@item.FirstName @item.SecondName @item.ThirdName</td>
                                     <td>@item.PhoneNumber</td>
                                     <td>@item.Email</td>
                                     <td><span class="label label-success">@item.Balance KD</span></td>
-                                    <td>@item.Verified</td>
+                                    <td>@Verified</td>
                                     <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
                                     <td>
                                         <a href="@Url.Action("Edit", "Student", new { StudentID = item.ID })" class="btn btn-xs btn-warning" title="تعديل الطالب" id="btnEditStudent"><i class="fa fa-pencil-square-o"></i></a>
                                         @*<a href="@Url.Action("Delete", "Student", new { StudentID = item.ID })" class="btn btn-xs btn-danger" title="حذف الطالب" id="btnDeleteStudent"><i class="fa fa-minus"></i></a>*@
                                         <a href="javascript:showModal('@item.ID','@item.FirstName')" class="btn btn-xs btn-danger" id="DeleteStudent_@item.ID"><i class="fa fa-trash-o"></i></a>
+                                        <a href="javascript:showReChargeBalanceModal('@item.ID')" class="btn btn-xs btn-success" id="ReChargeBalance_@item.ID">شحن الرصيد</a>
                                     </td>
                                 </tr>
                             }
@@ -83,6 +102,21 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="remodal label-red white" data-remodal-id="reModalRed2">
+    <h3>شحن الرصيد</h3>
+    <div class="form-group">
+        <label class="col-md-2 control-label">شحن الرصيد</label>
+        <div class="col-md-12">
+            <input type="number"
+                   class="form-control validate[required] text-input"
+                   id="BalanceValue" name="BalanceValue" placeholder="ادخل مبلغ الشحن">
+            <br />
+        </div>
+    </div>
+    <a class="remodal-cancel btn-danger btn" href="#">Cancel</a>
+    <a class="remodal-confirm ls-light-green-btn btn" id="btnRechargeBalance">Add</a>
 </div>
 
 <script>
@@ -105,6 +139,41 @@
         window.location.href = href; //causes the browser to refresh and load the requested url
         return false;
     }
+
+    function showReChargeBalanceModal(ID) {
+        debugger
+        $("#ReChargeBalance_" + ID).attr("href", "#reModalRed2");
+        $('#StudentID').val(ID);
+        clickOnModal(ID);
+        return false;
+    }
+
+    function clickOnModal(ID) {
+        var href = $('#ReChargeBalance_' + ID).attr('href');
+        window.location.href = href; //causes the browser to refresh and load the requested url
+        return false;
+    }
+
+    $('#btnRechargeBalance').click(function () {
+        $.ajax({
+            type: "POST",
+            url: '/Student/RechargeBalance',
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: "{StudentID:'" + $('#StudentID').val() +
+                "', BalanceValue:'" + $('#BalanceValue').val() +
+                "'}",
+            dataType: "json",
+            processData: false,
+            success: function (response) {
+                location.reload();
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });
+        return false;
+    });
 
     $(document).on('confirm', '.remodal', function () {
         debugger

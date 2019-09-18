@@ -1,0 +1,998 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>  معهد سمارت مايند الجامعه | @ViewBag.Title </title>
+
+    <!--Layout Script start -->
+    <script type="text/javascript" src="~/template/assets/js/lib/jquery-1.11.min.js"></script>
+    <script type="text/javascript" src="~/template/assets/js/color.js"></script>
+    <script type="text/javascript" src="~/template/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/template/assets/js/multipleAccordion.js"></script>
+
+    <!--easing Library Script Start -->
+    <script src="~/template/assets/js/lib/jquery.easing.js"></script>
+    <!--easing Library Script End -->
+
+    <script src="~/Scripts/multiple-select.js"></script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="بإدارة معلمين شباب كويتيين نقدم تأسيس وتقوية لأبنائنا بكل المراحل التعليمية من الابتدائي حتى الجامعة بفريق عمل محترف ومعطاء من المعلمين الكويتيين وغيرهم."> <!--insert your description here-->
+
+    <meta name="author" content="سمارت مايند">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+    <!-- Viewport metatags -->
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- iOS webapp metatags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <!-- iOS webapp icons -->
+    <link rel="apple-touch-icon-precomposed" href="~/template/assets/images/ios/fickle-logo-72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/template/assets/images/ios/fickle-logo-72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/template/assets/images/ios/fickle-logo-114.png" />
+
+    <!-- TODO: Add a favicon -->
+    <link rel="shortcut icon" href="~/template/assets/images/ico/fab.ico">
+
+
+    <!-- Plugin Css Put Here -->
+    <link rel="stylesheet" href="~/template/assets/css/rtl-css/plugins/custom_smart_wizard-rtl.css">
+    <link rel="stylesheet" href="~/template/assets/css/font-awesome/css/font-awesome.min.css">
+
+    <!-- Plugin Css End -->
+    <!-- Custom styles Style -->
+    <link href="~/template/assets/css/rtl-css/style-rtl.css" rel="stylesheet">
+    <!-- Custom styles Style End-->
+    <!-- Responsive Style For-->
+    <!-- Responsive Style For-->
+    <!-- Plugin Css Put Here -->
+    <link rel="stylesheet" href="~/template/assets/css/rtl-css/plugins/jquery.minicolors-rtl.css">
+    <link rel="stylesheet" href="~/template/assets/css/rtl-css/plugins/jquery.datetimepicker-rtl.css">
+
+
+    <!-- Custom styles for this template -->
+    <!--Page loading plugin Start -->
+    <link rel="stylesheet" href="~/template/assets/css/rtl-css/plugins/pace-rtl.css">
+    <script src="~/template/assets/js/pace.min.js"></script>
+    <!--Page loading plugin End   -->
+    <!-- Plugin Css Put Here -->
+    <link href="~/template/assets/css/bootstrap-rtl.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/template/assets/css/rtl-css/plugins/summernote-rtl.css">
+
+    <!-- Plugin Css End -->
+    <!-- Custom styles Style -->
+    <link href="~/template/assets/css/rtl-css/style-rtl.css" rel="stylesheet">
+    <!-- Custom styles Style End-->
+    <!-- Responsive Style For-->
+    <link href="~/template/assets/css/rtl-css/responsive-rtl.css" rel="stylesheet">
+    <!-- Responsive Style For-->
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="~/template/assets/css/rtl-css/plugins/cropper-rtl.css">
+    <link rel="stylesheet" href="~/template/assets/css/rtl-css/plugins/drag_drop_image-rtl.css">
+
+
+    <link rel="stylesheet" href="~/template/assets/css/plugins/icheck/skins/all.css">
+
+    <!-- Plugin Css Put Here -->
+    <link rel="stylesheet" href="~/template/assets/css/rtl-css/plugins/fileinput-rtl.css">
+
+    <!-- Plugin Css End -->
+    <!-- Plugin Css Put Here -->
+    <link href="~/template/assets/css/bootstrap-rtl.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/template/assets/css/rtl-css/plugins/jquery.toolbars-rtl.css">
+    <link rel="stylesheet" href="~/template/assets/css/rtl-css/plugins/jquery.remodal-rtl.css">
+    <link rel="stylesheet" href="~/template/assets/css/rtl-css/plugins/tab-rtl.css">
+    <link rel="stylesheet" href="~/template/assets/css/rtl-css/plugins/accordion-rtl.css">
+    <link rel="stylesheet" href="~/template/assets/css/rtl-css/plugins/bootstrap-progressbar-3.1.1-rtl.css">
+    <link href="~/Content/multiple-select.css" rel="stylesheet" />
+
+    <link href="~/template/assets/css/rtl-css/plugins/jquery.remodal-rtl.css" rel="stylesheet" />
+
+    <style>
+        .form-box {
+            width: 500px;
+            background-color: #edeff1;
+            border-radius: 2px;
+            padding: 105px 20px 20px;
+            position: fixed;
+            z-index: 10000;
+            top: 30%;
+            left: 45%;
+            margin-left: -200px;
+            display: none;
+            border: 3px solid #4484a2;
+        }
+
+            .form-box img[alt="close"] {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+            }
+
+            .form-box img[alt="logo"] {
+                position: absolute;
+                top: 5px;
+                left: 200px;
+                height: 50%;
+                width: 20%;
+            }
+    </style>
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+
+</head>
+<body>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>*@
+    <!--Navigation Top Bar Start-->
+    <nav class="navigation">
+        <div class="container-fluid">
+            <!--Logo text start-->
+            <div class="header-logo">
+                <a href="/Home/Index" title="">
+                    <h1>Smart Admin</h1>
+                </a>
+            </div>
+            <!--Logo text End-->
+            <div class="top-navigation">
+                <!--Collapse navigation menu icon start -->
+                <div class="menu-control hidden-xs">
+                    <a href="javascript:void(0)">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+                <div class="search-box">
+                    <ul>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+                                <span class="fa fa-search"></span>
+                            </a>
+                            <div class="dropdown-menu  top-dropDown-1">
+                                <h4>Search</h4>
+                                <form>
+                                    <input type="search" placeholder="what you want to see ?">
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!--Collapse navigation menu icon end -->
+                <!--Top Navigation Start-->
+                <ul>
+                    <li class="dropdown">
+                        <!--All task drop down start-->
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+                            <span class="fa fa-tasks"></span>
+                            <span class="badge badge-lightBlue">3</span>
+                        </a>
+                        <div class="dropdown-menu right top-dropDown-1">
+                            <h4>All Task</h4>
+                            <ul class="goal-item">
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="goal-user-image">
+                                            <img class="rounded" src="~/template/assets/images/demo/avatar-80.png" alt="user image" />
+                                        </div>
+                                        <div class="goal-content">
+                                            Wordpress Theme
+                                            <div class="progress progress-striped active">
+                                                <div class="progress-bar ls-light-blue-progress six-sec-ease-in-out" aria-valuetransitiongoal="100"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="goal-user-image">
+                                            <img class="rounded" src="~/template/assets/images/demo/avatar-80.png" alt="user image" />
+                                        </div>
+                                        <div class="goal-content">
+                                            PSD Designe
+                                            <div class="progress progress-striped active">
+                                                <div class="progress-bar ls-red-progress six-sec-ease-in-out" aria-valuetransitiongoal="40"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="goal-user-image">
+                                            <img class="rounded" src="~/template/assets/images/demo/avatar-80.png" alt="user image" />
+                                        </div>
+                                        <div class="goal-content">
+                                            Wordpress PLugin
+                                            <div class="progress progress-striped active">
+                                                <div class="progress-bar ls-light-green-progress six-sec-ease-in-out" aria-valuetransitiongoal="60"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="only-link">
+                                    <a href="javascript:void(0)">View All</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--All task drop down end-->
+                    </li>
+                    <li class="dropdown">
+                        <!--Notification drop down start-->
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+                            <span class="fa fa-bell-o"></span>
+                            <span class="badge badge-red">6</span>
+                        </a>
+                        <div class="dropdown-menu right top-notification">
+                            <h4>Notification</h4>
+                            <ul class="ls-feed">
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="label label-red">
+                                            <i class="fa fa-check white"></i>
+                                        </span>
+                                        You have 4 pending tasks.
+                                        <span class="date">Just now</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="label label-light-green">
+                                            <i class="fa fa-bar-chart-o"></i>
+                                        </span>
+                                        Finance Report for year 2013
+                                        <span class="date">30 min</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="label label-lightBlue">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </span>
+                                        New order received with
+                                        <span class="date">45 min</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="label label-lightBlue">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        5 pending membership
+                                        <span class="date">50 min</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="label label-red">
+                                            <i class="fa fa-bell"></i>
+                                        </span>
+                                        Server hardware upgraded
+                                        <span class="date">1 hr</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="label label-blue">
+                                            <i class="fa fa-briefcase"></i>
+                                        </span>
+                                        IPO Report for
+                                        <span class="lightGreen">2014</span>
+                                        <span class="date">5 hrs</span>
+                                    </a>
+                                </li>
+                                <li class="only-link">
+                                    <a href="javascript:void(0)">View All</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--Notification drop down end-->
+                    </li>
+                    <li class="dropdown">
+                        <!--Email drop down start-->
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+                            <span class="fa fa-envelope-o"></span>
+                            <span class="badge badge-red">3</span>
+                        </a>
+                        <div class="dropdown-menu right email-notification">
+                            <h4>Email</h4>
+                            <ul class="email-top">
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="email-top-image">
+                                            <img class="rounded" src="~/template/assets/images/demo/avatar-80.png" alt="user image" />
+                                        </div>
+                                        <div class="email-top-content">
+                                            John Doe <div>Sample Mail 1</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="email-top-image">
+                                            <img class="rounded" src="~/template/assets/images/demo/avatar-80.png" alt="user image" />
+                                        </div>
+                                        <div class="email-top-content">
+                                            John Doe <div>Sample Mail 2</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <div class="email-top-image">
+                                            <img class="rounded" src="~/template/assets/images/demo/avatar-80.png" alt="user image" />
+                                        </div>
+                                        <div class="email-top-content">
+                                            John Doe <div> Sample Mail 4</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="only-link">
+                                    <a href="mail.html">View All</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--Email drop down end-->
+                    </li>
+                    <li class="hidden-xs">
+                        <a class="right-sidebar" href="javascript:void(0)">
+                            <i class="fa fa-comment-o"></i>
+                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a class="right-sidebar-setting" href="javascript:void(0)">
+                            <i class="fa fa-cogs"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="lock-screen.html">
+                            <i class="fa fa-lock"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="login.html">
+                            <i class="fa fa-power-off"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!--Top Navigation End-->
+            </div>
+        </div>
+    </nav>
+    <!--Navigation Top Bar End-->
+    <section id="main-container">
+        <!--Left navigation section start-->
+        <section id="left-navigation">
+            <!--Left navigation user details start-->
+
+            <div class="user-image" style=" margin: 3px; width: 100%; ">
+                <img src="~/template/assets/images/admin_pic.jpg" alt="" style=" border-radius: inherit; " />
+                <div class="user-online-status"><span class="user-status is-online  "></span> </div>
+            </div>
+            <!--Left navigation user details end-->
+            <!--Phone Navigation Menu icon start-->
+            <div class="phone-nav-box visible-xs">
+                <a class="phone-logo" href="index.html" title="">
+                    <h1>سمارت مايند</h1>
+                </a>
+                <a class="phone-nav-control" href="javascript:void(0)">
+                    <span class="fa fa-bars"></span>
+                </a>
+                <div class="clearfix"></div>
+            </div>
+            <!--Phone Navigation Menu icon start-->
+            <!--Left navigation start-->
+            <ul class="mainNav">
+                <li class="active">
+                    <a class="active" href="/Home/Index">
+                        <i class="fa fa-dashboard"></i> <span>الرئيسية</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-id-card"></i> <span>الطلاب</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/Student/Index">كل الطلاب</a>
+                        </li>
+                        <li>
+                            <a href="/Student/Create">اضافه طالب </a>
+                        </li>
+                        @*<li>
+                                <a href="chartjs.html">جميع الطلاب</a>
+                            </li>
+                            <li>
+                                <a href="flotchart.html">بحث عن طالب</a>
+                            </li>*@
+                    </ul>
+                </li>
+                @*<li>
+                        <a href="#">
+                            <i class="fa fa-bar-chart-o"></i> <span>تسجيلات اونلاين</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="c3js.html">دفع اونلاين </a>
+                            </li>
+                            <li>
+                                <a href="chartjs.html">تسجيل اونلاين</a>
+                            </li>
+
+                        </ul>
+                    </li>*@
+                <li>
+                    <a href="#">
+                        <i class="fa fa-address-book"></i> <span>المحاضرين</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/Lecturer/Index">كل المحاضرين</a>
+                        </li>
+                        <li>
+                            <a href="/Lecturer/Create">اضافه محاضر</a>
+                        </li>
+                        <li>
+                            <a href="/Lecturer/AssignSubjects">تعيين مواد للمحاضرين</a>
+                        </li>
+                        @*<li>
+                                <a href="chartjs.html">جميع المحاضرين</a>
+                            </li>
+                            <li>
+                                <a href="flotchart.html">بحث عن محاضر</a>
+                            </li>*@
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-credit-card-alt"></i> <span>فئات كروت الشحن</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/CardCategory/Index">كل فئات الشحن</a>
+                        </li>
+                        <li>
+                            <a href="/CardCategory/Create">اضافة فئة شحن</a>
+                        </li>
+                        <li>
+                            <a href="/BalanceTransaction/PendedChargeRequest">تأكيد طلبات الشحن</a>
+                        </li>
+
+                        @*<li>
+                                <a href="chartjs.html">جميع الكروت</a>
+                            </li>
+                            <li>
+                                <a href="flotchart.html">بحث عن طالب</a>
+                            </li>*@
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-book "></i> <span>المحاضرات</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/Session/SessionsList">عرض المحاضرات</a>
+                        </li>
+                        <li>
+                            <a href="/Session/CoursesList">عرض الكورسات</a>
+                        </li>
+                        <li>
+                            <a href="/Session/Create">اضافه محاضره </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-book"></i> <span>التقييمات</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/Evaluation/EvaluationQuestions">اسئلة التقييم</a>
+                        </li>
+                        <li>
+                            <a href="/Evaluation/CreateEvaluationQues">اضافة سؤال تقييم</a>
+                        </li>
+                        <li>
+                            <a href="/Evaluation/EvaluationQuesAns">إجابات التقييم</a>
+                        </li>
+                        <li>
+                            <a href="/Evaluation/CreateEvaluationQuesAns">اضافة سؤال تقييم</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-book"></i> <span>مساعده الطلاب</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/HelpQuestion/Index">اسئلة المساعده</a>
+                        </li>
+                        <li>
+                            <a href="/HelpQuestion/Create">اضافة سؤال مساعده</a>
+                        </li>
+                        <li>
+                            <a href="/HelpQuestion/StudentComplaints">شكاوي الطلبه</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-book"></i> <span>الفواتير</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/Invoice/Index">الفواتير</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-book"></i> <span>السندات</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/Invoice/VoucherList">السندات</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-building"></i> <span>القاعات</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/Hall/Index">كل القاعات</a>
+                        </li>
+                        <li>
+                            <a href="/Hall/Create">اضافه قاعة </a>
+                        </li>
+                        <li>
+                            <a href="/Hall/RentHall">إيجار قاعة </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-desktop"></i> <span>الشاشات</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/Screen/Index">كل الشاشات</a>
+                        </li>
+                        <li>
+                            <a href="/Screen/Create">اضافه شاشة </a>
+                        </li>
+                        @*<li>
+                                <a href="/Home/Index">تعديل شاشة</a>
+                            </li>*@
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-graduation-cap"></i> <span>الجامعات</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/University/Index">كل الجامعات</a>
+                        </li>
+                        <li>
+                            <a href="/University/Create">اضافه جامعه</a>
+                        </li>
+                        @*<li>
+                                <a href="/Home/Index">تعديل القاعات</a>
+                            </li>*@
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-university "></i> <span>الكليات</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/College/Index">كل الكليات</a>
+                        </li>
+                        <li>
+                            <a href="/College/Create">اضافه كليه </a>
+                        </li>
+                        @*<li>
+                                <a href="chartjs.html">جميع المحاضرات</a>
+                            </li>
+                            <li>
+                                <a href="flotchart.html">بحث عن محاضرة</a>
+                            </li>*@
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-clipboard"></i> <span>التخصصات</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/Major/Index">كل التخصصات</a>
+                        </li>
+                        <li>
+                            <a href="/Major/Create">اضافه تخصص</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-clipboard"></i> <span>المواد</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/Subject/Index">كل المواد</a>
+                        </li>
+                        <li>
+                            <a href="/Subject/Create">اضافه ماده</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-map-marker"></i> <span>المحافظات</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/Governorate/Index">كل المحافظات</a>
+                        </li>
+                        <li>
+                            <a href="/Governorate/Create">اضافه محافظة</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-sitemap "></i> <span>المناطق</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/Area/Index">كل المناطق</a>
+                        </li>
+                        <li>
+                            <a href="/Area/Create">اضافه منطقه</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-sitemap"></i> <span>المنتجات</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/Product/Index">كل المنتجات</a>
+                        </li>
+                        <li>
+                            <a href="/Product/Create">اضافه منتج</a>
+                        </li>
+                        <li>
+                            <a href="/ProductCategory/Create">اضافه فئة منتج</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-sitemap "></i> <span>المستخدمين</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/User/Index">كل المستخدمين</a>
+                        </li>
+                        <li>
+                            <a href="/User/Create">اضافه مستخدم</a>
+                        </li>
+                        <li>
+                            <a href="/User/AddUserCategory">اضافه فئة مستخدم</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-file-pdf-o"></i> <span>التقارير</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/Reports/CreateTransactionReport">تقرير الشحن اليومى</a>
+                        </li>
+                        <li>
+                            <a href="/Reports/CreateHallReport">تقرير حجز القاعات </a>
+                        </li>
+                        <li>
+                            <a href="/Reports/CreateSubscriptionReport">تقرير سحب QRcode </a>
+                        </li>
+                        <li>
+                            <a href="/reports/CreateLecturerIncomeReport">تقرير دخل المحاضر</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/reports/CreateInstituteIncomeReport">تقرير دخل المعهد</a>
+                        </li>
+
+                    </ul>
+                </li>
+                @*<li>
+                        <a href="#">
+                            <i class="fa fa-qrcode"></i> <span>QR CODE</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="c3js.html">اضافه QR CODE </a>
+                            </li>
+                            <li>
+                                <a href="chartjs.html">جميع QR CODE</a>
+                            </li>
+                            <li>
+                                <a href="flotchart.html">بحث عن QR CODE</a>
+                            </li>
+                        </ul>
+                    </li>*@
+                @*<li>
+                        <a href="#">
+                            <i class="fa fa-cog"></i> <span>اعدادات النظام </span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="c3js.html">اضافه مستخدم </a>
+                            </li>
+                            <li>
+                                <a href="c3js.html">جميع المستخدمين </a>
+                            </li>
+                        </ul>
+                    </li>*@
+                @*<li>
+                        <a href="#">
+                            <i class="fa fa-cogs"></i> <span>الصلاحيات</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="c3js.html">الموقع </a>
+                            </li>
+                            <li>
+                                <a href="c3js.html">الموقع </a>
+                            </li>
+                            <li>
+                                <a href="c3js.html">الموقع </a>
+                            </li>
+                        </ul>
+                    </li>*@
+                @*<li>
+                        <a href="#">
+                            <i class="fa fa-globe"></i> <span>التحكم بالموقع الالكتروني</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="c3js.html">الموقع </a>
+                            </li>
+                            <li>
+                                <a href="c3js.html">الموقع </a>
+                            </li>
+                            <li>
+                                <a href="c3js.html">الموقع </a>
+                            </li>
+                        </ul>
+                    </li>*@
+
+                @*<li>
+                        <a href="#">
+                            <i class="fa fa-envelope-o"></i> <span>Email</span> <span class="badge badge-red">3</span>
+                        </a>
+                        <ul>
+                            <li><a href="mail.html">Inbox</a></li>
+                            <li><a href="compose-mail.html">Compose Mail</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-bar-chart-o"></i> <span>Charts</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="c3js.html">C3 Chart </a>
+                            </li>
+                            <li>
+                                <a href="chartjs.html">Chart js</a>
+                            </li>
+                            <li>
+                                <a href="flotchart.html">Flot</a>
+                            </li>
+                            <li>
+                                <a href="morrisjs.html">Morris</a>
+                            </li>
+                            <li>
+                                <a href="sparkline.html">Spark Line</a>
+                            </li>
+                        </ul>
+                    </li>*@
+            </ul>
+            </li>
+            </ul>
+            <!--Left navigation end-->
+        </section>
+        <!--Left navigation section end-->
+        <!-- BEGIN CONTENT -->
+        <section id="min-wrapper">
+
+            @RenderBody()
+
+        </section>
+        <!-- END CONTENT -->
+        <div class="page-footer">
+            <div class="page-footer-inner">
+                @DateTime.Now.Year - Elbait Group
+            </div>
+            <div class="scroll-to-top">
+                <i class="icon-arrow-up"></i>
+            </div>
+        </div>
+
+        @*@Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)*@
+
+
+
+        <div id="change-color">
+            <div id="change-color-control">
+                <a href="javascript:void(0)"><i class="fa fa-magic"></i></a>
+            </div>
+            <div class="change-color-box">
+                <ul>
+                    <li class="default"></li>
+                    <li class="red-color"></li>
+                    <li class="blue-color"></li>
+                    <li class="light-green-color active"></li>
+                    <li class="black-color"></li>
+                    <li class="deep-blue-color"></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <div id="modalDiv" class="remodal label-red white" data-remodal-id="reModalRed">
+        <h3 id="HModalTitle"></h3>
+        <p id="PModalBody">
+
+        </p>
+        <br>
+        <a class="remodal-cancel btn-danger btn" href="#">Cancel</a>
+        <a class="remodal-confirm ls-light-green-btn btn" id="submitModalRequest" href="#">OK</a>
+    </div>
+
+    <!--Nano Scroll Script Start -->
+    <script src="~/template/assets/js/jquery.nanoscroller.min.js"></script>
+    <!--Nano Scroll Script End -->
+    <!--switchery Script Start -->
+    <script src="~/template/assets/js/switchery.min.js"></script>
+    <!--switchery Script End -->
+    <!--bootstrap switch Button Script Start-->
+    <script src="~/template/assets/js/bootstrap-switch.js"></script>
+    <!--bootstrap switch Button Script End-->
+    <!--easypie Library Script Start -->
+    <script src="~/template/assets/js/jquery.easypiechart.min.js"></script>
+    <!--easypie Library Script Start -->
+    <!--bootstrap-progressbar Library script Start-->
+    <script src="~/template/assets/js/bootstrap-progressbar.min.js"></script>
+    <!--bootstrap-progressbar Library script End-->
+
+    <script type="text/javascript" src="~/template/assets/js/pages/layout.js"></script>
+    <!--Layout Script End -->
+    <!--Form Wizard CSS Start-->
+    @*<script src="~/template/assets/js/jquery.smartWizard.js"></script>*@
+    <!--Form Wizard CSS End-->
+    <!--Demo Wizard Script Start-->
+    @*<script src="~/template/assets/js/pages/formWizard.js"></script>*@
+    <!--Demo Wizard Script End-->
+    <!--Demo for Date, Time Color Picker Script Start -->
+    <script src="~/template/assets/js/pages/pickerTool.js"></script>
+    <!--Demo for Date, Time Color Picker Script End -->
+    <!-- Date & Time Picker Library Script Start -->
+    <script src="~/template/assets/js/jquery.datetimepicker.js"></script>
+    <!-- Date & Time Picker Library Script End -->
+    <!-- MiniColors Library Script Start -->
+    <script src="~/template/assets/js/jquery.minicolors.min.js"></script>
+    <!-- MiniColors Library Script Start -->
+    <!-- summernote Editor Script For Layout start-->
+    <script src="~/template/assets/js/summernote.min.js"></script>
+    <!-- summernote Editor Script For Layout End-->
+    <!-- Demo Ck Editor Script For Layout Start-->
+    <script src="~/template/assets/js/pages/editor.js"></script>
+    <!-- Demo Ck Editor Script For Layout ENd-->
+    <!--Iimage Cropper Plugin Start-->
+    <script type="text/javascript" src="~/template/assets/js/lib/modernizr.custom.js"></script>
+    <script src="~/template/assets/js/cropper.js"></script>
+    <!--Iimage Cropper Plugin Finish-->
+    <!--Image Drag & Drop Plugin Start-->
+    <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script src="~/template/assets/js/jquery-image-upload.js"></script>
+    <!--Image Drag & Drop Plugin Finish-->
+    <!--Image Cropper & Drag Plugin Call Start -->
+    <script src="~/template/assets/js/pages/imageCrop.js"></script>
+    <script src="~/Scripts/forms.js"></script>
+    <script src="~/template/assets/js/jquery.remodal.min.js"></script>
+
+    <!--Image Cropper & Drag Plugin Call Finish -->
+    <!--Drag & Drop Need Template Start-->
+    <script id="imageTemplate" type="text/x-jquery-tmpl">
+        <div class="imageholder">
+            <figure>
+                <img src="${filePath}" alt="${fileName}" />
+                <figcaption>
+                    ${fileName} <br />
+                    <span>Original Size: ${fileOriSize} KB</span><br />
+                    <span>Upload Size: ${fileUploadSize} KB</span>
+                </figcaption>
+            </figure>
+        </div>
+    </script>
+
+</body>
+</html>
+
+
+<article class="form-box ASAlert" id="ASAlert">
+
+    <a href="#" class="form-close">
+        <img src="~/Content/Images/form-close.png" alt="close" />
+    </a>
+    <img src="~/Content/Images/header-logo.png" alt="logo" />
+    <label style="font-size:15px; color:black; margin-right:75px;" id="CustomeLale"> @TempData["notice"] </label>
+
+</article>
+
+<script>
+    $(document).on('click', '.buttonFinish', function (e) {
+        debugger
+        alert("jdhfks");
+        //$('#saveForm')[0].submit();
+    });
+
+    jQuery(document).ready(function () {
+        $('#myDataTable').dataTable();
+        setTimeout(function () {
+            $('.form-box.ASAlert').fadeOut(600);
+        }, 5000);
+    });
+</script>
+
+
+@if (TempData["notice"] != null)
+{
+    <script>
+        debugger
+        //$('.form-box.ASAlert').click(function (e) {
+        //    e.preventDefault();
+        //    // close active form
+        //    $(this).parent().fadeOut(600);
+
+        //    // close form overlay
+        //    $('.form-box-overlay').fadeOut(600);
+
+        //    // enable scroll
+        //    $('body').removeClass('noscroll');
+        //});
+        $('.form-box.ASAlert').fadeIn(600);
+    </script>
+}

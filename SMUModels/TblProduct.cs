@@ -17,11 +17,10 @@ namespace SMUModels
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TblProduct()
         {
-            this.TblProduct1 = new HashSet<TblProduct>();
+            this.TblInvoices = new HashSet<TblInvoice>();
         }
     
         public int ID { get; set; }
-        public int ProductCategoryID { get; set; }
         public string NameAr { get; set; }
         public string NameEn { get; set; }
         public string DescriptionAr { get; set; }
@@ -32,9 +31,10 @@ namespace SMUModels
         public bool IsDeleted { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
+        public int ProductCategoryID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblProduct> TblProduct1 { get; set; }
-        public virtual TblProduct TblProduct2 { get; set; }
+        public virtual ICollection<TblInvoice> TblInvoices { get; set; }
+        public virtual TblProductCategory TblProductCategory { get; set; }
     }
 }

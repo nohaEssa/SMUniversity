@@ -189,7 +189,7 @@ namespace SMUniversity.Controllers
                     ms.Close();
                     fs.Close();
                     fs.Dispose();
-                    return "Content/Images/Session/" + fileName;
+                    return "/Content/Images/Session/" + fileName;
                 }
             }
 

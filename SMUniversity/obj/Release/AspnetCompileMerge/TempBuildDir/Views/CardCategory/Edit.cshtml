@@ -58,21 +58,50 @@
                                     <div class="col-md-10">
                                         <input type="number"
                                                class="form-control validate[required] text-input"
-                                               id="Price" name="Price" placeholder="السعر" value="@Model.Price" required>
+                                               id="Price" name="Price" placeholder="السعر" value="@Model.Price" disabled readonly>
                                     </div>
                                 </div>
                             </div>
+                            @{
+                                if (Request["ForApplication"] == "0")
+                                {
+                                    <div class="row ls_divider">
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">كروت الشحن الكليه التي تم إنشائها</label>
+                                            <div class="col-md-10">
+                                                <input type="number"
+                                                       class="form-control validate[required] text-input"
+                                                       value="@Model.TblChargeCards.Count" placeholder="كروت الشحن الكليه التي تم إنشائها" readonly disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">الكروت التي تم شحنها</label>
+                                            <div class="col-md-10">
+                                                <input type="number"
+                                                       class="form-control validate[required] text-input"
+                                                       value="@Model.TblChargeCards.Where(a => a.Valid == false).Count()" placeholder="الكروت التي تم شحنها" readonly disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">كروت الشحن المتبقيه</label>
+                                            <div class="col-md-10">
+                                                <input type="number"
+                                                       class="form-control validate[required] text-input"
+                                                       value="@Model.TblChargeCards.Where(a => a.Valid == true).Count()" placeholder="كروت الشحن المتبقيه" readonly disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">إضافة كروت</label>
+                                            <div class="col-md-10">
+                                                <input type="number"
+                                                       class="form-control validate[required] text-input"
+                                                       value="0" id="ChargeCardsNo" name="ChargeCardsNo" placeholder="ادخل عدد الكروت من هذه الفئه">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
 
-                            <div class="row ls_divider">
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">عدد الكروت</label>
-                                    <div class="col-md-10">
-                                        <input type="number"
-                                               class="form-control validate[required] text-input"
-                                               id="ChargeCardsNo" name="ChargeCardsNo" placeholder="ادخل عدد الكروت من هذه الفئه">
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="form-group" style=" margin: 20px 30px 40px 50px; ">
                                 <button class="submit btn-primary btn" type="submit" name="submit">حفظ</button>

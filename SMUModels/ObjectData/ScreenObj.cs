@@ -8,10 +8,10 @@ namespace SMUModels.ObjectData
 {
     public class ScreenObj
     {
-        public int ScreenID { get; set; }
-        public string NameAr { get; set; }
-        public string NameEn { get; set; }
+        public int ScreenID { get; set; } = 0;
+        public string NameAr { get; set; } = "";
+        public string NameEn { get; set; } = "";
         public string[] HallIDs { get; set; }
-        public int BranchID { get; set; }
+        public int BranchID { get; set; } = 0;
     }
 }

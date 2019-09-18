@@ -34,11 +34,12 @@ namespace SMUniversity.Controllers
                 }
                 List<TblUserCategory> UserCategories = _Context.TblUserCategories.Where(a => a.IsDeleted != true).ToList();
                 List<TblBranch> Branches = _Context.TblBranches.Where(a => a.IsDeleted != true).ToList();
-
+                List<TblPermissionCategory> _PermissionCats = _Context.TblPermissionCategories.Where(a => a.IsDeleted != true).ToList();
+                //List<TblPermissionCategory> __Permissions = _Context.TblPermissions.Where(a => a.IsDeleted != true).ToList();
                 ViewBag.UserCategories = UserCategories;
                 ViewBag.Branches = Branches;
 
-                return View();
+                return View(_PermissionCats);
             }
             catch (Exception ex)
             {
@@ -49,24 +50,26 @@ namespace SMUniversity.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(UserObj _Data)
+        //public ActionResult Create(UserObj _Data)
+        public ActionResult Create(FormCollection _Data)
         {
             try
             {
-                if (!string.IsNullOrEmpty(_Data.NameAr) && !string.IsNullOrEmpty(_Data.NameEn) && !string.IsNullOrEmpty(_Data.Email) && !string.IsNullOrEmpty(_Data.PhoneNumber) && _Data.BranchID > 0 && _Data.UserCategoryID > 0)
+                string UserName = _Data["UserName"];
+                if (!string.IsNullOrEmpty(_Data["NameAr"]) && !string.IsNullOrEmpty(_Data["NameEn"]) && !string.IsNullOrEmpty(_Data["Email"]) && !string.IsNullOrEmpty(_Data["PhoneNumber"]) && !string.IsNullOrEmpty(_Data["UserName"]) && !string.IsNullOrEmpty(_Data["Password"]) && int.Parse(_Data["BranchID"]) > 0 && int.Parse(_Data["UserCategoryID"]) > 0)
                 {
-                    TblUserCredential _UserCred = _Context.TblUserCredentials.Where(a => a.UserName == _Data.UserName && a.UserType == 4).SingleOrDefault();
+                    TblUserCredential _UserCred = _Context.TblUserCredentials.Where(a => a.UserName == UserName && a.UserType == 4).SingleOrDefault();
                     if (_UserCred == null)
                     {
                         TblUser _UserObj = new TblUser()
                         {
-                            NameAr = _Data.NameAr,
-                            NameEn = _Data.NameEn,
-                            Email = _Data.Email,
-                            PhoneNumber = _Data.PhoneNumber,
+                            NameAr = _Data["NameAr"],
+                            NameEn = _Data["NameEn"],
+                            Email = _Data["Email"],
+                            PhoneNumber = _Data["PhoneNumber"],
                             //BranchID = _Data.UserCategoryID,
                             BranchID = 3,
-                            UserCategoryID = _Data.UserCategoryID,
+                            UserCategoryID = int.Parse(_Data["UserCategoryID"]),
                             IsDeleted = false,
                             CreatedDate = DateTime.Now
                         };
@@ -81,12 +84,11 @@ namespace SMUniversity.Controllers
                         }
 
                         _Context.TblUsers.Add(_UserObj);
-                        _Context.SaveChanges();
 
                         _UserCred = new TblUserCredential()
                         {
-                            UserName = _Data.UserName,
-                            Password = _Data.Password,
+                            UserName = _Data["UserName"],
+                            Password = _Data["Password"],
                             UserType = 4,
                         };
 
@@ -95,6 +97,28 @@ namespace SMUniversity.Controllers
 
                         _UserObj.CredentialsID = _UserCred.ID;
                         _Context.SaveChanges();
+
+                        List<int> SplittedResut = new List<int>();
+
+                        if (!string.IsNullOrEmpty(_Data["UserPermissions"]))
+                        {
+                            SplittedResut = _Data["UserPermissions"].Split(',').Select(Int32.Parse).ToList();
+                        }
+                        foreach (var item in SplittedResut)
+                        {
+                            TblPermissionUser _UserPermission = new TblPermissionUser()
+                            {
+                                PermissionID = item,
+                                UserID = _UserObj.ID,
+                                IsDeleted = false,
+                                CreatedDate = DateTime.Now
+                            };
+
+                            _Context.TblPermissionUsers.Add(_UserPermission);
+                            _Context.SaveChanges();
+                        }
+
+                        
 
                         TempData["notice"] = "تم إضافة المستخدم بنجاح";
                         return RedirectToAction("Create");
@@ -121,6 +145,13 @@ namespace SMUniversity.Controllers
 
         public ActionResult Edit(int UserID)
         {
+            //List<int> test = new List<int>();
+            //test.Add(5);
+            //test.Add(7); test.Add(20);
+            //test.Add(35);
+            //test.Add(3);
+            //string result = String.Join(",", test);
+
             try
             {
                 if (Session["UserID"] == null || Session["BranchID"] == null)
@@ -130,7 +161,11 @@ namespace SMUniversity.Controllers
                 TblUser _User = _Context.TblUsers.Where(a => a.ID == UserID && a.IsDeleted != true).FirstOrDefault();
                 List<TblUserCategory> UserCategories = _Context.TblUserCategories.Where(a => a.IsDeleted != true).ToList();
                 List<TblBranch> Branches = _Context.TblBranches.Where(a => a.IsDeleted != true).ToList();
+                List<TblPermissionCategory> _PermissionCats = _Context.TblPermissionCategories.Where(a => a.IsDeleted != true).ToList();
+                List<int> UserPermissions = _Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.IsDeleted != true).Select(a => a.PermissionID).ToList();
 
+                ViewBag._PermissionCats = _PermissionCats;
+                ViewBag.UserPermissions = String.Join(",", UserPermissions);
                 ViewBag.UserCategories = UserCategories;
                 ViewBag.Branches = Branches;
 
@@ -145,22 +180,24 @@ namespace SMUniversity.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(UserObj _Data)
+        public ActionResult Edit(FormCollection _Data)
         {
+            int UserID = int.Parse(_Data["UserID"]);
+
             try
             {
-                if (_Data.UserID > 0 && !string.IsNullOrEmpty(_Data.NameAr) && !string.IsNullOrEmpty(_Data.NameEn) && !string.IsNullOrEmpty(_Data.Email) && !string.IsNullOrEmpty(_Data.PhoneNumber) && _Data.BranchID > 0 && _Data.UserCategoryID > 0)
+                if (UserID > 0 && !string.IsNullOrEmpty(_Data["NameAr"]) && !string.IsNullOrEmpty(_Data["NameEn"]) && !string.IsNullOrEmpty(_Data["Email"]) && !string.IsNullOrEmpty(_Data["PhoneNumber"]) && int.Parse(_Data["BranchID"]) > 0 && int.Parse(_Data["UserCategoryID"]) > 0)
                 {
-                    TblUser _UserObj = _Context.TblUsers.Where(a => a.ID == _Data.UserID).FirstOrDefault();
+                    TblUser _UserObj = _Context.TblUsers.Where(a => a.ID == UserID).FirstOrDefault();
                     if (_UserObj != null)
                     {
-                        _UserObj.NameAr = _Data.NameAr;
-                        _UserObj.NameEn = _Data.NameEn;
-                        _UserObj.Email = _Data.Email;
-                        _UserObj.PhoneNumber = _Data.PhoneNumber;
+                        _UserObj.NameAr = _Data["NameAr"];
+                        _UserObj.NameEn = _Data["NameEn"];
+                        _UserObj.Email = _Data["Email"];
+                        _UserObj.PhoneNumber = _Data["PhoneNumber"];
                         //_UserObj.BranchID = _Data.BranchID;
                         _UserObj.BranchID = 3;
-                        _UserObj.UserCategoryID = _Data.UserCategoryID;
+                        _UserObj.UserCategoryID = int.Parse(_Data["UserCategoryID"]);
                         _UserObj.UpdatedDate = DateTime.Now;
 
                         if (Request.Files["Picture"] != null)
@@ -172,12 +209,41 @@ namespace SMUniversity.Controllers
                             }
                         }
 
-                        TblUserCredential _UserCred = _Context.TblUserCredentials.Where(a => a.UserName == _Data.UserName && a.UserType == 4).SingleOrDefault();
+                        string UserName = _Data["UserName"];
+                        TblUserCredential _UserCred = _Context.TblUserCredentials.Where(a => a.UserName == UserName && a.UserType == 4).SingleOrDefault();
                         if (_UserCred != null)
                         {
                             _UserCred.Password = _UserCred.Password;
                         }
                         _Context.SaveChanges();
+
+                        List<int> SplittedResut = new List<int>();
+
+                        if (!string.IsNullOrEmpty(_Data["UserPermissions"]))
+                        {
+                            SplittedResut = _Data["UserPermissions"].Split(',').Select(Int32.Parse).ToList();
+                        }
+                        foreach (var item in SplittedResut)
+                        {
+                            TblPermissionUser _PerUserObj = _Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == item).FirstOrDefault();
+                            if (_PerUserObj == null)
+                            {
+                                TblPermissionUser _UserPermission = new TblPermissionUser()
+                                {
+                                    PermissionID = item,
+                                    UserID = _UserObj.ID,
+                                    IsDeleted = false,
+                                    CreatedDate = DateTime.Now
+                                };
+
+                                _Context.TblPermissionUsers.Add(_UserPermission);
+                            }
+                            else
+                            {
+                                _PerUserObj.UpdatedDate = DateTime.Now;
+                            }
+                                _Context.SaveChanges();
+                        }
 
                         TempData["notice"] = "تم تعديل بيانات المستخدم بنجاح";
                         return RedirectToAction("Index");
@@ -191,13 +257,13 @@ namespace SMUniversity.Controllers
                 else
                 {
                     TempData["notice"] = "من فضلك ادخل البيانات المطلوبه كاملةً";
-                    return RedirectToAction("Edit", new { UserID = _Data.UserID });
+                    return RedirectToAction("Edit", new { UserID = UserID });
                 }
             }
             catch (Exception ex)
             {
                 TempData["notice"] = "ERROR while processing!";
-                return RedirectToAction("Edit", new { UserID = _Data.UserID });
+                return RedirectToAction("Edit", new { UserID = UserID });
             }
         }
 

@@ -104,7 +104,7 @@ namespace SMUniversity.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(UniversityData _Data)
+        public ActionResult Edit(ProductCategoryData _Data)
         {
             try
             {

@@ -16,6 +16,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 <script src="~/Scripts/DataTables/but@*t*@ons.html5.min.js"></script>
 
+<input type="hidden" id="HallID" />
 
 <div id="main-content">
     <div class="container-fluid">
@@ -52,19 +53,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in _Context.TblHalls.Where(a => a.IsDeleted != true).ToList())
+                            @foreach (var item in _Context.TblHalls.Where(a => a.IsDeleted != true).OrderByDescending(a => a.ID).ToList())
                             {
-                            <tr>
-                                <td>@item.ID</td>
-                                <td>@item.HallCodeAr</td>
-                                <td>@item.HallCodeEn</td>
-                                <td>@item.Capacity</td>
-                                <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
-                                <td>
-                                    <a href="@Url.Action("Edit", "Hall", new { HallID = item.ID })" class="btn btn-xs btn-warning" title="تعديل القاعه" id="btnEditHall"><i class="fa fa-pencil-square-o"></i></a>
-                                    <a href="@Url.Action("Delete", "Hall", new { HallID = item.ID })" class="btn btn-xs btn-danger" title="حذف القاعه" id="btnDeleteHall"><i class="fa fa-minus"></i></a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>@item.ID</td>
+                                    <td>@item.HallCodeAr</td>
+                                    <td>@item.HallCodeEn</td>
+                                    <td>@item.Capacity</td>
+                                    <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
+                                    <td>
+                                        <a href="@Url.Action("Edit", "Hall", new { HallID = item.ID })" class="btn btn-xs btn-warning" title="تعديل القاعه" id="btnEditHall"><i class="fa fa-pencil-square-o"></i></a>
+                                        @*<a href="@Url.Action("Delete", "Hall", new { HallID = item.ID })" class="btn btn-xs btn-danger" title="حذف القاعه" id="btnDeleteHall"><i class="fa fa-minus"></i></a>*@
+                                        <a href="javascript:showModal('@item.ID','@item.HallCodeAr')" class="btn btn-xs btn-danger" id="DeleteHall_@item.ID"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -73,3 +75,46 @@
         </div>
     </div>
 </div>
+
+<script>
+    function showModal(ID, Name) {
+        debugger
+        //$('#submitModalRequest').hide();
+        //$('.remodal-cancel').text('Close');
+
+        $('#HModalTitle').text('حذف قاعة ' + Name);
+        $('#PModalBody').text('اذا كانت القاعه : ' + name + ' مرتبطه ببيانات الفروع او المحاضرات او السندات اليدوية او الفواتير او الشاشات او جميعا فسيكون غير قادر علي الحذف');
+        //$('#PModalBody').text('سيتم الحذف فقط اذا كانت القاعه غير مرتبطه ببيانات خاصه بكروت شحن');
+        $("#DeleteHall_" + ID).attr("href", "#reModalRed");
+        $('#HallID').val(ID);
+        clickOnModal(ID);
+        return false;
+    }
+
+    function clickOnModal(ID) {
+        var href = $('#DeleteHall_' + ID).attr('href');
+        window.location.href = href; //causes the browser to refresh and load the requested url
+        return false;
+    }
+
+    $(document).on('confirm', '.remodal', function () {
+        debugger
+        $.ajax({
+            type: "POST",
+            url: "/Hall/Delete",
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: "{HallID:'" + $('#HallID').val() +
+                "'}",
+            dataType: "json",
+            processData: false,
+            success: function (response) {
+                debugger
+                location.reload();
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });
+    });
+</script>

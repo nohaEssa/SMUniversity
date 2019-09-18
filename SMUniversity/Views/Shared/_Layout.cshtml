@@ -94,6 +94,7 @@
 
     <link href="~/template/assets/css/rtl-css/plugins/jquery.remodal-rtl.css" rel="stylesheet" />
 
+
     <style>
         .form-box {
             width: 500px;
@@ -127,6 +128,11 @@
         @Scripts.Render("~/bundles/modernizr")*@
 
 </head>
+@{
+    SMUModels.admin_SMUniversityEntities _Context = new SMUModels.admin_SMUniversityEntities();
+    int UserID = int.Parse(Session["UserID"].ToString());
+    int BranchID = int.Parse(Session["BranchID"].ToString());
+}
 <body>
     @*<div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -165,6 +171,52 @@
                         <i class="fa fa-bars"></i>
                     </a>
                 </div>
+
+
+                <div class="page-actions">
+                    <div class="btn-group hide">
+                        <button type="button" class="btn btn-circle red-pink dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon-bar-chart"></i>&nbsp;<span class="hidden-sm hidden-xs">New&nbsp;</span>&nbsp;<i class="fa fa-angle-down"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#">
+                                    <i class="icon-user"></i> New User
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-present"></i> New Event <span class="badge badge-success">4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-basket"></i> New order
+                                </a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-flag"></i> Pending Orders <span class="badge badge-danger">4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-users"></i> Pending Users <span class="badge badge-warning">12</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="search-box" style=" background: #580000; color: #FFF; ">
+                        <button type="button" class="btn btn-circle green-haze dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-sitemap"></i>&nbsp;<span class="hidden-sm hidden-xs">ابو فطيرة</span>&nbsp;<i class="fa fa-angle-down"></i>
+                        </button>
+                    </div>
+
+                </div>
+
+
                 <div class="search-box">
                     <ul>
                         <li class="dropdown">
@@ -409,419 +461,700 @@
                         <i class="fa fa-dashboard"></i> <span>الرئيسية</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-id-card"></i> <span>الطلاب</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="/Student/Index">كل الطلاب</a>
-                        </li>
-                        <li>
-                            <a href="/Student/Create">اضافه طالب </a>
-                        </li>
-                        @*<li>
-                                <a href="chartjs.html">جميع الطلاب</a>
-                            </li>
-                            <li>
-                                <a href="flotchart.html">بحث عن طالب</a>
-                            </li>*@
-                    </ul>
-                </li>
-                @*<li>
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 1 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
                         <a href="#">
-                            <i class="fa fa-bar-chart-o"></i> <span>تسجيلات اونلاين</span>
+                            <i class="fa fa-id-card"></i> <span>الطلاب</span>
+                        </a>
+                        <ul>
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 2 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Student/Create">انشاء طالب </a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 1 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Student/Index">جميع الطلاب</a>
+                                </li>
+                            }
+
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 12 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/BalanceTransaction/PendedChargeRequest">تأكيد طلبات الشحن</a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+
+                @*<li>
+            <a href="#">
+                <i class="fa fa-bar-chart-o"></i> <span>تسجيلات اونلاين</span>
+            </a>
+            <ul>
+                <li>
+                    <a href="c3js.html">دفع اونلاين </a>
+                </li>
+                <li>
+                    <a href="chartjs.html">تسجيل اونلاين</a>
+                </li>
+
+            </ul>
+        </li>*@
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 2 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-address-book"></i> <span>المعلمين</span>
+                        </a>
+                        <ul>
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 4 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Lecturer/Create">انشاء معلم</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 3 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Lecturer/Index">جميع المعلمين</a>
+                                </li>
+                                <li>
+                                    <a href="/Lecturer/getAllSubjectsAssignments">جميع التعيينات</a>
+                                </li>
+                            }
+
+
+
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 5 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Lecturer/AssignSubjects">تعيين مواد للمعلمين</a>
+                                </li>
+                            }
+
+                        </ul>
+                    </li>
+                }
+
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 4 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-credit-card-alt"></i> <span>فئات كروت الشحن</span>
+                        </a>
+                        <ul>
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 11 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/CardCategory/Create?ForApplication=1">اضافة فئة شحن للأبليكيشن</a>
+                                </li>
+                                <li>
+                                    <a href="/CardCategory/Create?ForApplication=0">اضافة فئة شحن طباعه</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 10 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/CardCategory/CardCatListForApp">جميع فئات شحن الأبليكيشن</a>
+                                </li>
+                                <li>
+                                    <a href="/CardCategory/CardCatListForPrint">جميع فئات شحن الطباعه</a>
+                                </li>
+                            }
+
+
+                        </ul>
+                    </li>
+                }
+
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 3 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-book "></i> <span>المحاضرات</span>
+                        </a>
+                        <ul>
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 8 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Session/Create">انشاء محاضره </a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 6 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Session/SessionsList">عرض المحاضرات</a>
+                                </li>
+                            }
+
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 7 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Session/CoursesList">عرض الكورسات</a>
+                                </li>
+                            }
+
+
+
+                            <li>
+                                <a href="/Session/LecturesByPercentageList">تحديد الطلبه من طرف المحاضر</a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 21 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-book "></i> <span>الحضور والغياب</span>
                         </a>
                         <ul>
                             <li>
-                                <a href="c3js.html">دفع اونلاين </a>
+                                <a href="/Attendance/CoursesList">عرض الدورات</a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 5 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-book"></i> <span>التقييمات</span>
+                        </a>
+                        <ul>
+
+
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 14 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Evaluation/CreateEvaluationQues">اضافة سؤال تقييم</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 16 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Evaluation/CreateEvaluationQuesAns">اضافة اجابه تقييم</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 15 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Evaluation/EvaluationQuesAns">إجابات التقييم</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 13 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Evaluation/EvaluationQuestions">اسئلة التقييم</a>
+                                </li>
+                            }
+
+                            <li>
+                                <a href="/Evaluation/GetSessionsList">تقييمات الطلبه</a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 8 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-book"></i> <span>مساعده الطلاب</span>
+                        </a>
+                        <ul>
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 18 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/HelpQuestion/Create">اضافة سؤال مساعده</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 17 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/HelpQuestion/Index">اسئلة المساعده</a>
+                                </li>
+                            }
+
+
+
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 19 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/HelpQuestion/StudentComplaints">شكاوي الطلبه</a>
+                                </li>
+                            }
+
+                        </ul>
+                    </li>
+                }
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 6 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-book"></i> <span>الفواتير</span>
+                        </a>
+                        <ul>
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 20 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Invoice/VirtualInvoices">فواتير الشحن</a>
+                                </li>
+                                <li>
+                                    <a href="/Invoice/RealCashInvoices">فواتير الإشتراكات</a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 7 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-book"></i> <span>السندات</span>
+                        </a>
+                        <ul>
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 21 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Invoice/CreateVoucher">إنشاء سند يدوي</a>
+                                </li>
+                                <li>
+                                    <a href="/Invoice/VoucherList">سندات إيجار القاعات</a>
+                                </li>
+                                <li>
+                                    <a href="/Invoice/VoucherList2">السندات اليدوية</a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-book"></i> <span>فئات السندات</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="/VoucherCategory/Index">جميع فئات السندات </a>
                             </li>
                             <li>
-                                <a href="chartjs.html">تسجيل اونلاين</a>
+                                <a href="/VoucherCategory/Create">إنشاء فئة سند</a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 9 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-building"></i> <span>القاعات</span>
+                        </a>
+                        <ul>
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 22 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Hall/Index">جميع القاعات</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 23 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Hall/Create">انشاء قاعة </a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 24 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Hall/RentHall">إيجار قاعة </a>
+                                </li>
+                            }
+
+                        </ul>
+                    </li>
+                }
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 10 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-desktop"></i> <span>الشاشات</span>
+                        </a>
+                        <ul>
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 25 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Screen/Index">جميع الشاشات</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 26 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Screen/Create">انشاء شاشة </a>
+                                </li>
+                            }
+
+                        </ul>
+                    </li>
+                }
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 11 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-graduation-cap"></i> <span>الجامعات</span>
+                        </a>
+                        <ul>
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 27 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/University/Index">جميع الجامعات</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 28 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/University/Create">انشاء جامعه</a>
+                                </li>
+                            }
+
+                        </ul>
+                    </li>
+                }
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 12 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-University "></i> <span>الكليات</span>
+                        </a>
+                        <ul>
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 29 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/College/Index">جميع الكليات</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 30 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/College/Create">انشاء كليه </a>
+                                </li>
+                            }
+
+                        </ul>
+                    </li>
+                }
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 13 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-clipboard"></i> <span>التخصصات</span>
+                        </a>
+                        <ul>
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 31 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Major/Index">جميع التخصصات</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 32 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Major/Create">انشاء تخصص</a>
+                                </li>
+                            }
+
+                        </ul>
+                    </li>
+                }
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 14 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-clipboard"></i> <span>المواد</span>
+                        </a>
+                        <ul>
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 33 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Subject/Index">جميع المواد</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 34 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Subject/Create">انشاء ماده</a>
+                                </li>
+
+                            }
+
+                        </ul>
+                    </li>
+                }
+
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 15 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-map-marker"></i> <span>المحافظات</span>
+                        </a>
+                        <ul>
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 35 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Governorate/Index">جميع المحافظات</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 36 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Governorate/Create">انشاء محافظة</a>
+                                </li>
+                            }
+
+                        </ul>
+                    </li>
+                }
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 16 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-sitemap "></i> <span>المناطق</span>
+                        </a>
+                        <ul>
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 37 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Area/Index">جميع المناطق</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 38 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Area/Create">انشاء منطقه</a>
+                                </li>
+                            }
+
+                        </ul>
+                    </li>
+                }
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 17 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-sitemap"></i> <span>المنتجات</span>
+                        </a>
+                        <ul>
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 39 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Product/Index">جميع المنتجات</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 40 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/Product/Create">انشاء منتج</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 42 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/ProductCategory/Create">انشاء فئة منتج</a>
+                                </li>
+                            }
+
+                        </ul>
+                    </li>
+                }
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 18 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-sitemap "></i> <span>المستخدمين</span>
+                        </a>
+                        <ul>
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 43 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/User/Index">جميع المستخدمين</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 44 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/User/Create">انشاء مستخدم</a>
+                                </li>
+                            }
+                            @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 46 && a.IsDeleted != true).FirstOrDefault() != null)
+                            {
+                                <li>
+                                    <a href="/User/AddUserCategory">انشاء فئة مستخدم</a>
+                                </li>
+                            }
+
+                        </ul>
+                    </li>
+                }
+                @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 19 && a.IsDeleted != true).FirstOrDefault() != null)
+                {
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-file-pdf-o"></i> <span>التقارير</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="/Reports/CreateTransactionReport">تقرير الشحن اليومى</a>
+                            </li>
+                            <li>
+                                <a href="/Reports/CreateHallReport">تقرير حجز القاعات </a>
+                            </li>
+                            <li>
+                                <a href="/Reports/CreateSubscriptionReport">تقرير سحب QRcode </a>
+                            </li>
+                            <li>
+                                <a href="/reports/CreateLecturerIncomeReport">تقرير دخل المحاضر</a>
+                            </li>
+
+                            <li>
+                                <a href="/reports/CreateInstituteIncomeReport">تقرير دخل المعهد</a>
                             </li>
 
                         </ul>
-                    </li>*@
-                <li>
-                    <a href="#">
-                        <i class="fa fa-address-book"></i> <span>المحاضرين</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="/Lecturer/Index">كل المحاضرين</a>
-                        </li>
-                        <li>
-                            <a href="/Lecturer/Create">اضافه محاضر</a>
-                        </li>
-                        <li>
-                            <a href="/Lecturer/AssignSubjects">تعيين مواد للمحاضرين</a>
-                        </li>
-                        @*<li>
-                                <a href="chartjs.html">جميع المحاضرين</a>
-                            </li>
-                            <li>
-                                <a href="flotchart.html">بحث عن محاضر</a>
-                            </li>*@
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-credit-card-alt"></i> <span>فئات كروت الشحن</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="/CardCategory/Index">كل فئات الشحن</a>
-                        </li>
-                        <li>
-                            <a href="/CardCategory/Create">اضافة فئة شحن</a>
-                        </li>
-                        <li>
-                            <a href="/BalanceTransaction/PendedChargeRequest">تأكيد طلبات الشحن</a>
-                        </li>
+                    </li>
+                }
 
-                        @*<li>
-                                <a href="chartjs.html">جميع الكروت</a>
-                            </li>
-                            <li>
-                                <a href="flotchart.html">بحث عن طالب</a>
-                            </li>*@
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-book "></i> <span>المحاضرات</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="/Session/SessionsList">عرض المحاضرات</a>
-                        </li>
-                        <li>
-                            <a href="/Session/CoursesList">عرض الكورسات</a>
-                        </li>
-                        <li>
-                            <a href="/Session/Create">اضافه محاضره </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-book"></i> <span>التقييمات</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="/Evaluation/EvaluationQuestions">اسئلة التقييم</a>
-                        </li>
-                        <li>
-                            <a href="/Evaluation/CreateEvaluationQues">اضافة سؤال تقييم</a>
-                        </li>
-                        <li>
-                            <a href="/Evaluation/EvaluationQuesAns">إجابات التقييم</a>
-                        </li>
-                        <li>
-                            <a href="/Evaluation/CreateEvaluationQuesAns">اضافة سؤال تقييم</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-book"></i> <span>مساعده الطلاب</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="/HelpQuestion/Index">اسئلة المساعده</a>
-                        </li>
-                        <li>
-                            <a href="/HelpQuestion/Create">اضافة سؤال مساعده</a>
-                        </li>
-                        <li>
-                            <a href="/HelpQuestion/StudentComplaints">شكاوي الطلبه</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-book"></i> <span>الفواتير</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="/Invoice/Index">الفواتير</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-book"></i> <span>السندات</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="/Invoice/VoucherList">السندات</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-building"></i> <span>القاعات</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="/Hall/Index">كل القاعات</a>
-                        </li>
-                        <li>
-                            <a href="/Hall/Create">اضافه قاعة </a>
-                        </li>
-                        <li>
-                            <a href="/Hall/RentHall">إيجار قاعة </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-desktop"></i> <span>الشاشات</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="/Screen/Index">كل الشاشات</a>
-                        </li>
-                        <li>
-                            <a href="/Screen/Create">اضافه شاشة </a>
-                        </li>
-                        @*<li>
-                                <a href="/Home/Index">تعديل شاشة</a>
-                            </li>*@
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-graduation-cap"></i> <span>الجامعات</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="/University/Index">كل الجامعات</a>
-                        </li>
-                        <li>
-                            <a href="/University/Create">اضافه جامعه</a>
-                        </li>
-                        @*<li>
-                                <a href="/Home/Index">تعديل القاعات</a>
-                            </li>*@
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-university "></i> <span>الكليات</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="/College/Index">كل الكليات</a>
-                        </li>
-                        <li>
-                            <a href="/College/Create">اضافه كليه </a>
-                        </li>
-                        @*<li>
-                                <a href="chartjs.html">جميع المحاضرات</a>
-                            </li>
-                            <li>
-                                <a href="flotchart.html">بحث عن محاضرة</a>
-                            </li>*@
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-clipboard"></i> <span>التخصصات</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="/Major/Index">كل التخصصات</a>
-                        </li>
-                        <li>
-                            <a href="/Major/Create">اضافه تخصص</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-clipboard"></i> <span>المواد</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="/Subject/Index">كل المواد</a>
-                        </li>
-                        <li>
-                            <a href="/Subject/Create">اضافه ماده</a>
-                        </li>
-                    </ul>
-                </li>
 
-                <li>
-                    <a href="#">
-                        <i class="fa fa-map-marker"></i> <span>المحافظات</span>
-                    </a>
-                    <ul>
+                @*@if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.TblPermission.PermissionCategoryID == 19 && a.IsDeleted != true).FirstOrDefault() != null)
+        {
+            <li>
+                <a href="#">
+                    <i class="fa fa-file-pdf-o"></i> <span>التقارير</span>
+                </a>
+                <ul>
+                    @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 1 && a.IsDeleted != true).FirstOrDefault() != null)
+                    {
                         <li>
-                            <a href="/Governorate/Index">كل المحافظات</a>
+                            <a href="c3js.html">انشاء تقرير يومي </a>
                         </li>
-                        <li>
-                            <a href="/Governorate/Create">اضافه محافظة</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-sitemap "></i> <span>المناطق</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="/Area/Index">كل المناطق</a>
-                        </li>
-                        <li>
-                            <a href="/Area/Create">اضافه منطقه</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-sitemap"></i> <span>المنتجات</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="/Product/Index">كل المنتجات</a>
-                        </li>
-                        <li>
-                            <a href="/Product/Create">اضافه منتج</a>
-                        </li>
-                        <li>
-                            <a href="/ProductCategory/Create">اضافه فئة منتج</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-sitemap "></i> <span>المستخدمين</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="/User/Index">كل المستخدمين</a>
-                        </li>
-                        <li>
-                            <a href="/User/Create">اضافه مستخدم</a>
-                        </li>
-                        <li>
-                            <a href="/User/AddUserCategory">اضافه فئة مستخدم</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-file-pdf-o"></i> <span>التقارير</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="c3js.html">اضافه تقرير يومي </a>
-                        </li>
+                    }
+                    @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 1 && a.IsDeleted != true).FirstOrDefault() != null)
+                    {
                         <li>
                             <a href="chartjs.html">جميع التقارير</a>
                         </li>
+                    }
+                    @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 1 && a.IsDeleted != true).FirstOrDefault() != null)
+                    {
                         <li>
                             <a href="flotchart.html">تقرير شهري</a>
                         </li>
+                    }
+                    @if (_Context.TblPermissionUsers.Where(a => a.UserID == UserID && a.PermissionID == 1 && a.IsDeleted != true).FirstOrDefault() != null)
+                    {
                         <li>
                             <a href="flotchart.html">تقرير محاضر</a>
                         </li>
-                    </ul>
-                </li>
-                @*<li>
-                        <a href="#">
-                            <i class="fa fa-qrcode"></i> <span>QR CODE</span>
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="c3js.html">اضافه QR CODE </a>
-                            </li>
-                            <li>
-                                <a href="chartjs.html">جميع QR CODE</a>
-                            </li>
-                            <li>
-                                <a href="flotchart.html">بحث عن QR CODE</a>
-                            </li>
-                        </ul>
-                    </li>*@
-                @*<li>
-                        <a href="#">
-                            <i class="fa fa-cog"></i> <span>اعدادات النظام </span>
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="c3js.html">اضافه مستخدم </a>
-                            </li>
-                            <li>
-                                <a href="c3js.html">جميع المستخدمين </a>
-                            </li>
-                        </ul>
-                    </li>*@
-                @*<li>
-                        <a href="#">
-                            <i class="fa fa-cogs"></i> <span>الصلاحيات</span>
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="c3js.html">الموقع </a>
-                            </li>
-                            <li>
-                                <a href="c3js.html">الموقع </a>
-                            </li>
-                            <li>
-                                <a href="c3js.html">الموقع </a>
-                            </li>
-                        </ul>
-                    </li>*@
-                @*<li>
-                        <a href="#">
-                            <i class="fa fa-globe"></i> <span>التحكم بالموقع الالكتروني</span>
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="c3js.html">الموقع </a>
-                            </li>
-                            <li>
-                                <a href="c3js.html">الموقع </a>
-                            </li>
-                            <li>
-                                <a href="c3js.html">الموقع </a>
-                            </li>
-                        </ul>
-                    </li>*@
+                    }
+
+                </ul>
+            </li>
+        }*@
 
                 @*<li>
-                        <a href="#">
-                            <i class="fa fa-envelope-o"></i> <span>Email</span> <span class="badge badge-red">3</span>
-                        </a>
-                        <ul>
-                            <li><a href="mail.html">Inbox</a></li>
-                            <li><a href="compose-mail.html">Compose Mail</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-bar-chart-o"></i> <span>Charts</span>
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="c3js.html">C3 Chart </a>
-                            </li>
-                            <li>
-                                <a href="chartjs.html">Chart js</a>
-                            </li>
-                            <li>
-                                <a href="flotchart.html">Flot</a>
-                            </li>
-                            <li>
-                                <a href="morrisjs.html">Morris</a>
-                            </li>
-                            <li>
-                                <a href="sparkline.html">Spark Line</a>
-                            </li>
-                        </ul>
-                    </li>*@
+            <a href="#">
+                <i class="fa fa-qrcode"></i> <span>QR CODE</span>
+            </a>
+            <ul>
+                <li>
+                    <a href="c3js.html">انشاء QR CODE </a>
+                </li>
+                <li>
+                    <a href="chartjs.html">جميع QR CODE</a>
+                </li>
+                <li>
+                    <a href="flotchart.html">بحث عن QR CODE</a>
+                </li>
+            </ul>
+        </li>*@
+                @*<li>
+            <a href="#">
+                <i class="fa fa-cog"></i> <span>اعدادات النظام </span>
+            </a>
+            <ul>
+                <li>
+                    <a href="c3js.html">انشاء مستخدم </a>
+                </li>
+                <li>
+                    <a href="c3js.html">جميع المستخدمين </a>
+                </li>
+            </ul>
+        </li>*@
+                @*<li>
+            <a href="#">
+                <i class="fa fa-cogs"></i> <span>الصلاحيات</span>
+            </a>
+            <ul>
+                <li>
+                    <a href="c3js.html">الموقع </a>
+                </li>
+                <li>
+                    <a href="c3js.html">الموقع </a>
+                </li>
+                <li>
+                    <a href="c3js.html">الموقع </a>
+                </li>
+            </ul>
+        </li>*@
+                @*<li>
+            <a href="#">
+                <i class="fa fa-globe"></i> <span>التحكم بالموقع الالكتروني</span>
+            </a>
+            <ul>
+                <li>
+                    <a href="c3js.html">الموقع </a>
+                </li>
+                <li>
+                    <a href="c3js.html">الموقع </a>
+                </li>
+                <li>
+                    <a href="c3js.html">الموقع </a>
+                </li>
+            </ul>
+        </li>*@
+
+                @*<li>
+            <a href="#">
+                <i class="fa fa-envelope-o"></i> <span>Email</span> <span class="badge badge-red">3</span>
+            </a>
+            <ul>
+                <li><a href="mail.html">Inbox</a></li>
+                <li><a href="compose-mail.html">Compose Mail</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-bar-chart-o"></i> <span>Charts</span>
+            </a>
+            <ul>
+                <li>
+                    <a href="c3js.html">C3 Chart </a>
+                </li>
+                <li>
+                    <a href="chartjs.html">Chart js</a>
+                </li>
+                <li>
+                    <a href="flotchart.html">Flot</a>
+                </li>
+                <li>
+                    <a href="morrisjs.html">Morris</a>
+                </li>
+                <li>
+                    <a href="sparkline.html">Spark Line</a>
+                </li>
+            </ul>
+        </li>*@
             </ul>
             </li>
             </ul>
@@ -928,6 +1261,10 @@
     <script src="~/Scripts/forms.js"></script>
     <script src="~/template/assets/js/jquery.remodal.min.js"></script>
 
+
+    <script src="~/template/assets/js/icheck.min.js"></script>
+    <script src="~/Scripts/jquery.magnific-popup.js"></script>
+
     <!--Image Cropper & Drag Plugin Call Finish -->
     <!--Drag & Drop Need Template Start-->
     <script id="imageTemplate" type="text/x-jquery-tmpl">
@@ -965,11 +1302,84 @@
     });
 
     jQuery(document).ready(function () {
-        $('#myDataTable').dataTable();
+        $('#myDataTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Arabic.json",
+                "pageLength": 50,
+                "processing": true
+            }
+        });
+        //$('#myDataTable').dataTable();
         setTimeout(function () {
             $('.form-box.ASAlert').fadeOut(600);
         }, 5000);
     });
+
+    $('input').iCheck({
+        checkboxClass: 'icheckbox_square',
+        radioClass: 'iradio_square',
+        increaseArea: '20%' // optional
+    });
+
+    //function imageViewer() {
+    //    debugger
+    //    $('.image-popup-vertical-fit').magnificPopup({
+    //        type: 'image',
+    //        closeOnContentClick: true,
+    //        mainClass: 'mfp-img-mobile',
+    //        image: {
+    //            verticalFit: true
+    //        }
+
+    //    });
+
+    //    $('.image-popup-fit-width').magnificPopup({
+    //        type: 'image',
+    //        closeOnContentClick: true,
+    //        image: {
+    //            verticalFit: false
+    //        }
+    //    });
+
+    //    $('.image-popup-no-margins').magnificPopup({
+    //        type: 'image',
+    //        closeOnContentClick: true,
+    //        closeBtnInside: false,
+    //        fixedContentPos: true,
+    //        mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+    //        image: {
+    //            verticalFit: true
+    //        },
+    //        zoom: {
+    //            enabled: true,
+    //            duration: 300 // don't foget to change the duration also in CSS
+    //        }
+    //    });
+
+    //    $('.image-popup-fit-width').magnificPopup({
+    //        type: 'image',
+    //        closeOnContentClick: true,
+    //        image: {
+    //            verticalFit: false
+    //        }
+    //    });
+
+    //    $('.image-popup-no-margins').magnificPopup({
+    //        type: 'image',
+    //        closeOnContentClick: true,
+    //        closeBtnInside: false,
+    //        fixedContentPos: true,
+    //        mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+    //        image: {
+    //            verticalFit: true
+    //        },
+    //        zoom: {
+    //            enabled: true,
+    //            duration: 300 // don't foget to change the duration also in CSS
+    //        }
+    //    });
+    //}
+
 </script>
 
 

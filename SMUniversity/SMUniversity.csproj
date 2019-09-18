@@ -181,6 +181,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AreaController.cs" />
+    <Compile Include="Controllers\AttendanceController.cs" />
     <Compile Include="Controllers\BalanceTransactionController.cs" />
     <Compile Include="Controllers\CardCategoryController.cs" />
     <Compile Include="Controllers\CollegeController.cs" />
@@ -195,6 +196,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\ScreenController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
@@ -202,16 +204,26 @@
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\UniversityController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\VoucherCategoryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BalanceTransactionViewModel.cs" />
+    <Compile Include="Models\collectionModel.cs" />
+    <Compile Include="Models\HallRentViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\InstituteIncomeViewModel.cs" />
+    <Compile Include="Models\LatestVoucherViewModel.cs" />
+    <Compile Include="Models\LecturerIncomeViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\newStudentViewModel.cs" />
+    <Compile Include="Models\SubscriptionViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\email.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -391,6 +403,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\CardCategory\CardCatListForPrint.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap4.js" />
@@ -467,20 +480,29 @@
     <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
+    <Content Include="Scripts\form-samples.js" />
     <Content Include="Scripts\forms.js" />
     <Content Include="Scripts\Hall\RentHall.js" />
+    <Content Include="Scripts\Home\GetNewStudents.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.magnific-popup.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Lecturer\AssignSubjects.js" />
+    <Content Include="Scripts\Lecturer\Edit.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\multiple-select.js" />
+    <Content Include="Scripts\Reports\CreateHallReport.js" />
+    <Content Include="Scripts\Reports\CreateInstituteIncomeReport.js" />
+    <Content Include="Scripts\Reports\CreateLecturerIncomeReport.js" />
+    <Content Include="Scripts\Reports\CreateSubscriptionReport.js" />
+    <Content Include="Scripts\Reports\CreateTransactionReport.js" />
     <Content Include="Scripts\Screen\Create.js" />
     <Content Include="Scripts\Session\Create.js" />
     <Content Include="Scripts\Session\ViewSessions.js" />
@@ -488,6 +510,8 @@
     <Content Include="Scripts\Student\Edit.js" />
     <Content Include="Scripts\Student\Index.js" />
     <Content Include="Scripts\Subject\Create.js" />
+    <Content Include="Scripts\Subject\Edit.js" />
+    <Content Include="Scripts\User\Edit.js" />
     <Content Include="template\assets\css\bootstrap-rtl.css" />
     <Content Include="template\assets\css\bootstrap-theme.css" />
     <Content Include="template\assets\css\bootstrap-theme.min.css" />
@@ -683,6 +707,7 @@
     <Content Include="template\assets\css\plugins\weatherFeed.css" />
     <Content Include="template\assets\css\responsive.css" />
     <Content Include="template\assets\css\rtl-css\bootstrap-rtl.css" />
+    <Content Include="template\assets\css\rtl-css\plugins-rtl.css" />
     <Content Include="template\assets\css\rtl-css\plugins\accordion-rtl.css" />
     <Content Include="template\assets\css\rtl-css\plugins\amaranjs\jquery.amaran-rtl.css" />
     <Content Include="template\assets\css\rtl-css\plugins\amaranjs\theme\all-themes-rtl.css" />
@@ -893,6 +918,7 @@
     <Content Include="template\assets\js\editable-table\jquery.validate.js" />
     <Content Include="template\assets\js\fileinput.js" />
     <Content Include="template\assets\js\fileinput.min.js" />
+    <Content Include="template\assets\js\form-icheck.js" />
     <Content Include="template\assets\js\fullcalendar.min.js" />
     <Content Include="template\assets\js\gallery\evenheights.js" />
     <Content Include="template\assets\js\gallery\jquery.shuffle.modernizr.min.js" />
@@ -923,6 +949,7 @@
     <Content Include="template\assets\js\jquery.minicolors.js" />
     <Content Include="template\assets\js\jquery.minicolors.min.js" />
     <Content Include="template\assets\js\jquery.nanoscroller.min.js" />
+    <Content Include="template\assets\js\jquery.pulsate.min.js" />
     <Content Include="template\assets\js\jquery.qrcode.js" />
     <Content Include="template\assets\js\jquery.remodal.js" />
     <Content Include="template\assets\js\jquery.remodal.min.js" />
@@ -1163,7 +1190,7 @@
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\Hall\Index.cshtml" />
     <Content Include="Views\Area\Index.cshtml" />
-    <Content Include="Views\CardCategory\Index.cshtml" />
+    <Content Include="Views\CardCategory\CardCatListForPrint.cshtml" />
     <Content Include="Views\College\Index.cshtml" />
     <Content Include="Views\Governorate\Index.cshtml" />
     <Content Include="Views\Lecturer\Index.cshtml" />
@@ -1196,8 +1223,8 @@
     <Content Include="Views\Evaluation\EvaluationQuestions.cshtml" />
     <Content Include="Views\Evaluation\CreateEvaluationQues.cshtml" />
     <Content Include="Views\Evaluation\EvaluationQuesAns.cshtml" />
-    <Content Include="Views\Invoice\Invoice.cshtml" />
-    <Content Include="Views\Invoice\Index.cshtml" />
+    <Content Include="Views\Invoice\InvoiceTemplate.cshtml" />
+    <Content Include="Views\Invoice\RealCashInvoices.cshtml" />
     <Content Include="Views\Invoice\VoucherList.cshtml" />
     <Content Include="Views\Invoice\VoucherTemplate.cshtml" />
     <Content Include="Views\Subject\Create.cshtml" />
@@ -1211,14 +1238,36 @@
     <Content Include="Views\CardCategory\ChargeCardsList.cshtml" />
     <Content Include="Views\Session\SessionsList.cshtml" />
     <Content Include="Views\Session\CoursesList.cshtml" />
+    <Content Include="Views\CardCategory\CardCatListForApp.cshtml" />
+    <Content Include="Views\Session\LecturesByPercentageList.cshtml" />
+    <Content Include="Views\Session\GetSessionStudents.cshtml" />
+    <Content Include="Views\Attendance\GetSessionTimes.cshtml" />
+    <Content Include="Views\Attendance\CoursesList.cshtml" />
+    <Content Include="Views\Attendance\GetSessionStudents.cshtml" />
+    <Content Include="Views\Evaluation\GetSessionsList.cshtml" />
+    <Content Include="Views\Evaluation\GetStudentsEvaluations.cshtml" />
+    <Content Include="Views\Student\Profile.cshtml" />
+    <Content Include="Uploads\Certificates.p12" />
+    <Content Include="Views\Invoice\VoucherList2.cshtml" />
+    <Content Include="Views\Invoice\CreateVoucher.cshtml" />
+    <Content Include="Views\VoucherCategory\Index.cshtml" />
+    <Content Include="Views\VoucherCategory\Create.cshtml" />
+    <Content Include="Views\VoucherCategory\Edit.cshtml" />
+    <Content Include="Views\Reports\CreateHallReport.cshtml" />
+    <Content Include="Views\Reports\CreateInstituteIncomeReport.cshtml" />
+    <Content Include="Views\Reports\CreateLecturerIncomeReport.cshtml" />
+    <Content Include="Views\Reports\CreateSubscriptionReport.cshtml" />
+    <Content Include="Views\Reports\CreateTransactionReport.cshtml" />
+    <Content Include="Views\Lecturer\getAllSubjectsAssignments.cshtml" />
+    <Content Include="Views\Invoice\VirtualInvoices.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\Images\Lecturer\" />
     <Folder Include="Content\Images\Product\" />
     <Folder Include="Content\Images\Session\" />
     <Folder Include="Content\Images\Student\" />
     <Folder Include="Content\Images\Subject\" />
+    <Folder Include="Content\Images\User\" />
     <Folder Include="template\assets\css\rtl-css\plugins\humane_themes\" />
     <Folder Include="template\assets\css\rtl-css\plugins\icheck\skins\" />
     <Folder Include="Views\ChargeCard\" />
@@ -1258,9 +1307,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>61045</DevelopmentServerPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:61045/</IISUrl>
+          <IISUrl>http://localhost:61793/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

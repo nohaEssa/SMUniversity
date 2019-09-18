@@ -25,7 +25,7 @@ namespace SMUModels
     
         public int ID { get; set; }
         public int StudentID { get; set; }
-        public int SessionID { get; set; }
+        public Nullable<int> SessionID { get; set; }
         public bool IsDeleted { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
@@ -33,6 +33,8 @@ namespace SMUModels
         public bool Pending { get; set; }
         public byte PriceType { get; set; }
         public decimal Price { get; set; }
+        public bool SubscripedAsSession { get; set; }
+        public Nullable<bool> FromLecturerSide { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblAttendance> TblAttendances { get; set; }

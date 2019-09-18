@@ -15,15 +15,13 @@ namespace SMUModels
     public partial class TblPermissionUser
     {
         public int ID { get; set; }
-        public string NameAr { get; set; }
-        public string NameEn { get; set; }
-        public int PermissionCategoryID { get; set; }
         public int UserID { get; set; }
+        public int PermissionID { get; set; }
         public bool IsDeleted { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
     
-        public virtual TblPermissionCategory TblPermissionCategory { get; set; }
+        public virtual TblPermission TblPermission { get; set; }
         public virtual TblUser TblUser { get; set; }
     }
 }

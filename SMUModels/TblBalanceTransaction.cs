@@ -14,8 +14,14 @@ namespace SMUModels
     
     public partial class TblBalanceTransaction
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TblBalanceTransaction()
+        {
+            this.TblInvoices = new HashSet<TblInvoice>();
+        }
+    
         public int ID { get; set; }
-        public int StudentID { get; set; }
+        public Nullable<int> StudentID { get; set; }
         public Nullable<int> UserID { get; set; }
         public string TitleAr { get; set; }
         public Nullable<decimal> Price { get; set; }
@@ -26,7 +32,9 @@ namespace SMUModels
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string TitleEn { get; set; }
+        public Nullable<int> LecturerID { get; set; }
     
+        public virtual TblLecturer TblLecturer { get; set; }
         public virtual TblStudent TblStudent { get; set; }
         public virtual TblStudent TblStudent1 { get; set; }
         public virtual TblStudent TblStudent2 { get; set; }
@@ -34,5 +42,7 @@ namespace SMUModels
         public virtual TransactionType TransactionType1 { get; set; }
         public virtual TransactionType TransactionType2 { get; set; }
         public virtual TblUser TblUser { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblInvoice> TblInvoices { get; set; }
     }
 }

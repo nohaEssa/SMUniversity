@@ -1,6 +1,6 @@
 ﻿using SMUModels;
+using SMUModels.Classes;
 using SMUModels.ObjectData;
-using WebAPI.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace WebAPI.Controllers
         [HttpPost]
         public HttpResponseMessage UpdateEmployee(EmployeeObj _Params)
         {
-            var _resultHandler = new ResultHandler();
+            ResultHandler _resultHandler = new ResultHandler();
 
             try
             {

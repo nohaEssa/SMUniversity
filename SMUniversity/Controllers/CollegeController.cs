@@ -29,10 +29,10 @@ namespace SMUniversity.Controllers
                 {
                     return RedirectToAction("Login", "Home");
                 }
-                List<TblUniversity> UniversitiesList = _Context.TblUniversities.Where(a => a.IsDeleted != true).ToList();
-                ViewBag.UniversitiesList = UniversitiesList;
+                List<TblUniversity> universitiesList = _Context.TblUniversities.Where(a => a.IsDeleted != true).ToList();
+                ViewBag.universitiesList = universitiesList;
 
-                return View(UniversitiesList);
+                return View(universitiesList);
             }
             catch (Exception ex)
             {
@@ -88,8 +88,8 @@ namespace SMUniversity.Controllers
                 if (CollegeID > 0)
                 {
                     TblCollege CollegeObj = _Context.TblColleges.Where(a => a.ID == CollegeID).SingleOrDefault();
-                    List<TblUniversity> UniversitiesList = _Context.TblUniversities.Where(a => a.IsDeleted != true).ToList();
-                    ViewBag.UniversitiesList = UniversitiesList;
+                    List<TblUniversity> universitiesList = _Context.TblUniversities.Where(a => a.IsDeleted != true).ToList();
+                    ViewBag.universitiesList = universitiesList;
 
                     return View(CollegeObj);
                 }

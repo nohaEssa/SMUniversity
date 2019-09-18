@@ -28,4 +28,12 @@ namespace SMUModels.ObjectData
         public int CoursePrice { get; set; }
         public int StudentPercentage { get; set; }
     }
+
+    public class LecturerPasswordObj
+    {
+        public int LecturerID { get; set; } = 0;
+        public string Password { get; set; } = "";
+        public string ConfirmPassword { get; set; } = "";
+    }
+
 }

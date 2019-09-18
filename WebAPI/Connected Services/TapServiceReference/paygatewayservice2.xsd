@@ -85,10 +85,10 @@
       <xs:element minOccurs="0" name="ImgUrl" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Quantity" type="xs:int" />
       <xs:element minOccurs="0" name="TotalPrice" type="xs:decimal" />
-      <xs:element minOccurs="0" name="UnitDesc" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="UnitID" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="UnitName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="UnitPrice" type="xs:decimal" />
+      <xs:element minOccurs="0" name="unitDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="unitID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="unitName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="unitPrice" type="xs:decimal" />
       <xs:element minOccurs="0" name="VndID" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

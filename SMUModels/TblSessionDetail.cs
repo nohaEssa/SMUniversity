@@ -25,6 +25,8 @@ namespace SMUModels
         public Nullable<decimal> Price1 { get; set; }
         public Nullable<decimal> Price2 { get; set; }
         public Nullable<decimal> Price3 { get; set; }
+        public Nullable<decimal> SessionPrice { get; set; }
+        public string SingleSessionQRCode { get; set; }
     
         public virtual TblSession TblSession { get; set; }
         public virtual TblSession TblSession1 { get; set; }

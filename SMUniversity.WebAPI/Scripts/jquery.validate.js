@@ -716,7 +716,7 @@ $.extend( $.validator, {
 				}
 
 				// Legacy browsers
-				// Unix-based path
+				// unix-based path
 				idx = val.lastIndexOf( "/" );
 				if ( idx >= 0 ) {
 					return val.substr( idx + 1 );

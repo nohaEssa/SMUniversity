@@ -14,6 +14,12 @@ namespace SMUModels
     
     public partial class TblProductCategory
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TblProductCategory()
+        {
+            this.TblProducts = new HashSet<TblProduct>();
+        }
+    
         public int ID { get; set; }
         public string NameAr { get; set; }
         public string NameEn { get; set; }
@@ -21,5 +27,8 @@ namespace SMUModels
         public bool IsDeleted { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblProduct> TblProducts { get; set; }
     }
 }

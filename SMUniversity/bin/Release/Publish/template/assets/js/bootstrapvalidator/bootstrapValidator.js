@@ -1156,7 +1156,7 @@
                     length: [16, 18, 19],
                     prefix: ['6334', '6767']
                 },
-                UNIONPAY: {
+                uniONPAY: {
                     length: [16, 17, 18, 19],
                     prefix: ['622126', '622127', '622128', '622129', '62213', '62214',
                              '62215', '62216', '62217', '62218', '62219', '6222', '6223',
@@ -1317,7 +1317,7 @@
                     length: [16, 18, 19],
                     prefix: ['6334', '6767']
                 },
-                UNIONPAY: {
+                uniONPAY: {
                     length: [16, 17, 18, 19],
                     prefix: ['622126', '622127', '622128', '622129', '62213', '62214',
                              '62215', '62216', '62217', '62218', '62219', '6222', '6223',
@@ -1784,7 +1784,7 @@
             // http://en.wikipedia.org/wiki/International_Bank_Account_Number#IBAN_formats_by_country
             var ibanRegex = {
                 'AD': 'AD[0-9]{2}[0-9]{4}[0-9]{4}[A-Z0-9]{12}',                     // Andorra
-                'AE': 'AE[0-9]{2}[0-9]{3}[0-9]{16}',                                // United Arab Emirates
+                'AE': 'AE[0-9]{2}[0-9]{3}[0-9]{16}',                                // united Arab Emirates
                 'AL': 'AL[0-9]{2}[0-9]{8}[A-Z0-9]{16}',                             // Albania
                 'AO': 'AO[0-9]{2}[0-9]{21}',                                        // Angola
                 'AT': 'AT[0-9]{2}[0-9]{5}[0-9]{11}',                                // Austria
@@ -1813,7 +1813,7 @@
                 'FI': 'FI[0-9]{2}[0-9]{6}[0-9]{7}[0-9]{1}',                         // Finland
                 'FO': 'FO[0-9]{2}[0-9]{4}[0-9]{9}[0-9]{1}',                         // Faroe Islands
                 'FR': 'FR[0-9]{2}[0-9]{5}[0-9]{5}[A-Z0-9]{11}[0-9]{2}',             // France
-                'GB': 'GB[0-9]{2}[A-Z]{4}[0-9]{6}[0-9]{8}',                         // United Kingdom
+                'GB': 'GB[0-9]{2}[A-Z]{4}[0-9]{6}[0-9]{8}',                         // united Kingdom
                 'GE': 'GE[0-9]{2}[A-Z]{2}[0-9]{16}',                                // Georgia
                 'GI': 'GI[0-9]{2}[A-Z]{4}[A-Z0-9]{15}',                             // Gibraltar
                 'GL': 'GL[0-9]{2}[0-9]{4}[0-9]{9}[0-9]{1}',                         // Greenland[
@@ -1925,14 +1925,14 @@
         },
 
         /**
-         * Validate Unique Master Citizen Number which uses in
+         * Validate unique Master Citizen Number which uses in
          * - Bosnia and Herzegovina (country code: BA)
          * - Macedonia (MK)
          * - Montenegro (ME)
          * - Serbia (RS)
          * - Slovenia (SI)
          *
-         * @see http://en.wikipedia.org/wiki/Unique_Master_Citizen_Number
+         * @see http://en.wikipedia.org/wiki/unique_Master_Citizen_Number
          * @param {String} value The ID
          * @param {String} countryCode The ISO country code, can be BA, MK, ME, RS, SI
          * @returns {Boolean}
@@ -2018,7 +2018,7 @@
          * - Valid: 7523169263, 8032056031, 803205 603 1, 8001010008, 7501020018, 7552010005, 7542011030
          * - Invalid: 8019010008
          *
-         * @see http://en.wikipedia.org/wiki/Uniform_civil_number
+         * @see http://en.wikipedia.org/wiki/uniform_civil_number
          * @param {String} value The ID
          * @returns {Boolean}
          */
@@ -3155,7 +3155,7 @@
          * @param {Object} options Consist of key:
          * - message: The invalid message
          * - country: The ISO 3166 country code
-         * Currently it only supports United State (US) country
+         * Currently it only supports united State (US) country
          * @returns {Boolean}
          */
         validate: function(validator, $field, options) {
@@ -3575,7 +3575,7 @@
             //
             // Notes on possible differences from a standard/generic validation:
             //
-            // - utf-8 char class take in consideration the full Unicode range
+            // - utf-8 char class take in consideration the full unicode range
             // - TLDs have been made mandatory so single names like "localhost" fails
             // - protocols have been restricted to ftp, http and https only as requested
             //
@@ -3646,7 +3646,7 @@
         /**
          * Return true if and only if the input value is a valid UUID string
          *
-         * @see http://en.wikipedia.org/wiki/Universally_unique_identifier
+         * @see http://en.wikipedia.org/wiki/universally_unique_identifier
          * @param {BootstrapValidator} validator The validator plugin instance
          * @param {jQuery} $field Field element
          * @param {Object} options Consist of key:
@@ -3660,7 +3660,7 @@
                 return true;
             }
 
-            // See the format at http://en.wikipedia.org/wiki/Universally_unique_identifier#Variants_and_versions
+            // See the format at http://en.wikipedia.org/wiki/universally_unique_identifier#Variants_and_versions
             var patterns = {
                     '3': /^[0-9A-F]{8}-[0-9A-F]{4}-3[0-9A-F]{3}-[0-9A-F]{4}-[0-9A-F]{12}$/i,
                     '4': /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i,
@@ -4225,7 +4225,7 @@
         },
 
         /**
-         * Validate United Kingdom VAT number
+         * Validate united Kingdom VAT number
          * Example:
          * - Valid: GB980780684
          * - Invalid: GB802311781
@@ -4890,10 +4890,10 @@
          * - country: The ISO 3166 country code
          *
          * Currently it supports the following countries:
-         * - US (United State)
+         * - US (united State)
          * - CA (Canada)
          * - DK (Denmark)
-         * - GB (United Kingdom)
+         * - GB (united Kingdom)
          * - IT (Italy)
          * - NL (Netherlands)
          * - SE (Sweden)
@@ -4924,13 +4924,13 @@
         },
 
         /**
-         * Validate United Kingdom postcode
+         * Validate united Kingdom postcode
          * Examples:
          * - Standard: EC1A 1BB, W1A 1HQ, M1 1AA, B33 8TH, CR2 6XH, DN55 1PT
          * - Special cases:
          * AI-2640, ASCN 1ZZ, GIR 0AA
          *
-         * @see http://en.wikipedia.org/wiki/Postcodes_in_the_United_Kingdom
+         * @see http://en.wikipedia.org/wiki/Postcodes_in_the_united_Kingdom
          * @param {String} value The postcode
          * @returns {Boolean}
          */

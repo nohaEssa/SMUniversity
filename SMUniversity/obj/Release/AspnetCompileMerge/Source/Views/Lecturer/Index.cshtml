@@ -16,6 +16,7 @@
 <script src="~/Scripts/DataTables/buttons.html5.min.js"></script>
 
 
+<input type="hidden" id="LecturerID" />
 
 <div id="main-content">
     <div class="container-fluid">
@@ -54,12 +55,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in _Context.TblLecturers.Where(a => a.IsDeleted != true).ToList())
+                            @foreach (var item in _Context.TblLecturers.Where(a => a.IsDeleted != true).OrderByDescending(a => a.ID).OrderByDescending(a => a.ID).ToList())
                             {
+                                //string Picture = item.ProfilePic.StartsWith("http://") ? item.ProfilePic : "http://smuapitest.smartmindkw.com" + item.ProfilePic;
+                                string Picture = "";
+                                if (item.ProfilePic != null)
+                                {
+                                    if (item.ProfilePic.StartsWith("https://"))
+                                    {
+                                        Picture = item.ProfilePic;
+                                    }
+                                    else
+                                    {
+                                        Picture = "http://smuapitest.smartmindkw.com" + item.ProfilePic;
+                                    }
+                                }
+                                else
+                                {
+                                    Picture = "https://uni.smartmindkw.com/Content/Images/Lecturer/DefaultLecturerPhoto.png";
+                                }
                                 <tr>
                                     <td>@item.ID</td>
                                     <td>
-                                        <img src=@item.ProfilePic width='107' height='75'>
+                                        <img src='@Picture' width='107' height='75'>
                                     </td>
                                     <td>@item.FirstNameAr @item.SecondNameAr @item.ThirdNameAr</td>
                                     <td>@item.PhoneNumber</td>
@@ -67,7 +85,8 @@
                                     <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
                                     <td>
                                         <a href="@Url.Action("Edit", "Lecturer", new { LecturerID = item.ID })" class="btn btn-xs btn-warning" title="تعديل المحاضر" id="btnEditLecturer"><i class="fa fa-pencil-square-o"></i></a>
-                                        <a href="@Url.Action("Delete", "Lecturer", new { LecturerID = item.ID })" class="btn btn-xs btn-danger" title="حذف المحاضر" id="btnDeleteLecturer"><i class="fa fa-minus"></i></a>
+                                        @*<a href="@Url.Action("Delete", "Lecturer", new { LecturerID = item.ID })" class="btn btn-xs btn-danger" title="حذف المحاضر" id="btnDeleteLecturer"><i class="fa fa-minus"></i></a>*@
+                                        <a href="javascript:showModal('@item..ID')" class="btn btn-xs btn-danger" id="DeleteLecturer_@item.ID"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
                             }
@@ -78,3 +97,45 @@
         </div>
     </div>
 </div>
+
+<script>
+    function showModal(ID, Name) {
+        debugger
+        //$('#submitModalRequest').hide();
+        //$('.remodal-cancel').text('Close');
+
+        $('#HModalTitle').text('حذف فئة الكارت ' + Name);
+        $('#PModalBody').text('سيتم الحذف فقط اذا كان المحاضر غير مرتبط ببيانات خاصه بالمواد وطرق الحساب والمحاضرات والسندات اليدوية والحصص الخاصه');
+        $("#DeleteLecturer_" + ID).attr("href", "#reModalRed");
+        $('#LecturerID').val(ID);
+        clickOnModal(ID);
+        return false;
+    }
+
+    function clickOnModal(ID) {
+        var href = $('#DeleteLecturer_' + ID).attr('href');
+        window.location.href = href; //causes the browser to refresh and load the requested url
+        return false;
+    }
+
+    $(document).on('confirm', '.remodal', function () {
+        debugger
+        $.ajax({
+            type: "POST",
+            url: "/Lecturer/Delete",
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: "{LecturerID:'" + $('#LecturerID').val() +
+                "'}",
+            dataType: "json",
+            processData: false,
+            success: function (response) {
+                debugger
+                location.reload();
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });
+    });
+</script>

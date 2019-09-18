@@ -286,13 +286,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/24/2018 23:38:24</publishTime>
     </File>
     <File Include="bin/SMUModels.dll">
-      <publishTime>08/25/2019 08:39:39</publishTime>
+      <publishTime>09/16/2019 15:12:59</publishTime>
     </File>
     <File Include="bin/SMUModels.dll.config">
-      <publishTime>08/25/2019 07:27:02</publishTime>
+      <publishTime>09/16/2019 14:59:50</publishTime>
     </File>
     <File Include="bin/SMUModels.pdb">
-      <publishTime>08/25/2019 08:39:39</publishTime>
+      <publishTime>09/16/2019 15:12:59</publishTime>
     </File>
     <File Include="bin/Swashbuckle.Core.dll">
       <publishTime>07/08/2017 01:30:56</publishTime>
@@ -346,10 +346,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/08/2013 16:42:28</publishTime>
     </File>
     <File Include="bin/WebAPI.dll">
-      <publishTime>08/25/2019 08:39:44</publishTime>
+      <publishTime>09/16/2019 15:45:21</publishTime>
     </File>
     <File Include="bin/WebAPI.pdb">
-      <publishTime>08/25/2019 08:39:44</publishTime>
+      <publishTime>09/16/2019 15:45:21</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>01/23/2014 23:57:34</publishTime>
@@ -388,13 +388,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2019 16:13:01</publishTime>
     </File>
     <File Include="Content/bootstrap.css.map">
-      <publishTime>07/11/2019 16:13:01</publishTime>
+      <publishTime>09/16/2019 13:26:35</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
       <publishTime>07/11/2019 16:13:01</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css.map">
-      <publishTime>07/11/2019 16:13:01</publishTime>
+      <publishTime>09/16/2019 13:26:35</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>07/11/2019 16:12:57</publishTime>
@@ -406,7 +406,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2019 16:13:01</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.svg">
-      <publishTime>07/11/2019 16:13:01</publishTime>
+      <publishTime>09/16/2019 13:26:36</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.ttf">
       <publishTime>07/11/2019 16:13:01</publishTime>
@@ -430,25 +430,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2019 16:13:00</publishTime>
     </File>
     <File Include="Scripts/jquery-3.3.1.js">
-      <publishTime>07/11/2019 16:13:02</publishTime>
+      <publishTime>09/16/2019 13:26:36</publishTime>
     </File>
     <File Include="Scripts/jquery-3.3.1.min.js">
-      <publishTime>07/11/2019 16:13:02</publishTime>
+      <publishTime>09/16/2019 13:26:36</publishTime>
     </File>
     <File Include="Scripts/jquery-3.3.1.min.map">
-      <publishTime>07/11/2019 16:13:02</publishTime>
+      <publishTime>09/16/2019 13:26:36</publishTime>
     </File>
     <File Include="Scripts/jquery-3.3.1.slim.js">
-      <publishTime>07/11/2019 16:13:02</publishTime>
+      <publishTime>09/16/2019 13:26:36</publishTime>
     </File>
     <File Include="Scripts/jquery-3.3.1.slim.min.js">
-      <publishTime>07/11/2019 16:13:02</publishTime>
+      <publishTime>09/16/2019 13:26:36</publishTime>
     </File>
     <File Include="Scripts/jquery-3.3.1.slim.min.map">
-      <publishTime>07/11/2019 16:13:02</publishTime>
+      <publishTime>09/16/2019 13:26:36</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.js">
-      <publishTime>07/11/2019 16:13:18</publishTime>
+      <publishTime>09/16/2019 13:26:36</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.min.js">
       <publishTime>07/11/2019 16:13:18</publishTime>
@@ -460,7 +460,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2019 16:13:19</publishTime>
     </File>
     <File Include="Scripts/modernizr-2.8.3.js">
-      <publishTime>07/11/2019 16:13:12</publishTime>
+      <publishTime>09/16/2019 13:26:36</publishTime>
+    </File>
+    <File Include="Uploads/Certificates.p12">
+      <publishTime>09/10/2019 11:38:41</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>07/11/2019 16:12:57</publishTime>
@@ -478,7 +481,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/11/2019 16:12:57</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/25/2019 08:39:47</publishTime>
+      <publishTime>09/16/2019 15:43:28</publishTime>
     </File>
   </ItemGroup>
 </Project>

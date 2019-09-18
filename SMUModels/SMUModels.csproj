@@ -84,7 +84,10 @@
     <Compile Include="Classes\CustomServerSideSearchAction.cs" />
     <Compile Include="Classes\DateTimeDependsOnTimeZone.cs" />
     <Compile Include="Classes\jQueryDataTableParamModel.cs" />
+    <Compile Include="Classes\MailHelper.cs" />
     <Compile Include="Classes\PushNotification.cs" />
+    <Compile Include="Classes\ResultHandler.cs" />
+    <Compile Include="Classes\UploadFile.cs" />
     <Compile Include="CollegeData.cs" />
     <Compile Include="EmployeeData.cs" />
     <Compile Include="Enum\EnumCollection.cs" />
@@ -92,6 +95,7 @@
     <Compile Include="EvalQuesData.cs" />
     <Compile Include="EvaluationListData.cs" />
     <Compile Include="EvaluationQuesData.cs" />
+    <Compile Include="FinancialReportData.cs" />
     <Compile Include="GovernorateData.cs" />
     <Compile Include="HallData.cs" />
     <Compile Include="Handlers\UploadFileResponse.cs" />
@@ -110,6 +114,8 @@
     <Compile Include="ObjectData\LoginData.cs" />
     <Compile Include="ObjectData\PaymentObj.cs" />
     <Compile Include="ObjectData\PrivateSessionObj.cs" />
+    <Compile Include="ObjectData\ReportObj.cs" />
+    <Compile Include="ObjectData\SaveAttendanceObj.cs" />
     <Compile Include="ObjectData\ScreenObj.cs" />
     <Compile Include="ObjectData\SessionObj.cs" />
     <Compile Include="ObjectData\StudentSessionObj.cs" />
@@ -131,6 +137,7 @@
     <Compile Include="ScreenData.cs" />
     <Compile Include="SessionCourseData.cs" />
     <Compile Include="SessionData.cs" />
+    <Compile Include="SessionStudentData.cs" />
     <Compile Include="SessionTimesData.cs" />
     <Compile Include="SMUModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -150,6 +157,7 @@
     <Compile Include="StudentData.cs" />
     <Compile Include="SubjectData.cs" />
     <Compile Include="LecturerData.cs" />
+    <Compile Include="SubjectsAssignmentsData.cs" />
     <Compile Include="SubscriptionData.cs" />
     <Compile Include="TblArea.cs">
       <DependentUpon>SMUModel.tt</DependentUpon>
@@ -295,10 +303,13 @@
     <Compile Include="TblVoucher.cs">
       <DependentUpon>SMUModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TblVoucherCategory.cs">
+      <DependentUpon>SMUModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TimelineSessionData.cs" />
     <Compile Include="TimelineSessionDetailsData.cs" />
     <Compile Include="TodaysSessionData.cs" />
-    <Compile Include="TransactionsData.cs" />
+    <Compile Include="TransactionsAndBalanceData.cs" />
     <Compile Include="TransactionType.cs">
       <DependentUpon>SMUModel.tt</DependentUpon>
     </Compile>
@@ -330,6 +341,5 @@
       <LastGenOutput>SMUModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

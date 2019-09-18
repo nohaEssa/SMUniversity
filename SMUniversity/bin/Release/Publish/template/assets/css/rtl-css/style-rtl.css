@@ -12,7 +12,7 @@ Primary use :	Dashboard
 
 @import "../font-awesome/css/font-awesome-rtl.css";
 
-@import url(http://fonts.googleapis.com/css?family=Armata|PT+Sans|Montserrat:700,400);
+@import url(https://fonts.googleapis.com/css?family=Armata|PT+Sans|Montserrat:700,400);
 
 @import "../rtl-css/plugins/nanoscroller-rtl.css";
 
@@ -83,7 +83,7 @@ Input, textarea:	14px 'PT Sans', sans-serif;
 /*------------------------------------------------------------------
    -------------------------BODY---------------------------------
 -------------------------------------------------------------------*/
-@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+@import url(https://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
 
 body {
   direction: rtl;

@@ -22,7 +22,7 @@
  */
 
 /*jslint evil: true, undef: true, browser: true */
-/*globals $,require,jQuery,define,_selector_run,_selector_opts,_selector_first,_selector_row_indexes,_ext,_Api,_api_register,_api_registerPlural,_re_new_lines,_re_html,_re_formatted_numeric,_empty,_intVal,_isNumber,_isHtml,_htmlNumeric,_pluck,_pluck_order,_range,_stripHtml,_unique,_fnBuildAjax,_fnAjaxUpdate,_fnAjaxParameters,_fnAjaxUpdateDraw,_fnAjaxDataSrc,_fnAddColumn,_fnColumnOptions,_fnAdjustColumnSizing,_fnVisibleToColumnIndex,_fnColumnIndexToVisible,_fnVisbleColumns,_fnGetColumns,_fnColumnTypes,_fnApplyColumnDefs,_fnHungarianMap,_fnCamelToHungarian,_fnLanguageCompat,_fnBrowserDetect,_fnAddData,_fnAddTr,_fnNodeToDataIndex,_fnNodeToColumnIndex,_fnGetRowData,_fnGetCellData,_fnSetCellData,_fnSplitObjNotation,_fnGetObjectDataFn,_fnSetObjectDataFn,_fnGetDataMaster,_fnClearTable,_fnDeleteIndex,_fnInvalidateRow,_fnGetRowElements,_fnCreateTr,_fnBuildHead,_fnDrawHead,_fnDraw,_fnReDraw,_fnAddOptionsHtml,_fnDetectHeader,_fnGetUniqueThs,_fnFeatureHtmlFilter,_fnFilterComplete,_fnFilterCustom,_fnFilterColumn,_fnFilter,_fnFilterCreateSearch,_fnEscapeRegex,_fnFilterData,_fnFeatureHtmlInfo,_fnUpdateInfo,_fnInfoMacros,_fnInitialise,_fnInitComplete,_fnLengthChange,_fnFeatureHtmlLength,_fnFeatureHtmlPaginate,_fnPageChange,_fnFeatureHtmlProcessing,_fnProcessingDisplay,_fnFeatureHtmlTable,_fnScrollDraw,_fnApplyToChildren,_fnCalculateColumnWidths,_fnThrottle,_fnConvertToWidth,_fnScrollingWidthAdjust,_fnGetWidestNode,_fnGetMaxLenString,_fnStringToCss,_fnScrollBarWidth,_fnSortFlatten,_fnSort,_fnSortAria,_fnSortListener,_fnSortAttachListener,_fnSortingClasses,_fnSortData,_fnSaveState,_fnLoadState,_fnSettingsFromNode,_fnLog,_fnMap,_fnBindAction,_fnCallbackReg,_fnCallbackFire,_fnLengthOverflow,_fnRenderer,_fnDataSource*/
+/*globals $,require,jQuery,define,_selector_run,_selector_opts,_selector_first,_selector_row_indexes,_ext,_Api,_api_register,_api_registerPlural,_re_new_lines,_re_html,_re_formatted_numeric,_empty,_intVal,_isNumber,_isHtml,_htmlNumeric,_pluck,_pluck_order,_range,_stripHtml,_unique,_fnBuildAjax,_fnAjaxUpdate,_fnAjaxParameters,_fnAjaxUpdateDraw,_fnAjaxDataSrc,_fnAddColumn,_fnColumnOptions,_fnAdjustColumnSizing,_fnVisibleToColumnIndex,_fnColumnIndexToVisible,_fnVisbleColumns,_fnGetColumns,_fnColumnTypes,_fnApplyColumnDefs,_fnHungarianMap,_fnCamelToHungarian,_fnLanguageCompat,_fnBrowserDetect,_fnAddData,_fnAddTr,_fnNodeToDataIndex,_fnNodeToColumnIndex,_fnGetRowData,_fnGetCellData,_fnSetCellData,_fnSplitObjNotation,_fnGetObjectDataFn,_fnSetObjectDataFn,_fnGetDataMaster,_fnClearTable,_fnDeleteIndex,_fnInvalidateRow,_fnGetRowElements,_fnCreateTr,_fnBuildHead,_fnDrawHead,_fnDraw,_fnReDraw,_fnAddOptionsHtml,_fnDetectHeader,_fnGetuniqueThs,_fnFeatureHtmlFilter,_fnFilterComplete,_fnFilterCustom,_fnFilterColumn,_fnFilter,_fnFilterCreateSearch,_fnEscapeRegex,_fnFilterData,_fnFeatureHtmlInfo,_fnUpdateInfo,_fnInfoMacros,_fnInitialise,_fnInitComplete,_fnLengthChange,_fnFeatureHtmlLength,_fnFeatureHtmlPaginate,_fnPageChange,_fnFeatureHtmlProcessing,_fnProcessingDisplay,_fnFeatureHtmlTable,_fnScrollDraw,_fnApplyToChildren,_fnCalculateColumnWidths,_fnThrottle,_fnConvertToWidth,_fnScrollingWidthAdjust,_fnGetWidestNode,_fnGetMaxLenString,_fnStringToCss,_fnScrollBarWidth,_fnSortFlatten,_fnSort,_fnSortAria,_fnSortListener,_fnSortAttachListener,_fnSortingClasses,_fnSortData,_fnSaveState,_fnLoadState,_fnSettingsFromNode,_fnLog,_fnMap,_fnBindAction,_fnCallbackReg,_fnCallbackFire,_fnLengthOverflow,_fnRenderer,_fnDataSource*/
 
 (/** @lends <global> */function (window, document, $, undefined) {
 
@@ -1891,7 +1891,7 @@
             var nTrs = $(nThead).children('tr');
             var nTr, nCell;
             var i, k, l, iLen, jLen, iColShifted, iColumn, iColspan, iRowspan;
-            var bUnique;
+            var bunique;
             var fnShiftCol = function (a, i, j) {
                 var k = a[i];
                 while (k[j]) {
@@ -1929,14 +1929,14 @@
                         iColShifted = fnShiftCol(aLayout, i, iColumn);
 
                         /* Cache calculation for unique columns */
-                        bUnique = iColspan === 1 ? true : false;
+                        bunique = iColspan === 1 ? true : false;
 
                         /* If there is col / rowspan, copy the information into the layout grid */
                         for (l = 0; l < iColspan; l++) {
                             for (k = 0; k < iRowspan; k++) {
                                 aLayout[i + k][iColShifted + l] = {
                                     "cell": nCell,
-                                    "unique": bUnique
+                                    "unique": bunique
                                 };
                                 aLayout[i + k].nTr = nTr;
                             }
@@ -1956,7 +1956,7 @@
          *  @returns array {node} aReturn list of unique th's
          *  @memberof DataTable#oApi
          */
-        function _fnGetUniqueThs(oSettings, nHeader, aLayout) {
+        function _fnGetuniqueThs(oSettings, nHeader, aLayout) {
             var aReturn = [];
             if (!aLayout) {
                 aLayout = oSettings.aoHeader;
@@ -3250,7 +3250,7 @@
                 divHeader[0].style.width = '100%';
             }
 
-            $.each(_fnGetUniqueThs(settings, headerCopy), function (i, el) {
+            $.each(_fnGetuniqueThs(settings, headerCopy), function (i, el) {
                 idx = _fnVisibleToColumnIndex(settings, i);
                 el.style.width = settings.aoColumns[idx].sWidth;
             });
@@ -3548,7 +3548,7 @@
                 var tr = tmpTable.find('tbody tr');
 
                 // Apply custom sizing to the cloned header
-                headerCells = _fnGetUniqueThs(oSettings, tmpTable.find('thead')[0]);
+                headerCells = _fnGetuniqueThs(oSettings, tmpTable.find('thead')[0]);
 
                 for (i = 0; i < visibleColumns.length; i++) {
                     column = columns[ visibleColumns[i] ];
@@ -5391,7 +5391,7 @@
                 _fnReDraw: _fnReDraw,
                 _fnAddOptionsHtml: _fnAddOptionsHtml,
                 _fnDetectHeader: _fnDetectHeader,
-                _fnGetUniqueThs: _fnGetUniqueThs,
+                _fnGetuniqueThs: _fnGetuniqueThs,
                 _fnFeatureHtmlFilter: _fnFeatureHtmlFilter,
                 _fnFilterComplete: _fnFilterComplete,
                 _fnFilterCustom: _fnFilterCustom,
@@ -5715,7 +5715,7 @@
                 var nThead = this.getElementsByTagName('thead');
                 if (nThead.length !== 0) {
                     _fnDetectHeader(oSettings.aoHeader, nThead[0]);
-                    anThs = _fnGetUniqueThs(oSettings);
+                    anThs = _fnGetuniqueThs(oSettings);
                 }
 
                 /* If not given a column array, generate one with nulls */
@@ -8450,7 +8450,7 @@
             "mRender": null,
 
             /**
-             * Unique header TH/TD element for this column - this is what the sorting
+             * unique header TH/TD element for this column - this is what the sorting
              * listener is attached to (if sorting is enabled.)
              *  @type node
              *  @default null
@@ -8458,7 +8458,7 @@
             "nTh": null,
 
             /**
-             * Unique footer TH/TD element for this column (if there is one). Not used
+             * unique footer TH/TD element for this column (if there is one). Not used
              * in DataTables as such, but can be used for plug-ins to reference the
              * footer for each column.
              *  @type node
@@ -12358,7 +12358,7 @@
             "oInstance": null,
 
             /**
-             * Unique identifier for each instance of the DataTables object. If there
+             * unique identifier for each instance of the DataTables object. If there
              * is an ID on the table node, then it takes that value, otherwise an
              * incrementing internal counter is used.
              *  @type string
@@ -12829,7 +12829,7 @@
             },
 
             /**
-             * Unique DataTables instance counter
+             * unique DataTables instance counter
              *
              * @type int
              * @private

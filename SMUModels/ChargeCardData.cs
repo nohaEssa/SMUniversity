@@ -8,8 +8,8 @@ namespace SMUModels
 {
     public class ChargeCardData
     {
-        public string Code { get; set; }
-        public decimal Price { get; set; }
-        public bool Valid { get; set; }
+        public string Code { get; set; } = "";
+        public decimal Price { get; set; } = 0;
+        public bool Valid { get; set; } = false;
     }
 }

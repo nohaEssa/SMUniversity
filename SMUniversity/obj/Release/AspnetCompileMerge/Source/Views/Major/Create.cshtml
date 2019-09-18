@@ -59,7 +59,7 @@
                                     <div class="col-md-10">
                                         <select class="form-control" id="UniversityID" name="UniversityID" onchange="getColleges()" required>
                                             <option value="0">اسم الجامعة</option>
-                                            @foreach (var uni in ViewBag.UniversitiesList)
+                                            @foreach (var uni in ViewBag.universitiesList)
                                             {
                                                 <option value="@uni.ID">@uni.NameAr</option>
                                             }

@@ -8,8 +8,8 @@ namespace SMUModels.ObjectData
 {
     public class UserCategoryObj
     {
-        public int UserCategoryID { get; set; }
-        public string NameAr { get; set; }
-        public string NameEn { get; set; }
+        public int UserCategoryID { get; set; } = 0;
+        public string NameAr { get; set; } = "";
+        public string NameEn { get; set; } = "";
     }
 }

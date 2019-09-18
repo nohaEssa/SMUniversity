@@ -1,4 +1,4 @@
-/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+/* Font Awesome uses the unicode Private Use Area (PUA) to ensure screen
    readers do not read off random characters that represent icons */
 
 .#{$fa-css-prefix}-glass:before { content: $fa-var-glass; }
@@ -427,7 +427,7 @@
 .#{$fa-css-prefix}-openid:before { content: $fa-var-openid; }
 .#{$fa-css-prefix}-institution:before,
 .#{$fa-css-prefix}-bank:before,
-.#{$fa-css-prefix}-university:before { content: $fa-var-university; }
+.#{$fa-css-prefix}-University:before { content: $fa-var-University; }
 .#{$fa-css-prefix}-mortar-board:before,
 .#{$fa-css-prefix}-graduation-cap:before { content: $fa-var-graduation-cap; }
 .#{$fa-css-prefix}-yahoo:before { content: $fa-var-yahoo; }

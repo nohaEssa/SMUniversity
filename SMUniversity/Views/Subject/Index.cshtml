@@ -3,6 +3,8 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
     SMUModels.admin_SMUniversityEntities _Context = new SMUModels.admin_SMUniversityEntities();
+    var x = _Context.TblSubjects.Where(a => a.IsDeleted != true).ToList().OrderByDescending(a => a.CreatedDate);
+    var s = "";
 }
 
 <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -44,9 +46,10 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>الصورة</th>
+                                <th>كود الماده</th>
                                 <th>اسم الماده عربي</th>
                                 <th>اسم الماده انجليزي</th>
+                                <th>النوع</th>
                                 <th>التخصص</th>
                                 <th>الكليه</th>
                                 <th>الجامعه</th>
@@ -55,18 +58,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in _Context.TblSubjects.Where(a => a.IsDeleted != true).ToList())
+                            @foreach (var item in _Context.TblSubjects.Where(a => a.IsDeleted != true).OrderByDescending(a => a.ID).ToList())
                             {
+                                string CollegeNameAr = "-", MajorNameAr = "-", UniversityNameAr = "-", Type = "عامه";
+                                if (item.MajorID != null)
+                                {
+                                    CollegeNameAr = item.TblMajor.TblCollege.NameAr; MajorNameAr = item.TblMajor.NameAr; UniversityNameAr = item.TblMajor.TblCollege.TblUniversity.NameAr;
+                                    Type = "جامعيه";
+                                }
                                 <tr>
+                                    <td>@item.SubjectCode</td>
                                     <td>@item.ID</td>
-                                    <td>
-                                        <img src=@item.Picture width='107' height='75'>
-                                    </td>
                                     <td>@item.NameAr</td>
                                     <td>@item.NameEn</td>
-                                    <td>@item.TblMajor.NameAr</td>
-                                    <td>@item.TblMajor.TblCollege.NameAr</td>
-                                    <td>@item.TblMajor.TblCollege.TblUniversity.NameAr</td>
+                                    <td>@Type</td>
+                                    <td>@MajorNameAr</td>
+                                    <td>@CollegeNameAr</td>
+                                    <td>@UniversityNameAr</td>
                                     <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
                                     <td>
                                         <a href="@Url.Action("Edit", "Subject", new { SubjectID = item.ID })" class="btn btn-xs btn-warning" title="تعديل الماده" id="btnEditSubject"><i class="fa fa-pencil-square-o"></i></a>

@@ -55,6 +55,7 @@ namespace SMUModels
         public virtual DbSet<TblPrivateSession> TblPrivateSessions { get; set; }
         public virtual DbSet<TblProduct> TblProducts { get; set; }
         public virtual DbSet<TblProductCategory> TblProductCategories { get; set; }
+        public virtual DbSet<TblRegisterDevice> TblRegisterDevices { get; set; }
         public virtual DbSet<TblRevenue> TblRevenues { get; set; }
         public virtual DbSet<TblScreen> TblScreens { get; set; }
         public virtual DbSet<TblScreenHall> TblScreenHalls { get; set; }
@@ -72,7 +73,7 @@ namespace SMUModels
         public virtual DbSet<TblUserCredential> TblUserCredentials { get; set; }
         public virtual DbSet<TblUserType> TblUserTypes { get; set; }
         public virtual DbSet<TblVoucher> TblVouchers { get; set; }
+        public virtual DbSet<TblVoucherCategory> TblVoucherCategories { get; set; }
         public virtual DbSet<TransactionType> TransactionTypes { get; set; }
-        public virtual DbSet<TblRegisterDevice> TblRegisterDevices { get; set; }
     }
 }

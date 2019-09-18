@@ -226,8 +226,8 @@ namespace SMUniversity.WebAPI.Controllers
                         pro.CurrencyCode = "KWD";
                         pro.TotalPrice = TotalCardsPrice;
                         pro.Quantity = _Params.CardCategoryIDs.Count;
-                        pro.UnitName = "Smart Mind University";
-                        pro.UnitPrice = TotalCardsPrice;
+                        pro.unitName = "Smart Mind University";
+                        pro.unitPrice = TotalCardsPrice;
 
                         List<ProductDC> arr = new List<ProductDC>();
 

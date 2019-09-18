@@ -109,7 +109,7 @@ $.fn.extend({
 		});
 	},
 
-	removeUniqueId: function() {
+	removeuniqueId: function() {
 		return this.each(function() {
 			if ( runiqueId.test( this.id ) ) {
 				$( this ).removeAttr( "id" );
@@ -5810,7 +5810,7 @@ $.extend( $.effects, {
 	setTransition: function( element, list, factor, value ) {
 		value = value || {};
 		$.each( list, function( i, x ) {
-			var unit = element.cssUnit( x );
+			var unit = element.cssunit( x );
 			if ( unit[ 0 ] > 0 ) {
 				value[ x ] = unit[ 0 ] * factor + unit[ 1 ];
 			}
@@ -5981,7 +5981,7 @@ $.fn.extend({
 	})( $.fn.toggle ),
 
 	// helper functions
-	cssUnit: function(key) {
+	cssunit: function(key) {
 		var style = this.css( key ),
 			val = [];
 
@@ -8861,7 +8861,7 @@ $.extend(Datepicker.prototype, {
 	 * MM - month name long
 	 * y  - year (two digit)
 	 * yy - year (four digit)
-	 * @ - Unix timestamp (ms since 01/01/1970)
+	 * @ - unix timestamp (ms since 01/01/1970)
 	 * ! - Windows ticks (100ns since 01/01/0001)
 	 * "..." - literal text
 	 * '' - single quote
@@ -9760,7 +9760,7 @@ $.widget( "ui.dialog", {
 		this._destroyOverlay();
 
 		this.element
-			.removeUniqueId()
+			.removeuniqueId()
 			.removeClass("ui-dialog-content ui-widget-content")
 			.css( this.originalCss )
 			// Without detaching first, the following becomes really slow
@@ -11552,7 +11552,7 @@ $.widget( "ui.menu", {
 				.removeAttr( "aria-expanded" )
 				.removeAttr( "aria-hidden" )
 				.removeAttr( "aria-disabled" )
-				.removeUniqueId()
+				.removeuniqueId()
 				.show();
 
 		// Destroy menu items
@@ -11561,7 +11561,7 @@ $.widget( "ui.menu", {
 			.removeAttr( "role" )
 			.removeAttr( "aria-disabled" )
 			.children( "a" )
-				.removeUniqueId()
+				.removeuniqueId()
 				.removeClass( "ui-corner-all ui-state-hover" )
 				.removeAttr( "tabIndex" )
 				.removeAttr( "role" )
@@ -14458,7 +14458,7 @@ $.widget( "ui.tabs", {
 			.removeClass( "ui-tabs-anchor" )
 			.removeAttr( "role" )
 			.removeAttr( "tabIndex" )
-			.removeUniqueId();
+			.removeuniqueId();
 
 		this.tabs.add( this.panels ).each(function() {
 			if ( $.data( this, "ui-tabs-destroy" ) ) {

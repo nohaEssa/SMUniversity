@@ -80,7 +80,7 @@ var AutoFill = function( dt, opts )
 		/** @type {DataTable.Api} DataTables' API instance */
 		dt: new DataTable.Api( dt ),
 
-		/** @type {String} Unique namespace for events attached to the document */
+		/** @type {String} unique namespace for events attached to the document */
 		namespace: '.autoFill'+(_instance++),
 
 		/** @type {Object} Cached dimension information for use in the mouse move event handler */
@@ -797,7 +797,7 @@ $.extend( AutoFill.prototype, {
 		var that = this;
 		var dt = this.s.dt;
 		var scroll = this.s.scroll;
-		var runInterval = false;
+		var runinterval = false;
 		var scrollSpeed = 5;
 		var buffer = 65;
 		var
@@ -851,7 +851,7 @@ $.extend( AutoFill.prototype, {
 			scroll.windowHoriz = windowHoriz;
 			scroll.dtVert = dtVert;
 			scroll.dtHoriz = dtHoriz;
-			runInterval = true;
+			runinterval = true;
 		}
 		else if ( this.s.scrollInterval ) {
 			// Don't need to scroll - remove any existing timer
@@ -861,7 +861,7 @@ $.extend( AutoFill.prototype, {
 
 		// If we need to run the interval to scroll and there is no existing
 		// interval (if there is an existing one, it will continue to run)
-		if ( ! this.s.scrollInterval && runInterval ) {
+		if ( ! this.s.scrollInterval && runinterval ) {
 			this.s.scrollInterval = setInterval( function () {
 				// Don't need to worry about setting scroll <0 or beyond the
 				// scroll bound as the browser will just reject that.

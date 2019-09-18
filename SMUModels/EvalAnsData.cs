@@ -8,9 +8,9 @@ namespace SMUModels
 {
     public class EvalAnsData
     {
-        public int AnswerID { get; set; }
-        public string AnswerAr { get; set; }
-        public string AnswerEn { get; set; }
-        public byte Value { get; set; }
+        public int AnswerID { get; set; } = 0;
+        public string AnswerAr { get; set; } = "";
+        public string AnswerEn { get; set; } = "";
+        public byte Value { get; set; } = 0;
     }
 }

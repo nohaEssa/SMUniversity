@@ -57,7 +57,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in _Context.TblBalanceTransactions.Where(a => a.IsDeleted != true && a.Pending == true).ToList())
+                            @foreach (var item in _Context.TblBalanceTransactions.Where(a => a.IsDeleted != true && a.Pending == true).OrderByDescending(a => a.ID).ToList())
                             {
                                 string STDName = item.TblStudent.FirstName + ' ' + item.TblStudent.SecondName + ' ' + item.TblStudent.ThirdName;
                                 <tr>

@@ -23,6 +23,7 @@ namespace SMUModels
         public bool IsDeleted { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
+        public Nullable<decimal> Cost { get; set; }
     
         public virtual TblHall TblHall { get; set; }
         public virtual TblLecturer TblLecturer { get; set; }

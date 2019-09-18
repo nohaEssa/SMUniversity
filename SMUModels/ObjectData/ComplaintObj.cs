@@ -8,8 +8,8 @@ namespace SMUModels.ObjectData
 {
     public class ComplaintObj
     {
-        public int StudentID { get; set; }
-        public int HelpQuestionID { get; set; }
-        public string Complaint { get; set; }
+        public int StudentID { get; set; } = 0;
+        public int HelpQuestionID { get; set; } = 0;
+        public string Complaint { get; set; } = "";
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SMUModels;
+using SMUModels.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,12 +35,24 @@ namespace SMUniversity.Controllers
                 TblBalanceTransaction _BalanceTrans = _Context.TblBalanceTransactions.Where(a => a.ID == TransactionID).SingleOrDefault();
                 if (_BalanceTrans != null)
                 {
+                    TblInvoice _Invoice = _Context.TblInvoices.Where(a => a.BalanceTransactionID == _BalanceTrans.ID).FirstOrDefault();
+
                     _BalanceTrans.Pending = false;
                     _BalanceTrans.UserID = 1;
+                    _BalanceTrans.CreatedDate = DateTime.Now;
                     _BalanceTrans.UpdatedDate = DateTime.Now;
                     _BalanceTrans.TblStudent.Balance += decimal.Parse(_BalanceTrans.Price.ToString());
 
+                    _Invoice.Pending = true;
+
                     _Context.SaveChanges();
+
+                    string TitleAr1 = "سمارت مايند الجامعه";
+                    string TitleEn1 = "SmartMind University";
+                    string DescriptionAr1 = "تم تأكيد عمليه الشحن بمبلغ  " + _BalanceTrans.Price + " رصيدك الحالي : " + _BalanceTrans.TblStudent.Balance + "د.ك";
+                    string DescriptionEn1 = "Your recharge of " + _BalanceTrans.Price + " D.K has been confirmed succefully, Your current balace is : " + _BalanceTrans.TblStudent.Balance + " D.K";
+
+                    Push(int.Parse(_BalanceTrans.StudentID.ToString()), 0, TitleAr1, TitleEn1, DescriptionAr1, DescriptionEn1, 0);
 
                     TempData["notice"] = "تم تأكيد شحن مبلغ " + _BalanceTrans.Price + " ودخوله في حساب الطالب " + _BalanceTrans.TblStudent.FirstName + " " + _BalanceTrans.TblStudent.SecondName + " " + _BalanceTrans.TblStudent.ThirdName + " بنجاح";
                     //return RedirectToAction("PendedChargeRequest");
@@ -138,5 +151,22 @@ namespace SMUniversity.Controllers
                 //            JsonRequestBehavior.AllowGet);
             }
         }
+
+        private void Push(int StudentID, int LecturerID, string TitleAr, string TitleEn, string DescriptionAr, string DescriptionEn, int NotTypeID)
+        {
+            try
+            {
+                bool res = PushNotification.Push(StudentID, LecturerID, TitleAr, TitleEn, DescriptionAr, DescriptionEn, NotTypeID);
+                var regNotification = new TblNotification { StudentID = StudentID, TitleAr = TitleAr, TitleEn = TitleEn, DescriptionAr = DescriptionAr, DescriptionEn = DescriptionEn, CreatedDate = DateTime.Now };
+
+                _Context.TblNotifications.Add(regNotification);
+                _Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+
     }
 }

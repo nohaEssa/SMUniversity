@@ -4,55 +4,57 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2770432a7ead4a2e8bb6399fcdcef9cd" Name="Diagram1">
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblArea" Width="1.5" PointX="6.75" PointY="38.25" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblAttendance" Width="1.5" PointX="16.5" PointY="65.25" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblBalanceTransaction" Width="1.5" PointX="14.25" PointY="56.25" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblBranch" Width="1.5" PointX="0.75" PointY="47.625" />
+      <Diagram DiagramId="4d5a1c1512934a739adc47abb951457c" Name="Diagram1" ZoomLevel="75">
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblArea" Width="1.5" PointX="3.75" PointY="68.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblAttendance" Width="1.5" PointX="16.75" PointY="73" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblBalanceTransaction" Width="1.5" PointX="17.25" PointY="57.875" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblBranch" Width="1.5" PointX="0.75" PointY="54.5" />
         <EntityTypeShape EntityType="admin_SMUniversityModel.TblCardCategory" Width="1.5" PointX="0.75" PointY="1" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblChargeCard" Width="1.5" PointX="3" PointY="1" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblCollege" Width="1.5" PointX="4.5" PointY="30.75" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblContactUsMsg" Width="1.5" PointX="11.25" PointY="51.125" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblEmployee" Width="1.5" PointX="3" PointY="55.875" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblEvaluation" Width="1.5" PointX="17.25" PointY="60.25" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblEvaluationQuestion" Width="1.5" PointX="15" PointY="71.125" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblEvaluationQuestionAnswer" Width="1.5" PointX="15" PointY="74.25" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblFavoriteSession" Width="1.5" PointX="11.25" PointY="60.375" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblGovernorate" Width="1.5" PointX="4.5" PointY="38.375" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblHall" Width="1.5" PointX="3" PointY="94.25" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblHelpQuestion" Width="1.5" PointX="12" PointY="43.375" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblInstitute" Width="1.5" PointX="2.75" PointY="4.75" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblInvoice" Width="1.5" PointX="5.25" PointY="59" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblLecturer" Width="1.5" PointX="6" PointY="47.875" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblLecturerPaymentMethod" Width="1.5" PointX="8.25" PointY="62.875" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblLecturerSubject" Width="1.5" PointX="11.25" PointY="47.375" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblMajor" Width="1.5" PointX="6.75" PointY="30.75" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblManualInvoice" Width="1.5" PointX="11.25" PointY="71.875" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblNotification" Width="1.5" PointX="14.25" PointY="50.625" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblPermission" Width="1.5" PointX="5.25" PointY="27.375" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblPermissionCategory" Width="1.5" PointX="3" PointY="27.375" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblPermissionUser" Width="1.5" PointX="5.25" PointY="44.125" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblPrivateSession" Width="1.5" PointX="11.25" PointY="55.75" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblProduct" Width="1.5" PointX="0.75" PointY="4.75" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblProductCategory" Width="1.5" PointX="4.75" PointY="4.75" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblRevenue" Width="1.5" PointX="8.25" PointY="81.125" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblScreen" Width="1.5" PointX="3" PointY="46" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblScreenHall" Width="1.5" PointX="5.25" PointY="71.25" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSession" Width="1.5" PointX="8.25" PointY="66.625" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSessionDetail" Width="1.5" PointX="10.5" PointY="90.25" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSessionPricing" Width="1.5" PointX="10.5" PointY="82.375" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSessionTime" Width="1.5" PointX="10.5" PointY="85.5" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblStudent" Width="1.5" PointX="9" PointY="43.875" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblStudentComplaint" Width="1.5" PointX="14.25" PointY="46.25" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSubject" Width="1.5" PointX="9" PointY="31" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSubscription" Width="1.5" PointX="14.25" PointY="62" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblUniversity" Width="1.5" PointX="2.25" PointY="31.375" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblUser" Width="1.5" PointX="3" PointY="50.125" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblUserCategory" Width="1.5" PointX="0.75" PointY="58.375" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblUserCredential" Width="1.5" PointX="0.75" PointY="41.375" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblUserType" Width="1.5" PointX="1.5" PointY="37.375" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblVoucher" Width="1.5" PointX="11.25" PointY="66.375" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TransactionType" Width="1.5" PointX="12" PointY="39.5" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblChargeCard" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblCollege" Width="1.5" PointX="3.75" PointY="37.625" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblContactUsMsg" Width="1.5" PointX="8.25" PointY="66" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblEmployee" Width="1.5" PointX="3" PointY="50.75" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblEvaluation" Width="1.5" PointX="19.75" PointY="75.75" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblEvaluationQuestion" Width="1.5" PointX="17.5" PointY="83" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblEvaluationQuestionAnswer" Width="1.5" PointX="17.5" PointY="79.625" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblFavoriteSession" Width="1.5" PointX="16.5" PointY="67.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblGovernorate" Width="1.5" PointX="1.5" PointY="68.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblHall" Width="1.5" PointX="3" PointY="102.5" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblHelpQuestion" Width="1.5" PointX="6" PointY="42.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblInstitute" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblInvoice" Width="1.5" PointX="11.25" PointY="61.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblLecturer" Width="1.5" PointX="9" PointY="54.625" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblLecturerPaymentMethod" Width="1.5" PointX="11.25" PointY="88.875" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblLecturerSubject" Width="1.5" PointX="14.25" PointY="64.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblMajor" Width="1.5" PointX="3.75" PointY="73.625" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblManualInvoice" Width="1.5" PointX="14.25" PointY="81.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblNotification" Width="1.5" PointX="14.25" PointY="58.5" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblPermission" Width="1.5" PointX="9" PointY="70.125" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblPermissionCategory" Width="1.5" PointX="6.75" PointY="70.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblPermissionUser" Width="1.5" PointX="11.25" PointY="67.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblPrivateSession" Width="1.5" PointX="14.25" PointY="53.625" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblProduct" Width="1.5" PointX="9" PointY="45.125" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblProductCategory" Width="1.5" PointX="6.75" PointY="45.75" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblRegisterDevice" Width="1.5" PointX="11.25" PointY="52" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblRevenue" Width="1.5" PointX="11.25" PointY="56.125" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblScreen" Width="1.5" PointX="3" PointY="58" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblScreenHall" Width="1.5" PointX="5.25" PointY="81.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSession" Width="1.5" PointX="11.25" PointY="74.125" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSessionDetail" Width="1.5" PointX="13.5" PointY="88.875" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSessionPricing" Width="1.5" PointX="13.5" PointY="85.75" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSessionTime" Width="1.5" PointX="13.5" PointY="94.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblStudent" Width="1.5" PointX="6" PointY="50.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblStudentComplaint" Width="1.5" PointX="8.25" PointY="50.125" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSubject" Width="1.5" PointX="9" PointY="78.125" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblSubscription" Width="1.5" PointX="13.5" PointY="67.875" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblUniversity" Width="1.5" PointX="1.5" PointY="38.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblUser" Width="1.5" PointX="3" PointY="62.125" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblUserCategory" Width="1.5" PointX="0.75" PointY="74.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblUserCredential" Width="1.5" PointX="0.75" PointY="48.25" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblUserType" Width="1.5" PointX="1.5" PointY="44.375" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblVoucher" Width="1.5" PointX="14.25" PointY="75.5" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TblVoucherCategory" Width="1.5" PointX="12" PointY="99.75" />
+        <EntityTypeShape EntityType="admin_SMUniversityModel.TransactionType" Width="1.5" PointX="15" PointY="48.625" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblArea__Governo__03BB8E22" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblArea__Governo__04AFB25B" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblArea__Governo__2F10007B" />
@@ -77,6 +79,7 @@
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblAttend__Subsc__0880433F" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblAttend__Subsc__0D7A0286" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblAttend__Subsc__395884C4" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblBalanc__Lectu__119F9925" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblBalanc__Stude__08B54D69" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblBalanc__Stude__0A688BB1" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblBalanc__Stude__3B40CD36" />
@@ -84,6 +87,7 @@
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblBalanc__Trans__0B5CAFEA" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblBalanc__Trans__3C34F16F" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblBalanc__UserI__75F77EB0" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblInvoic__Balan__1C1D2798" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblEmploy__Branc__10216507" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblEmploy__Branc__11158940" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblEmploy__Branc__40F9A68C" />
@@ -144,7 +148,7 @@
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblInvoic__Emplo__3DB3258D" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblEvalua__Answe__6225902D" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblEvalua__Quest__61316BF4" />
-        <AssociationConnector Association="admin_SMUniversityModel.FK__TblEvalua__Sessi__640DD89F" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblEvalua__Sessi__1EF99443" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblEvalua__Stude__6319B466" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblFavori__Sessi__10566F31" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblFavori__Sessi__1209AD79" />
@@ -165,6 +169,8 @@
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__HallI__4F47C5E3" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblVouche__HallI__39E294A9" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblStuden__HelpQ__7EC1CEDB" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblInvoic__Produ__1B29035F" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblInvoic__Stude__1A34DF26" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblInvoic__Subsc__3CBF0154" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblLectur__Crede__15DA3E5D" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblLectur__Crede__46B27FE2" />
@@ -174,6 +180,7 @@
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblManual__Lectu__7073AF84" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblNotifi__Lectu__047AA831" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblPrivat__Lectu__2AA05119" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblRegist__Lectu__0169315C" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblRevenu__Teach__1A9EF37A" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblRevenu__Teach__1B9317B3" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblRevenu__Teach__34C8D9D1" />
@@ -202,12 +209,13 @@
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblSubjec__Major__65370702" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblNotifi__Stude__038683F8" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblNotifi__UserI__056ECC6A" />
-        <AssociationConnector Association="admin_SMUniversityModel.FK__TblPermis__Permi__436BFEE3" />
-        <AssociationConnector Association="admin_SMUniversityModel.FK__TblPermis__Permi__473C8FC7" />
-        <AssociationConnector Association="admin_SMUniversityModel.FK__TblPermis__UserI__4830B400" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblPermis__Permi__0BE6BFCF" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblPermis__Permi__0FB750B3" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblPermis__UserI__0EC32C7A" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblPrivat__Stude__28B808A7" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblPrivat__Subje__29AC2CE0" />
-        <AssociationConnector Association="admin_SMUniversityModel.FK__TblProduc__Produ__74444068" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblProduc__Produ__1D114BD1" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblRegist__Stude__00750D23" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblScreen__Crede__66B53B20" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblScreen__Scree__6A85CC04" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblSessio__Sessi__19DFD96B" />
@@ -254,9 +262,7 @@
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblUserCr__UserT__39237A9A" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblUserCr__UserT__69FBBC1F" />
         <AssociationConnector Association="admin_SMUniversityModel.FK__TblUserCr__UserT__6C190EBB" />
-        <EntityTypeShape EntityType="admin_SMUniversityModel.TblRegisterDevice" Width="1.5" PointX="17.25" PointY="51.125" />
-        <AssociationConnector Association="admin_SMUniversityModel.FK__TblRegist__Lectu__0169315C" />
-        <AssociationConnector Association="admin_SMUniversityModel.FK__TblRegist__Stude__00750D23" />
+        <AssociationConnector Association="admin_SMUniversityModel.FK__TblVouche__Categ__1940BAED" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

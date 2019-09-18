@@ -57,31 +57,33 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>@item.ID</td>
-                                <td>@item.TblSession.SessionCode</td>
-                                @if (item.Ended)
+                                if (item.Ended)
                                 {
-                                    <td>نعم</td>
+                                    <tr style="color: red;background-color: #b53636;">
+                                        <td>@item.ID</td>
+                                        <td>@item.TblSession.SessionCode</td>
+                                        <td>نعم</td>
+                                        <td>@item.FromTime.ToString("yyyy-MM-dd hh:mm tt")</td>
+                                        <td>@item.ToTime.ToString("yyyy-MM-dd hh:mm tt")</td>
+                                        <td>
+                                            <button disabled class="btn btn-xs btn-success" title="إنهاء المحاضره" id="btnViewSessions"><i class="fa fa-eye fa-lg"></i></button>
+                                        </td>
+                                    </tr>
                                 }
                                 else
                                 {
-                                    <td>لا</td>
+                                    <tr>
+                                        <td>@item.ID</td>
+                                        <td>@item.TblSession.SessionCode</td>
+                                        <td>لا</td>
+                                        <td>@item.FromTime.ToString("yyyy-MM-dd hh:mm tt")</td>
+                                        <td>@item.ToTime.ToString("yyyy-MM-dd hh:mm tt")</td>
+                                        <td>
+                                            <a href="javascript:showModal('@item.ID')" class="btn btn-xs btn-success" id="btnViewSessions_@item.ID">إنهاء المحاضره</a>
+                                        </td>
+                                    </tr>
                                 }
-                                <td>@item.FromTime.ToString("yyyy-MM-dd hh:mm tt")</td>
-                                <td>@item.ToTime.ToString("yyyy-MM-dd hh:mm tt")</td>
-                                <td>
-                                    @if (item.Ended)
-                                    {
-                                        <button disabled class="btn btn-xs btn-success" title="إنهاء المحاضره" id="btnViewSessions"><i class="fa fa-eye fa-lg"></i></button>
-                                    }
-                                    else
-                                    {
-                                        @*<a href="@Url.Action("EndSession", "Session", new { SessionTimeID = item.ID })" class="btn btn-xs btn-success" title="إنهاء المحاضره" id="btnViewSessions"><i class="fa fa-eye fa-lg"></i></a>*@
-                                        <a href="javascript:showModal('@item.ID')" class="btn btn-xs btn-success" id="btnViewSessions_@item.ID">إنهاء المحاضره</a>
-                                    }
-                                </td>
-                            </tr>
+
                             }
                         </tbody>
                     </table>

@@ -8,7 +8,8 @@ namespace SMUModels
 {
     public class ProductCategoryData
     {
-        public string NameAr { get; set; }
-        public string NameEn { get; set; }
+        public int ProductCategoryID { get; set; } = 0;
+        public string NameAr { get; set; } = "";
+        public string NameEn { get; set; } = "";
     }
 }

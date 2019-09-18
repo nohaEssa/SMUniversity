@@ -8,7 +8,7 @@ namespace SMUModels.ObjectData
 {
     public class TimelineSessionsObj
     {
-        public int CollegeID { get; set; }
-        public int StudentID { get; set; }
+        public int CollegeID { get; set; } = 0;
+        public int StudentID { get; set; } = 0;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SMUModels;
+using SMUModels.Classes;
 using SMUModels.ObjectData;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using WebAPI.Classes;
 
 namespace WebAPI.Controllers
 {
@@ -72,6 +72,16 @@ namespace WebAPI.Controllers
                         CreatedDate = DateTime.Now,
                     };
 
+                    _Context.TblStudentComplaints.Add(_Complaint);
+                    _Context.SaveChanges();
+
+                    string TitleAr = "سمارت مايند الجامعه";
+                    string TitleEn = "SmartMind University";
+                    string DescriptionAr = "تم ارسال شكوتك وسيتم التواصل معك في اقرب وقت ممكن";
+                    string DescriptionEn = "Your complaint is submitted and we'll back to you as soon as possible";
+
+                    Push(_Params.StudentID, 0, TitleAr, TitleEn, DescriptionAr, DescriptionEn, 0);
+
                     _resultHandler.IsSuccessful = true;
                     _resultHandler.MessageAr = "تم ارسال شكوتك وسيتم التواصل معك في اقرب وقت ممكن";
                     _resultHandler.MessageEn = "Your complaint is submitted and we'll back to you as soon as possible";
@@ -94,5 +104,22 @@ namespace WebAPI.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, _resultHandler);
             }
         }
+
+        private void Push(int StudentID, int LecturerID, string TitleAr, string TitleEn, string DescriptionAr, string DescriptionEn, int NotTypeID)
+        {
+            try
+            {
+                bool res = PushNotification.Push(StudentID, LecturerID, TitleAr, TitleEn, DescriptionAr, DescriptionEn, NotTypeID);
+                var regNotification = new TblNotification { StudentID = StudentID, TitleAr = TitleAr, TitleEn = TitleEn, DescriptionAr = DescriptionAr, DescriptionEn = DescriptionEn, CreatedDate = DateTime.Now };
+
+                _Context.TblNotifications.Add(regNotification);
+                _Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+
     }
 }

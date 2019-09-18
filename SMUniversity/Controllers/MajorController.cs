@@ -21,7 +21,7 @@ namespace SMUniversity.Controllers
             return View();
         }
 
-        public JsonResult getMajors(int CollegeID)
+        public JsonResult getMajors(int CollegeID, int MajorID = 0)
         {
             try
             {
@@ -30,7 +30,14 @@ namespace SMUniversity.Controllers
                 Result += "<option value='0'>التخصص</option>";
                 foreach (var major in _MajorsList)
                 {
-                    Result += "<option value=' " + major.ID + "'>" + major.NameAr + "</option>";
+                    if (major.ID != MajorID)
+                    {
+                        Result += "<option value='" + major.ID + "'>" + major.NameAr + "</option>";
+                    }
+                    else
+                    {
+                        Result += "<option value='" + major.ID + "' selected>" + major.NameAr + "</option>";
+                    }
                 }
 
                 return Json(Result);

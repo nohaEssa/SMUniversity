@@ -8,10 +8,11 @@ namespace SMUModels
 {
     public class CardCategoryData
     {
-        public int ID { get; set; }
-        public string Title { get; set; }
-        public string TitleEn { get; set; }
-        public decimal Price { get; set; }
-        public int ChargeCardsNo { get; set; }
+        public int ID { get; set; } = 0;
+        public string Title { get; set; } = "";
+        public string TitleEn { get; set; } = "";
+        public decimal Price { get; set; } = 0;
+        public int ChargeCardsNo { get; set; } = 0;
+        public int ForApplication { get; set; } = 0;
     }
 }

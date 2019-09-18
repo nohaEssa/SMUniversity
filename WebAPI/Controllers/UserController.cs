@@ -1,18 +1,17 @@
 ﻿using SMUModels;
+using SMUModels.Classes;
 using SMUModels.ObjectData;
-using WebAPI.Classes;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
-using System.IO;
-using System.Web.Script.Serialization;
-using System.Configuration;
-using System.Web.Configuration;
 using System.Web;
-using SMUModels.Classes;
+using System.Web.Configuration;
+using System.Web.Http;
+using System.Web.Script.Serialization;
 
 namespace WebAPI.Controllers
 {
@@ -81,46 +80,82 @@ namespace WebAPI.Controllers
                                     //    _resultHandler.MessageAr = "لم يتم تفعيل الحساب";
                                     //    _resultHandler.MessageEn = "Account didn't verified yet";
                                     //}
-
-                                    Data = new StudentData
+                                    try
                                     {
-                                        StudentID = _Student.ID,
-                                        UniversityID = _Student.UniversityID,
-                                        CollegeID = _Student.CollegeID,
-                                        MajorID = _Student.MajorID,
-                                        MajorNameAr = _Student.MajorID != null ? _Student.TblMajor.NameAr : "",
-                                        MajorNameEn = _Student.MajorID != null ? _Student.TblMajor.NameEn : "",
-                                        Name = _Student.FirstName + _Student.SecondName + _Student.ThirdName,
-                                        Gender = _Student.Gender,
-                                        PhoneNumber = _Student.PhoneNumber,
-                                        AreaID = _Student.AreaID,
-                                        GovernorateID = _Student.GovernorateID,
-                                        Balance = _Student.Balance,
-                                        UniversityNameAr = _Student.UniversityID != null ? _Student.TblUniversity.NameAr : "",
-                                        UniversityNameEn = _Student.UniversityID != null ? _Student.TblUniversity.NameEn : "",
-                                        CollegeNameAr = _Student.CollegeID != null ? _Student.TblCollege.NameAr : "",
-                                        CollegeNameEn = _Student.CollegeID != null ? _Student.TblCollege.NameEn : "",
-                                        DateOfBirth = _Student.DateOfBirth,
-                                        Email = _Student.Email,
-                                        GovernorateNameAr = _Student.TblGovernorate.NameAr,
-                                        GovernorateNameEn = _Student.TblGovernorate.NameEn,
-                                        AreaNameAr = _Student.TblArea.NameAr,
-                                        AreaNameEn = _Student.TblArea.NameEn,
-                                        BranchNameAr = _Student.TblBranch.NameAr,
-                                        BranchNameEn = _Student.TblBranch.NameEn,
-                                        UserType = _UserCred.UserType,
-                                        Verified = _Student.Verified,
-                                        ProfilePic = _Student.ProfilePic != null ? ("http://smuapi.smartmindkw.com" + _Student.ProfilePic) : "",
-                                        //AccessToken = _AccessToken
-                                    };
+                                        Data = new StudentData
+                                        {
+                                            StudentID = _Student.ID,
+                                            UniversityID = _Student.UniversityID,
+                                            CollegeID = _Student.CollegeID != null ? _Student.CollegeID : 0,
+                                            MajorID = _Student.MajorID,
+                                            MajorNameAr = _Student.MajorID != null ? _Context.TblMajors.Where(a => a.ID == _Student.MajorID).FirstOrDefault().NameAr : "",
+                                            MajorNameEn = _Student.MajorID != null ? _Context.TblMajors.Where(a => a.ID == _Student.MajorID).FirstOrDefault().NameEn : "",
+                                            Name = _Student.FirstName + " " + _Student.SecondName + " " + _Student.ThirdName,
+                                            FirstNameAr = _Student.FirstName,
+                                            FirstNameEn = _Student.FirstNameEn,
+                                            SecondNameAr = string.IsNullOrEmpty(_Student.SecondName) ? "" : _Student.SecondName,
+                                            SecondNameEn = string.IsNullOrEmpty(_Student.SecondNameEn) ? "" : _Student.SecondNameEn,
+                                            ThirdNameAr = _Student.ThirdName,
+                                            ThirdNameEn = _Student.ThirdNameEn,
+                                            Gender = _Student.Gender,
+                                            PhoneNumber = _Student.PhoneNumber,
+                                            AreaID = _Student.AreaID,
+                                            GovernorateID = _Student.GovernorateID,
+                                            Balance = _Student.Balance,
+                                            UniversityNameAr = _Student.UniversityID != null ? _Context.TblUniversities.Where(a => a.ID == _Student.UniversityID).FirstOrDefault().NameAr : "",
+                                            UniversityNameEn = _Student.UniversityID != null ? _Context.TblUniversities.Where(a => a.ID == _Student.UniversityID).FirstOrDefault().NameEn : "",
+                                            CollegeNameAr = _Student.CollegeID != null ? _Context.TblColleges.Where(a => a.ID == _Student.CollegeID).FirstOrDefault().NameAr : "",
+                                            CollegeNameEn = _Student.CollegeID != null ? _Context.TblColleges.Where(a => a.ID == _Student.CollegeID).FirstOrDefault().NameEn : "",
+                                            Email = _Student.Email,
+                                            GovernorateNameAr = _Student.GovernorateID != null ? _Context.TblGovernorates.Where(a => a.ID == _Student.GovernorateID).FirstOrDefault().NameAr : "",
+                                            GovernorateNameEn = _Student.GovernorateID != null ? _Context.TblGovernorates.Where(a => a.ID == _Student.GovernorateID).FirstOrDefault().NameEn : "",
+                                            AreaNameAr = _Student.AreaID != null ? _Context.TblAreas.Where(a => a.ID == _Student.AreaID).FirstOrDefault().NameAr : "",
+                                            AreaNameEn = _Student.AreaID != null ? _Context.TblAreas.Where(a => a.ID == _Student.AreaID).FirstOrDefault().NameEn : "",
+                                            BranchNameAr = _Student.BranchID != null ? _Context.TblBranches.Where(a => a.ID == _Student.BranchID).FirstOrDefault().NameAr : "",
+                                            BranchNameEn = _Student.BranchID != null ? _Context.TblBranches.Where(a => a.ID == _Student.BranchID).FirstOrDefault().NameEn : "",
+                                            DateOfBirth = DateTime.Parse(_Student.DateOfBirth.ToString()),
+                                            UserType = _UserCred.UserType,
+                                            Verified = _Student.Verified,
+                                            StudentType = _Student.StudentType,
+                                            ProfilePic = _Student.ProfilePic.StartsWith("http://") ? _Student.ProfilePic : ("http://smuapitest.smartmindkw.com" + _Student.ProfilePic),
+                                            FavoritesCount = _Context.TblFavoriteSessions.Where(a => a.StudentID == _Student.ID && a.IsDeleted != true).Count(),
+                                            SubscriptionsCount = _Context.TblSubscriptions.Where(a => a.StudentID == _Student.ID && a.Pending != true && a.IsDeleted != true).Count(),
+                                            VerificationCode = _Student.VerificationCode,
+                                            //AccessToken = _AccessToken
+                                        };
+                                        //if (_Student.Verified)
+                                        //{
 
+                                        //}
+                                        //else
+                                        //{
+                                        //    _resultHandler.IsSuccessful = false;
+                                        //    _resultHandler.Result = Data;
+                                        //    _resultHandler.MessageAr = "لم يتم تفعيل الحساب";
+                                        //    _resultHandler.MessageEn = "Account didn't verified yet";
+
+                                        //    return Request.CreateResponse(HttpStatusCode.BadRequest, _resultHandler);
+                                        //}
+
+                                    }
+                                    catch (Exception)
+                                    {
+                                    }
+
+
+                                    try
+                                    {
                                         string AddTokenResult = AddDevice(_Student.ID, 0, _Params.Token, _Params.DeviceTypeID);
-                                        string TitleAr = "مرحبا بكم في تطبيق معهد سمارت مايند الجامعه";
-                                        string TitleEn = "Welcome to Smart Mind University";
-                                        string DescriptionAr = "نحرص على تقديم أفضل معايير الجودة بالتعليم بمتابعة حريصة لمستويات أبنائنا الطلاب";
-                                        string DescriptionEn = "We are keen to provide the best quality standards in education by following carefully the levels of our students";
+                                    }
+                                    catch (Exception)
+                                    {
+                                    }
+                                    string TitleAr = "مرحبا بكم في تطبيق معهد سمارت مايند الجامعه";
+                                    string TitleEn = "Welcome to Smart Mind University";
+                                    string DescriptionAr = "نحرص على تقديم أفضل معايير الجودة بالتعليم بمتابعة حريصة لمستويات أبنائنا الطلاب";
+                                    string DescriptionEn = "We are keen to provide the best quality standards in education by following carefully the levels of our students";
 
-                                        Push(_Student.ID, 0, TitleAr, TitleEn, DescriptionAr, DescriptionEn, 0);
+                                    Push(_Student.ID, 0, TitleAr, TitleEn, DescriptionAr, DescriptionEn, 0);
 
 
                                     _resultHandler.IsSuccessful = true;
@@ -149,8 +184,8 @@ namespace WebAPI.Controllers
                                     Data = new LecturerData
                                     {
                                         LecturerID = _Lecturer.ID,
-                                        Name = _Lecturer.FirstNameAr + _Lecturer.SecondNameAr + _Lecturer.ThirdNameAr,
-                                        NameEn = _Lecturer.FirstNameEn + _Lecturer.SecondNameEn + _Lecturer.ThirdNameEn,
+                                        Name = _Lecturer.FirstNameAr + " " + _Lecturer.SecondNameAr + " " + _Lecturer.ThirdNameAr,
+                                        NameEn = _Lecturer.FirstNameEn + " " + _Lecturer.SecondNameEn + " " + _Lecturer.ThirdNameEn,
                                         Address = _Lecturer.Address,
                                         Email = _Lecturer.Email,
                                         Gender = _Lecturer.Gender,
@@ -159,7 +194,7 @@ namespace WebAPI.Controllers
                                         BranchNameEn = _Lecturer.TblBranch.NameEn,
                                         //ProfilePic = _Lecturer.ProfilePic,
                                         //ProfilePic = "http://smuapi.smartmindkw.com/content/images/photo.jpg",
-                                        ProfilePic = _Lecturer.ProfilePic.StartsWith("http://") ? _Lecturer.ProfilePic : ("http://smuapi.smartmindkw.com" + _Lecturer.ProfilePic),
+                                        ProfilePic = _Lecturer.ProfilePic.StartsWith("http://") ? _Lecturer.ProfilePic : ("http://smuapitest.smartmindkw.com" + _Lecturer.ProfilePic),
                                         UserType = _UserCred.UserType,
                                         //AccessToken = _AccessToken
                                     };
@@ -213,7 +248,7 @@ namespace WebAPI.Controllers
 
                                         _HallsData.Add(data);
                                     }
-                                    
+
                                     _resultHandler.IsSuccessful = true;
                                     _resultHandler.Result = _HallsData;
                                     _resultHandler.MessageAr = "OK";
@@ -246,7 +281,7 @@ namespace WebAPI.Controllers
                                         BranchNameEn = _Employee.TblBranch.NameEn,
                                         //ProfilePic = _Employee.ProfilePic,
                                         //ProfilePic = "http://smuapi.smartmindkw.com/content/images/photo.jpg",
-                                        ProfilePic = _Employee.ProfilePic.StartsWith("http://") ? _Employee.ProfilePic : ("http://smuapi.smartmindkw.com" + _Employee.ProfilePic),
+                                        ProfilePic = _Employee.ProfilePic.StartsWith("http://") ? _Employee.ProfilePic : ("http://smuapitest.smartmindkw.com" + _Employee.ProfilePic),
                                         UserCategoryID = _Employee.UserCategoryID,
                                         UserType = _UserCred.UserType,
                                         //AccessToken = _AccessToken
@@ -296,7 +331,7 @@ namespace WebAPI.Controllers
 
                     return Request.CreateResponse(HttpStatusCode.BadRequest, _resultHandler);
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -492,8 +527,7 @@ namespace WebAPI.Controllers
             catch (Exception ex)
             {
             }
-            
-        }
 
+        }
     }
 }

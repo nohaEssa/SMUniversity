@@ -16,15 +16,23 @@ namespace SMUModels
     {
         public int ID { get; set; }
         public long Serial { get; set; }
-        public int SubscriptionID { get; set; }
-        public int EmployeeID { get; set; }
+        public Nullable<int> SubscriptionID { get; set; }
+        public Nullable<int> EmployeeID { get; set; }
         public bool Pending { get; set; }
         public string PaymentMethod { get; set; }
         public bool IsDeleted { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
+        public int StudentID { get; set; }
+        public Nullable<int> ProductID { get; set; }
+        public decimal Price { get; set; }
+        public bool RealCash { get; set; }
+        public Nullable<int> BalanceTransactionID { get; set; }
     
+        public virtual TblBalanceTransaction TblBalanceTransaction { get; set; }
         public virtual TblEmployee TblEmployee { get; set; }
+        public virtual TblProduct TblProduct { get; set; }
+        public virtual TblStudent TblStudent { get; set; }
         public virtual TblSubscription TblSubscription { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace SMUniversity.Controllers
             return View();
         }
 
-        public JsonResult getColleges(int UniversityID)
+        public JsonResult getColleges(int UniversityID, int CollegeID = 0)
         {
             try
             {
@@ -30,7 +30,14 @@ namespace SMUniversity.Controllers
                 Result += "<option value='0'>اسم الكلية</option>";
                 foreach (var college in _CollegesList)
                 {
-                    Result += "<option value=' " + college.ID + "'>" + college.NameAr + "</option>";
+                    if (college.ID != CollegeID)
+                    {
+                        Result += "<option value='" + college.ID + "'>" + college.NameAr + "</option>";
+                    }
+                    else
+                    {
+                        Result += "<option value='" + college.ID + "' selected>" + college.NameAr + "</option>";
+                    }
                 }
 
                 return Json(Result);
@@ -127,7 +134,7 @@ namespace SMUniversity.Controllers
             {
                 if (!string.IsNullOrEmpty(_Data.NameAr) && !string.IsNullOrEmpty(_Data.NameEn))
                 {
-                    TblUniversity UniObj = _Context.TblUniversities.Where(a => a.ID == _Data.ProductCategoryID).SingleOrDefault();
+                    TblUniversity UniObj = _Context.TblUniversities.Where(a => a.ID == _Data.UniversityID).SingleOrDefault();
                     if (UniObj != null)
                     {
                         UniObj.NameAr = _Data.NameAr;
@@ -142,20 +149,20 @@ namespace SMUniversity.Controllers
                     else
                     {
                         TempData["notice"] = "بيانات خاطئه";
-                        return RedirectToAction("Edit", new { UniversityID = _Data.ProductCategoryID });
+                        return RedirectToAction("Edit", new { UniversityID = _Data.UniversityID });
                     }
                 }
                 else
                 {
                     TempData["notice"] = "من فضلك ادخل البيانات المطلوبه كاملةً";
-                    return RedirectToAction("Edit", new { UniversityID = _Data.ProductCategoryID });
+                    return RedirectToAction("Edit", new { UniversityID = _Data.UniversityID });
                 }
 
             }
             catch (Exception ex)
             {
                 TempData["notice"] = "ERROR while processing!";
-                return RedirectToAction("Edit", new { UniversityID = _Data.ProductCategoryID });
+                return RedirectToAction("Edit", new { UniversityID = _Data.UniversityID });
             }
         }
 

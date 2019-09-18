@@ -17,7 +17,6 @@ namespace SMUModels
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TblSession()
         {
-            this.TblEvaluations = new HashSet<TblEvaluation>();
             this.TblFavoriteSessions = new HashSet<TblFavoriteSession>();
             this.TblFavoriteSessions1 = new HashSet<TblFavoriteSession>();
             this.TblFavoriteSessions2 = new HashSet<TblFavoriteSession>();
@@ -63,6 +62,7 @@ namespace SMUModels
         public Nullable<bool> ForPublic { get; set; }
         public string DescriptionEn { get; set; }
         public string Picture { get; set; }
+        public bool GeneralSession { get; set; }
     
         public virtual TblBranch TblBranch { get; set; }
         public virtual TblBranch TblBranch1 { get; set; }
@@ -70,8 +70,6 @@ namespace SMUModels
         public virtual TblBranch TblBranch3 { get; set; }
         public virtual TblBranch TblBranch4 { get; set; }
         public virtual TblBranch TblBranch5 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblEvaluation> TblEvaluations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblFavoriteSession> TblFavoriteSessions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

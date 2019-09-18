@@ -8,6 +8,6 @@ namespace SMUModels
 {
     public class AttendanceData
     {
-        public string AttendanceDate { get; set; }
+        public string AttendanceDate { get; set; } = "";
     }
 }

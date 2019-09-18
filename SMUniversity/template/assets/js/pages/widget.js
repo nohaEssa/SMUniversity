@@ -171,7 +171,7 @@ function widget_simple_weather(){
 
     /*------ Weather Feed Start -------*/
 
-    $('#weatherfeed').weatherfeed(['UKXX0085']); // COUNTRY CODE ['UKXX0085'] for UNITED KINGDOM
+    $('#weatherfeed').weatherfeed(['UKXX0085']); // COUNTRY CODE ['UKXX0085'] for uniTED KINGDOM
     $('#weatherfeed2').weatherfeed(['BGXX0003'],
         {
             unit: 'c'

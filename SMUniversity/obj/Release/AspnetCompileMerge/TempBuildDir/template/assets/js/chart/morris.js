@@ -105,7 +105,7 @@
             }
             this.options = $.extend({}, this.gridDefaults, this.defaults || {}, options);
             if (typeof this.options.units === 'string') {
-                this.options.postUnits = options.units;
+                this.options.postunits = options.units;
             }
             this.raphael = new Raphael(this.el[0]);
             this.elementWidth = null;
@@ -156,8 +156,8 @@
             numLines: 5,
             padding: 25,
             parseTime: true,
-            postUnits: '',
-            preUnits: '',
+            postunits: '',
+            preunits: '',
             ymax: 'auto',
             ymin: 'auto 0',
             goals: [],
@@ -456,7 +456,7 @@
             if (typeof this.options.yLabelFormat === 'function') {
                 return this.options.yLabelFormat(label);
             } else {
-                return "" + this.options.preUnits + (Morris.commas(label)) + this.options.postUnits;
+                return "" + this.options.preunits + (Morris.commas(label)) + this.options.postunits;
             }
         };
 

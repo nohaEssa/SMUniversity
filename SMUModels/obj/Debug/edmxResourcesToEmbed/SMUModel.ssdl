@@ -30,7 +30,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="StudentID" Type="int" />
     <Property Name="UserID" Type="int" />
     <Property Name="TitleAr" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Price" Type="decimal" Precision="10" Scale="3" />
@@ -41,6 +41,7 @@
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="UpdatedDate" Type="datetime" />
     <Property Name="TitleEn" Type="nvarchar" MaxLength="100" />
+    <Property Name="LecturerID" Type="int" />
   </EntityType>
   <EntityType Name="TblBranch">
     <Key>
@@ -72,6 +73,7 @@
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="UpdateDate" Type="datetime" />
     <Property Name="TitleEn" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="ForApplication" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="TblChargeCard">
     <Key>
@@ -136,11 +138,11 @@
     <Property Name="QuestionID" Type="int" Nullable="false" />
     <Property Name="AnswerID" Type="int" Nullable="false" />
     <Property Name="StudentID" Type="int" Nullable="false" />
-    <Property Name="SessionID" Type="int" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="UpdatedDate" Type="datetime" />
     <Property Name="EvaluationNotes" Type="nvarchar" MaxLength="255" />
+    <Property Name="SessionTimesID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TblEvaluationQuestion">
     <Key>
@@ -234,13 +236,18 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Serial" Type="bigint" Nullable="false" />
-    <Property Name="SubscriptionID" Type="int" Nullable="false" />
-    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="SubscriptionID" Type="int" />
+    <Property Name="EmployeeID" Type="int" />
     <Property Name="Pending" Type="bit" Nullable="false" />
     <Property Name="PaymentMethod" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" />
+    <Property Name="Price" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+    <Property Name="RealCash" Type="bit" Nullable="false" />
+    <Property Name="BalanceTransactionID" Type="int" />
   </EntityType>
   <EntityType Name="TblLecturer">
     <Key>
@@ -312,6 +319,7 @@
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="Cost" Type="decimal" Precision="10" Scale="3" />
   </EntityType>
   <EntityType Name="TblNotification">
     <Key>
@@ -336,8 +344,8 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="NameAr" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="NameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="255" />
     <Property Name="PermissionCategoryID" Type="int" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
@@ -348,8 +356,8 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="NameAr" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="NameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="255" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="255" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="UpdatedDate" Type="datetime" />
@@ -359,10 +367,8 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="NameAr" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="NameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="PermissionCategoryID" Type="int" Nullable="false" />
     <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="PermissionID" Type="int" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="UpdatedDate" Type="datetime" />
@@ -388,7 +394,6 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ProductCategoryID" Type="int" Nullable="false" />
     <Property Name="NameAr" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="NameEn" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="DescriptionAr" Type="nvarchar" MaxLength="255" Nullable="false" />
@@ -399,6 +404,7 @@
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="ProductCategoryID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TblProductCategory">
     <Key>
@@ -490,6 +496,7 @@
     <Property Name="ForPublic" Type="bit" />
     <Property Name="DescriptionEn" Type="nvarchar(max)" />
     <Property Name="Picture" Type="nvarchar" MaxLength="255" />
+    <Property Name="GeneralSession" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="TblSessionDetails">
     <Key>
@@ -506,6 +513,8 @@
     <Property Name="Price1" Type="decimal" Precision="10" Scale="3" />
     <Property Name="Price2" Type="decimal" Precision="10" Scale="3" />
     <Property Name="Price3" Type="decimal" Precision="10" Scale="3" />
+    <Property Name="SessionPrice" Type="decimal" Precision="10" Scale="3" />
+    <Property Name="SingleSessionQRCode" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="TblSessionPricing">
     <Key>
@@ -544,7 +553,7 @@
     <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Gender" Type="bit" Nullable="false" />
-    <Property Name="DateOfBirth" Type="date" Nullable="false" />
+    <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
     <Property Name="GovernorateID" Type="int" />
     <Property Name="AreaID" Type="int" />
     <Property Name="ProfilePic" Type="nvarchar" MaxLength="255" />
@@ -557,9 +566,12 @@
     <Property Name="UpdatedDate" Type="datetime" />
     <Property Name="MajorID" Type="int" />
     <Property Name="CredentialsID" Type="int" />
-    <Property Name="VerificationCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="VerificationCode" Type="nvarchar" MaxLength="255" />
     <Property Name="Verified" Type="bit" Nullable="false" />
     <Property Name="StudentType" Type="bit" />
+    <Property Name="FirstNameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SecondNameEn" Type="nvarchar" MaxLength="100" />
+    <Property Name="ThirdNameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="TblStudentComplaint">
     <Key>
@@ -578,13 +590,15 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MajorID" Type="int" Nullable="false" />
+    <Property Name="MajorID" Type="int" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="UpdatedDate" Type="datetime" />
     <Property Name="NameAr" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="NameEn" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Picture" Type="nvarchar" MaxLength="255" />
+    <Property Name="GeneralSubject" Type="bit" Nullable="false" />
+    <Property Name="SubjectCode" Type="nvarchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="TblSubscription">
     <Key>
@@ -592,7 +606,7 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="StudentID" Type="int" Nullable="false" />
-    <Property Name="SessionID" Type="int" Nullable="false" />
+    <Property Name="SessionID" Type="int" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="UpdatedDate" Type="datetime" />
@@ -600,6 +614,8 @@
     <Property Name="Pending" Type="bit" Nullable="false" />
     <Property Name="PriceType" Type="tinyint" Nullable="false" />
     <Property Name="Price" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+    <Property Name="SubscripedAsSession" Type="bit" Nullable="false" />
+    <Property Name="FromLecturerSide" Type="bit" />
   </EntityType>
   <EntityType Name="TblUniversity">
     <Key>
@@ -623,7 +639,7 @@
     <Property Name="CredentialsID" Type="int" Nullable="false" />
     <Property Name="BranchID" Type="int" Nullable="false" />
     <Property Name="UserCategoryID" Type="int" Nullable="false" />
-    <Property Name="ProfilePic" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="ProfilePic" Type="nvarchar" MaxLength="255" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="IsDeleted" Type="bit" Nullable="false" />
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
@@ -665,8 +681,8 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Serial" Type="bigint" Nullable="false" />
-    <Property Name="LecturerID" Type="int" Nullable="false" />
-    <Property Name="HallID" Type="int" Nullable="false" />
+    <Property Name="LecturerID" Type="int" />
+    <Property Name="HallID" Type="int" />
     <Property Name="FromDate" Type="datetime" Nullable="false" />
     <Property Name="ToDate" Type="datetime" Nullable="false" />
     <Property Name="Notes" Type="nvarchar" MaxLength="255" />
@@ -676,6 +692,20 @@
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
     <Property Name="UpdatedDate" Type="datetime" />
     <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Type" Type="bit" Nullable="false" />
+    <Property Name="CategoryID" Type="int" />
+  </EntityType>
+  <EntityType Name="TblVoucherCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameAr" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NameEn" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" />
   </EntityType>
   <EntityType Name="TransactionType">
     <Key>
@@ -901,8 +931,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__TblBalanc__Lectu__119F9925">
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="0..1" />
+    <End Role="TblBalanceTransaction" Type="Self.TblBalanceTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblBalanceTransaction">
+        <PropertyRef Name="LecturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__TblBalanc__Stude__08B54D69">
-    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="0..1" />
     <End Role="TblBalanceTransaction" Type="Self.TblBalanceTransaction" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblStudent">
@@ -914,7 +956,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblBalanc__Stude__0A688BB1">
-    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="0..1" />
     <End Role="TblBalanceTransaction" Type="Self.TblBalanceTransaction" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblStudent">
@@ -926,7 +968,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblBalanc__Stude__3B40CD36">
-    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="0..1" />
     <End Role="TblBalanceTransaction" Type="Self.TblBalanceTransaction" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblStudent">
@@ -1213,15 +1255,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TblEvalua__Sessi__640DD89F">
-    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+  <Association Name="FK__TblEvalua__Sessi__1EF99443">
+    <End Role="TblSessionTimes" Type="Self.TblSessionTimes" Multiplicity="1" />
     <End Role="TblEvaluation" Type="Self.TblEvaluation" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TblSession">
+      <Principal Role="TblSessionTimes">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="TblEvaluation">
-        <PropertyRef Name="SessionID" />
+        <PropertyRef Name="SessionTimesID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1381,8 +1423,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__TblInvoic__Balan__1C1D2798">
+    <End Role="TblBalanceTransaction" Type="Self.TblBalanceTransaction" Multiplicity="0..1" />
+    <End Role="TblInvoice" Type="Self.TblInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBalanceTransaction">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblInvoice">
+        <PropertyRef Name="BalanceTransactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__TblInvoic__Emplo__3DB3258D">
-    <End Role="TblEmployee" Type="Self.TblEmployee" Multiplicity="1" />
+    <End Role="TblEmployee" Type="Self.TblEmployee" Multiplicity="0..1" />
     <End Role="TblInvoice" Type="Self.TblInvoice" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblEmployee">
@@ -1393,8 +1447,32 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__TblInvoic__Produ__1B29035F">
+    <End Role="TblProduct" Type="Self.TblProduct" Multiplicity="0..1" />
+    <End Role="TblInvoice" Type="Self.TblInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblProduct">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblInvoice">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblInvoic__Stude__1A34DF26">
+    <End Role="TblStudent" Type="Self.TblStudent" Multiplicity="1" />
+    <End Role="TblInvoice" Type="Self.TblInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblInvoice">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__TblInvoic__Subsc__3CBF0154">
-    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="1" />
+    <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="0..1" />
     <End Role="TblInvoice" Type="Self.TblInvoice" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblSubscription">
@@ -1657,7 +1735,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TblPermis__Permi__436BFEE3">
+  <Association Name="FK__TblPermis__Permi__0BE6BFCF">
     <End Role="TblPermissionCategory" Type="Self.TblPermissionCategory" Multiplicity="1" />
     <End Role="TblPermission" Type="Self.TblPermission" Multiplicity="*" />
     <ReferentialConstraint>
@@ -1669,19 +1747,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TblPermis__Permi__473C8FC7">
-    <End Role="TblPermissionCategory" Type="Self.TblPermissionCategory" Multiplicity="1" />
+  <Association Name="FK__TblPermis__Permi__0FB750B3">
+    <End Role="TblPermission" Type="Self.TblPermission" Multiplicity="1" />
     <End Role="TblPermissionUser" Type="Self.TblPermissionUser" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TblPermissionCategory">
+      <Principal Role="TblPermission">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="TblPermissionUser">
-        <PropertyRef Name="PermissionCategoryID" />
+        <PropertyRef Name="PermissionID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TblPermis__UserI__4830B400">
+  <Association Name="FK__TblPermis__UserI__0EC32C7A">
     <End Role="TblUser" Type="Self.TblUser" Multiplicity="1" />
     <End Role="TblPermissionUser" Type="Self.TblPermissionUser" Multiplicity="*" />
     <ReferentialConstraint>
@@ -1729,14 +1807,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TblProduc__Produ__74444068">
-    <End Role="TblProduct" Type="Self.TblProduct" Multiplicity="1" />
-    <End Role="TblProduct1" Type="Self.TblProduct" Multiplicity="*" />
+  <Association Name="FK__TblProduc__Produ__1D114BD1">
+    <End Role="TblProductCategory" Type="Self.TblProductCategory" Multiplicity="1" />
+    <End Role="TblProduct" Type="Self.TblProduct" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TblProduct">
+      <Principal Role="TblProductCategory">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="TblProduct1">
+      <Dependent Role="TblProduct">
         <PropertyRef Name="ProductCategoryID" />
       </Dependent>
     </ReferentialConstraint>
@@ -2750,7 +2828,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubjec__Major__336AA144">
-    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="1" />
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="0..1" />
     <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblMajor">
@@ -2762,7 +2840,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubjec__Major__345EC57D">
-    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="1" />
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="0..1" />
     <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblMajor">
@@ -2774,7 +2852,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubjec__Major__3F466844">
-    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="1" />
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="0..1" />
     <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblMajor">
@@ -2786,7 +2864,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubjec__Major__6383C8BA">
-    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="1" />
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="0..1" />
     <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblMajor">
@@ -2798,7 +2876,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubjec__Major__6442E2C9">
-    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="1" />
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="0..1" />
     <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblMajor">
@@ -2810,7 +2888,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubjec__Major__65370702">
-    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="1" />
+    <End Role="TblMajor" Type="Self.TblMajor" Multiplicity="0..1" />
     <End Role="TblSubject" Type="Self.TblSubject" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblMajor">
@@ -2822,7 +2900,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubscr__Sessi__3552E9B6">
-    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="0..1" />
     <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblSession">
@@ -2834,7 +2912,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubscr__Sessi__36470DEF">
-    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="0..1" />
     <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblSession">
@@ -2846,7 +2924,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubscr__Sessi__403A8C7D">
-    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="0..1" />
     <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblSession">
@@ -2858,7 +2936,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubscr__Sessi__6477ECF3">
-    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="0..1" />
     <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblSession">
@@ -2870,7 +2948,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubscr__Sessi__662B2B3B">
-    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="0..1" />
     <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblSession">
@@ -2882,7 +2960,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubscr__Sessi__671F4F74">
-    <End Role="TblSession" Type="Self.TblSession" Multiplicity="1" />
+    <End Role="TblSession" Type="Self.TblSession" Multiplicity="0..1" />
     <End Role="TblSubscription" Type="Self.TblSubscription" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblSession">
@@ -3085,8 +3163,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__TblVouche__Categ__1940BAED">
+    <End Role="TblVoucherCategory" Type="Self.TblVoucherCategory" Multiplicity="0..1" />
+    <End Role="TblVoucher" Type="Self.TblVoucher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblVoucherCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblVoucher">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__TblVouche__HallI__39E294A9">
-    <End Role="TblHall" Type="Self.TblHall" Multiplicity="1" />
+    <End Role="TblHall" Type="Self.TblHall" Multiplicity="0..1" />
     <End Role="TblVoucher" Type="Self.TblVoucher" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblHall">
@@ -3098,7 +3188,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblVouche__Lectu__38EE7070">
-    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="1" />
+    <End Role="TblLecturer" Type="Self.TblLecturer" Multiplicity="0..1" />
     <End Role="TblVoucher" Type="Self.TblVoucher" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblLecturer">
@@ -3170,6 +3260,7 @@
     <EntitySet Name="TblUserCredentials" EntityType="Self.TblUserCredentials" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblUserType" EntityType="Self.TblUserType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblVoucher" EntityType="Self.TblVoucher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblVoucherCategory" EntityType="Self.TblVoucherCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__TblArea__Governo__03BB8E22" Association="Self.FK__TblArea__Governo__03BB8E22">
       <End Role="TblGovernorate" EntitySet="TblGovernorate" />
@@ -3242,6 +3333,10 @@
     <AssociationSet Name="FK__TblAttend__Subsc__395884C4" Association="Self.FK__TblAttend__Subsc__395884C4">
       <End Role="TblSubscription" EntitySet="TblSubscription" />
       <End Role="TblAttendance" EntitySet="TblAttendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblBalanc__Lectu__119F9925" Association="Self.FK__TblBalanc__Lectu__119F9925">
+      <End Role="TblLecturer" EntitySet="TblLecturer" />
+      <End Role="TblBalanceTransaction" EntitySet="TblBalanceTransaction" />
     </AssociationSet>
     <AssociationSet Name="FK__TblBalanc__Stude__08B54D69" Association="Self.FK__TblBalanc__Stude__08B54D69">
       <End Role="TblStudent" EntitySet="TblStudent" />
@@ -3347,8 +3442,8 @@
       <End Role="TblEvaluationQuestion" EntitySet="TblEvaluationQuestion" />
       <End Role="TblEvaluation" EntitySet="TblEvaluation" />
     </AssociationSet>
-    <AssociationSet Name="FK__TblEvalua__Sessi__640DD89F" Association="Self.FK__TblEvalua__Sessi__640DD89F">
-      <End Role="TblSession" EntitySet="TblSession" />
+    <AssociationSet Name="FK__TblEvalua__Sessi__1EF99443" Association="Self.FK__TblEvalua__Sessi__1EF99443">
+      <End Role="TblSessionTimes" EntitySet="TblSessionTimes" />
       <End Role="TblEvaluation" EntitySet="TblEvaluation" />
     </AssociationSet>
     <AssociationSet Name="FK__TblEvalua__Stude__6319B466" Association="Self.FK__TblEvalua__Stude__6319B466">
@@ -3403,8 +3498,20 @@
       <End Role="TblBranch" EntitySet="TblBranch" />
       <End Role="TblHall" EntitySet="TblHall" />
     </AssociationSet>
+    <AssociationSet Name="FK__TblInvoic__Balan__1C1D2798" Association="Self.FK__TblInvoic__Balan__1C1D2798">
+      <End Role="TblBalanceTransaction" EntitySet="TblBalanceTransaction" />
+      <End Role="TblInvoice" EntitySet="TblInvoice" />
+    </AssociationSet>
     <AssociationSet Name="FK__TblInvoic__Emplo__3DB3258D" Association="Self.FK__TblInvoic__Emplo__3DB3258D">
       <End Role="TblEmployee" EntitySet="TblEmployee" />
+      <End Role="TblInvoice" EntitySet="TblInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblInvoic__Produ__1B29035F" Association="Self.FK__TblInvoic__Produ__1B29035F">
+      <End Role="TblProduct" EntitySet="TblProduct" />
+      <End Role="TblInvoice" EntitySet="TblInvoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblInvoic__Stude__1A34DF26" Association="Self.FK__TblInvoic__Stude__1A34DF26">
+      <End Role="TblStudent" EntitySet="TblStudent" />
       <End Role="TblInvoice" EntitySet="TblInvoice" />
     </AssociationSet>
     <AssociationSet Name="FK__TblInvoic__Subsc__3CBF0154" Association="Self.FK__TblInvoic__Subsc__3CBF0154">
@@ -3495,15 +3602,15 @@
       <End Role="TblUser" EntitySet="TblUser" />
       <End Role="TblNotification" EntitySet="TblNotification" />
     </AssociationSet>
-    <AssociationSet Name="FK__TblPermis__Permi__436BFEE3" Association="Self.FK__TblPermis__Permi__436BFEE3">
+    <AssociationSet Name="FK__TblPermis__Permi__0BE6BFCF" Association="Self.FK__TblPermis__Permi__0BE6BFCF">
       <End Role="TblPermissionCategory" EntitySet="TblPermissionCategory" />
       <End Role="TblPermission" EntitySet="TblPermission" />
     </AssociationSet>
-    <AssociationSet Name="FK__TblPermis__Permi__473C8FC7" Association="Self.FK__TblPermis__Permi__473C8FC7">
-      <End Role="TblPermissionCategory" EntitySet="TblPermissionCategory" />
+    <AssociationSet Name="FK__TblPermis__Permi__0FB750B3" Association="Self.FK__TblPermis__Permi__0FB750B3">
+      <End Role="TblPermission" EntitySet="TblPermission" />
       <End Role="TblPermissionUser" EntitySet="TblPermissionUser" />
     </AssociationSet>
-    <AssociationSet Name="FK__TblPermis__UserI__4830B400" Association="Self.FK__TblPermis__UserI__4830B400">
+    <AssociationSet Name="FK__TblPermis__UserI__0EC32C7A" Association="Self.FK__TblPermis__UserI__0EC32C7A">
       <End Role="TblUser" EntitySet="TblUser" />
       <End Role="TblPermissionUser" EntitySet="TblPermissionUser" />
     </AssociationSet>
@@ -3519,9 +3626,9 @@
       <End Role="TblSubject" EntitySet="TblSubject" />
       <End Role="TblPrivateSession" EntitySet="TblPrivateSession" />
     </AssociationSet>
-    <AssociationSet Name="FK__TblProduc__Produ__74444068" Association="Self.FK__TblProduc__Produ__74444068">
+    <AssociationSet Name="FK__TblProduc__Produ__1D114BD1" Association="Self.FK__TblProduc__Produ__1D114BD1">
+      <End Role="TblProductCategory" EntitySet="TblProductCategory" />
       <End Role="TblProduct" EntitySet="TblProduct" />
-      <End Role="TblProduct1" EntitySet="TblProduct" />
     </AssociationSet>
     <AssociationSet Name="FK__TblRegist__Lectu__0169315C" Association="Self.FK__TblRegist__Lectu__0169315C">
       <End Role="TblLecturer" EntitySet="TblLecturer" />
@@ -3970,6 +4077,10 @@
     <AssociationSet Name="FK__TblUserCr__UserT__6C190EBB" Association="Self.FK__TblUserCr__UserT__6C190EBB">
       <End Role="TblUserType" EntitySet="TblUserType" />
       <End Role="TblUserCredentials" EntitySet="TblUserCredentials" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblVouche__Categ__1940BAED" Association="Self.FK__TblVouche__Categ__1940BAED">
+      <End Role="TblVoucherCategory" EntitySet="TblVoucherCategory" />
+      <End Role="TblVoucher" EntitySet="TblVoucher" />
     </AssociationSet>
     <AssociationSet Name="FK__TblVouche__HallI__39E294A9" Association="Self.FK__TblVouche__HallI__39E294A9">
       <End Role="TblHall" EntitySet="TblHall" />

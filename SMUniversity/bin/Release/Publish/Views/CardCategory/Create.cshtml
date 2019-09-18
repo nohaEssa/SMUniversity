@@ -60,17 +60,22 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row ls_divider">
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">عدد الكروت</label>
-                                    <div class="col-md-10">
-                                        <input type="number"
-                                               class="form-control validate[required] text-input"
-                                               id="ChargeCardsNo" name="ChargeCardsNo" placeholder="ادخل عدد الكروت من هذه الفئه" required>
+                            @{
+                                if (Request["ForApplication"] == "0")
+                                {
+                                    <div class="row ls_divider">
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">عدد الكروت</label>
+                                            <div class="col-md-10">
+                                                <input type="number"
+                                                       class="form-control validate[required] text-input"
+                                                       id="ChargeCardsNo" name="ChargeCardsNo" placeholder="ادخل عدد الكروت من هذه الفئه">
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                }
+                            }
+
 
                             <div class="form-group" style=" margin: 20px 30px 40px 50px; ">
                                 <button class="submit btn-primary btn" type="submit" name="submit">حفظ</button>

@@ -8,6 +8,6 @@ namespace SMUModels.ObjectData
 {
     public class StudentKeyObj
     {
-        public int StudentID { get; set; }
+        public int StudentID { get; set; } = 0;
     }
 }

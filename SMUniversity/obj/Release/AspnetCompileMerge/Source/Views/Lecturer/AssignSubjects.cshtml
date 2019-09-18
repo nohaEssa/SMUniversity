@@ -34,13 +34,13 @@
                         <div class="panel-body form_view">
                             <div class="row ls_divider">
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">الكليه</label>
+                                    <label class="col-md-2 control-label">المحاضر</label>
                                     <div class="col-md-10">
-                                        <select class="form-control" id="CollegeID" name="CollegeID" onchange="getMajors()" required>
-                                            <option value="0">الكليه</option>
-                                            @foreach (var college in ViewBag.CollegesList)
+                                        <select id="LecturerIDs" name="LecturerIDs []" multiple="multiple">
+                                            @*<option value="0">اسم المحاضر</option>*@
+                                            @foreach (var lect in ViewBag.LecturersList)
                                             {
-                                                <option value="@college.ID">@college.NameAr</option>
+                                                <option value="@lect.ID">@lect.FirstNameAr @lect.SecondNameAr @lect.ThirdNameAr</option>
                                             }
                                         </select>
                                     </div>
@@ -48,15 +48,55 @@
                             </div>
                             <div class="row ls_divider">
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">التخصص</label>
-                                    <div class="col-md-10">
-                                        <select class="form-control" id="MajorID" name="MajorID" onchange="getSubjects()" required>
-                                            <option value="0">التخصص</option>
-                                            @*@foreach (var college in ViewBag.CollegesList)
+                                    <label class="col-md-2 control-label">نوع الماده</label>
+                                    <div class="col-lg-5 divSessionType">
+                                        <div class="radio" style="display:inline-block">
+                                            <label>
+                                                <input type="radio" name="GeneralSession" value="false" checked="checked" /> جامعيه
+                                            </label>
+                                        </div>
+                                        <div class="radio" style="display:inline-block">
+                                            <label>
+                                                <input type="radio" name="GeneralSession" value="true" required /> عام
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="divEduData">
+                                <div class="row ls_divider">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">اسم الجامعة</label>
+                                        <div class="col-md-10">
+                                            <select class="form-control" id="UniversityID" name="UniversityID" onchange="getColleges()" required>
+                                                <option value="0">اسم الجامعة</option>
+                                                @foreach (var uni in ViewBag.UniversityList)
                                                 {
-                                                    <option value="@college.ID">@college.NameAr</option>
-                                                }*@
-                                        </select>
+                                                    <option value="@uni.ID">@uni.NameAr</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ls_divider">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">الكليه</label>
+                                        <div class="col-md-10">
+                                            <select class="form-control" id="CollegeID" name="CollegeID" onchange="getMajors()" required>
+                                                <option value="0">اسم الكلية</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ls_divider">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">التخصص</label>
+                                        <div class="col-md-10">
+                                            <select class="form-control" id="MajorID" name="MajorID" onchange="getSubjects()" required>
+                                                <option value="0">التخصص</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -66,24 +106,6 @@
                                     <div class="col-md-10">
                                         <select class="form-control" id="SubjectID" name="SubjectID" @*onchange="getLecturers()"*@ required>
                                             <option value="0">الماده</option>
-                                            @*@foreach (var subject in Model)
-                                                {
-                                                    <option value="@subject.ID">@subject.NameAr</option>
-                                                }*@
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row ls_divider">
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">المحاضر</label>
-                                    <div class="col-md-10">
-                                        <select id="LecturerIDs" name="LecturerIDs []" multiple="multiple">
-                                            @*<option value="0">اسم المحاضر</option>*@
-                                            @foreach (var lect in ViewBag.LecturersList)
-                                            {
-                                                <option value="@lect.ID">@lect.FirstNameAr @lect.SecondNameAr @lect.ThirdNameAr</option>
-                                            }
                                         </select>
                                     </div>
                                 </div>

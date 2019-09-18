@@ -16,6 +16,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 <script src="~/Scripts/DataTables/but@*t*@ons.html5.min.js"></script>
 
+<input type="hidden" id="CollegeID" />
 
 <div id="main-content">
     <div class="container-fluid">
@@ -52,7 +53,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in _Context.TblColleges.Where(a => a.IsDeleted != true).ToList())
+                            @foreach (var item in _Context.TblColleges.Where(a => a.IsDeleted != true).OrderByDescending(a => a.ID).ToList())
                             {
                                 <tr>
                                     <td>@item.ID</td>
@@ -62,7 +63,8 @@
                                     <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
                                     <td>
                                         <a href="@Url.Action("Edit", "College", new { CollegeID = item.ID })" class="btn btn-xs btn-warning" title="تعديل الكليه" id="btnEditCollege"><i class="fa fa-pencil-square-o"></i></a>
-                                        <a href="@Url.Action("Delete", "College", new { CollegeID = item.ID })" class="btn btn-xs btn-danger" title="حذف الكليه" id="btnDeleteCollege"><i class="fa fa-minus"></i></a>
+                                        @*<a href="@Url.Action("Delete", "College", new { CollegeID = item.ID })" class="btn btn-xs btn-danger" title="حذف الكليه" id="btnDeleteCollege"><i class="fa fa-minus"></i></a>*@
+                                        <a href="javascript:showModal('@item.ID','@item.NameAr')" class="btn btn-xs btn-danger" id="DeleteCollege_@item.ID"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
                             }
@@ -73,3 +75,45 @@
         </div>
     </div>
 </div>
+
+<script>
+    function showModal(ID, Name) {
+        debugger
+        //$('#submitModalRequest').hide();
+        //$('.remodal-cancel').text('Close');
+
+        $('#HModalTitle').text('حذف كلية ' + Name);
+        $('#PModalBody').text('سيتم الحذف فقط اذا الكلية غير مرتبطه ببيانات خاصه بالتخصصات والجامعات والطلبه');
+        $("#DeleteCollege_" + ID).attr("href", "#reModalRed");
+        $('#CollegeID').val(ID);
+        clickOnModal(ID);
+        return false;
+    }
+
+    function clickOnModal(ID) {
+        var href = $('#DeleteCollege_' + ID).attr('href');
+        window.location.href = href; //causes the browser to refresh and load the requested url
+        return false;
+    }
+
+    $(document).on('confirm', '.remodal', function () {
+        debugger
+        $.ajax({
+            type: "POST",
+            url: "/College/Delete",
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: "{CollegeID:'" + $('#CollegeID').val() +
+                "'}",
+            dataType: "json",
+            processData: false,
+            success: function (response) {
+                debugger
+                location.reload();
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });
+    });
+</script>

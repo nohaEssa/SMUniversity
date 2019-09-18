@@ -16,6 +16,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 <script src="~/Scripts/DataTables/but@*t*@ons.html5.min.js"></script>
 
+<style>
+    /* padding-bottom and top for image */
+    .mfp-no-margins img.mfp-img {
+        padding: 0;
+    }
+    /* position of shadow behind the image */
+    .mfp-no-margins .mfp-figure:after {
+        top: 0;
+        bottom: 0;
+    }
+    /* padding for main container */
+    .mfp-no-margins .mfp-container {
+        padding: 0;
+    }
+</style>
+
 
 <div id="main-content">
     <div class="container-fluid">
@@ -44,12 +60,13 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>QRCode</th>
+                                <th>الصوره</th>
                                 <th>كود الدوره</th>
                                 <th>اسم الدوره</th>
                                 <th>اسم المحاضر</th>
-                                <th>السعر الأول</th>
-                                <th>السعر الثاني</th>
-                                <th>السعر الثالث</th>
+                                <th>سعر الدوره</th>
+                                <th>سعر الحصه</th>
                                 <th>القاعه</th>
                                 <th>من</th>
                                 <th>الي</th>
@@ -58,33 +75,86 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in _Context.TblSessions.Where(a => a.Type == false && a.IsDeleted != true).ToList())
+                            @foreach (var item in _Context.TblSessions.Where(a => a.Type == false && a.IsDeleted != true).OrderByDescending(a => a.ID).ToList())
                             {
                                 var SessionDetails = _Context.TblSessionDetails.Where(a => a.SessionID == item.ID).FirstOrDefault();
-                                <tr>
-                                    <td>@item.ID</td>
-                                    <td>@item.SessionCode</td>
-                                    <td>@item.Name</td>
-                                    <td>@item.TblLecturer.FirstNameAr @item.TblLecturer.SecondNameAr @item.TblLecturer.ThirdNameAr</td>
-                                    <td><span class="label label-success">@SessionDetails.Price1 KD</span></td>
-                                    <td><span class="label label-success">@SessionDetails.Price2 KD</span></td>
-                                    <td><span class="label label-success">@SessionDetails.Price3 KD</span></td>
-                                    <td>@item.TblHall.HallCodeAr</td>
-                                    <td>@item.FromDate.ToString("yyyy-MM-dd")</td>
-                                    <td>@item.ToDate.ToString("yyyy-MM-dd")</td>
-                                    <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
-                                    <td>
-                                        @*<a href="@Url.Action("ViewSessions", "Session", new { SessionID = item.ID })" class="btn btn-xs btn-success" title="عرض المحاضرات" id="btnViewSessions"><i class="fa fa-eye fa-lg"></i></a>*@
-                                        <a href="@Url.Action("Edit", "Session", new { SessionID = item.ID })" class="btn btn-xs btn-success" title="تعديل المحاضره" id="btnEditSessions"><i class="fa fa-pencil-square-o"></i></a>
-                                        <a href="@Url.Action("ViewSessions", "Session", new { SessionID = item.ID })" class="btn btn-xs btn-success" title="عرض المحاضرات" id="btnViewSessions"><i class="fa fa-eye fa-lg"></i></a>
-                                    </td>
-                                </tr>
+                                string Picture = "http://smuapitest.smartmindkw.com" + item.Picture;
+                                string QRCode = "http://smuapitest.smartmindkw.com" + SessionDetails.QRCode;
+                            <tr>
+                                <td>@item.ID</td>
+                                <td><img src='@QRCode' width='107' height='75'></td>
+                                @*<td><a class='image-popup-no-margins' href='@QRCode'><img src='@QRCode' width='107' height='75'></a></td>*@
+                                <td><img src='@Picture' width='107' height='75'></td>
+                                @*<td><a class='image-popup-no-margins' href='@Picture'><img src='@Picture' width='107' height='75'></a></td>*@
+                                <td>@item.SessionCode</td>
+                                <td>@item.Name</td>
+                                <td>@item.TblLecturer.FirstNameAr @item.TblLecturer.SecondNameAr @item.TblLecturer.ThirdNameAr</td>
+                                <td><span class="label label-success">@SessionDetails.Cost KD</span></td>
+                                <td><span class="label label-success">@SessionDetails.SessionPrice KD</span></td>
+                                <td>@item.TblHall.HallCodeAr</td>
+                                <td>@item.FromDate.ToString("yyyy-MM-dd")</td>
+                                <td>@item.ToDate.ToString("yyyy-MM-dd")</td>
+                                <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
+                                <td>
+                                    @*<a href="@Url.Action("ViewSessions", "Session", new { SessionID = item.ID })" class="btn btn-xs btn-success" title="عرض المحاضرات" id="btnViewSessions"><i class="fa fa-eye fa-lg"></i></a>*@
+                                    <a href="@Url.Action("Edit", "Session", new { SessionID = item.ID })" class="btn btn-xs btn-success" title="تعديل المحاضره" id="btnEditSessions"><i class="fa fa-pencil-square-o"></i></a>
+                                    <a href="@Url.Action("ViewSessions", "Session", new { SessionID = item.ID })" class="btn btn-xs btn-success" title="عرض المحاضرات" id="btnViewSessions"><i class="fa fa-eye fa-lg"></i></a>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
+                    @*<a class="image-popup-vertical-fit" href="http://farm9.staticflickr.com/8241/8589392310_7b6127e243_b.jpg" title="Caption. Can be aligned to any side and contain any HTML.">
+                        <img src="http://farm9.staticflickr.com/8241/8589392310_7b6127e243_s.jpg" width="75" height="75">
+                    </a>
+                    <a class="image-popup-fit-width" href="http://farm9.staticflickr.com/8379/8588290361_ecf8c27021_b.jpg" title="This image fits only horizontally.">
+                        <img src="http://farm9.staticflickr.com/8379/8588290361_ecf8c27021_s.jpg" width="75" height="75">
+                    </a>
+                    <a class="image-popup-no-margins" href="http://farm4.staticflickr.com/3721/9207329484_ba28755ec4_o.jpg">
+                        <img src="http://farm4.staticflickr.com/3721/9207329484_ba28755ec4_o.jpg" width="107" height="75">
+                    </a>*@
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+@*<script>
+    $(document).ready(function () {
+
+        $('.image-popup-vertical-fit').magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            mainClass: 'mfp-img-mobile',
+            image: {
+                verticalFit: true
+            }
+
+        });
+
+        $('.image-popup-fit-width').magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            image: {
+                verticalFit: false
+            }
+        });
+
+        $('.image-popup-no-margins').magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            closeBtnInside: false,
+            fixedContentPos: true,
+            mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+            image: {
+                verticalFit: true
+            },
+            zoom: {
+                enabled: true,
+                duration: 300 // don't foget to change the duration also in CSS
+            }
+        });
+
+    });
+    //imageViewer();
+</script>*@

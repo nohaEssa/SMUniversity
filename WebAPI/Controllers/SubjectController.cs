@@ -1,5 +1,5 @@
 ﻿using SMUModels;
-using WebAPI.Classes;
+using SMUModels.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         public HttpResponseMessage getSubject(int MajorID)
         {
-            var _resultHandler = new ResultHandler();
+            ResultHandler _resultHandler = new ResultHandler();
 
             try
             {

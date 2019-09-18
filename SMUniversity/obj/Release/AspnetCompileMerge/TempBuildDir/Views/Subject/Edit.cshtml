@@ -5,6 +5,7 @@
 }
 
 <script src="~/Scripts/Subject/Create.js"></script>
+<script src="~/Scripts/Subject/Edit.js"></script>
 
 <div id="main-content">
     <div class="container-fluid">
@@ -31,6 +32,7 @@
                         <h3 class="panel-title">تعديل ماده</h3>
                     </div>
                     <form id="EditSubject" action="/Subject/Edit" method="post" class="form-horizontal ls_form" enctype='multipart/form-data'>
+                        <input type="hidden" value="@ViewBag.GeneralSubject" id="GeneralSubject" />
                         <div class="panel-body form_view">
                             <div class="row ls_divider">
                                 <div class="form-group">
@@ -52,8 +54,40 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">نوع الماده</label>
+                                    <div class="col-lg-5 divSessionType">
+                                        @if (Model.GeneralSubject)
+                                        {
+                                            <div class="radio" style="display:inline-block">
+                                                <label>
+                                                    <input type="radio" name="GeneralSubject" id="txtGeneralNonSession" value="0" required /> جامعيه
+                                                </label>
+                                            </div>
+                                            <div class="radio" style="display:inline-block">
+                                                <label>
+                                                    <input type="radio" name="GeneralSubject" id="txtGeneralSession" value="1" required checked="checked"/> عام
+                                                </label>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="radio" style="display:inline-block">
+                                                <label>
+                                                    <input type="radio" name="GeneralSubject" id="txtGeneralNonSession" value="0" required checked="checked" /> جامعيه
+                                                </label>
+                                            </div>
+                                            <div class="radio" style="display:inline-block">
+                                                <label>
+                                                    <input type="radio" name="GeneralSubject" id="txtGeneralSession" value="1" required /> عام
+                                                </label>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider divMajor">
                                 <div class="form-group">
                                     <label class="col-md-2 control-label">التخصص</label>
                                     <div class="col-md-10">
@@ -90,7 +124,7 @@
         </div>*@
                             <br />
                             <br />
-                            <div class="panel panel-default">
+                            @*<div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><i class="fa fa-upload"></i> تحميل صورة الماده</h3>
                                 </div>
@@ -121,7 +155,7 @@
                                         </div>
                                     </section>
                                 </div>
-                            </div>
+                            </div>*@
 
                             <div class="form-group" style=" margin: 20px 30px 40px 50px; ">
                                 <button class="submit btn-primary btn" type="submit" name="submit">حفظ</button>

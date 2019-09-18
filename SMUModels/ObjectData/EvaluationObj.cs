@@ -10,15 +10,16 @@ namespace SMUModels.ObjectData
     {
         public List<int> QuestionIDs { get; set; }
         public List<int> AnswerIDs { get; set; }
-        public int StudentID { get; set; }
-        public int SessionID { get; set; }
-        public string EvaluationNotes { get; set; }
+        public int StudentID { get; set; } = 0;
+        //public int SessionID { get; set; } = 0;
+        public int SessionTimesID { get; set; }
+        public string EvaluationNotes { get; set; } = "";
         //public List<QuesAnswer> QuesAnswers { get; set; }
     }
 
     public class QuesAnswer
     {
-        public int QuestionID { get; set; }
-        public int AnswerID { get; set; }
+        public int QuestionID { get; set; } = 0;
+        public int AnswerID { get; set; } = 0;
     }
 }

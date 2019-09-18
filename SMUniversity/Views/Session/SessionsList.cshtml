@@ -15,8 +15,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 <script src="~/Scripts/DataTables/but@*t*@ons.html5.min.js"></script>
+@*<script src="~/Scripts/Session/ViewSessions.js"></script>*@
 
 
+<input type="hidden" id="SessionTimeID" />
 <div id="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -44,10 +46,14 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>QRCode</th>
+                                <th>الصوره</th>
                                 <th>كود المحاضره</th>
                                 <th>اسم المحاضره</th>
                                 <th>اسم المحاضر</th>
-                                <th>السعر</th>
+                                <th>السعر الأول</th>
+                                <th>السعر الثاني</th>
+                                <th>السعر الثالث</th>
                                 <th>القاعه</th>
                                 <th>تاريخ المحاضره</th>
                                 <th>تاريخ الإنشاء</th>
@@ -55,20 +61,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in _Context.TblSessions.Where(a => a.Type == true && a.IsDeleted != true).ToList())
+                            @foreach (var item in _Context.TblSessions.Where(a => a.Type == true && a.IsDeleted != true).OrderByDescending(a => a.ID).ToList())
                             {
                                 var SessionDetails = _Context.TblSessionDetails.Where(a => a.SessionID == item.ID).FirstOrDefault();
+                                var SessionTimes = _Context.TblSessionTimes.Where(a => a.SessionID == item.ID).FirstOrDefault();
+                                string Picture = "http://smuapitest.smartmindkw.com" + item.Picture;
+                                string QRCode = "http://smuapitest.smartmindkw.com/" + SessionDetails.QRCode;
                                 <tr>
                                     <td>@item.ID</td>
+                                    <td><img src='@QRCode' width='107' height='75'></td>
+                                    @*<td><a class='image-popup-no-margins' href='@QRCode'><img src='@QRCode' width='107' height='75'></a></td>*@
+                                    <td><img src='@Picture' width='107' height='75'></td>
+                                    @*<td><a class='image-popup-no-margins' href='@Picture'><img src='@Picture' width='107' height='75'></a></td>*@
                                     <td>@item.SessionCode</td>
                                     <td>@item.Name</td>
                                     <td>@item.TblLecturer.FirstNameAr @item.TblLecturer.SecondNameAr @item.TblLecturer.ThirdNameAr</td>
-                                    <td><span class="label label-success">@SessionDetails.Cost KD</span></td>
+                                    <td><span class="label label-success">@SessionDetails.Price1 KD</span></td>
+                                    <td><span class="label label-success">@SessionDetails.Price2 KD</span></td>
+                                    <td><span class="label label-success">@SessionDetails.Price3 KD</span></td>
                                     <td>@item.TblHall.HallCodeAr</td>
                                     <td>@item.FromDate.ToString("yyyy-MM-dd")</td>
                                     <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
                                     <td>
                                         <a href="@Url.Action("Edit", "Session", new { SessionID = item.ID })" class="btn btn-xs btn-success" title="تعديل المحاضره" id="btnEditSessions"><i class="fa fa-pencil-square-o"></i></a>
+                                        @if (SessionTimes.Ended)
+                                        {
+                                            <button class="btn btn-xs btn-success" id="btnEndSession_@item.ID" disabled>انتهت</button>
+                                        }
+                                        else
+                                        {
+                                            <a href="javascript:showModal('@SessionTimes.ID')" class="btn btn-xs btn-success" id="btnEndSession_@SessionTimes.ID">إنهاء المحاضره</a>
+                                        }
                                         @*<a href="@Url.Action("ViewSessions", "Session", new { SessionID = item.ID })" class="btn btn-xs btn-success" title="عرض المحاضرات" id="btnViewSessions"><i class="fa fa-eye fa-lg"></i></a>*@
                                     </td>
                                 </tr>
@@ -80,3 +103,43 @@
         </div>
     </div>
 </div>
+
+<script>
+    function showModal(ID) {
+        debugger
+        $('#HModalTitle').text('إنهاء المحاضره');
+        $('#PModalBody').text('هل انت متأكد من إنهاء المحاضره ؟');
+        $("#btnEndSession_" + ID).attr("href", "#reModalRed");
+        $('#SessionTimeID').val(ID);
+        clickOnModal(ID);
+        return false;
+    }
+
+    function clickOnModal(ID) {
+        var href = $('#btnEndSession_' + ID).attr('href');
+        window.location.href = href; //causes the browser to refresh and load the requested url
+        return false;
+    }
+
+
+    $(document).on('confirm', '.remodal', function () {
+        debugger
+        $.ajax({
+            type: "POST",
+            url: "/Session/EndSession",
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: "{SessionTimeID:'" + $('#SessionTimeID').val() +
+                "'}",
+            dataType: "json",
+            processData: false,
+            success: function (response) {
+                debugger
+                location.reload();
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });
+    });
+</script>

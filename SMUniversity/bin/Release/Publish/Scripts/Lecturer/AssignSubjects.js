@@ -6,6 +6,27 @@
     });
 });
 
+function getColleges() {
+    $.ajax({
+        type: "POST",
+        url: "/University/getColleges",
+        cache: false,
+        contentType: "application/json; charset=utf-8",
+        data: "{UniversityID:'" + $('#UniversityID').val() +
+            "'}",
+        dataType: "json",
+        processData: false,
+        success: function (response) {
+            if (response !== "ERROR") {
+                $('#CollegeID').html(response);
+            }
+        },
+        failure: function (errMsg) {
+            alert(errMsg);
+        }
+    });
+}
+
 function getMajors() {
     $.ajax({
         type: "POST",
@@ -27,13 +48,14 @@ function getMajors() {
     });
 }
 
-function getSubjects() {
+function getSubjects(SessionType) {
     $.ajax({
         type: "POST",
         url: "/Subject/getSubjects",
         cache: false,
         contentType: "application/json; charset=utf-8",
         data: "{MajorID:'" + $('#MajorID').val() +
+            "', SessionType:'" + SessionType +
             "'}",
         dataType: "json",
         processData: false,
@@ -76,3 +98,19 @@ function getLecturers() {
         }
     });
 }
+
+$(document).ready(function () {
+    $('input[type=radio][name=GeneralSession]').on('ifChecked', function (event) {
+        debugger
+        //alert(event.type + ' callback');
+        $('input[type=radio][name=GeneralSession]').val() == "false" ? $('input[type=radio][name=GeneralSession]').val("true") : $('input[type=radio][name=GeneralSession]').val("false");
+        if ($('input[type=radio][name=GeneralSession]').val() == "false") {
+            $('.divEduData').show();
+            $('#SubjectID').find('option').not(':first').remove();
+        }
+        else if ($('input[type=radio][name=GeneralSession]').val() == "true") {
+            $('.divEduData').hide();
+            getSubjects(1);
+        }
+    });
+});

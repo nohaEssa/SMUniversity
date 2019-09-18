@@ -295,7 +295,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 
 jQuery.extend( {
 
-	// Unique for each copy of jQuery on the page
+	// unique for each copy of jQuery on the page
 	expando: "jQuery" + ( version + Math.random() ).replace( /\D/g, "" ),
 
 	// Assume jQuery is ready without the ready module
@@ -2477,7 +2477,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 				// We must always have either seed elements or outermost context
 				elems = seed || byElement && Expr.find["TAG"]( "*", outermost ),
 				// Use integer dirruns iff this is the outermost matcher
-				dirrunsUnique = (dirruns += contextBackup == null ? 1 : Math.random() || 0.1),
+				dirrunsunique = (dirruns += contextBackup == null ? 1 : Math.random() || 0.1),
 				len = elems.length;
 
 			if ( outermost ) {
@@ -2501,7 +2501,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 						}
 					}
 					if ( outermost ) {
-						dirruns = dirrunsUnique;
+						dirruns = dirrunsunique;
 					}
 				}
 
@@ -2563,7 +2563,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 
 			// Override manipulation of globals by nested matchers
 			if ( outermost ) {
-				dirruns = dirrunsUnique;
+				dirruns = dirrunsunique;
 				outermostContext = contextBackup;
 			}
 
@@ -3017,7 +3017,7 @@ rootjQuery = jQuery( document );
 var rparentsprev = /^(?:parents|prev(?:Until|All))/,
 
 	// Methods guaranteed to produce a unique set when starting from a unique set
-	guaranteedUnique = {
+	guaranteedunique = {
 		children: true,
 		contents: true,
 		next: true,
@@ -3174,7 +3174,7 @@ jQuery.each( {
 		if ( this.length > 1 ) {
 
 			// Remove duplicates
-			if ( !guaranteedUnique[ name ] ) {
+			if ( !guaranteedunique[ name ] ) {
 				jQuery.uniqueSort( matched );
 			}
 
@@ -4522,50 +4522,50 @@ function adjustCSS( elem, prop, valueParts, tween ) {
 		unit = valueParts && valueParts[ 3 ] || ( jQuery.cssNumber[ prop ] ? "" : "px" ),
 
 		// Starting value computation is required for potential unit mismatches
-		initialInUnit = ( jQuery.cssNumber[ prop ] || unit !== "px" && +initial ) &&
+		initialInunit = ( jQuery.cssNumber[ prop ] || unit !== "px" && +initial ) &&
 			rcssNum.exec( jQuery.css( elem, prop ) );
 
-	if ( initialInUnit && initialInUnit[ 3 ] !== unit ) {
+	if ( initialInunit && initialInunit[ 3 ] !== unit ) {
 
 		// Support: Firefox <=54
 		// Halve the iteration target value to prevent interference from CSS upper bounds (gh-2144)
 		initial = initial / 2;
 
 		// Trust units reported by jQuery.css
-		unit = unit || initialInUnit[ 3 ];
+		unit = unit || initialInunit[ 3 ];
 
 		// Iteratively approximate from a nonzero starting point
-		initialInUnit = +initial || 1;
+		initialInunit = +initial || 1;
 
 		while ( maxIterations-- ) {
 
 			// Evaluate and update our best guess (doubling guesses that zero out).
 			// Finish if the scale equals or crosses 1 (making the old*new product non-positive).
-			jQuery.style( elem, prop, initialInUnit + unit );
+			jQuery.style( elem, prop, initialInunit + unit );
 			if ( ( 1 - scale ) * ( 1 - ( scale = currentValue() / initial || 0.5 ) ) <= 0 ) {
 				maxIterations = 0;
 			}
-			initialInUnit = initialInUnit / scale;
+			initialInunit = initialInunit / scale;
 
 		}
 
-		initialInUnit = initialInUnit * 2;
-		jQuery.style( elem, prop, initialInUnit + unit );
+		initialInunit = initialInunit * 2;
+		jQuery.style( elem, prop, initialInunit + unit );
 
 		// Make sure we update the tween properties later on
 		valueParts = valueParts || [];
 	}
 
 	if ( valueParts ) {
-		initialInUnit = +initialInUnit || +initial || 0;
+		initialInunit = +initialInunit || +initial || 0;
 
 		// Apply relative offset (+=/-=) if specified
 		adjusted = valueParts[ 1 ] ?
-			initialInUnit + ( valueParts[ 1 ] + 1 ) * valueParts[ 2 ] :
+			initialInunit + ( valueParts[ 1 ] + 1 ) * valueParts[ 2 ] :
 			+valueParts[ 2 ];
 		if ( tween ) {
 			tween.unit = unit;
-			tween.start = initialInUnit;
+			tween.start = initialInunit;
 			tween.end = adjusted;
 		}
 	}

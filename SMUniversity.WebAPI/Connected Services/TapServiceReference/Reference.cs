@@ -756,16 +756,16 @@ namespace SMUniversity.WebAPI.TapServiceReference {
         private decimal TotalPriceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UnitDescField;
+        private string unitDescField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UnitIDField;
+        private string unitIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UnitNameField;
+        private string unitNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal UnitPriceField;
+        private decimal unitPriceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string VndIDField;
@@ -833,53 +833,53 @@ namespace SMUniversity.WebAPI.TapServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UnitDesc {
+        public string unitDesc {
             get {
-                return this.UnitDescField;
+                return this.unitDescField;
             }
             set {
-                if ((object.ReferenceEquals(this.UnitDescField, value) != true)) {
-                    this.UnitDescField = value;
-                    this.RaisePropertyChanged("UnitDesc");
+                if ((object.ReferenceEquals(this.unitDescField, value) != true)) {
+                    this.unitDescField = value;
+                    this.RaisePropertyChanged("unitDesc");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UnitID {
+        public string unitID {
             get {
-                return this.UnitIDField;
+                return this.unitIDField;
             }
             set {
-                if ((object.ReferenceEquals(this.UnitIDField, value) != true)) {
-                    this.UnitIDField = value;
-                    this.RaisePropertyChanged("UnitID");
+                if ((object.ReferenceEquals(this.unitIDField, value) != true)) {
+                    this.unitIDField = value;
+                    this.RaisePropertyChanged("unitID");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UnitName {
+        public string unitName {
             get {
-                return this.UnitNameField;
+                return this.unitNameField;
             }
             set {
-                if ((object.ReferenceEquals(this.UnitNameField, value) != true)) {
-                    this.UnitNameField = value;
-                    this.RaisePropertyChanged("UnitName");
+                if ((object.ReferenceEquals(this.unitNameField, value) != true)) {
+                    this.unitNameField = value;
+                    this.RaisePropertyChanged("unitName");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal UnitPrice {
+        public decimal unitPrice {
             get {
-                return this.UnitPriceField;
+                return this.unitPriceField;
             }
             set {
-                if ((this.UnitPriceField.Equals(value) != true)) {
-                    this.UnitPriceField = value;
-                    this.RaisePropertyChanged("UnitPrice");
+                if ((this.unitPriceField.Equals(value) != true)) {
+                    this.unitPriceField = value;
+                    this.RaisePropertyChanged("unitPrice");
                 }
             }
         }

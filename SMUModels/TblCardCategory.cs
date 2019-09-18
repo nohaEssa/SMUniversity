@@ -28,6 +28,7 @@ namespace SMUModels
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public string TitleEn { get; set; }
+        public bool ForApplication { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblChargeCard> TblChargeCards { get; set; }

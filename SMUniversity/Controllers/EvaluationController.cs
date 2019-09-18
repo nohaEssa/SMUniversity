@@ -277,6 +277,24 @@ namespace SMUniversity.Controllers
             }
         }
 
+        public ActionResult GetSessionsList()
+        {
+            if (Session["UserID"] == null || Session["BranchID"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            List<TblSessionTime> Sessions = _Context.TblSessionTimes.Where(a => a.IsDeleted != true).ToList();
+            return View(Sessions);
+        }
 
+        public ActionResult GetStudentsEvaluations(int SessionTimesID)
+        {
+            if (Session["UserID"] == null || Session["BranchID"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            List<TblEvaluation> Sessions = _Context.TblEvaluations.Where(a => a.SessionTimesID == SessionTimesID && a.IsDeleted != true).ToList();
+            return View(Sessions);
+        }
     }
 }

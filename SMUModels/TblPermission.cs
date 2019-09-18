@@ -14,6 +14,12 @@ namespace SMUModels
     
     public partial class TblPermission
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TblPermission()
+        {
+            this.TblPermissionUsers = new HashSet<TblPermissionUser>();
+        }
+    
         public int ID { get; set; }
         public string NameAr { get; set; }
         public string NameEn { get; set; }
@@ -23,5 +29,7 @@ namespace SMUModels
         public Nullable<System.DateTime> UpdatedDate { get; set; }
     
         public virtual TblPermissionCategory TblPermissionCategory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblPermissionUser> TblPermissionUsers { get; set; }
     }
 }

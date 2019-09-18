@@ -1,4 +1,4 @@
-﻿
+﻿@model List<SMUModels.TblChargeCard>
 @{
     ViewBag.Title = "ChargeCardsList";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -48,22 +48,40 @@
                                 <th>سريال الكارت</th>
                                 <th>تم استخدامه؟</th>
                                 <th>تاريخ الإنشاء</th>
+                                @*<th>الأدوات</th>*@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in _Context.TblChargeCards.ToList())
+                            @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>@item.ID</td>
-                                <td>@item.Code</td>
-                                <td>@item.Valid</td>
-                                <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
-                                @*<td>
-            <a href="@Url.Action("Edit", "CardCategory", new { CardCatID = item.ID })" class="btn btn-xs btn-warning" title="تعديل المنطقه" id="btnEditCardCategory"><i class="fa fa-pencil-square-o"></i></a>
-            <a href="@Url.Action("Delete", "CardCategory", new { CardCatID = item.ID })" class="btn btn-xs btn-danger" title="حذف المنطقه" id="btnDeleteCardCategory"><i class="fa fa-minus"></i></a>
-            <a href="@Url.Action("ChargeCardsList", "CardCategory", new { SessionID = item.ID })" class="btn btn-xs btn-success" title="عرض المحاضرات" id="btnViewSessions"><i class="fa fa-eye fa-lg"></i></a>
-        </td>*@
-                            </tr>
+                                string Valid = item.Valid ? "لا" : "نعم";
+                                if (item.Valid)
+                                {
+
+                                    <tr>
+                                        <td>@item.ID</td>
+                                        <td>@item.Code</td>
+                                        <td>@Valid</td>
+                                        <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
+                                        @*<td>
+                                                <a href="javascript:showModal('@item.ID','@item.Price')" class="btn btn-xs btn-danger" id="DeleteChargeCard_@item.ID"><i class="fa fa-trash-o"></i></a>
+                                                <input type="hidden" value="@item.ID" id="ChargeCardID" />
+                                            </td>*@
+                                    </tr>
+                                }
+                                else
+                                {
+                                    <tr style="color: red;background-color: #b53636;">
+                                        <td>@item.ID</td>
+                                        <td>@item.Code</td>
+                                        <td>@Valid</td>
+                                        <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
+                                        @*<td>
+                                                <a href="javascript:showModal('@item.ID','@item.Price')" class="btn btn-xs btn-danger" id="DeleteChargeCard_@item.ID"><i class="fa fa-trash-o"></i></a>
+                                                <input type="hidden" value="@item.ID" id="ChargeCardID" />
+                                            </td>*@
+                                    </tr>
+                                }
                             }
                         </tbody>
                     </table>

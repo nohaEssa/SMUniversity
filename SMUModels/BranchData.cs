@@ -14,22 +14,22 @@ namespace SMUModels
 
     public class BranchData
     {
-        public int BranchID { get; set; }
-        public string NameAr { get; set; }
-        public string NameEn { get; set; }
-        public string PhoneNumber1 { get; set; }
-        public string PhoneNumber2 { get; set; }
-        public string PhoneNumber3 { get; set; }
-        public string AddressAr { get; set; }
-        public string AddressEn { get; set; }
-        public string MapLink { get; set; }
-        public string DescriptionAr { get; set; }
-        public string DescriptionEn { get; set; }
+        public int BranchID { get; set; } = 0;
+        public string NameAr { get; set; } = "";
+        public string NameEn { get; set; } = "";
+        public string PhoneNumber1 { get; set; } = "";
+        public string PhoneNumber2 { get; set; } = "";
+        public string PhoneNumber3 { get; set; } = "";
+        public string AddressAr { get; set; } = "";
+        public string AddressEn { get; set; } = "";
+        public string MapLink { get; set; } = "";
+        public string DescriptionAr { get; set; } = "";
+        public string DescriptionEn { get; set; } = "";
     }
 
     public class InstituteData
     {
-        public string Email { get; set; }
-        public string Website { get; set; }
+        public string Email { get; set; } = "";
+        public string Website { get; set; } = "";
     }
 }

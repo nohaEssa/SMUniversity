@@ -6,6 +6,7 @@
 }
 
 <script src="~/Scripts/Student/Create.js"></script>
+<script src="~/Scripts/Student/Edit.js"></script>
 
 <div id="main-content">
     <div class="container-fluid">
@@ -26,6 +27,9 @@
         <!-- Main Content Element  Start-->
         <form id="EditStudent" action="/Student/Edit" method="post" class="form-horizontal ls_form" enctype='multipart/form-data'>
             <input type="hidden" name="StudentID" value="@Model.ID" />
+            <input type="hidden" value="@ViewBag.Gender" id="Gender" />
+            @*<input type="hidden" value="@ViewBag.StudentType" id="StudentType" />*@
+            <input type="hidden" value="@Model.DateOfBirth.ToString("dd/MM/yyyy")" id="DOB" />
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
@@ -53,11 +57,27 @@
                             </div>
                             <div class="row ls_divider">
                                 <div class="form-group">
+                                    <label class="col-md-2 control-label">الاسم انجليزي:* </label>
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-12">
+                                            <input type="text" name="FirstNameEn" placeholder="الاسم الاول انجليزي" class="form-control ls-group-input" value="@Model.FirstNameEn">
+                                        </div>
+                                        <div class="col-md-3 col-sm-12">
+                                            <input type="text" name="SecondNameEn" placeholder="الاسم الثاني انجليزي" class="form-control ls-group-input" value="@Model.SecondNameEn">
+                                        </div>
+                                        <div class="col-md-3 col-sm-12">
+                                            <input type="text" name="ThirdNameEn" placeholder="الاسم الاخير انجليزي" class="form-control ls-group-input" value="@Model.ThirdNameEn">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
                                     <label class="col-md-2 control-label">رقم الهاتف:* </label>
                                     <div class="col-md-10">
                                         <input value="@Model.PhoneNumber"
                                                class="validate[required,custom[phone]] form-control"
-                                               type="text" name="PhoneNumber" id="phoneNo1" required />
+                                               type="tel" name="PhoneNumber" id="phoneNo1" required />
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +100,6 @@
                                     </div>
 
                                 </div>
-
                             </div>
 
                             <div class="row ls_divider">
@@ -89,12 +108,12 @@
                                     <div class="col-lg-5">
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="Gender" value="@Model.Gender" required data-bv-notempty-message="The gender is required" /> ذكر
+                                                <input type="radio" name="Gender" id="Male" value="true" /> ذكر
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="Gender" value="@Model.Gender" /> انثي
+                                                <input type="radio" name="Gender" id="Female" value="false" /> انثي
                                             </label>
                                         </div>
 
@@ -102,6 +121,16 @@
                                 </div>
                             </div>
 
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">اسم المستخدم</label>
+                                    <div class="col-md-10">
+                                        <input value="@Model.TblUserCredential.UserName"
+                                               class="form-control validate[required] text-input"
+                                               type="text" disabled readonly />
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row ls_divider">
                                 <div class="form-group">
                                     <label class="col-md-2 control-label">كلمة المرور: </label>
@@ -112,7 +141,6 @@
                                     </div>
                                 </div>
                             </div>
-
 
                             <div class="row ls_divider last">
                                 <div class="form-group">
@@ -182,7 +210,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">

@@ -8,9 +8,9 @@ namespace SMUModels.ObjectData
 {
     public class SubscriptionObj
     {
-        public int SessionID { get; set; }
-        public int StudentID { get; set; }
-        public bool Pending { get; set; }
-        public bool AddOrRemove { get; set; }
+        public int SessionID { get; set; } = 0;
+        public int StudentID { get; set; } = 0;
+        public bool Pending { get; set; } = false;
+        public bool AddOrRemove { get; set; } = false;
     }
 }

@@ -1,11 +1,11 @@
 ﻿using SMUModels;
-using WebAPI.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using SMUModels.Classes;
 
 namespace WebAPI.Controllers
 {
@@ -16,7 +16,7 @@ namespace WebAPI.Controllers
         [HttpGet]
         public HttpResponseMessage getGovernate(int GovernorateID)
         {
-            var _resultHandler = new ResultHandler();
+            ResultHandler _resultHandler = new ResultHandler();
 
             try
             {

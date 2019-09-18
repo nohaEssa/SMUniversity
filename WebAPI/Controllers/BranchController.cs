@@ -1,5 +1,4 @@
 ﻿using SMUModels;
-using WebAPI.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using SMUModels.ObjectData;
+using SMUModels.Classes;
 
 namespace WebAPI.Controllers
 {

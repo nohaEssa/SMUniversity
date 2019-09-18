@@ -1,5 +1,4 @@
 ﻿using SMUModels;
-using WebAPI.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +8,7 @@ using System.Web.Http;
 using System.IO;
 using System.Web.Script.Serialization;
 using SMUModels.ObjectData;
-using System.IdentityModel.Tokens.Jwt;
+using SMUModels.Classes;
 
 namespace WebAPI.Controllers
 {
@@ -31,7 +30,7 @@ namespace WebAPI.Controllers
                 {
                     UniversityData _data = new UniversityData()
                     {
-                        ProductCategoryID = item.ID,
+                        UniversityID = item.ID,
                         NameAr = item.NameAr,
                         NameEn = item.NameEn,
                     };

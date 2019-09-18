@@ -17,11 +17,13 @@ namespace SMUModels
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TblLecturer()
         {
+            this.TblBalanceTransactions = new HashSet<TblBalanceTransaction>();
             this.TblLecturerSubjects = new HashSet<TblLecturerSubject>();
             this.TblLecturerPaymentMethods = new HashSet<TblLecturerPaymentMethod>();
             this.TblManualInvoices = new HashSet<TblManualInvoice>();
             this.TblNotifications = new HashSet<TblNotification>();
             this.TblPrivateSessions = new HashSet<TblPrivateSession>();
+            this.TblRegisterDevices = new HashSet<TblRegisterDevice>();
             this.TblRevenues = new HashSet<TblRevenue>();
             this.TblRevenues1 = new HashSet<TblRevenue>();
             this.TblRevenues2 = new HashSet<TblRevenue>();
@@ -35,7 +37,6 @@ namespace SMUModels
             this.TblSessions4 = new HashSet<TblSession>();
             this.TblSessions5 = new HashSet<TblSession>();
             this.TblVouchers = new HashSet<TblVoucher>();
-            this.TblRegisterDevices = new HashSet<TblRegisterDevice>();
         }
     
         public int ID { get; set; }
@@ -56,6 +57,8 @@ namespace SMUModels
         public string SecondNameEn { get; set; }
         public string ThirdNameEn { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblBalanceTransaction> TblBalanceTransactions { get; set; }
         public virtual TblBranch TblBranch { get; set; }
         public virtual TblBranch TblBranch1 { get; set; }
         public virtual TblBranch TblBranch2 { get; set; }
@@ -75,6 +78,8 @@ namespace SMUModels
         public virtual ICollection<TblNotification> TblNotifications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblPrivateSession> TblPrivateSessions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblRegisterDevice> TblRegisterDevices { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblRevenue> TblRevenues { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -101,7 +106,5 @@ namespace SMUModels
         public virtual ICollection<TblSession> TblSessions5 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblVoucher> TblVouchers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblRegisterDevice> TblRegisterDevices { get; set; }
     }
 }

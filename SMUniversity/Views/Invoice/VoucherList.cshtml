@@ -53,7 +53,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in _Context.TblVouchers.Where(a => a.IsDeleted != true).ToList())
+                            @foreach (var item in _Context.TblVouchers.Where(a => a.Type == false && a.IsDeleted != true).OrderByDescending(a => a.ID).ToList())
                             {
                                 <tr>
                                     <td>@item.ID</td>

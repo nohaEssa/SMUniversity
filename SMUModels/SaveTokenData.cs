@@ -8,6 +8,6 @@ namespace SMUModels
 {
     public class SaveTokenData
     {
-        public string Token { get; set; }
+        public string Token { get; set; } = "";
     }
 }

@@ -27,7 +27,7 @@ namespace SMUModels.Classes
                 to = Token,
                 data = new
                 {
-                    //Title = "Touch Order",
+                    //Title = "SmartMind University",
                     TitleAr = TitleAr,
                     TitleEn = TitleEn,
                     DescriptionAr = DescriptionAr,
@@ -89,7 +89,7 @@ namespace SMUModels.Classes
                 to = Token,
                 data = new
                 {
-                    //Title = "Touch Order",
+                    //Title = "SmartMind University",
                     TitleAr = TitleAr,
                     TitleEn = TitleEn,
                     DescriptionAr = DescriptionAr,

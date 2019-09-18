@@ -18,7 +18,6 @@ namespace SMUModels
         public TblPermissionCategory()
         {
             this.TblPermissions = new HashSet<TblPermission>();
-            this.TblPermissionUsers = new HashSet<TblPermissionUser>();
         }
     
         public int ID { get; set; }
@@ -30,7 +29,5 @@ namespace SMUModels
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblPermission> TblPermissions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblPermissionUser> TblPermissionUsers { get; set; }
     }
 }

@@ -1,9 +1,7 @@
 ﻿using SMUModels;
-using SMUModels.ObjectData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SMUniversity.Controllers
@@ -79,6 +77,7 @@ namespace SMUniversity.Controllers
                         ScreenObj.CredentialsID = _UserCred.ID;
                         _Context.SaveChanges();
 
+                        //_Context.TblScreenHalls.RemoveRange()
                         for (int i = 0; i < HallIDsList.Count(); i++)
                         {
                             TblScreenHall ScreenHallObj = new TblScreenHall()
@@ -101,7 +100,7 @@ namespace SMUniversity.Controllers
                         TempData["notice"] = "اسم المستخدم مستخدم من قبل, من فضلك ادخل اسم مستخدم آخر";
                         return RedirectToAction("Create");
                     }
-                    
+
                 }
                 else
                 {
@@ -166,20 +165,24 @@ namespace SMUniversity.Controllers
                         ScreenObj.BranchID = 3; //temp assign real branch
                         ScreenObj.UpdatedDate = DateTime.Now;
 
-                        _Context.TblScreenHalls.RemoveRange(_Context.TblScreenHalls.Where(a => a.ID == ScreenID).ToList());
-                        _Context.SaveChanges();
+                        //_Context.TblScreenHalls.RemoveRange(_Context.TblScreenHalls.Where(a => a.ID == ScreenID).ToList());
+                        //_Context.SaveChanges();
 
                         for (int i = 0; i < HallIDsList.Length; i++)
                         {
-                            TblScreenHall ScreenHallObj = new TblScreenHall()
+                            int _HallID = int.Parse(HallIDsList[i]);
+                            if (_Context.TblScreenHalls.Where(a => a.ID == ScreenID && a.HallID == _HallID).FirstOrDefault() == null)
                             {
-                                ScreenID = ScreenObj.ID,
-                                HallID = int.Parse(HallIDsList[i]),
-                                IsDeleted = false,
-                                CreatedDate = DateTime.Now
-                            };
+                                TblScreenHall ScreenHallObj = new TblScreenHall()
+                                {
+                                    ScreenID = ScreenObj.ID,
+                                    HallID = _HallID,
+                                    IsDeleted = false,
+                                    CreatedDate = DateTime.Now
+                                };
 
-                            _Context.TblScreenHalls.Add(ScreenHallObj);
+                                _Context.TblScreenHalls.Add(ScreenHallObj);
+                            }
                         }
 
                         _Context.SaveChanges();

@@ -87,13 +87,30 @@ namespace SMUniversity.Controllers
                 }
                 DateTime CurrentDate = DateTime.Now.Date;
 
-                List<int> HallsVouchersIDs = _Context.TblVouchers.Where(a => DbFunctions.TruncateTime(a.FromDate) <= CurrentDate && DbFunctions.TruncateTime(a.ToDate) >= CurrentDate).Select(a => a.HallID).ToList();
-                List<TblLecturer> LecturesList = _Context.TblLecturers.Where(a => a.IsDeleted == false).ToList();
-                List<TblHall> HallsList = _Context.TblHalls.Where(a => a.IsDeleted == false && !HallsVouchersIDs.Contains(a.ID)).ToList();
+                //List<int> HallsVouchersIDs = _Context.TblVouchers.Where(a => DbFunctions.TruncateTime(a.FromDate) <= CurrentDate && DbFunctions.TruncateTime(a.ToDate) >= CurrentDate).Select(a => a.HallID).ToList();
+                List<TblLecturer> LecturersList = _Context.TblLecturers.Where(a => a.IsDeleted == false).ToList();
+                //List<TblHall> _HallsList = _Context.TblHalls.Where(a => a.IsDeleted != true).ToList();
+                //List<HallData> Data = new List<HallData>();
+                //foreach (var item in _HallsList)
+                //{
+                //    HallData data = new HallData();
+                //    TblVoucher _VoucherObj = _Context.TblVouchers.Where(a => a.HallID == item.ID && a.IsDeleted != true && ((DbFunctions.TruncateTime(a.FromDate) <= CurrentDate && DbFunctions.TruncateTime(a.ToDate) >= CurrentDate) || (DbFunctions.TruncateTime(a.FromDate) == CurrentDate || DbFunctions.TruncateTime(a.ToDate) >= CurrentDate))).FirstOrDefault();
+                //    data.HallID = item.ID;
+                //    data.HallCodeAr = item.HallCodeAr;
+                //    if (_VoucherObj == null)
+                //    {
+                //        data.Available = true;
+                //    }
+                //    else
+                //    {
+                //        data.Available = false;
+                //    }
 
-                ViewBag.HallsList = HallsList;
+                //    Data.Add(data);
+                //}
+                //ViewBag.HallsList = Data;
 
-                return View(LecturesList);
+                return View(LecturersList);
             }
             catch (Exception ex)
             {
@@ -116,6 +133,7 @@ namespace SMUniversity.Controllers
                         HallID = _Data.HallID,
                         UserID = 1, //temp admin account
                         Cost = _Data.Cost,
+                        Type = false,
                         FromDate = _Data.FromDate,
                         ToDate = _Data.ToDate,
                         Notes = _Data.Notes,
@@ -172,11 +190,42 @@ namespace SMUniversity.Controllers
                         _VoucherObj.LecturerID = _Data.LecturerID;
                     }
 
+                    int Serial;
+                    var CountVouchers = _Context.TblVouchers.Count();
+                    if (CountVouchers > 0)
+                    {
+                        //List<TblVoucher> lastcode = _Context.TblVouchers.ToList();
+                        long MyMax = _Context.TblVouchers.Max(a => a.Serial);
+
+                        Serial = int.Parse(MyMax.ToString()) + 1;
+                        _VoucherObj.Serial = Serial;
+                    }
+                    else
+                    {
+                        _VoucherObj.Serial = 1;
+                        //if (BranchID == 1)
+                        //{
+                        //    _VoucherObj.Serial = "1281";
+                        //}
+                        //else if (BranchID == 3)
+                        //{
+                        //    _VoucherObj.Serial = "2401";
+                        //}
+                        //else if (BranchID == 5)
+                        //{
+                        //    _VoucherObj.Serial = "1";
+                        //}
+                        //else if (BranchID == 6)
+                        //{
+                        //    _VoucherObj.Serial = "353";
+                        //}
+                        //else
+                        //{
+                        //    _VoucherObj.Serial = "1";
+                        //}
+                    }
                     _Context.TblVouchers.Add(_VoucherObj);
                     _Context.SaveChanges();
-
-
-
 
                     TempData["notice"] = "تم إضافه البيانات بنجاح";
                     return RedirectToAction("Index");
@@ -304,6 +353,46 @@ namespace SMUniversity.Controllers
             catch (Exception ex)
             {
                 TempData["notice"] = "ERROR while processing!";
+                return Json("ERROR");
+            }
+        }
+
+        public JsonResult GetHalls(DateTime FromTime, DateTime ToTime, int HallRentedID = 0)
+        {
+            try
+            {
+                List<TblHall> _HallsList = _Context.TblHalls.Where(a => a.IsDeleted != true).ToList();
+                string Data = "<option value='0'>اختر القاعه</option>";
+                foreach (var item in _HallsList)
+                {
+                    HallData data = new HallData();
+
+                    //TblVoucher _HallRentedObj = _Context.TblVouchers.Where(a => a.HallID == item.ID && a.IsDeleted != true && ((DbFunctions.TruncateTime(a.FromDate) <= FromTime.Date && DbFunctions.TruncateTime(a.ToDate) >= ToTime.Date) || (DbFunctions.TruncateTime(a.FromDate) == FromTime.Date || DbFunctions.TruncateTime(a.ToDate) >= ToTime.Date))).FirstOrDefault();
+                    TblVoucher _HallRentedObj = _Context.TblVouchers.Where(a => a.HallID == item.ID && a.IsDeleted != true && ((DbFunctions.TruncateTime(a.FromDate) <= FromTime.Date && a.FromDate.Hour <= FromTime.Hour && DbFunctions.TruncateTime(a.ToDate) >= ToTime.Date && a.ToDate.Hour <= ToTime.Hour) || ((DbFunctions.TruncateTime(a.FromDate) == FromTime.Date && a.ToDate.Hour == ToTime.Hour) || (DbFunctions.TruncateTime(a.ToDate) >= ToTime.Date && a.ToDate.Hour >= ToTime.Hour)))).FirstOrDefault();
+
+                    //if (SessionID > 0)
+                    //{
+                    //    _SessionObj = _Context.TblSessions.Where(a => a.ID == SessionID && a.IsDeleted != true && ((DbFunctions.TruncateTime(a.FromDate) <= FromTime.Date && DbFunctions.TruncateTime(a.ToDate) >= ToTime.Date) || (DbFunctions.TruncateTime(a.FromDate) == FromTime.Date || DbFunctions.TruncateTime(a.ToDate) >= ToTime.Date))).FirstOrDefault();
+                    //}
+                    data.HallID = item.ID;
+                    data.HallCodeAr = item.HallCodeAr;
+                    if (_HallRentedObj == null)
+                    {
+                        Data += "<option value='" + item.ID + "'>" + item.HallCodeAr + "</option>";
+                    }
+                    else if (_HallRentedObj != null && _HallRentedObj.ID == HallRentedID)
+                    {
+                        Data += "<option value='" + item.ID + "' selected>" + item.HallCodeAr + "</option>";
+                    }
+                    else
+                    {
+                        Data += "<option value='" + item.ID + "' disabled>" + item.HallCodeAr + "     (غير متاحه)</option>";
+                    }
+                }
+                return Json(Data);
+            }
+            catch (Exception ex)
+            {
                 return Json("ERROR");
             }
         }

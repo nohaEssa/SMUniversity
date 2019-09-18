@@ -16,8 +16,8 @@ namespace SMUModels
     {
         public int ID { get; set; }
         public long Serial { get; set; }
-        public int LecturerID { get; set; }
-        public int HallID { get; set; }
+        public Nullable<int> LecturerID { get; set; }
+        public Nullable<int> HallID { get; set; }
         public System.DateTime FromDate { get; set; }
         public System.DateTime ToDate { get; set; }
         public string Notes { get; set; }
@@ -27,9 +27,13 @@ namespace SMUModels
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public int UserID { get; set; }
+        public string Name { get; set; }
+        public bool Type { get; set; }
+        public Nullable<int> CategoryID { get; set; }
     
         public virtual TblHall TblHall { get; set; }
         public virtual TblLecturer TblLecturer { get; set; }
         public virtual TblUser TblUser { get; set; }
+        public virtual TblVoucherCategory TblVoucherCategory { get; set; }
     }
 }

@@ -51,7 +51,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in _Context.TblEvaluationQuestions.Where(a => a.IsDeleted != true).ToList())
+                            @foreach (var item in _Context.TblEvaluationQuestions.Where(a => a.IsDeleted != true).OrderByDescending(a => a.ID).ToList())
                             {
                                 <tr>
                                     <td>@item.ID</td>

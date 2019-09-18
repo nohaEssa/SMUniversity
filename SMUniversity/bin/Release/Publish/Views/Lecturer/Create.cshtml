@@ -120,12 +120,12 @@
                                     <div class="col-lg-5">
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="Gender" value="true" required data-bv-notempty-message="The gender is required" /> ذكر
+                                                <input type="radio" name="Gender" value="true" checked="checked"/> ذكر
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="Gender" value="false" required /> انثي
+                                                <input type="radio" name="Gender" value="false" /> انثي
                                             </label>
                                         </div>
 
@@ -137,20 +137,29 @@
                                 <div class="col-md-10">
                                     <div class="row">
                                         <div class="col-md-3 col-sm-4 col-xs-6">
-                                            <label class="radio">
+                                            <div class="icheck-list">
+                                                <label class="radio">
+                                                    <input class="icheck-red icheck" type="checkbox" name="LecturerAccountMethod"
+                                                           id="radioRedCheckbox1" value="1" data-checkbox="icheckbox_square-grey" checked="checked" disabled> حساب المحاضر بسعر الساعه
+                                                    <input placeholder="ادخل سعر الساعه"
+                                                           class="form-control validate[required] text-input"
+                                                           type="number" name="HourCost" id="HourCost" />
+                                                </label>
+                                            </div>
+                                            @*<label class="radio">
                                                 <input class="icheck-red" type="radio" name="LecturerAccountMethod"
                                                        id="radioRedCheckbox1" value="1" checked="checked"> حساب المحاضر بسعر الساعه
                                                 <input placeholder="ادخل سعر الساعه"
                                                        class="form-control validate[required] text-input"
                                                        type="number" name="HourCost" id="HourCost" />
-                                            </label>
+                                            </label>*@
 
                                         </div>
                                         <div class="col-md-3 col-sm-4 col-xs-6">
 
                                             <label class="radio">
-                                                <input class="icheck-blue" type="radio" name="LecturerAccountMethod"
-                                                       id="radioRedCheckbox2" value="2"> حساب المحاضر بالنسبة %
+                                                <input class="icheck-blue icheck" type="checkbox" name="LecturerAccountMethod"
+                                                       id="radioRedCheckbox2" data-checkbox="icheckbox_square-grey" value="2" checked="checked" disabled> حساب المحاضر بالنسبة %
                                                 <input placeholder="ادخل النسبه"
                                                        class="form-control validate[required] text-input"
                                                        type="number" name="LectPercentage" id="LectPercentage" />
@@ -160,24 +169,22 @@
                                         <div class="col-md-3 col-sm-4 col-xs-6">
 
                                             <label class="radio">
-                                                <input class="icheck-aero" type="radio" name="LecturerAccountMethod"
-                                                       id="radioRedCheckbox3" value="3"> حسب المحاضر بسعر الكورس
+                                                <input class="icheck-aero icheck" type="checkbox" name="LecturerAccountMethod"
+                                                       id="radioRedCheckbox3" data-checkbox="icheckbox_square-grey" value="3" checked="checked" disabled> حسب المحاضر بسعر الكورس
                                                 <input placeholder="ادخل سعر الكورس"
                                                        class="form-control validate[required] text-input"
                                                        type="number" name="CoursePrice" id="CoursePrice" />
                                             </label>
                                         </div>
                                         <div class="col-md-3 col-sm-4 col-xs-6">
-
                                             <label class="radio">
-                                                <input class="icheck-aero" type="radio" name="LecturerAccountMethod"
-                                                       id="radioRedCheckbox3" value="4"> نسبة طلاب المحاضر
+                                                <input class="icheck-aero icheck" type="checkbox" name="LecturerAccountMethod"
+                                                       id="radioRedCheckbox3" data-checkbox="icheckbox_square-grey" value="4" checked="checked" disabled> نسبة طلاب المحاضر
                                                 <input placeholder="ادخل النسبه الطلاب"
                                                        class="form-control validate[required] text-input"
                                                        type="number" name="StudentPercentage" id="StudentPercentage" />
                                             </label>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -185,7 +192,7 @@
                             <br />
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-upload"></i> تحميل صورة طالب</h3>
+                                    <h3 class="panel-title"><i class="fa fa-upload"></i> تحميل صورة المحاضر</h3>
                                 </div>
                                 <div class="panel-body">
                                     <section id="ls-wrapper">

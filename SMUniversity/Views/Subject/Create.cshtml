@@ -1,10 +1,11 @@
-﻿@model List<SMUModels.TblMajor>
+﻿@model List<SMUModels.TblUniversity>
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <script src="~/Scripts/Subject/Create.js"></script>
+<script src="~/Scripts/Student/Create.js"></script>
 
 <div id="main-content">
     <div class="container-fluid">
@@ -52,21 +53,74 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row ls_divider">
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">التخصص</label>
+                                    <label class="col-md-2 control-label">كود الماده</label>
                                     <div class="col-md-10">
-                                        <select class="form-control" id="MajorID" name="MajorID" required>
-                                            <option value="0">اسم التخصص</option>
-                                            @foreach (var major in Model)
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="SubjectCode" name="SubjectCode" placeholder="كود الماده" required>
+                                    </div>
+                                    <label hidden="hidden" id="lblSubjectCodeError" class="control-label" style="padding-right: 18%;color:red">تم إدخال الكود من قبل, ادخل كود اخر</label>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">نوع الماده</label>
+                                    <div class="col-lg-5 divSessionType">
+                                        <div class="radio" style="display:inline-block">
+                                            <label>
+                                                <input type="radio" name="GeneralSubject" id="txtGeneralSubject" value="false" required data-bv-notempty-message="The gender is required" checked="checked" /> جامعيه
+                                            </label>
+                                        </div>
+                                        <div class="radio" style="display:inline-block">
+                                            <label>
+                                                <input type="radio" name="GeneralSubject" id="GeneralSubject" value="true" required /> عام
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider divEduData">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">اسم الجامعة</label>
+                                    <div class="col-md-10 ls-group-input">
+                                        <select class="form-control" id="UniversityID" name="UniversityID" onchange="getColleges()" required>
+                                            <option value="0">اسم الجامعة</option>
+                                            @foreach (var uni in Model)
                                             {
-                                                <option value="@major.ID">@major.NameAr</option>
+                                                <option value="@uni.ID">@uni.NameAr</option>
                                             }
+                                        </select>
+                                    </div>
+                                    <label class="col-md-2 control-label">اسم الكلية</label>
+                                    <div class="col-md-10 col-md-offset-2 ls-group-input">
+                                        <select class="form-control" id="CollegeID" name="CollegeID" onchange="getMajors()" required>
+                                            <option value="0">اسم الكلية</option>
+                                        </select>
+                                    </div>
+                                    <label class="col-md-2 control-label">التخصص</label>
+                                    <div class="col-md-10 col-md-offset-2 ls-group-input">
+                                        <select class="form-control input-sm" id="MajorID" name="MajorID" required>
+                                            <option value="0">التخصص</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
+                            @*<div class="row ls_divider divMajor">
+            <div class="form-group">
+                <label class="col-md-2 control-label">التخصص</label>
+                <div class="col-md-10">
+                    <select class="form-control" id="MajorID" name="MajorID" required>
+                        <option value="0">اسم التخصص</option>
+                        @foreach (var major in Model)
+                        {
+                            <option value="@major.ID">@major.NameAr</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>*@
 
                             @*<div class="row ls_divider">
             <div class="form-group">
@@ -83,40 +137,40 @@
         </div>*@
                             <br />
                             <br />
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-upload"></i> تحميل صورة الماده</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <section id="ls-wrapper">
-                                        <!--Image Drop & Upload Wrapper Start-->
-                                        <div id="droparea">
-                                            <div class="dropareainner">
-                                                <p class="dropfiletext">انزل ملف هنا</p>
-                                                <p>او</p>
-                                                <!--Upload Select Button-->
-                                                <p>
-                                                    <input id="uploadbtn" class="uploadbtn" type="button" value="اختر ملف">
-                                                </p>
+                            @*<div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-upload"></i> تحميل صورة الماده</h3>
+            </div>
+            <div class="panel-body">
+                <section id="ls-wrapper">
+                    <!--Image Drop & Upload Wrapper Start-->
+                    <div id="droparea">
+                        <div class="dropareainner">
+                            <p class="dropfiletext">انزل ملف هنا</p>
+                            <p>او</p>
+                            <!--Upload Select Button-->
+                            <p>
+                                <input id="uploadbtn" class="uploadbtn" type="button" value="اختر ملف">
+                            </p>
 
 
-                                                <!--Image Effect Finish-->
-                                                <p id="err">تم التحميل اي كلام وكدة يعني (:</p>
-                                            </div>
-                                            <!--Image Upload Input-->
-                                            <input id="upload" name="SubjectPic" type="file" multiple />
-                                        </div>
-                                        <!--Image Drop & Upload Wrapper Finish-->
-                                        <p class="message"> حجم الملف <strong>400</strong>فقط</p>
-                                        <!--Upoload Image Preview Wrap Start-->
-                                        <div id="result">
-                                            <!--Upoload Image Preview Wrap Finish-->
-                                        </div>
-                                    </section>
-                                </div>
-                            </div>
+                            <!--Image Effect Finish-->
+                            <p id="err">تم التحميل اي كلام وكدة يعني (:</p>
+                        </div>
+                        <!--Image Upload Input-->
+                        <input id="upload" name="SubjectPic" type="file" multiple />
+                    </div>
+                    <!--Image Drop & Upload Wrapper Finish-->
+                    <p class="message"> حجم الملف <strong>400</strong>فقط</p>
+                    <!--Upoload Image Preview Wrap Start-->
+                    <div id="result">
+                        <!--Upoload Image Preview Wrap Finish-->
+                    </div>
+                </section>
+            </div>
+        </div>*@
                             <div class="form-group" style=" margin: 20px 30px 40px 50px; ">
-                                <button class="submit btn-primary btn" type="submit" name="submit">حفظ</button>
+                                <button class="submit btn-primary btn" type="button" id="submit">حفظ</button>
                             </div>
                         </div>
                     </form>

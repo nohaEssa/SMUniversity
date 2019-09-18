@@ -1,10 +1,9 @@
-﻿@model SMUModels.TblLecturer
+﻿@model List<SMUModels.TblLecturerPaymentMethod>
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
+<script src="~/Scripts/Lecturer/Edit.js"></script>
 <div id="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -30,20 +29,21 @@
                         <h3 class="panel-title">تعديل محاضر</h3>
                     </div>
                     <form id="EditLecturer" action="/Lecturer/Edit" method="post" class="form-horizontal ls_form" enctype='multipart/form-data'>
-                        <input type="hidden" value="@Model.ID" id="LecturerID" name="LecturerID" />
+                        <input type="hidden" value="@ViewBag.LecturerObj.ID" id="LecturerID" name="LecturerID" />
+                        <input type="hidden" value="@ViewBag.Gender" id="Gender" />
                         <div class="panel-body form_view">
                             <div class="row ls_divider">
                                 <div class="form-group">
                                     <label class="col-md-2 control-label">الاسم عربي:* </label>
                                     <div class="row">
                                         <div class="col-md-3 col-sm-12">
-                                            <input type="text" name="FirstNameAr" value="@Model.FirstNameAr" placeholder="الاسم الاول" class="form-control ls-group-input" required>
+                                            <input type="text" name="FirstNameAr" value="@ViewBag.LecturerObj.FirstNameAr" placeholder="الاسم الاول" class="form-control ls-group-input" required>
                                         </div>
                                         <div class="col-md-3 col-sm-12">
-                                            <input type="text" name="SecondNameAr" value="@Model.SecondNameAr" placeholder="الاسم الثاني" class="form-control ls-group-input" required>
+                                            <input type="text" name="SecondNameAr" value="@ViewBag.LecturerObj.SecondNameAr" placeholder="الاسم الثاني" class="form-control ls-group-input" required>
                                         </div>
                                         <div class="col-md-3 col-sm-12">
-                                            <input type="text" name="ThirdNameAr" value="@Model.ThirdNameAr" placeholder="الاسم الاخير" class="form-control ls-group-input" required>
+                                            <input type="text" name="ThirdNameAr" value="@ViewBag.LecturerObj.ThirdNameAr" placeholder="الاسم الاخير" class="form-control ls-group-input" required>
                                         </div>
                                     </div>
                                 </div>
@@ -53,34 +53,45 @@
                                     <label class="col-md-2 control-label">الاسم انجليزي:* </label>
                                     <div class="row">
                                         <div class="col-md-3 col-sm-12">
-                                            <input type="text" name="FirstNameEn" value="@Model.FirstNameEn" placeholder="الاسم الاول" class="form-control ls-group-input" required>
+                                            <input type="text" name="FirstNameEn" value="@ViewBag.LecturerObj.FirstNameEn" placeholder="الاسم الاول" class="form-control ls-group-input" required>
                                         </div>
                                         <div class="col-md-3 col-sm-12">
-                                            <input type="text" name="SecondNameEn" value="@Model.SecondNameEn" placeholder="الاسم الثاني" class="form-control ls-group-input" required>
+                                            <input type="text" name="SecondNameEn" value="@ViewBag.LecturerObj.SecondNameEn" placeholder="الاسم الثاني" class="form-control ls-group-input" required>
                                         </div>
                                         <div class="col-md-3 col-sm-12">
-                                            <input type="text" name="ThirdNameEn" value="@Model.ThirdNameEn" placeholder="الاسم الاخير" class="form-control ls-group-input" required>
+                                            <input type="text" name="ThirdNameEn" value="@ViewBag.LecturerObj.ThirdNameEn" placeholder="الاسم الاخير" class="form-control ls-group-input" required>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row ls_divider">
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">كلمة المرور: </label>
+                                    <label class="col-md-2 control-label">اسم المستخدم</label>
                                     <div class="col-md-10">
-                                        <input placeholder="ادخل كلمة المرور"
+                                        <input placeholder="اسم المستخدم"
                                                class="form-control validate[required] text-input"
-                                               type="password" name="Password" value="@Model.TblUserCredential.Password" id="password1" required />
+                                               type="text" value="@ViewBag.LecturerObj.TblUserCredential.UserName" readonly disabled />
                                     </div>
                                 </div>
                             </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label"></label>
+                                    <div class="col-md-10">
+                                        <input placeholder="ادخل كلمة المرور"
+                                               class="form-control validate[required] text-input"
+                                               type="password" name="Password" value="@ViewBag.LecturerObj.TblUserCredential.Password" id="password1" required />
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row ls_divider">
                                 <div class="form-group">
                                     <label class="col-md-2 control-label">رقم التليفون</label>
                                     <div class="col-md-10">
                                         <input type="tel"
                                                class="form-control validate[required] text-input"
-                                               id="PhoneNumber" name="PhoneNumber" value="@Model.PhoneNumber" placeholder="رقم التليفون" required>
+                                               id="PhoneNumber" name="PhoneNumber" value="@ViewBag.LecturerObj.PhoneNumber" placeholder="رقم التليفون" required>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +101,7 @@
                                     <div class="col-md-10">
                                         <input type="email"
                                                class="form-control validate[required] text-input"
-                                               id="Email" name="Email" value="@Model.Email" placeholder="البريد الإلكتروني" required>
+                                               id="Email" name="Email" value="@ViewBag.LecturerObj.Email" placeholder="البريد الإلكتروني" required>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +111,7 @@
                                     <div class="col-md-10">
                                         <input type="text"
                                                class="form-control validate[required] text-input"
-                                               id="Address" name="Address" value="@Model.Address" placeholder="العنوان" required>
+                                               id="Address" name="Address" value="@ViewBag.LecturerObj.Address" placeholder="العنوان" required>
                                     </div>
                                 </div>
                             </div>
@@ -110,15 +121,14 @@
                                     <div class="col-lg-5">
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="Gender" value="true" required data-bv-notempty-message="The gender is required" /> ذكر
+                                                <input type="radio" name="Gender" id="Male" value="true" data-bv-notempty-message="The gender is required" /> ذكر
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="Gender" value="false" required /> انثي
+                                                <input type="radio" name="Gender" id="Female" value="false" /> انثي
                                             </label>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -127,45 +137,59 @@
                                 <div class="col-md-10">
                                     <div class="row">
                                         <div class="col-md-3 col-sm-4 col-xs-6">
-                                            <label class="radio">
-                                                <input class="icheck-red" type="radio" name="LecturerAccountMethod"
-                                                       id="radioRedCheckbox1" value="1" checked="checked"> حساب المحاضر بسعر الساعه
-                                                <input placeholder="ادخل سعر الساعه"
-                                                       class="form-control validate[required] text-input"
-                                                       type="number" name="PriceCost" id="PriceCost" />
-                                            </label>
-
+                                            @{
+                                                decimal value1 = Model.Where(a => a.PaymentMethod == 1).FirstOrDefault() != null ? Model.Where(a => a.PaymentMethod == 1).FirstOrDefault().Value : 0;
+                                                <label class="radio">
+                                                    <input class="icheck-red icheck" type="checkbox" name="LecturerAccountMethod"
+                                                           id="radioRedCheckbox1" value="1" data-checkbox="icheckbox_square-grey" checked="checked" disabled> حساب المحاضر بسعر الساعه
+                                                    <input placeholder="ادخل سعر الساعه"
+                                                           class="form-control validate[required] text-input"
+                                                           type="number" name="HourCost" id="HourCost" value="@value1" />
+                                                </label>
+                                            }
                                         </div>
                                         <div class="col-md-3 col-sm-4 col-xs-6">
 
-                                            <label class="radio">
-                                                <input class="icheck-blue" type="radio" name="LecturerAccountMethod"
-                                                       id="radioRedCheckbox2" value="2"> حساب المحاضر بالنسبة %
-                                                <input placeholder="ادخل النسبه"
-                                                       class="form-control validate[required] text-input"
-                                                       type="number" name="LectPercentage" id="PriceCost" />
-                                            </label>
 
+                                            @{
+                                                decimal value2 = Model.Where(a => a.PaymentMethod == 2).FirstOrDefault() != null ? Model.Where(a => a.PaymentMethod == 2).FirstOrDefault().Value : 0;
+
+                                                <label class="radio">
+                                                    <input class="icheck-blue icheck" type="checkbox" name="LecturerAccountMethod"
+                                                           id="radioRedCheckbox2" data-checkbox="icheckbox_square-grey" value="2" checked="checked" disabled> حساب المحاضر بالنسبة %
+                                                    <input placeholder="ادخل النسبه"
+                                                           class="form-control validate[required] text-input"
+                                                           type="number" name="LectPercentage" id="LectPercentage" value="@value2" />
+
+                                                </label>
+                                            }
                                         </div>
                                         <div class="col-md-3 col-sm-4 col-xs-6">
+                                            @{
+                                                decimal value3 = Model.Where(a => a.PaymentMethod == 3).FirstOrDefault() != null ? Model.Where(a => a.PaymentMethod == 3).FirstOrDefault().Value : 0;
 
-                                            <label class="radio">
-                                                <input class="icheck-aero" type="radio" name="LecturerAccountMethod"
-                                                       id="radioRedCheckbox3" value="3"> حسب المحاضر بسعر الكورس
-                                                <input placeholder="ادخل سعر الكورس"
-                                                       class="form-control validate[required] text-input"
-                                                       type="number" name="CoursePrice" id="CoursePrice" />
-                                            </label>
+                                                <label class="radio">
+                                                    <input class="icheck-aero icheck" type="checkbox" name="LecturerAccountMethod"
+                                                           id="radioRedCheckbox3" data-checkbox="icheckbox_square-grey" value="3" checked="checked" disabled> حسب المحاضر بسعر الكورس
+                                                    <input placeholder="ادخل سعر الكورس"
+                                                           class="form-control validate[required] text-input"
+                                                           type="number" name="CoursePrice" id="CoursePrice" value="@value3" />
+                                                </label>
+                                            }
                                         </div>
                                         <div class="col-md-3 col-sm-4 col-xs-6">
+                                            @{
+                                                decimal Value4 = Model.Where(a => a.PaymentMethod == 4).FirstOrDefault() != null ? Model.Where(a => a.PaymentMethod == 4).FirstOrDefault().Value : 0;
 
-                                            <label class="radio">
-                                                <input class="icheck-aero" type="radio" name="LecturerAccountMethod"
-                                                       id="radioRedCheckbox3" value="4"> نسبة طلاب المحاضر
-                                                <input placeholder="ادخل النسبه الطلاب"
-                                                       class="form-control validate[required] text-input"
-                                                       type="number" name="StudentPercentage" id="StudentPercentage" />
-                                            </label>
+                                                <label class="radio">
+                                                    <input class="icheck-aero icheck" type="checkbox" name="LecturerAccountMethod"
+                                                           id="radioRedCheckbox3" data-checkbox="icheckbox_square-grey" value="4" checked="checked" disabled> نسبة طلاب المحاضر
+                                                    <input placeholder="ادخل النسبه الطلاب"
+                                                           class="form-control validate[required] text-input"
+                                                           type="number" name="StudentPercentage" id="StudentPercentage" value="@Value4" />
+                                                </label>
+                                            }
+
                                         </div>
 
                                     </div>
@@ -175,7 +199,7 @@
                             <br />
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-upload"></i> تحميل صورة طالب</h3>
+                                    <h3 class="panel-title"><i class="fa fa-upload"></i> تحميل صورة المحاضر</h3>
                                 </div>
                                 <div class="panel-body">
                                     <section id="ls-wrapper">
@@ -206,7 +230,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group" style=" margin: 20px 30px 40px 50px; ">
+                            <div class="form-group" style=" margin: 20px 30px 40px 50px;">
                                 <button class="submit btn-primary btn" type="submit" name="submit">حفظ</button>
                             </div>
                         </div>

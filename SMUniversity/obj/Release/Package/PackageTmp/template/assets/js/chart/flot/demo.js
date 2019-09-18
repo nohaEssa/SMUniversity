@@ -158,7 +158,7 @@ $(function () {
     $("#flot-chart").length && $.plot($("#flot-chart"), [
         {
             data: d2,
-            label: "Unique Visits"
+            label: "unique Visits"
         },
         {
             data: d3,

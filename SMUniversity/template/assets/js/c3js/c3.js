@@ -20,7 +20,7 @@
         chartArcs: 'c3-chart-arcs',
         chartArcsTitle: 'c3-chart-arcs-title',
         chartArcsBackground: 'c3-chart-arcs-background',
-        chartArcsGaugeUnit: 'c3-chart-arcs-gauge-unit',
+        chartArcsGaugeunit: 'c3-chart-arcs-gauge-unit',
         chartArcsGaugeMax: 'c3-chart-arcs-gauge-max',
         chartArcsGaugeMin: 'c3-chart-arcs-gauge-min',
         selectedCircle: 'c3-selected-circle',
@@ -1741,7 +1741,7 @@
         function filterTargetsToShow(targets) {
             return targets.filter(function (t) { return isTargetToShow(t.id); });
         }
-        function mapTargetsToUniqueXs(targets) {
+        function mapTargetsTouniqueXs(targets) {
             var xs = d3.set(d3.merge(targets.map(function (t) { return t.values.map(function (v) { return v.x; }); }))).values();
             return isTimeSeries ? xs.map(function (x) { return new Date(x); }) : xs.map(function (x) { return +x; });
         }
@@ -3036,7 +3036,7 @@
                     });
                 arcs.append("text")
                     .attr("dy", ".75em")
-                    .attr("class", CLASS.chartArcsGaugeUnit)
+                    .attr("class", CLASS.chartArcsGaugeunit)
                     .style("text-anchor", "middle")
                     .style("pointer-events", "none")
                     .text(__gauge_label_show ? __gauge_units : '');
@@ -3565,7 +3565,7 @@
                 updateXDomain(targetsToShow, withUpdateXDomain, withUpdateOrgXDomain);
                 // update axis tick values according to options
                 if (!__axis_x_tick_values && (__axis_x_tick_fit || __axis_x_tick_count)) {
-                    tickValues = generateTickValues(mapTargetsToUniqueXs(targetsToShow), __axis_x_tick_count);
+                    tickValues = generateTickValues(mapTargetsTouniqueXs(targetsToShow), __axis_x_tick_count);
                     xAxis.tickValues(tickValues);
                     subXAxis.tickValues(tickValues);
                 }

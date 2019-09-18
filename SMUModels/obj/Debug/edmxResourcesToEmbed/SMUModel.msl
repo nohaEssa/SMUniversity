@@ -31,6 +31,7 @@
     <EntitySetMapping Name="TblBalanceTransactions">
       <EntityTypeMapping TypeName="admin_SMUniversityModel.TblBalanceTransaction">
         <MappingFragment StoreEntitySet="TblBalanceTransaction">
+          <ScalarProperty Name="LecturerID" ColumnName="LecturerID" />
           <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
           <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -70,6 +71,7 @@
     <EntitySetMapping Name="TblCardCategories">
       <EntityTypeMapping TypeName="admin_SMUniversityModel.TblCardCategory">
         <MappingFragment StoreEntitySet="TblCardCategory">
+          <ScalarProperty Name="ForApplication" ColumnName="ForApplication" />
           <ScalarProperty Name="TitleEn" ColumnName="TitleEn" />
           <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -141,11 +143,11 @@
     <EntitySetMapping Name="TblEvaluations">
       <EntityTypeMapping TypeName="admin_SMUniversityModel.TblEvaluation">
         <MappingFragment StoreEntitySet="TblEvaluation">
+          <ScalarProperty Name="SessionTimesID" ColumnName="SessionTimesID" />
           <ScalarProperty Name="EvaluationNotes" ColumnName="EvaluationNotes" />
           <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
           <ScalarProperty Name="StudentID" ColumnName="StudentID" />
           <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
           <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
@@ -249,6 +251,11 @@
     <EntitySetMapping Name="TblInvoices">
       <EntityTypeMapping TypeName="admin_SMUniversityModel.TblInvoice">
         <MappingFragment StoreEntitySet="TblInvoice">
+          <ScalarProperty Name="BalanceTransactionID" ColumnName="BalanceTransactionID" />
+          <ScalarProperty Name="RealCash" ColumnName="RealCash" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
           <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
@@ -325,6 +332,7 @@
     <EntitySetMapping Name="TblManualInvoices">
       <EntityTypeMapping TypeName="admin_SMUniversityModel.TblManualInvoice">
         <MappingFragment StoreEntitySet="TblManualInvoice">
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
           <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
@@ -387,10 +395,8 @@
           <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="PermissionCategoryID" ColumnName="PermissionCategoryID" />
-          <ScalarProperty Name="NameEn" ColumnName="NameEn" />
-          <ScalarProperty Name="NameAr" ColumnName="NameAr" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -415,6 +421,7 @@
     <EntitySetMapping Name="TblProducts">
       <EntityTypeMapping TypeName="admin_SMUniversityModel.TblProduct">
         <MappingFragment StoreEntitySet="TblProduct">
+          <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
           <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
@@ -425,7 +432,6 @@
           <ScalarProperty Name="DescriptionAr" ColumnName="DescriptionAr" />
           <ScalarProperty Name="NameEn" ColumnName="NameEn" />
           <ScalarProperty Name="NameAr" ColumnName="NameAr" />
-          <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -439,6 +445,21 @@
           <ScalarProperty Name="Picture" ColumnName="Picture" />
           <ScalarProperty Name="NameEn" ColumnName="NameEn" />
           <ScalarProperty Name="NameAr" ColumnName="NameAr" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblRegisterDevices">
+      <EntityTypeMapping TypeName="admin_SMUniversityModel.TblRegisterDevice">
+        <MappingFragment StoreEntitySet="TblRegisterDevice">
+          <ScalarProperty Name="BadgeNo" ColumnName="BadgeNo" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LecturerID" ColumnName="LecturerID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="DeviceTypeID" ColumnName="DeviceTypeID" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -485,6 +506,7 @@
     <EntitySetMapping Name="TblSessions">
       <EntityTypeMapping TypeName="admin_SMUniversityModel.TblSession">
         <MappingFragment StoreEntitySet="TblSession">
+          <ScalarProperty Name="GeneralSession" ColumnName="GeneralSession" />
           <ScalarProperty Name="Picture" ColumnName="Picture" />
           <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
           <ScalarProperty Name="ForPublic" ColumnName="ForPublic" />
@@ -515,6 +537,8 @@
     <EntitySetMapping Name="TblSessionDetails">
       <EntityTypeMapping TypeName="admin_SMUniversityModel.TblSessionDetail">
         <MappingFragment StoreEntitySet="TblSessionDetails">
+          <ScalarProperty Name="SingleSessionQRCode" ColumnName="SingleSessionQRCode" />
+          <ScalarProperty Name="SessionPrice" ColumnName="SessionPrice" />
           <ScalarProperty Name="Price3" ColumnName="Price3" />
           <ScalarProperty Name="Price2" ColumnName="Price2" />
           <ScalarProperty Name="Price1" ColumnName="Price1" />
@@ -560,6 +584,9 @@
     <EntitySetMapping Name="TblStudents">
       <EntityTypeMapping TypeName="admin_SMUniversityModel.TblStudent">
         <MappingFragment StoreEntitySet="TblStudent">
+          <ScalarProperty Name="ThirdNameEn" ColumnName="ThirdNameEn" />
+          <ScalarProperty Name="SecondNameEn" ColumnName="SecondNameEn" />
+          <ScalarProperty Name="FirstNameEn" ColumnName="FirstNameEn" />
           <ScalarProperty Name="StudentType" ColumnName="StudentType" />
           <ScalarProperty Name="Verified" ColumnName="Verified" />
           <ScalarProperty Name="VerificationCode" ColumnName="VerificationCode" />
@@ -602,6 +629,8 @@
     <EntitySetMapping Name="TblSubjects">
       <EntityTypeMapping TypeName="admin_SMUniversityModel.TblSubject">
         <MappingFragment StoreEntitySet="TblSubject">
+          <ScalarProperty Name="SubjectCode" ColumnName="SubjectCode" />
+          <ScalarProperty Name="GeneralSubject" ColumnName="GeneralSubject" />
           <ScalarProperty Name="Picture" ColumnName="Picture" />
           <ScalarProperty Name="NameEn" ColumnName="NameEn" />
           <ScalarProperty Name="NameAr" ColumnName="NameAr" />
@@ -616,6 +645,8 @@
     <EntitySetMapping Name="TblSubscriptions">
       <EntityTypeMapping TypeName="admin_SMUniversityModel.TblSubscription">
         <MappingFragment StoreEntitySet="TblSubscription">
+          <ScalarProperty Name="FromLecturerSide" ColumnName="FromLecturerSide" />
+          <ScalarProperty Name="SubscripedAsSession" ColumnName="SubscripedAsSession" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="PriceType" ColumnName="PriceType" />
           <ScalarProperty Name="Pending" ColumnName="Pending" />
@@ -695,6 +726,9 @@
     <EntitySetMapping Name="TblVouchers">
       <EntityTypeMapping TypeName="admin_SMUniversityModel.TblVoucher">
         <MappingFragment StoreEntitySet="TblVoucher">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -711,26 +745,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TransactionTypes">
-      <EntityTypeMapping TypeName="admin_SMUniversityModel.TransactionType">
-        <MappingFragment StoreEntitySet="TransactionType">
+    <EntitySetMapping Name="TblVoucherCategories">
+      <EntityTypeMapping TypeName="admin_SMUniversityModel.TblVoucherCategory">
+        <MappingFragment StoreEntitySet="TblVoucherCategory">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
           <ScalarProperty Name="NameEn" ColumnName="NameEn" />
           <ScalarProperty Name="NameAr" ColumnName="NameAr" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TblRegisterDevices">
-      <EntityTypeMapping TypeName="admin_SMUniversityModel.TblRegisterDevice">
-        <MappingFragment StoreEntitySet="TblRegisterDevice">
-          <ScalarProperty Name="BadgeNo" ColumnName="BadgeNo" />
-          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-          <ScalarProperty Name="LecturerID" ColumnName="LecturerID" />
-          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
-          <ScalarProperty Name="DeviceTypeID" ColumnName="DeviceTypeID" />
-          <ScalarProperty Name="Token" ColumnName="Token" />
+    <EntitySetMapping Name="TransactionTypes">
+      <EntityTypeMapping TypeName="admin_SMUniversityModel.TransactionType">
+        <MappingFragment StoreEntitySet="TransactionType">
+          <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+          <ScalarProperty Name="NameAr" ColumnName="NameAr" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

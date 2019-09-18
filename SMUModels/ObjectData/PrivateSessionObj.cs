@@ -8,28 +8,28 @@ namespace SMUModels.ObjectData
 {
     public class PrivateSessionObj
     {
-        public int StudentID { get; set; }
-        public int SubjectID { get; set; }
-        public int LecturerID { get; set; }
-        public string RequestMsg { get; set; }
+        public int StudentID { get; set; } = 0;
+        public int SubjectID { get; set; } = 0;
+        public int LecturerID { get; set; } = 0;
+        public string RequestMsg { get; set; } = "";
         public DateTime? RequestDate { get; set; }
-        public bool IsCourse { get; set; }
+        public bool IsCourse { get; set; } = false;
     }
 
     public class PrivateSessionsList
     {
-        public int ID { get; set; }
-        public int StudentID { get; set; }
-        public int SubjectID { get; set; }
-        public int LecturerID { get; set; }
-        public string StudentName { get; set; }
-        public string LecturerNameAr { get; set; }
-        public string LecturerNameEn { get; set; }
-        public string SubjectNameAr { get; set; }
-        public string SubjectNameEn { get; set; }
-        public string RequestMsg { get; set; }
-        public bool? Approved { get; set; }
-        public bool IsCourse { get; set; }
-        public string RequestDate { get; set; }
+        public int ID { get; set; } = 0;
+        public int StudentID { get; set; } = 0;
+        public int SubjectID { get; set; } = 0;
+        public int LecturerID { get; set; } = 0;
+        public string StudentName { get; set; } = "";
+        public string LecturerNameAr { get; set; } = "";
+        public string LecturerNameEn { get; set; } = "";
+        public string SubjectNameAr { get; set; } = "";
+        public string SubjectNameEn { get; set; } = "";
+        public string RequestMsg { get; set; } = "";
+        public bool? Approved { get; set; } = false;
+        public bool IsCourse { get; set; } = false;
+        public string RequestDate { get; set; } = "";
     }
 }

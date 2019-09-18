@@ -1,5 +1,7 @@
 ﻿@model SMUModels.TblVoucher
 @{
+    /**/
+
     ViewBag.Title = "VoucherTemplate";
     Layout = "~/Views/Shared/_Layout.cshtml";
     string CreatedDate = Model.CreatedDate.ToString("yyyy-MM-dd hh:mm tt");
@@ -47,7 +49,7 @@
 
                                         <img src="~/Content/Images/invoice_logo.png" class="img-responsive" alt="" style="align-self:center; width:100%" />
                                         <p style="text-align:center; font-size:15px;">
-                                            فرع :    @Model.TblHall.TblBranch.NameAr
+                                            @*فرع :    @Model.TblHall.TblBranch.NameAr*@
                                             <br />
                                             <span>Receipt Voucher</span>
                                             <br />
@@ -70,7 +72,15 @@
 
                                 <div class="row" style="margin-top: 0px;">
                                     <p style="text-align: center; font-size: 16px; margin-top:5px;">
-                                        وصلنا من السيد / السادة: @Model.TblLecturer.FirstNameAr @Model.TblLecturer.SecondNameAr @Model.TblLecturer.ThirdNameAr
+                                        @if (Model.LecturerID == null)
+                                        {
+                                            <label>وصلنا من السيد / السادة: @Model.Name</label>
+                                        }
+                                        else
+                                        {
+                                            <label>وصلنا من السيد / السادة: @Model.TblLecturer.FirstNameAr @Model.TblLecturer.SecondNameAr @Model.TblLecturer.ThirdNameAr</label>
+
+                                        }
 
                                         <br />
                                         مبلغ وقدره @Model.Cost دينار كويتي
@@ -108,9 +118,11 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <p class="text-center" style="font-size: 10px; margin:0;">@Model.TblHall.TblBranch.AddressAr</p>
+                                    @*<p class="text-center" style="font-size: 10px; margin:0;">@Model.TblHall.TblBranch.AddressAr</p>*@
+                                    <p class="text-center" style="font-size: 10px; margin:0;"></p>
                                 </div>
-                                <div class="row" style="margin-top: 5px;text-align: center;    background-color: #f1efef;"> <p style=" margin-top: 9px; "> www.smartmindkw.com <i class="fa fa-instagram"></i> @Model.TblHall.TblBranch.AddressAr <i class="fa fa-globe"></i></p> </div>
+                                @*<div class="row" style="margin-top: 5px;text-align: center;    background-color: #f1efef;"> <p style=" margin-top: 9px; "> www.smartmindkw.com <i class="fa fa-instagram"></i> @Model.TblHall.TblBranch.AddressAr <i class="fa fa-globe"></i></p> </div>*@
+                                <div class="row" style="margin-top: 5px;text-align: center;    background-color: #f1efef;"> <p style=" margin-top: 9px; "> www.smartmindkw.com <i class="fa fa-instagram"></i><i class="fa fa-globe"></i></p> </div>
                             </div>
 
                             <div class="invoice" style=" border: 1px solid #ccc; margin: 20px auto; padding: 20px 20px;">
@@ -127,7 +139,7 @@
 
                                         <img src="~/Content/Images/invoice_logo.png" class="img-responsive" alt="" style="align-self:center; width:100%" />
                                         <p style="text-align:center; font-size:15px;">
-                                            فرع :    @Model.TblHall.TblBranch.NameAr
+                                            @*فرع :    @Model.TblHall.TblBranch.NameAr*@
                                             <br />
                                             <span>Receipt Voucher</span>
                                             <br />
@@ -146,8 +158,14 @@
 
                                 <div class="row" style="margin-top: 0px;">
                                     <p style="text-align: center; font-size: 16px; margin-top:5px;">
-                                        وصلنا من السيد / السادة: @Model.TblLecturer.FirstNameAr @Model.TblLecturer.SecondNameAr @Model.TblLecturer.ThirdNameAr
-
+                                        @if (Model.LecturerID == null)
+                                        {
+                                            <label>وصلنا من السيد / السادة: @Model.Name</label>
+                                        }
+                                        else
+                                        {
+                                            <label>وصلنا من السيد / السادة: @Model.TblLecturer.FirstNameAr @Model.TblLecturer.SecondNameAr @Model.TblLecturer.ThirdNameAr</label>
+                                        }
                                         <br />
 
                                         مبلغ وقدره @Model.Cost دينار كويتي
@@ -186,9 +204,11 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <p class="text-center" style="font-size: 10px; margin:0;">@Model.TblHall.TblBranch.AddressAr</p>
+                                    @*<p class="text-center" style="font-size: 10px; margin:0;">@Model.TblHall.TblBranch.AddressAr</p>*@
+                                    <p class="text-center" style="font-size: 10px; margin:0;"></p>
                                 </div>
-                                <div class="row" style="margin-top: 5px;text-align: center;    background-color: #f1efef;"> <p style=" margin-top: 9px; "> www.smartmindkw.com <i class="fa fa-instagram"></i> @Model.TblHall.TblBranch.AddressAr <i class="fa fa-globe"></i></p> </div>
+                                @*<div class="row" style="margin-top: 5px;text-align: center;    background-color: #f1efef;"> <p style=" margin-top: 9px; "> www.smartmindkw.com <i class="fa fa-instagram"></i> @Model.TblHall.TblBranch.AddressAr <i class="fa fa-globe"></i></p> </div>*@
+                                <div class="row" style="margin-top: 5px;text-align: center;    background-color: #f1efef;"> <p style=" margin-top: 9px; "> www.smartmindkw.com <i class="fa fa-instagram"></i><i class="fa fa-globe"></i></p> </div>
                             </div>
                         </div>
                     </div>

@@ -27,8 +27,8 @@
         }
     }
 
-    var allUnits = ["Days", "Hours", "Minutes", "Seconds"];
-    var nextUnits = {
+    var allunits = ["Days", "Hours", "Minutes", "Seconds"];
+    var nextunits = {
         Seconds: "Minutes",
         Minutes: "Hours",
         Hours: "Days",
@@ -111,31 +111,31 @@
         var greater_unit = null;
         for (var i in units) {
             var unit = units[i];
-            var maxUnits;
+            var maxunits;
 
             if (greater_unit === null) {
-                maxUnits = total_duration / secondsIn[unit];
+                maxunits = total_duration / secondsIn[unit];
             }
             else {
-                maxUnits = secondsIn[greater_unit] / secondsIn[unit];
+                maxunits = secondsIn[greater_unit] / secondsIn[unit];
             }
 
-            var curUnits = (diff / secondsIn[unit]);
-            var oldUnits = (old_diff / secondsIn[unit]);
-            if (floor) curUnits = Math.floor(curUnits);
-            if (floor) oldUnits = Math.floor(oldUnits);
+            var curunits = (diff / secondsIn[unit]);
+            var oldunits = (old_diff / secondsIn[unit]);
+            if (floor) curunits = Math.floor(curunits);
+            if (floor) oldunits = Math.floor(oldunits);
 
             if (unit !== "Days") {
-                curUnits = curUnits % maxUnits;
-                oldUnits = oldUnits % maxUnits;
+                curunits = curunits % maxunits;
+                oldunits = oldunits % maxunits;
             }
 
-            raw_time[unit] = curUnits;
-            time[unit] = Math.abs(curUnits);
-            raw_old_time[unit] = oldUnits;
-            old_time[unit] = Math.abs(oldUnits);
-            pct[unit] = Math.abs(curUnits) / maxUnits;
-            old_pct[unit] = Math.abs(oldUnits) / maxUnits;
+            raw_time[unit] = curunits;
+            time[unit] = Math.abs(curunits);
+            raw_old_time[unit] = oldunits;
+            old_time[unit] = Math.abs(oldunits);
+            pct[unit] = Math.abs(curunits) / maxunits;
+            old_pct[unit] = Math.abs(oldunits) / maxunits;
 
             greater_unit = unit;
         }
@@ -333,15 +333,15 @@
         var floor = this.config.animation !== "smooth";
 
         var visible_times = parse_times(diff, old_diff, this.data.total_duration, this.data.drawn_units, floor);
-        var all_times = parse_times(diff, old_diff, secondsIn["Years"], allUnits, floor);
+        var all_times = parse_times(diff, old_diff, secondsIn["Years"], allunits, floor);
 
         var i = 0;
         var j = 0;
         var lastKey = null;
 
         var cur_shown = this.data.drawn_units.slice();
-        for (var i in allUnits) {
-            var key = allUnits[i];
+        for (var i in allunits) {
+            var key = allunits[i];
 
             // Notify (all) listeners
             if (Math.floor(all_times.raw_time[key]) !== Math.floor(all_times.raw_old_time[key])) {
@@ -599,7 +599,7 @@
                 // If set to auto, total_duration is the size of 1 unit, of the unit type bigger than the largest shown
                 for (var unit in this.config.time) {
                     if (this.config.time[unit].show) {
-                        this.data.total_duration = secondsIn[nextUnits[unit]];
+                        this.data.total_duration = secondsIn[nextunits[unit]];
                         break;
                     }
                 }

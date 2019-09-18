@@ -8,8 +8,8 @@ namespace SMUModels
 {
     public class EvaluationQuesData
     {
-        public int EvaluationQuesID { get; set; }
-        public string QuestionAr { get; set; }
-        public string QuestionEn { get; set; }
+        public int EvaluationQuesID { get; set; } = 0;
+        public string QuestionAr { get; set; } = "";
+        public string QuestionEn { get; set; } = "";
     }
 }

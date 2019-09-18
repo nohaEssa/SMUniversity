@@ -1303,16 +1303,16 @@ $.extend( FixedColumns.prototype , {
 		}
 
 		/* Equalise the column widths between the header footer and body - body get's priority */
-		var anUnique = dt.oApi._fnGetUniqueThs( dt, $('>thead', oClone.header)[0] );
-		$(anUnique).each( function (i) {
+		var anunique = dt.oApi._fnGetuniqueThs( dt, $('>thead', oClone.header)[0] );
+		$(anunique).each( function (i) {
 			iColumn = aiColumns[i];
 			this.style.width = that.s.aiInnerWidths[iColumn]+"px";
 		} );
 
 		if ( that.s.dt.nTFoot !== null )
 		{
-			anUnique = dt.oApi._fnGetUniqueThs( dt, $('>tfoot', oClone.footer)[0] );
-			$(anUnique).each( function (i) {
+			anunique = dt.oApi._fnGetuniqueThs( dt, $('>tfoot', oClone.footer)[0] );
+			$(anunique).each( function (i) {
 				iColumn = aiColumns[i];
 				this.style.width = that.s.aiInnerWidths[iColumn]+"px";
 			} );

@@ -14,19 +14,19 @@ namespace SMUniversity.WebAPI.Controllers
         admin_SMUniversityEntities _Context = new admin_SMUniversityEntities();
 
         [HttpGet]
-        public HttpResponseMessage getUniversities()
+        public HttpResponseMessage getuniversities()
         {
             ResultHandler _resultHandler = new ResultHandler();
 
             try
             {
-                List<TblUniversity> UniversitiesList = _Context.TblUniversities.Where(a => a.IsDeleted != true).ToList();
+                List<TblUniversity> universitiesList = _Context.TblUniversities.Where(a => a.IsDeleted != true).ToList();
                 List<UniversityData> Data = new List<UniversityData>();
-                foreach (var item in UniversitiesList)
+                foreach (var item in universitiesList)
                 {
                     UniversityData _data = new UniversityData()
                     {
-                        ProductCategoryID = item.ID,
+                        UniversityID = item.ID,
                         NameAr = item.NameAr,
                         NameEn = item.NameEn,
                     };

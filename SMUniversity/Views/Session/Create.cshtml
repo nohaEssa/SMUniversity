@@ -48,14 +48,123 @@
                             </div>
                             <div class="row ls_divider">
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">اختر القاعه</label>
+                                    <label class="col-md-2 control-label">نوع المحاضره</label>
+                                    <div class="col-lg-5 divSessionType">
+                                        <div class="radio" style="display:inline-block">
+                                            <label>
+                                                <input type="radio" name="GeneralSession" value="false" checked="checked" /> جامعيه
+                                            </label>
+                                        </div>
+                                        <div class="radio" style="display:inline-block">
+                                            <label>
+                                                <input type="radio" name="GeneralSession" value="true" required /> عام
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <div class="row col-md-12">
+                                        <div class="generalSessionDiv">
+                                            <label class="col-md-2 control-label">اسم الجامعة</label>
+
+                                            <div class="col-md-3 col-sm-12">
+                                                <select class="form-control" id="UniversityID" name="UniversityID" onchange="getColleges()" required>
+                                                    <option value="0">اسم الجامعة</option>
+                                                    @foreach (var uni in ViewBag._UniversityList)
+                                                    {
+                                                        <option value="@uni.ID">@uni.NameAr</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3 col-sm-12">
+                                                <select class="form-control" id="CollegeID" name="CollegeID" onchange="getMajors()" required>
+                                                    <option value="0">اسم الكلية</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2 col-sm-12">
+                                                <select class="form-control input-sm" id="MajorID" name="MajorID" onchange="getSubjects()" required>
+                                                    <option value="0">التخصص</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="subjectDiv">
+                                            <label class="col-md-2 control-label LblSubjectName" hidden="hidden">اسم الماده</label>
+                                            <div class="col-md-2 col-sm-12 divSelectSubject">
+                                                <select class="form-control input-sm" id="SubjectID" name="SubjectID" onchange="getLecturers()" required>
+                                                    <option value="0">اختر المادة</option>
+                                                </select>
+                                            </div>
+                                            @*<br />
+                                            <div class="col-md-12 divNewSubjectName" style="padding-right: 233px;" hidden="hidden">
+                                                <input type="text"
+                                                       class="form-control text-input"
+                                                       id="SubjectName" name="SubjectName" placeholder="ادخل اسم الماده">
+                                            </div>*@
+
+                                        </div>
+                                        @*<div class="divNewSubjectName" hidden="hidden">
+                                            <label class="col-md-2 control-label"></label>
+                                            <div class="col-md-10 col-sm-12">
+                                                <input type="text"
+                                                       class="form-control text-input"
+                                                       id="SubjectName" name="SubjectName" placeholder="ادخل اسم الماده">
+                                            </div>
+                                        </div>*@
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="row ls_divider">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">اسم الجامعة</label>
+                                        <div class="col-md-10">
+                                            <select class="form-control" id="UniversityID" name="UniversityID" onchange="getColleges()" required>
+                                                <option value="0">اسم الجامعة</option>
+                                                @foreach (var uni in ViewBag._UniversityList)
+                                                {
+                                                    <option value="@uni.ID">@uni.NameAr</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ls_divider">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">اسم الكلية</label>
+                                        <div class="col-md-10">
+                                            <select class="form-control" id="CollegeID" name="CollegeID" onchange="getMajors()" required>
+                                                <option value="0">اسم الكلية</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ls_divider">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">التخصص</label>
+                                        <div class="col-md-10">
+                                            <select class="form-control input-sm" id="MajorID" name="MajorID" onchange="getSubjects()" required>
+                                                <option value="0">التخصص</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row ls_divider">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">المادة</label>
+                                        <div class="col-md-10">
+                                            <select class="form-control input-sm" id="SubjectID" name="SubjectID" onchange="getLecturers()" required>
+                                                <option value="0">اختر المادة</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">المحاضر</label>
                                     <div class="col-md-10">
-                                        <select class="form-control" id="Type" name="HallID" required>
-                                            <option value="0">اختر القاعه</option>
-                                            @foreach (var hall in ViewBag._HallsList)
-                                            {
-                                                <option value="@hall.ID">@hall.HallCodeAr</option>
-                                            }
+                                        <select class="form-control input-sm" id="LecturerID" name="LecturerID" required>
+                                            <option value="0">اختر المحاضر</option>
                                         </select>
                                     </div>
                                 </div>
@@ -82,7 +191,7 @@
                             </div>
                             <div class="row ls_divider">
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">تفاصي عربي</label>
+                                    <label class="col-md-2 control-label">تفاصيل عربي</label>
                                     <div class="col-md-10">
                                         <textarea class="animatedTextArea form-control"
                                                   id="Description" name="Description"
@@ -100,13 +209,22 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row ls_divider CourseCost">
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">سعر الحصة</label>
+                                    <label class="col-md-2 control-label">سعر الدوره</label>
                                     <div class="col-md-10">
                                         <input type="number"
                                                class="form-control validate[required] text-input"
-                                               id="Cost" name="Cost" value="0" placeholder="ادخل سعر الحصة" required>
+                                               id="Cost" name="Cost" value="0" placeholder="ادخل سعر الدوره">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">السعر بالحصه</label>
+                                    <div class="col-md-10">
+                                        <input type="number"
+                                               class="form-control validate[required] text-input"
+                                               id="SessionPrice" name="SessionPrice" value="0" placeholder="ادخل السعر بالحصه">
                                     </div>
                                 </div>
                             </div>
@@ -133,22 +251,24 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-md-2 control-label">تفاصيل</label>
+                                <label class="col-md-2 control-label">التاريخ</label>
                                 <div class="col-md-10">
                                     <div class="ls-button-group border-bottom">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <h5>من تاريخ</h5>
-                                                <input id="date_timepicker_start" class="form-control" type="text" name="FromDate" required />
+                                                <input class="form-control dateTimePickerCustom1 sessionDate" type="text" name="FromDate" id="FromDate" required />
                                             </div>
                                             <div class="col-md-6">
                                                 <h5>الي تاريخ</h5>
-                                                <input id="date_timepicker_end" class="form-control" type="text" name="ToDate" required />
+                                                <input class="form-control dateTimePickerCustom1 sessionDate" type="text" name="ToDate" id="ToDate" required />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+
                             <div class="row ls_divider SessionPeriod" hidden="hidden">
                                 <div class="form-group">
                                     <label class="col-md-2 control-label">الأيام والأوقات</label>
@@ -161,92 +281,61 @@
                             </div>
                             <div class="row ls_divider">
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">اسم الجامعة</label>
+                                    <label class="col-md-2 control-label">اختر القاعه</label>
                                     <div class="col-md-10">
-                                        <select class="form-control" id="UniversityID" name="UniversityID" onchange="getColleges()" required>
-                                            <option value="0">اسم الجامعة</option>
-                                            @foreach (var uni in ViewBag._UniversityList)
-                                            {
-                                                <option value="@uni.ID">@uni.NameAr</option>
-                                            }
+                                        <select class="form-control" id="HallID" name="HallID" required>
+                                            <option value="0">اختر القاعه</option>
+                                            @*@foreach (var hall in ViewBag._HallsList)
+                                                {
+                                                    if (hall.Available == true)
+                                                    {
+                                                        <option value="@hall.HallID">@hall.HallCodeAr</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@hall.HallID" disabled>@hall.HallCodeAr    (غير متاحه)</option>
+                                                    }
+                                                }*@
                                         </select>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row ls_divider">
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">اسم الكلية</label>
-                                    <div class="col-md-10">
-                                        <select class="form-control" id="CollegeID" name="CollegeID" onchange="getMajors()" required>
-                                            <option value="0">اسم الكلية</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row ls_divider">
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">التخصص</label>
-                                    <div class="col-md-10">
-                                        <select class="form-control input-sm" id="MajorID" name="MajorID" onchange="getSubjects()" required>
-                                            <option value="0">التخصص</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row ls_divider">
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">المادة</label>
-                                    <div class="col-md-10">
-                                        <select class="form-control input-sm" id="SubjectID" name="SubjectID" onchange="getLecturers()" required>
-                                            <option value="0">اختر المادة</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row ls_divider">
-                                <div class="form-group">
-                                    <label class="col-md-2 control-label">المحاضر</label>
-                                    <div class="col-md-10">
-                                        <select class="form-control input-sm" id="LecturerID" name="LecturerID" required>
-                                            <option value="0">اختر المحاضر</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="row">
                                 <label class="col-md-2 control-label">حساب المحاضر</label>
                                 <div class="col-md-10">
                                     <div class="row">
-                                        <div class="col-md-3 col-sm-4 col-xs-6">
-                                            <label class="radio">
-                                                <input class="icheck-red" type="radio" name="LecturerAccountMethod"
-                                                       id="radioRedCheckbox1" value="1" checked="checked"> حساب المحاضر بسعر الحصة
-                                            </label>
+                                        <div class="SessionPaymentMethod">
+                                            <div class="col-md-4 col-sm-4 col-xs-6">
+                                                <label class="radio">
+                                                    <input class="icheck-red" type="radio" name="LecturerAccountMethod"
+                                                           id="radioRedCheckbox1" value="1" checked="checked"> حساب المحاضر بسعر الحصة
+                                                </label>
 
+                                            </div>
+                                            <div class="col-md-4 col-sm-4 col-xs-6">
+
+                                                <label class="radio">
+                                                    <input class="icheck-blue" type="radio" name="LecturerAccountMethod"
+                                                           id="radioRedCheckbox2" value="2"> حساب المحاضر بالنسبة %
+                                                </label>
+
+                                            </div>
                                         </div>
-                                        <div class="col-md-3 col-sm-4 col-xs-6">
 
-                                            <label class="radio">
-                                                <input class="icheck-blue" type="radio" name="LecturerAccountMethod"
-                                                       id="radioRedCheckbox2" value="2"> حساب المحاضر بالنسبة %
-                                            </label>
-
-                                        </div>
-                                        <div class="col-md-3 col-sm-4 col-xs-6">
-
+                                        <div class="col-md-4 col-sm-4 col-xs-6 CoursePaymentMethod">
                                             <label class="radio">
                                                 <input class="icheck-aero" type="radio" name="LecturerAccountMethod"
                                                        id="radioRedCheckbox3" value="3"> حسب المحاضر بسعر الكورس
                                             </label>
                                         </div>
-                                        <div class="col-md-3 col-sm-4 col-xs-6">
+                                        @*<div class="col-md-3 col-sm-4 col-xs-6">
 
-                                            <label class="radio">
-                                                <input class="icheck-aero" type="radio" name="LecturerAccountMethod"
-                                                       id="radioRedCheckbox3" value="4"> نسبة طلاب المحاضر
-                                            </label>
-                                        </div>
-
+                                                <label class="radio">
+                                                    <input class="icheck-aero" type="radio" name="LecturerAccountMethod"
+                                                           id="radioRedCheckbox3" value="4"> نسبة طلاب المحاضر
+                                                </label>
+                                            </div>*@
                                     </div>
                                 </div>
                             </div>
@@ -254,7 +343,7 @@
                             <br />
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-upload"></i> تحميل صورة طالب</h3>
+                                    <h3 class="panel-title"><i class="fa fa-upload"></i> تحميل صورة المحاضره</h3>
                                 </div>
                                 <div class="panel-body">
                                     <section id="ls-wrapper">

@@ -8,8 +8,8 @@ namespace SMUModels
 {
     public class HelpQuestionData
     {
-        public int HelpQuestionID { get; set; }
-        public string QuestionAr { get; set; }
-        public string QuestionEn { get; set; }
+        public int HelpQuestionID { get; set; } = 0;
+        public string QuestionAr { get; set; } = "";
+        public string QuestionEn { get; set; } = "";
     }
 }

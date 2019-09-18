@@ -20,6 +20,7 @@ namespace SMUModels
             this.TblAttendances = new HashSet<TblAttendance>();
             this.TblAttendances1 = new HashSet<TblAttendance>();
             this.TblAttendances2 = new HashSet<TblAttendance>();
+            this.TblEvaluations = new HashSet<TblEvaluation>();
         }
     
         public int ID { get; set; }
@@ -39,6 +40,8 @@ namespace SMUModels
         public virtual ICollection<TblAttendance> TblAttendances1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblAttendance> TblAttendances2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblEvaluation> TblEvaluations { get; set; }
         public virtual TblSession TblSession { get; set; }
         public virtual TblSession TblSession1 { get; set; }
         public virtual TblSession TblSession2 { get; set; }

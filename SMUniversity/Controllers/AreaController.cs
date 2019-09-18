@@ -30,7 +30,7 @@ namespace SMUniversity.Controllers
                 Result += "<option value='0'>المنطقة</option>";
                 foreach (var area in _AreasList)
                 {
-                    Result += "<option value=' " + area.ID + "'>" + area.NameAr + "</option>";
+                    Result += "<option value='" + area.ID + "'>" + area.NameAr + "</option>";
                 }
 
                 return Json(Result);

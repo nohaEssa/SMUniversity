@@ -31,6 +31,7 @@
     <EntitySet Name="TblPrivateSessions" EntityType="admin_SMUniversityModel.TblPrivateSession" />
     <EntitySet Name="TblProducts" EntityType="admin_SMUniversityModel.TblProduct" />
     <EntitySet Name="TblProductCategories" EntityType="admin_SMUniversityModel.TblProductCategory" />
+    <EntitySet Name="TblRegisterDevices" EntityType="admin_SMUniversityModel.TblRegisterDevice" />
     <EntitySet Name="TblRevenues" EntityType="admin_SMUniversityModel.TblRevenue" />
     <EntitySet Name="TblScreens" EntityType="admin_SMUniversityModel.TblScreen" />
     <EntitySet Name="TblScreenHalls" EntityType="admin_SMUniversityModel.TblScreenHall" />
@@ -48,6 +49,7 @@
     <EntitySet Name="TblUserCredentials" EntityType="admin_SMUniversityModel.TblUserCredential" />
     <EntitySet Name="TblUserTypes" EntityType="admin_SMUniversityModel.TblUserType" />
     <EntitySet Name="TblVouchers" EntityType="admin_SMUniversityModel.TblVoucher" />
+    <EntitySet Name="TblVoucherCategories" EntityType="admin_SMUniversityModel.TblVoucherCategory" />
     <EntitySet Name="TransactionTypes" EntityType="admin_SMUniversityModel.TransactionType" />
     <AssociationSet Name="FK__TblArea__Governo__03BB8E22" Association="admin_SMUniversityModel.FK__TblArea__Governo__03BB8E22">
       <End Role="TblGovernorate" EntitySet="TblGovernorates" />
@@ -145,6 +147,10 @@
       <End Role="TblSubscription" EntitySet="TblSubscriptions" />
       <End Role="TblAttendance" EntitySet="TblAttendances" />
     </AssociationSet>
+    <AssociationSet Name="FK__TblBalanc__Lectu__119F9925" Association="admin_SMUniversityModel.FK__TblBalanc__Lectu__119F9925">
+      <End Role="TblLecturer" EntitySet="TblLecturers" />
+      <End Role="TblBalanceTransaction" EntitySet="TblBalanceTransactions" />
+    </AssociationSet>
     <AssociationSet Name="FK__TblBalanc__Stude__08B54D69" Association="admin_SMUniversityModel.FK__TblBalanc__Stude__08B54D69">
       <End Role="TblStudent" EntitySet="TblStudents" />
       <End Role="TblBalanceTransaction" EntitySet="TblBalanceTransactions" />
@@ -172,6 +178,10 @@
     <AssociationSet Name="FK__TblBalanc__UserI__75F77EB0" Association="admin_SMUniversityModel.FK__TblBalanc__UserI__75F77EB0">
       <End Role="TblUser" EntitySet="TblUsers" />
       <End Role="TblBalanceTransaction" EntitySet="TblBalanceTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblInvoic__Balan__1C1D2798" Association="admin_SMUniversityModel.FK__TblInvoic__Balan__1C1D2798">
+      <End Role="TblBalanceTransaction" EntitySet="TblBalanceTransactions" />
+      <End Role="TblInvoice" EntitySet="TblInvoices" />
     </AssociationSet>
     <AssociationSet Name="FK__TblEmploy__Branc__10216507" Association="admin_SMUniversityModel.FK__TblEmploy__Branc__10216507">
       <End Role="TblBranch" EntitySet="TblBranches" />
@@ -413,8 +423,8 @@
       <End Role="TblEvaluationQuestion" EntitySet="TblEvaluationQuestions" />
       <End Role="TblEvaluation" EntitySet="TblEvaluations" />
     </AssociationSet>
-    <AssociationSet Name="FK__TblEvalua__Sessi__640DD89F" Association="admin_SMUniversityModel.FK__TblEvalua__Sessi__640DD89F">
-      <End Role="TblSession" EntitySet="TblSessions" />
+    <AssociationSet Name="FK__TblEvalua__Sessi__1EF99443" Association="admin_SMUniversityModel.FK__TblEvalua__Sessi__1EF99443">
+      <End Role="TblSessionTime" EntitySet="TblSessionTimes" />
       <End Role="TblEvaluation" EntitySet="TblEvaluations" />
     </AssociationSet>
     <AssociationSet Name="FK__TblEvalua__Stude__6319B466" Association="admin_SMUniversityModel.FK__TblEvalua__Stude__6319B466">
@@ -497,6 +507,14 @@
       <End Role="TblHelpQuestion" EntitySet="TblHelpQuestions" />
       <End Role="TblStudentComplaint" EntitySet="TblStudentComplaints" />
     </AssociationSet>
+    <AssociationSet Name="FK__TblInvoic__Produ__1B29035F" Association="admin_SMUniversityModel.FK__TblInvoic__Produ__1B29035F">
+      <End Role="TblProduct" EntitySet="TblProducts" />
+      <End Role="TblInvoice" EntitySet="TblInvoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblInvoic__Stude__1A34DF26" Association="admin_SMUniversityModel.FK__TblInvoic__Stude__1A34DF26">
+      <End Role="TblStudent" EntitySet="TblStudents" />
+      <End Role="TblInvoice" EntitySet="TblInvoices" />
+    </AssociationSet>
     <AssociationSet Name="FK__TblInvoic__Subsc__3CBF0154" Association="admin_SMUniversityModel.FK__TblInvoic__Subsc__3CBF0154">
       <End Role="TblSubscription" EntitySet="TblSubscriptions" />
       <End Role="TblInvoice" EntitySet="TblInvoices" />
@@ -532,6 +550,10 @@
     <AssociationSet Name="FK__TblPrivat__Lectu__2AA05119" Association="admin_SMUniversityModel.FK__TblPrivat__Lectu__2AA05119">
       <End Role="TblLecturer" EntitySet="TblLecturers" />
       <End Role="TblPrivateSession" EntitySet="TblPrivateSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblRegist__Lectu__0169315C" Association="admin_SMUniversityModel.FK__TblRegist__Lectu__0169315C">
+      <End Role="TblLecturer" EntitySet="TblLecturers" />
+      <End Role="TblRegisterDevice" EntitySet="TblRegisterDevices" />
     </AssociationSet>
     <AssociationSet Name="FK__TblRevenu__Teach__1A9EF37A" Association="admin_SMUniversityModel.FK__TblRevenu__Teach__1A9EF37A">
       <End Role="TblLecturer" EntitySet="TblLecturers" />
@@ -645,15 +667,15 @@
       <End Role="TblUser" EntitySet="TblUsers" />
       <End Role="TblNotification" EntitySet="TblNotifications" />
     </AssociationSet>
-    <AssociationSet Name="FK__TblPermis__Permi__436BFEE3" Association="admin_SMUniversityModel.FK__TblPermis__Permi__436BFEE3">
+    <AssociationSet Name="FK__TblPermis__Permi__0BE6BFCF" Association="admin_SMUniversityModel.FK__TblPermis__Permi__0BE6BFCF">
       <End Role="TblPermissionCategory" EntitySet="TblPermissionCategories" />
       <End Role="TblPermission" EntitySet="TblPermissions" />
     </AssociationSet>
-    <AssociationSet Name="FK__TblPermis__Permi__473C8FC7" Association="admin_SMUniversityModel.FK__TblPermis__Permi__473C8FC7">
-      <End Role="TblPermissionCategory" EntitySet="TblPermissionCategories" />
+    <AssociationSet Name="FK__TblPermis__Permi__0FB750B3" Association="admin_SMUniversityModel.FK__TblPermis__Permi__0FB750B3">
+      <End Role="TblPermission" EntitySet="TblPermissions" />
       <End Role="TblPermissionUser" EntitySet="TblPermissionUsers" />
     </AssociationSet>
-    <AssociationSet Name="FK__TblPermis__UserI__4830B400" Association="admin_SMUniversityModel.FK__TblPermis__UserI__4830B400">
+    <AssociationSet Name="FK__TblPermis__UserI__0EC32C7A" Association="admin_SMUniversityModel.FK__TblPermis__UserI__0EC32C7A">
       <End Role="TblUser" EntitySet="TblUsers" />
       <End Role="TblPermissionUser" EntitySet="TblPermissionUsers" />
     </AssociationSet>
@@ -665,9 +687,13 @@
       <End Role="TblSubject" EntitySet="TblSubjects" />
       <End Role="TblPrivateSession" EntitySet="TblPrivateSessions" />
     </AssociationSet>
-    <AssociationSet Name="FK__TblProduc__Produ__74444068" Association="admin_SMUniversityModel.FK__TblProduc__Produ__74444068">
+    <AssociationSet Name="FK__TblProduc__Produ__1D114BD1" Association="admin_SMUniversityModel.FK__TblProduc__Produ__1D114BD1">
+      <End Role="TblProductCategory" EntitySet="TblProductCategories" />
       <End Role="TblProduct" EntitySet="TblProducts" />
-      <End Role="TblProduct1" EntitySet="TblProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblRegist__Stude__00750D23" Association="admin_SMUniversityModel.FK__TblRegist__Stude__00750D23">
+      <End Role="TblStudent" EntitySet="TblStudents" />
+      <End Role="TblRegisterDevice" EntitySet="TblRegisterDevices" />
     </AssociationSet>
     <AssociationSet Name="FK__TblScreen__Crede__66B53B20" Association="admin_SMUniversityModel.FK__TblScreen__Crede__66B53B20">
       <End Role="TblUserCredential" EntitySet="TblUserCredentials" />
@@ -853,14 +879,9 @@
       <End Role="TblUserType" EntitySet="TblUserTypes" />
       <End Role="TblUserCredential" EntitySet="TblUserCredentials" />
     </AssociationSet>
-    <EntitySet Name="TblRegisterDevices" EntityType="admin_SMUniversityModel.TblRegisterDevice" />
-    <AssociationSet Name="FK__TblRegist__Lectu__0169315C" Association="admin_SMUniversityModel.FK__TblRegist__Lectu__0169315C">
-      <End Role="TblLecturer" EntitySet="TblLecturers" />
-      <End Role="TblRegisterDevice" EntitySet="TblRegisterDevices" />
-    </AssociationSet>
-    <AssociationSet Name="FK__TblRegist__Stude__00750D23" Association="admin_SMUniversityModel.FK__TblRegist__Stude__00750D23">
-      <End Role="TblStudent" EntitySet="TblStudents" />
-      <End Role="TblRegisterDevice" EntitySet="TblRegisterDevices" />
+    <AssociationSet Name="FK__TblVouche__Categ__1940BAED" Association="admin_SMUniversityModel.FK__TblVouche__Categ__1940BAED">
+      <End Role="TblVoucherCategory" EntitySet="TblVoucherCategories" />
+      <End Role="TblVoucher" EntitySet="TblVouchers" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="TblArea">
@@ -917,7 +938,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="StudentID" Type="Int32" />
     <Property Name="UserID" Type="Int32" />
     <Property Name="TitleAr" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Price" Type="Decimal" Precision="10" Scale="3" />
@@ -928,6 +949,8 @@
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="TitleEn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LecturerID" Type="Int32" />
+    <NavigationProperty Name="TblLecturer" Relationship="admin_SMUniversityModel.FK__TblBalanc__Lectu__119F9925" FromRole="TblBalanceTransaction" ToRole="TblLecturer" />
     <NavigationProperty Name="TblStudent" Relationship="admin_SMUniversityModel.FK__TblBalanc__Stude__08B54D69" FromRole="TblBalanceTransaction" ToRole="TblStudent" />
     <NavigationProperty Name="TblStudent1" Relationship="admin_SMUniversityModel.FK__TblBalanc__Stude__0A688BB1" FromRole="TblBalanceTransaction" ToRole="TblStudent" />
     <NavigationProperty Name="TblStudent2" Relationship="admin_SMUniversityModel.FK__TblBalanc__Stude__3B40CD36" FromRole="TblBalanceTransaction" ToRole="TblStudent" />
@@ -935,6 +958,7 @@
     <NavigationProperty Name="TransactionType1" Relationship="admin_SMUniversityModel.FK__TblBalanc__Trans__0B5CAFEA" FromRole="TblBalanceTransaction" ToRole="TransactionType" />
     <NavigationProperty Name="TransactionType2" Relationship="admin_SMUniversityModel.FK__TblBalanc__Trans__3C34F16F" FromRole="TblBalanceTransaction" ToRole="TransactionType" />
     <NavigationProperty Name="TblUser" Relationship="admin_SMUniversityModel.FK__TblBalanc__UserI__75F77EB0" FromRole="TblBalanceTransaction" ToRole="TblUser" />
+    <NavigationProperty Name="TblInvoices" Relationship="admin_SMUniversityModel.FK__TblInvoic__Balan__1C1D2798" FromRole="TblBalanceTransaction" ToRole="TblInvoice" />
   </EntityType>
   <EntityType Name="TblBranch">
     <Key>
@@ -998,6 +1022,7 @@
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdateDate" Type="DateTime" Precision="3" />
     <Property Name="TitleEn" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ForApplication" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="TblChargeCards" Relationship="admin_SMUniversityModel.FK__TblCharge__CardC__0C50D423" FromRole="TblCardCategory" ToRole="TblChargeCard" />
     <NavigationProperty Name="TblChargeCards1" Relationship="admin_SMUniversityModel.FK__TblCharge__CardC__3D2915A8" FromRole="TblCardCategory" ToRole="TblChargeCard" />
     <NavigationProperty Name="TblChargeCards2" Relationship="admin_SMUniversityModel.FK__TblCharge__CardC__74AE54BC" FromRole="TblCardCategory" ToRole="TblChargeCard" />
@@ -1097,14 +1122,14 @@
     <Property Name="QuestionID" Type="Int32" Nullable="false" />
     <Property Name="AnswerID" Type="Int32" Nullable="false" />
     <Property Name="StudentID" Type="Int32" Nullable="false" />
-    <Property Name="SessionID" Type="Int32" Nullable="false" />
     <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="EvaluationNotes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SessionTimesID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="TblEvaluationQuestionAnswer" Relationship="admin_SMUniversityModel.FK__TblEvalua__Answe__6225902D" FromRole="TblEvaluation" ToRole="TblEvaluationQuestionAnswer" />
     <NavigationProperty Name="TblEvaluationQuestion" Relationship="admin_SMUniversityModel.FK__TblEvalua__Quest__61316BF4" FromRole="TblEvaluation" ToRole="TblEvaluationQuestion" />
-    <NavigationProperty Name="TblSession" Relationship="admin_SMUniversityModel.FK__TblEvalua__Sessi__640DD89F" FromRole="TblEvaluation" ToRole="TblSession" />
+    <NavigationProperty Name="TblSessionTime" Relationship="admin_SMUniversityModel.FK__TblEvalua__Sessi__1EF99443" FromRole="TblEvaluation" ToRole="TblSessionTime" />
     <NavigationProperty Name="TblStudent" Relationship="admin_SMUniversityModel.FK__TblEvalua__Stude__6319B466" FromRole="TblEvaluation" ToRole="TblStudent" />
   </EntityType>
   <EntityType Name="TblEvaluationQuestion">
@@ -1232,14 +1257,22 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Serial" Type="Int64" Nullable="false" />
-    <Property Name="SubscriptionID" Type="Int32" Nullable="false" />
-    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="SubscriptionID" Type="Int32" />
+    <Property Name="EmployeeID" Type="Int32" />
     <Property Name="Pending" Type="Boolean" Nullable="false" />
     <Property Name="PaymentMethod" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
+    <Property Name="RealCash" Type="Boolean" Nullable="false" />
+    <Property Name="BalanceTransactionID" Type="Int32" />
+    <NavigationProperty Name="TblBalanceTransaction" Relationship="admin_SMUniversityModel.FK__TblInvoic__Balan__1C1D2798" FromRole="TblInvoice" ToRole="TblBalanceTransaction" />
     <NavigationProperty Name="TblEmployee" Relationship="admin_SMUniversityModel.FK__TblInvoic__Emplo__3DB3258D" FromRole="TblInvoice" ToRole="TblEmployee" />
+    <NavigationProperty Name="TblProduct" Relationship="admin_SMUniversityModel.FK__TblInvoic__Produ__1B29035F" FromRole="TblInvoice" ToRole="TblProduct" />
+    <NavigationProperty Name="TblStudent" Relationship="admin_SMUniversityModel.FK__TblInvoic__Stude__1A34DF26" FromRole="TblInvoice" ToRole="TblStudent" />
     <NavigationProperty Name="TblSubscription" Relationship="admin_SMUniversityModel.FK__TblInvoic__Subsc__3CBF0154" FromRole="TblInvoice" ToRole="TblSubscription" />
   </EntityType>
   <EntityType Name="TblLecturer">
@@ -1263,6 +1296,7 @@
     <Property Name="FirstNameEn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="SecondNameEn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="ThirdNameEn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TblBalanceTransactions" Relationship="admin_SMUniversityModel.FK__TblBalanc__Lectu__119F9925" FromRole="TblLecturer" ToRole="TblBalanceTransaction" />
     <NavigationProperty Name="TblBranch" Relationship="admin_SMUniversityModel.FK__TblLectur__Branc__16CE6296" FromRole="TblLecturer" ToRole="TblBranch" />
     <NavigationProperty Name="TblBranch1" Relationship="admin_SMUniversityModel.FK__TblLectur__Branc__17C286CF" FromRole="TblLecturer" ToRole="TblBranch" />
     <NavigationProperty Name="TblBranch2" Relationship="admin_SMUniversityModel.FK__TblLectur__Branc__47A6A41B" FromRole="TblLecturer" ToRole="TblBranch" />
@@ -1277,6 +1311,7 @@
     <NavigationProperty Name="TblManualInvoices" Relationship="admin_SMUniversityModel.FK__TblManual__Lectu__7073AF84" FromRole="TblLecturer" ToRole="TblManualInvoice" />
     <NavigationProperty Name="TblNotifications" Relationship="admin_SMUniversityModel.FK__TblNotifi__Lectu__047AA831" FromRole="TblLecturer" ToRole="TblNotification" />
     <NavigationProperty Name="TblPrivateSessions" Relationship="admin_SMUniversityModel.FK__TblPrivat__Lectu__2AA05119" FromRole="TblLecturer" ToRole="TblPrivateSession" />
+    <NavigationProperty Name="TblRegisterDevices" Relationship="admin_SMUniversityModel.FK__TblRegist__Lectu__0169315C" FromRole="TblLecturer" ToRole="TblRegisterDevice" />
     <NavigationProperty Name="TblRevenues" Relationship="admin_SMUniversityModel.FK__TblRevenu__Teach__1A9EF37A" FromRole="TblLecturer" ToRole="TblRevenue" />
     <NavigationProperty Name="TblRevenues1" Relationship="admin_SMUniversityModel.FK__TblRevenu__Teach__1B9317B3" FromRole="TblLecturer" ToRole="TblRevenue" />
     <NavigationProperty Name="TblRevenues2" Relationship="admin_SMUniversityModel.FK__TblRevenu__Teach__34C8D9D1" FromRole="TblLecturer" ToRole="TblRevenue" />
@@ -1290,7 +1325,6 @@
     <NavigationProperty Name="TblSessions4" Relationship="admin_SMUniversityModel.FK__TblSessio__Teach__37A5467C" FromRole="TblLecturer" ToRole="TblSession" />
     <NavigationProperty Name="TblSessions5" Relationship="admin_SMUniversityModel.FK__TblSessio__Teach__5BE2A6F2" FromRole="TblLecturer" ToRole="TblSession" />
     <NavigationProperty Name="TblVouchers" Relationship="admin_SMUniversityModel.FK__TblVouche__Lectu__38EE7070" FromRole="TblLecturer" ToRole="TblVoucher" />
-    <NavigationProperty Name="TblRegisterDevices" Relationship="admin_SMUniversityModel.FK__TblRegist__Lectu__0169315C" FromRole="TblLecturer" ToRole="TblRegisterDevice" />
   </EntityType>
   <EntityType Name="TblLecturerPaymentMethod">
     <Key>
@@ -1361,6 +1395,7 @@
     <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Cost" Type="Decimal" Precision="10" Scale="3" />
     <NavigationProperty Name="TblHall" Relationship="admin_SMUniversityModel.FK__TblManual__HallI__7167D3BD" FromRole="TblManualInvoice" ToRole="TblHall" />
     <NavigationProperty Name="TblLecturer" Relationship="admin_SMUniversityModel.FK__TblManual__Lectu__7073AF84" FromRole="TblManualInvoice" ToRole="TblLecturer" />
   </EntityType>
@@ -1390,41 +1425,39 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NameAr" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="NameEn" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NameAr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NameEn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="PermissionCategoryID" Type="Int32" Nullable="false" />
     <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="TblPermissionCategory" Relationship="admin_SMUniversityModel.FK__TblPermis__Permi__436BFEE3" FromRole="TblPermission" ToRole="TblPermissionCategory" />
+    <NavigationProperty Name="TblPermissionCategory" Relationship="admin_SMUniversityModel.FK__TblPermis__Permi__0BE6BFCF" FromRole="TblPermission" ToRole="TblPermissionCategory" />
+    <NavigationProperty Name="TblPermissionUsers" Relationship="admin_SMUniversityModel.FK__TblPermis__Permi__0FB750B3" FromRole="TblPermission" ToRole="TblPermissionUser" />
   </EntityType>
   <EntityType Name="TblPermissionCategory">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NameAr" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="NameEn" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NameAr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NameEn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="TblPermissions" Relationship="admin_SMUniversityModel.FK__TblPermis__Permi__436BFEE3" FromRole="TblPermissionCategory" ToRole="TblPermission" />
-    <NavigationProperty Name="TblPermissionUsers" Relationship="admin_SMUniversityModel.FK__TblPermis__Permi__473C8FC7" FromRole="TblPermissionCategory" ToRole="TblPermissionUser" />
+    <NavigationProperty Name="TblPermissions" Relationship="admin_SMUniversityModel.FK__TblPermis__Permi__0BE6BFCF" FromRole="TblPermissionCategory" ToRole="TblPermission" />
   </EntityType>
   <EntityType Name="TblPermissionUser">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NameAr" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="NameEn" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="PermissionCategoryID" Type="Int32" Nullable="false" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="PermissionID" Type="Int32" Nullable="false" />
     <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="TblPermissionCategory" Relationship="admin_SMUniversityModel.FK__TblPermis__Permi__473C8FC7" FromRole="TblPermissionUser" ToRole="TblPermissionCategory" />
-    <NavigationProperty Name="TblUser" Relationship="admin_SMUniversityModel.FK__TblPermis__UserI__4830B400" FromRole="TblPermissionUser" ToRole="TblUser" />
+    <NavigationProperty Name="TblPermission" Relationship="admin_SMUniversityModel.FK__TblPermis__Permi__0FB750B3" FromRole="TblPermissionUser" ToRole="TblPermission" />
+    <NavigationProperty Name="TblUser" Relationship="admin_SMUniversityModel.FK__TblPermis__UserI__0EC32C7A" FromRole="TblPermissionUser" ToRole="TblUser" />
   </EntityType>
   <EntityType Name="TblPrivateSession">
     <Key>
@@ -1450,7 +1483,6 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProductCategoryID" Type="Int32" Nullable="false" />
     <Property Name="NameAr" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="NameEn" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="DescriptionAr" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -1461,8 +1493,9 @@
     <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="TblProduct1" Relationship="admin_SMUniversityModel.FK__TblProduc__Produ__74444068" FromRole="TblProduct" ToRole="TblProduct1" />
-    <NavigationProperty Name="TblProduct2" Relationship="admin_SMUniversityModel.FK__TblProduc__Produ__74444068" FromRole="TblProduct1" ToRole="TblProduct" />
+    <Property Name="ProductCategoryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TblInvoices" Relationship="admin_SMUniversityModel.FK__TblInvoic__Produ__1B29035F" FromRole="TblProduct" ToRole="TblInvoice" />
+    <NavigationProperty Name="TblProductCategory" Relationship="admin_SMUniversityModel.FK__TblProduc__Produ__1D114BD1" FromRole="TblProduct" ToRole="TblProductCategory" />
   </EntityType>
   <EntityType Name="TblProductCategory">
     <Key>
@@ -1475,6 +1508,23 @@
     <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TblProducts" Relationship="admin_SMUniversityModel.FK__TblProduc__Produ__1D114BD1" FromRole="TblProductCategory" ToRole="TblProduct" />
+  </EntityType>
+  <EntityType Name="TblRegisterDevice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Token" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DeviceTypeID" Type="Int32" Nullable="false" />
+    <Property Name="StudentID" Type="Int32" />
+    <Property Name="LecturerID" Type="Int32" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="BadgeNo" Type="Int32" />
+    <NavigationProperty Name="TblLecturer" Relationship="admin_SMUniversityModel.FK__TblRegist__Lectu__0169315C" FromRole="TblRegisterDevice" ToRole="TblLecturer" />
+    <NavigationProperty Name="TblStudent" Relationship="admin_SMUniversityModel.FK__TblRegist__Stude__00750D23" FromRole="TblRegisterDevice" ToRole="TblStudent" />
   </EntityType>
   <EntityType Name="TblRevenue">
     <Key>
@@ -1551,13 +1601,13 @@
     <Property Name="ForPublic" Type="Boolean" />
     <Property Name="DescriptionEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Picture" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="GeneralSession" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="TblBranch" Relationship="admin_SMUniversityModel.FK__TblSessio__Branc__1C873BEC" FromRole="TblSession" ToRole="TblBranch" />
     <NavigationProperty Name="TblBranch1" Relationship="admin_SMUniversityModel.FK__TblSessio__Branc__1D7B6025" FromRole="TblSession" ToRole="TblBranch" />
     <NavigationProperty Name="TblBranch2" Relationship="admin_SMUniversityModel.FK__TblSessio__Branc__35BCFE0A" FromRole="TblSession" ToRole="TblBranch" />
     <NavigationProperty Name="TblBranch3" Relationship="admin_SMUniversityModel.FK__TblSessio__Branc__4D5F7D71" FromRole="TblSession" ToRole="TblBranch" />
     <NavigationProperty Name="TblBranch4" Relationship="admin_SMUniversityModel.FK__TblSessio__Branc__4E53A1AA" FromRole="TblSession" ToRole="TblBranch" />
     <NavigationProperty Name="TblBranch5" Relationship="admin_SMUniversityModel.FK__TblSessio__Branc__59FA5E80" FromRole="TblSession" ToRole="TblBranch" />
-    <NavigationProperty Name="TblEvaluations" Relationship="admin_SMUniversityModel.FK__TblEvalua__Sessi__640DD89F" FromRole="TblSession" ToRole="TblEvaluation" />
     <NavigationProperty Name="TblFavoriteSessions" Relationship="admin_SMUniversityModel.FK__TblFavori__Sessi__10566F31" FromRole="TblSession" ToRole="TblFavoriteSession" />
     <NavigationProperty Name="TblFavoriteSessions1" Relationship="admin_SMUniversityModel.FK__TblFavori__Sessi__1209AD79" FromRole="TblSession" ToRole="TblFavoriteSession" />
     <NavigationProperty Name="TblFavoriteSessions2" Relationship="admin_SMUniversityModel.FK__TblFavori__Sessi__42E1EEFE" FromRole="TblSession" ToRole="TblFavoriteSession" />
@@ -1608,6 +1658,8 @@
     <Property Name="Price1" Type="Decimal" Precision="10" Scale="3" />
     <Property Name="Price2" Type="Decimal" Precision="10" Scale="3" />
     <Property Name="Price3" Type="Decimal" Precision="10" Scale="3" />
+    <Property Name="SessionPrice" Type="Decimal" Precision="10" Scale="3" />
+    <Property Name="SingleSessionQRCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="TblSession" Relationship="admin_SMUniversityModel.FK__TblSessio__Sessi__2334397B" FromRole="TblSessionDetail" ToRole="TblSession" />
     <NavigationProperty Name="TblSession1" Relationship="admin_SMUniversityModel.FK__TblSessio__Sessi__24285DB4" FromRole="TblSessionDetail" ToRole="TblSession" />
     <NavigationProperty Name="TblSession2" Relationship="admin_SMUniversityModel.FK__TblSessio__Sessi__38996AB5" FromRole="TblSessionDetail" ToRole="TblSession" />
@@ -1644,6 +1696,7 @@
     <NavigationProperty Name="TblAttendances" Relationship="admin_SMUniversityModel.FK__TblAttend__Sessi__05A3D694" FromRole="TblSessionTime" ToRole="TblAttendance" />
     <NavigationProperty Name="TblAttendances1" Relationship="admin_SMUniversityModel.FK__TblAttend__Sessi__1AD3FDA4" FromRole="TblSessionTime" ToRole="TblAttendance" />
     <NavigationProperty Name="TblAttendances2" Relationship="admin_SMUniversityModel.FK__TblAttend__Sessi__367C1819" FromRole="TblSessionTime" ToRole="TblAttendance" />
+    <NavigationProperty Name="TblEvaluations" Relationship="admin_SMUniversityModel.FK__TblEvalua__Sessi__1EF99443" FromRole="TblSessionTime" ToRole="TblEvaluation" />
     <NavigationProperty Name="TblSession" Relationship="admin_SMUniversityModel.FK__TblSessio__Sessi__19DFD96B" FromRole="TblSessionTime" ToRole="TblSession" />
     <NavigationProperty Name="TblSession1" Relationship="admin_SMUniversityModel.FK__TblSessio__Sessi__251C81ED" FromRole="TblSessionTime" ToRole="TblSession" />
     <NavigationProperty Name="TblSession2" Relationship="admin_SMUniversityModel.FK__TblSessio__Sessi__55F4C372" FromRole="TblSessionTime" ToRole="TblSession" />
@@ -1659,7 +1712,7 @@
     <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Gender" Type="Boolean" Nullable="false" />
-    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="GovernorateID" Type="Int32" />
     <Property Name="AreaID" Type="Int32" />
     <Property Name="ProfilePic" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -1672,9 +1725,12 @@
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="MajorID" Type="Int32" />
     <Property Name="CredentialsID" Type="Int32" />
-    <Property Name="VerificationCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="VerificationCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="Verified" Type="Boolean" Nullable="false" />
     <Property Name="StudentType" Type="Boolean" />
+    <Property Name="FirstNameEn" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SecondNameEn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ThirdNameEn" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="TblArea" Relationship="admin_SMUniversityModel.FK__TblStuden__AreaI__2610A626" FromRole="TblStudent" ToRole="TblArea" />
     <NavigationProperty Name="TblArea1" Relationship="admin_SMUniversityModel.FK__TblStuden__AreaI__2704CA5F" FromRole="TblStudent" ToRole="TblArea" />
     <NavigationProperty Name="TblArea2" Relationship="admin_SMUniversityModel.FK__TblStuden__AreaI__398D8EEE" FromRole="TblStudent" ToRole="TblArea" />
@@ -1713,6 +1769,7 @@
     <NavigationProperty Name="TblGovernorate3" Relationship="admin_SMUniversityModel.FK__TblStuden__Gover__5D95E53A" FromRole="TblStudent" ToRole="TblGovernorate" />
     <NavigationProperty Name="TblGovernorate4" Relationship="admin_SMUniversityModel.FK__TblStuden__Gover__5E8A0973" FromRole="TblStudent" ToRole="TblGovernorate" />
     <NavigationProperty Name="TblGovernorate5" Relationship="admin_SMUniversityModel.FK__TblStuden__Gover__60A75C0F" FromRole="TblStudent" ToRole="TblGovernorate" />
+    <NavigationProperty Name="TblInvoices" Relationship="admin_SMUniversityModel.FK__TblInvoic__Stude__1A34DF26" FromRole="TblStudent" ToRole="TblInvoice" />
     <NavigationProperty Name="TblMajor" Relationship="admin_SMUniversityModel.FK__TblStuden__Major__2EA5EC27" FromRole="TblStudent" ToRole="TblMajor" />
     <NavigationProperty Name="TblMajor1" Relationship="admin_SMUniversityModel.FK__TblStuden__Major__2F9A1060" FromRole="TblStudent" ToRole="TblMajor" />
     <NavigationProperty Name="TblMajor2" Relationship="admin_SMUniversityModel.FK__TblStuden__Major__3D5E1FD2" FromRole="TblStudent" ToRole="TblMajor" />
@@ -1721,6 +1778,7 @@
     <NavigationProperty Name="TblMajor5" Relationship="admin_SMUniversityModel.FK__TblStuden__Major__619B8048" FromRole="TblStudent" ToRole="TblMajor" />
     <NavigationProperty Name="TblNotifications" Relationship="admin_SMUniversityModel.FK__TblNotifi__Stude__038683F8" FromRole="TblStudent" ToRole="TblNotification" />
     <NavigationProperty Name="TblPrivateSessions" Relationship="admin_SMUniversityModel.FK__TblPrivat__Stude__28B808A7" FromRole="TblStudent" ToRole="TblPrivateSession" />
+    <NavigationProperty Name="TblRegisterDevices" Relationship="admin_SMUniversityModel.FK__TblRegist__Stude__00750D23" FromRole="TblStudent" ToRole="TblRegisterDevice" />
     <NavigationProperty Name="TblUserCredential" Relationship="admin_SMUniversityModel.FK__TblStuden__Crede__0B91BA14" FromRole="TblStudent" ToRole="TblUserCredential" />
     <NavigationProperty Name="TblUserCredential1" Relationship="admin_SMUniversityModel.FK__TblStuden__Crede__2BC97F7C" FromRole="TblStudent" ToRole="TblUserCredential" />
     <NavigationProperty Name="TblUserCredential2" Relationship="admin_SMUniversityModel.FK__TblStuden__Crede__5CA1C101" FromRole="TblStudent" ToRole="TblUserCredential" />
@@ -1737,7 +1795,6 @@
     <NavigationProperty Name="TblSubscriptions3" Relationship="admin_SMUniversityModel.FK__TblSubscr__Stude__656C112C" FromRole="TblStudent" ToRole="TblSubscription" />
     <NavigationProperty Name="TblSubscriptions4" Relationship="admin_SMUniversityModel.FK__TblSubscr__Stude__681373AD" FromRole="TblStudent" ToRole="TblSubscription" />
     <NavigationProperty Name="TblSubscriptions5" Relationship="admin_SMUniversityModel.FK__TblSubscr__Stude__690797E6" FromRole="TblStudent" ToRole="TblSubscription" />
-    <NavigationProperty Name="TblRegisterDevices" Relationship="admin_SMUniversityModel.FK__TblRegist__Stude__00750D23" FromRole="TblStudent" ToRole="TblRegisterDevice" />
   </EntityType>
   <EntityType Name="TblStudentComplaint">
     <Key>
@@ -1758,13 +1815,15 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MajorID" Type="Int32" Nullable="false" />
+    <Property Name="MajorID" Type="Int32" />
     <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="NameAr" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="NameEn" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Picture" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="GeneralSubject" Type="Boolean" Nullable="false" />
+    <Property Name="SubjectCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="TblLecturerSubjects" Relationship="admin_SMUniversityModel.FK__TblLectur__Subje__6D6238AF" FromRole="TblSubject" ToRole="TblLecturerSubject" />
     <NavigationProperty Name="TblMajor" Relationship="admin_SMUniversityModel.FK__TblSubjec__Major__336AA144" FromRole="TblSubject" ToRole="TblMajor" />
     <NavigationProperty Name="TblMajor1" Relationship="admin_SMUniversityModel.FK__TblSubjec__Major__345EC57D" FromRole="TblSubject" ToRole="TblMajor" />
@@ -1786,7 +1845,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="StudentID" Type="Int32" Nullable="false" />
-    <Property Name="SessionID" Type="Int32" Nullable="false" />
+    <Property Name="SessionID" Type="Int32" />
     <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
@@ -1794,6 +1853,8 @@
     <Property Name="Pending" Type="Boolean" Nullable="false" />
     <Property Name="PriceType" Type="Byte" Nullable="false" />
     <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="3" />
+    <Property Name="SubscripedAsSession" Type="Boolean" Nullable="false" />
+    <Property Name="FromLecturerSide" Type="Boolean" />
     <NavigationProperty Name="TblAttendances" Relationship="admin_SMUniversityModel.FK__TblAttend__Subsc__0880433F" FromRole="TblSubscription" ToRole="TblAttendance" />
     <NavigationProperty Name="TblAttendances1" Relationship="admin_SMUniversityModel.FK__TblAttend__Subsc__0D7A0286" FromRole="TblSubscription" ToRole="TblAttendance" />
     <NavigationProperty Name="TblAttendances2" Relationship="admin_SMUniversityModel.FK__TblAttend__Subsc__395884C4" FromRole="TblSubscription" ToRole="TblAttendance" />
@@ -1845,7 +1906,7 @@
     <Property Name="CredentialsID" Type="Int32" Nullable="false" />
     <Property Name="BranchID" Type="Int32" Nullable="false" />
     <Property Name="UserCategoryID" Type="Int32" Nullable="false" />
-    <Property Name="ProfilePic" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProfilePic" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
     <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
@@ -1854,7 +1915,7 @@
     <NavigationProperty Name="TblBalanceTransactions" Relationship="admin_SMUniversityModel.FK__TblBalanc__UserI__75F77EB0" FromRole="TblUser" ToRole="TblBalanceTransaction" />
     <NavigationProperty Name="TblBranch" Relationship="admin_SMUniversityModel.FK__TblUser__BranchI__4589517F" FromRole="TblUser" ToRole="TblBranch" />
     <NavigationProperty Name="TblNotifications" Relationship="admin_SMUniversityModel.FK__TblNotifi__UserI__056ECC6A" FromRole="TblUser" ToRole="TblNotification" />
-    <NavigationProperty Name="TblPermissionUsers" Relationship="admin_SMUniversityModel.FK__TblPermis__UserI__4830B400" FromRole="TblUser" ToRole="TblPermissionUser" />
+    <NavigationProperty Name="TblPermissionUsers" Relationship="admin_SMUniversityModel.FK__TblPermis__UserI__0EC32C7A" FromRole="TblUser" ToRole="TblPermissionUser" />
     <NavigationProperty Name="TblUserCredential" Relationship="admin_SMUniversityModel.FK__TblUser__Credent__44952D46" FromRole="TblUser" ToRole="TblUserCredential" />
     <NavigationProperty Name="TblUserCategory" Relationship="admin_SMUniversityModel.FK__TblUser__UserCat__467D75B8" FromRole="TblUser" ToRole="TblUserCategory" />
     <NavigationProperty Name="TblVouchers" Relationship="admin_SMUniversityModel.FK__TblVouche__UserI__6F4A8121" FromRole="TblUser" ToRole="TblVoucher" />
@@ -1912,8 +1973,8 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Serial" Type="Int64" Nullable="false" />
-    <Property Name="LecturerID" Type="Int32" Nullable="false" />
-    <Property Name="HallID" Type="Int32" Nullable="false" />
+    <Property Name="LecturerID" Type="Int32" />
+    <Property Name="HallID" Type="Int32" />
     <Property Name="FromDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -1923,9 +1984,25 @@
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Boolean" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" />
     <NavigationProperty Name="TblHall" Relationship="admin_SMUniversityModel.FK__TblVouche__HallI__39E294A9" FromRole="TblVoucher" ToRole="TblHall" />
     <NavigationProperty Name="TblLecturer" Relationship="admin_SMUniversityModel.FK__TblVouche__Lectu__38EE7070" FromRole="TblVoucher" ToRole="TblLecturer" />
     <NavigationProperty Name="TblUser" Relationship="admin_SMUniversityModel.FK__TblVouche__UserI__6F4A8121" FromRole="TblVoucher" ToRole="TblUser" />
+    <NavigationProperty Name="TblVoucherCategory" Relationship="admin_SMUniversityModel.FK__TblVouche__Categ__1940BAED" FromRole="TblVoucher" ToRole="TblVoucherCategory" />
+  </EntityType>
+  <EntityType Name="TblVoucherCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameAr" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NameEn" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TblVouchers" Relationship="admin_SMUniversityModel.FK__TblVouche__Categ__1940BAED" FromRole="TblVoucherCategory" ToRole="TblVoucher" />
   </EntityType>
   <EntityType Name="TransactionType">
     <Key>
@@ -2226,8 +2303,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__TblBalanc__Lectu__119F9925">
+    <End Type="admin_SMUniversityModel.TblLecturer" Role="TblLecturer" Multiplicity="0..1" />
+    <End Type="admin_SMUniversityModel.TblBalanceTransaction" Role="TblBalanceTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblBalanceTransaction">
+        <PropertyRef Name="LecturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__TblBalanc__Stude__08B54D69">
-    <End Type="admin_SMUniversityModel.TblStudent" Role="TblStudent" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblStudent" Role="TblStudent" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblBalanceTransaction" Role="TblBalanceTransaction" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblStudent">
@@ -2239,7 +2328,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblBalanc__Stude__0A688BB1">
-    <End Type="admin_SMUniversityModel.TblStudent" Role="TblStudent" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblStudent" Role="TblStudent" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblBalanceTransaction" Role="TblBalanceTransaction" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblStudent">
@@ -2251,7 +2340,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblBalanc__Stude__3B40CD36">
-    <End Type="admin_SMUniversityModel.TblStudent" Role="TblStudent" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblStudent" Role="TblStudent" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblBalanceTransaction" Role="TblBalanceTransaction" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblStudent">
@@ -2307,6 +2396,18 @@
       </Principal>
       <Dependent Role="TblBalanceTransaction">
         <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblInvoic__Balan__1C1D2798">
+    <End Type="admin_SMUniversityModel.TblBalanceTransaction" Role="TblBalanceTransaction" Multiplicity="0..1" />
+    <End Type="admin_SMUniversityModel.TblInvoice" Role="TblInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBalanceTransaction">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblInvoice">
+        <PropertyRef Name="BalanceTransactionID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2995,7 +3096,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblInvoic__Emplo__3DB3258D">
-    <End Type="admin_SMUniversityModel.TblEmployee" Role="TblEmployee" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblEmployee" Role="TblEmployee" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblInvoice" Role="TblInvoice" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblEmployee">
@@ -3030,15 +3131,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TblEvalua__Sessi__640DD89F">
-    <End Type="admin_SMUniversityModel.TblSession" Role="TblSession" Multiplicity="1" />
+  <Association Name="FK__TblEvalua__Sessi__1EF99443">
+    <End Type="admin_SMUniversityModel.TblSessionTime" Role="TblSessionTime" Multiplicity="1" />
     <End Type="admin_SMUniversityModel.TblEvaluation" Role="TblEvaluation" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TblSession">
+      <Principal Role="TblSessionTime">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="TblEvaluation">
-        <PropertyRef Name="SessionID" />
+        <PropertyRef Name="SessionTimesID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -3259,7 +3360,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblVouche__HallI__39E294A9">
-    <End Type="admin_SMUniversityModel.TblHall" Role="TblHall" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblHall" Role="TblHall" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblVoucher" Role="TblVoucher" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblHall">
@@ -3282,8 +3383,32 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__TblInvoic__Produ__1B29035F">
+    <End Type="admin_SMUniversityModel.TblProduct" Role="TblProduct" Multiplicity="0..1" />
+    <End Type="admin_SMUniversityModel.TblInvoice" Role="TblInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblProduct">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblInvoice">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblInvoic__Stude__1A34DF26">
+    <End Type="admin_SMUniversityModel.TblStudent" Role="TblStudent" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblInvoice" Role="TblInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblInvoice">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__TblInvoic__Subsc__3CBF0154">
-    <End Type="admin_SMUniversityModel.TblSubscription" Role="TblSubscription" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblSubscription" Role="TblSubscription" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblInvoice" Role="TblInvoice" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblSubscription">
@@ -3386,6 +3511,18 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="TblPrivateSession">
+        <PropertyRef Name="LecturerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblRegist__Lectu__0169315C">
+    <End Type="admin_SMUniversityModel.TblLecturer" Role="TblLecturer" Multiplicity="0..1" />
+    <End Type="admin_SMUniversityModel.TblRegisterDevice" Role="TblRegisterDevice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblLecturer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblRegisterDevice">
         <PropertyRef Name="LecturerID" />
       </Dependent>
     </ReferentialConstraint>
@@ -3535,7 +3672,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblVouche__Lectu__38EE7070">
-    <End Type="admin_SMUniversityModel.TblLecturer" Role="TblLecturer" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblLecturer" Role="TblLecturer" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblVoucher" Role="TblVoucher" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblLecturer">
@@ -3631,7 +3768,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubjec__Major__336AA144">
-    <End Type="admin_SMUniversityModel.TblMajor" Role="TblMajor" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblMajor" Role="TblMajor" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblSubject" Role="TblSubject" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblMajor">
@@ -3643,7 +3780,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubjec__Major__345EC57D">
-    <End Type="admin_SMUniversityModel.TblMajor" Role="TblMajor" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblMajor" Role="TblMajor" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblSubject" Role="TblSubject" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblMajor">
@@ -3655,7 +3792,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubjec__Major__3F466844">
-    <End Type="admin_SMUniversityModel.TblMajor" Role="TblMajor" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblMajor" Role="TblMajor" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblSubject" Role="TblSubject" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblMajor">
@@ -3667,7 +3804,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubjec__Major__6383C8BA">
-    <End Type="admin_SMUniversityModel.TblMajor" Role="TblMajor" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblMajor" Role="TblMajor" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblSubject" Role="TblSubject" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblMajor">
@@ -3679,7 +3816,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubjec__Major__6442E2C9">
-    <End Type="admin_SMUniversityModel.TblMajor" Role="TblMajor" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblMajor" Role="TblMajor" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblSubject" Role="TblSubject" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblMajor">
@@ -3691,7 +3828,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubjec__Major__65370702">
-    <End Type="admin_SMUniversityModel.TblMajor" Role="TblMajor" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblMajor" Role="TblMajor" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblSubject" Role="TblSubject" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblMajor">
@@ -3726,7 +3863,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TblPermis__Permi__436BFEE3">
+  <Association Name="FK__TblPermis__Permi__0BE6BFCF">
     <End Type="admin_SMUniversityModel.TblPermissionCategory" Role="TblPermissionCategory" Multiplicity="1" />
     <End Type="admin_SMUniversityModel.TblPermission" Role="TblPermission" Multiplicity="*" />
     <ReferentialConstraint>
@@ -3738,19 +3875,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TblPermis__Permi__473C8FC7">
-    <End Type="admin_SMUniversityModel.TblPermissionCategory" Role="TblPermissionCategory" Multiplicity="1" />
+  <Association Name="FK__TblPermis__Permi__0FB750B3">
+    <End Type="admin_SMUniversityModel.TblPermission" Role="TblPermission" Multiplicity="1" />
     <End Type="admin_SMUniversityModel.TblPermissionUser" Role="TblPermissionUser" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TblPermissionCategory">
+      <Principal Role="TblPermission">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="TblPermissionUser">
-        <PropertyRef Name="PermissionCategoryID" />
+        <PropertyRef Name="PermissionID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TblPermis__UserI__4830B400">
+  <Association Name="FK__TblPermis__UserI__0EC32C7A">
     <End Type="admin_SMUniversityModel.TblUser" Role="TblUser" Multiplicity="1" />
     <End Type="admin_SMUniversityModel.TblPermissionUser" Role="TblPermissionUser" Multiplicity="*" />
     <ReferentialConstraint>
@@ -3786,15 +3923,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TblProduc__Produ__74444068">
-    <End Type="admin_SMUniversityModel.TblProduct" Role="TblProduct" Multiplicity="1" />
-    <End Type="admin_SMUniversityModel.TblProduct" Role="TblProduct1" Multiplicity="*" />
+  <Association Name="FK__TblProduc__Produ__1D114BD1">
+    <End Type="admin_SMUniversityModel.TblProductCategory" Role="TblProductCategory" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblProduct" Role="TblProduct" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TblProduct">
+      <Principal Role="TblProductCategory">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="TblProduct1">
+      <Dependent Role="TblProduct">
         <PropertyRef Name="ProductCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblRegist__Stude__00750D23">
+    <End Type="admin_SMUniversityModel.TblStudent" Role="TblStudent" Multiplicity="0..1" />
+    <End Type="admin_SMUniversityModel.TblRegisterDevice" Role="TblRegisterDevice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblStudent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblRegisterDevice">
+        <PropertyRef Name="StudentID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -4015,7 +4164,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubscr__Sessi__3552E9B6">
-    <End Type="admin_SMUniversityModel.TblSession" Role="TblSession" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblSession" Role="TblSession" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblSubscription" Role="TblSubscription" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblSession">
@@ -4027,7 +4176,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubscr__Sessi__36470DEF">
-    <End Type="admin_SMUniversityModel.TblSession" Role="TblSession" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblSession" Role="TblSession" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblSubscription" Role="TblSubscription" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblSession">
@@ -4039,7 +4188,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubscr__Sessi__403A8C7D">
-    <End Type="admin_SMUniversityModel.TblSession" Role="TblSession" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblSession" Role="TblSession" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblSubscription" Role="TblSubscription" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblSession">
@@ -4051,7 +4200,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubscr__Sessi__6477ECF3">
-    <End Type="admin_SMUniversityModel.TblSession" Role="TblSession" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblSession" Role="TblSession" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblSubscription" Role="TblSubscription" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblSession">
@@ -4063,7 +4212,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubscr__Sessi__662B2B3B">
-    <End Type="admin_SMUniversityModel.TblSession" Role="TblSession" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblSession" Role="TblSession" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblSubscription" Role="TblSubscription" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblSession">
@@ -4075,7 +4224,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__TblSubscr__Sessi__671F4F74">
-    <End Type="admin_SMUniversityModel.TblSession" Role="TblSession" Multiplicity="1" />
+    <End Type="admin_SMUniversityModel.TblSession" Role="TblSession" Multiplicity="0..1" />
     <End Type="admin_SMUniversityModel.TblSubscription" Role="TblSubscription" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TblSession">
@@ -4350,43 +4499,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="TblRegisterDevice">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Token" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="DeviceTypeID" Type="Int32" Nullable="false" />
-    <Property Name="StudentID" Type="Int32" />
-    <Property Name="LecturerID" Type="Int32" />
-    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="TblLecturer" Relationship="admin_SMUniversityModel.FK__TblRegist__Lectu__0169315C" FromRole="TblRegisterDevice" ToRole="TblLecturer" />
-    <NavigationProperty Name="TblStudent" Relationship="admin_SMUniversityModel.FK__TblRegist__Stude__00750D23" FromRole="TblRegisterDevice" ToRole="TblStudent" />
-    <Property Name="BadgeNo" Type="Int32" />
-  </EntityType>
-  <Association Name="FK__TblRegist__Lectu__0169315C">
-    <End Type="admin_SMUniversityModel.TblLecturer" Role="TblLecturer" Multiplicity="0..1" />
-    <End Type="admin_SMUniversityModel.TblRegisterDevice" Role="TblRegisterDevice" Multiplicity="*" />
+  <Association Name="FK__TblVouche__Categ__1940BAED">
+    <End Type="admin_SMUniversityModel.TblVoucherCategory" Role="TblVoucherCategory" Multiplicity="0..1" />
+    <End Type="admin_SMUniversityModel.TblVoucher" Role="TblVoucher" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TblLecturer">
+      <Principal Role="TblVoucherCategory">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="TblRegisterDevice">
-        <PropertyRef Name="LecturerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TblRegist__Stude__00750D23">
-    <End Type="admin_SMUniversityModel.TblStudent" Role="TblStudent" Multiplicity="0..1" />
-    <End Type="admin_SMUniversityModel.TblRegisterDevice" Role="TblRegisterDevice" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TblStudent">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TblRegisterDevice">
-        <PropertyRef Name="StudentID" />
+      <Dependent Role="TblVoucher">
+        <PropertyRef Name="CategoryID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

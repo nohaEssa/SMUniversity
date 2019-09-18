@@ -18,15 +18,15 @@ namespace SMUModels
         public int QuestionID { get; set; }
         public int AnswerID { get; set; }
         public int StudentID { get; set; }
-        public int SessionID { get; set; }
         public bool IsDeleted { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public string EvaluationNotes { get; set; }
+        public int SessionTimesID { get; set; }
     
         public virtual TblEvaluationQuestionAnswer TblEvaluationQuestionAnswer { get; set; }
         public virtual TblEvaluationQuestion TblEvaluationQuestion { get; set; }
-        public virtual TblSession TblSession { get; set; }
+        public virtual TblSessionTime TblSessionTime { get; set; }
         public virtual TblStudent TblStudent { get; set; }
     }
 }

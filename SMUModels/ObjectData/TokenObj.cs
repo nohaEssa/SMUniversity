@@ -8,8 +8,8 @@ namespace SMUModels.ObjectData
 {
     public class TokenObj
     {
-        public string access_token { get; set; }
-        public string token_type { get; set; }
+        public string access_token { get; set; } = "";
+        public string token_type { get; set; } = "";
         public TimeSpan expires_in { get; set; }
     }
 }

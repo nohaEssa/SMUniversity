@@ -62,7 +62,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in _Context.TblSessions.Where(a => a.IsDeleted != true).ToList())
+                            @foreach (var item in _Context.TblSessions.Where(a => a.IsDeleted != true).OrderByDescending(a => a.ID).ToList())
                             {
                                 var SessionDetails = _Context.TblSessionDetails.Where(a => a.SessionID == item.ID).FirstOrDefault();
                                 <tr>
@@ -78,11 +78,11 @@
                                     <td>@item.ToDate.ToString("yyyy-MM-dd")</td>
                                     @if (item.Type)
                                     {
-                                        <td>دوره</td>
+                                        <td>محاضره</td>
                                     }
                                     else
                                     {
-                                        <td>محاضره</td>
+                                        <td>دوره</td>
                                     }
                                     <td>@item.CreatedDate.ToString("yyyy-MM-dd hh:mm tt")</td>
                                     <td>

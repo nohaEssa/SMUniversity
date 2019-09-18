@@ -1,0 +1,97 @@
+﻿@model List<SMUModels.TblVoucherCategory>
+@{
+    ViewBag.Title = "RentHall";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/Invoice/CreateVoucher.js"></script>
+
+<div id="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!--Top header start-->
+                <h3 class="ls-top-header">إنشاء سند يدوي</h3>
+                <!--Top header end -->
+                <!--Top breadcrumb start -->
+                <ol class="breadcrumb">
+                    <li><a href="/Home/Index"><i class="fa fa-home"></i></a></li>
+                    <li><a href="/Invoice/VoucherList2">الرئيسية</a></li>
+                    <li class="active"><a href="/Invoice/CreateVoucher">إنشاء سند يدوي</a></li>
+                </ol>
+                <!--Top breadcrumb start -->
+            </div>
+        </div>
+        <!-- Main Content Element  Start-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">تأجير قاعه</h3>
+                    </div>
+                    <form id="CreateVoucher" action="/Invoice/CreateVoucher" method="post" class="form-horizontal ls_form" enctype='multipart/form-data'>
+                        <div class="panel-body form_view">
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">فئات السندات</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="CategoryID" name="CategoryID" required>
+                                            <option value="0">الفئه</option>
+                                            @foreach (var cat in Model)
+                                            {
+                                                <option value="@cat.ID">@cat.NameAr</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">الإسم</label>
+                                    <div class="col-md-10">
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="Name" name="Name" placeholder="ادخل الإسم">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">المبلغ</label>
+                                    <div class="col-md-10">
+                                        <input type="number"
+                                               class="form-control validate[required] text-input"
+                                               id="Cost" name="Cost" placeholder="ادخل مبلغ السند">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <label class="col-md-2 control-label">التاريخ</label>
+                                <div class="col-md-10">
+                                    <div class="ls-button-group border-bottom">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5>من تاريخ</h5>
+                                                <input id="FromDate" class="form-control dateTimePickerCustom1 hallDate" type="text" name="FromDate" required />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>الي تاريخ</h5>
+                                                <input id="ToDate" class="form-control dateTimePickerCustom1 hallDate" type="text" name="ToDate" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style=" margin: 20px 30px 40px 50px; ">
+                                <button class="submit btn-primary btn" type="submit" name="submit">حفظ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

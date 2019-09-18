@@ -173,7 +173,7 @@ function aus_vector_map(){
     });
 }
 
-/*---------------------- UNITED KINGDOM -----------------------*/
+/*---------------------- uniTED KINGDOM -----------------------*/
 function uk_vector_map(){
     'use strict';
 

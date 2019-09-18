@@ -14,13 +14,13 @@ namespace SMUModels
     public class PendedSubsData
     {
         public List<string> PendedSubscriptions { get; set; }
-        public int Count { get; set; }
+        public int Count { get; set; } = 0;
     }
 
     public class LecturerDetails
     {
-        public string MyProperty { get; set; }
+        public string MyProperty { get; set; } = "";
         public List<string> PendedSubscriptions { get; set; }
-        public int Count { get; set; }
+        public int Count { get; set; } = 0;
     }
 }

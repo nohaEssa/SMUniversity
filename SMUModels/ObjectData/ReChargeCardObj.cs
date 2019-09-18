@@ -8,7 +8,7 @@ namespace SMUModels.ObjectData
 {
     public class ReChargeCardObj
     {
-        public int StudentID { get; set; }
-        public string CardCode { get; set; }
+        public int StudentID { get; set; } = 0;
+        public string CardCode { get; set; } = "";
     }
 }

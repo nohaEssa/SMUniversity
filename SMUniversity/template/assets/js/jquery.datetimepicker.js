@@ -1404,7 +1404,7 @@ Date.monthNames = ["January", "February", "March", "April", "May", "June", "July
 Date.dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 Date.y2kYear = 50;
 Date.monthNumbers = {Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11};
-Date.patterns = {ISO8601LongPattern: "Y-m-d H:i:s", ISO8601ShortPattern: "Y-m-d", ShortDatePattern: "n/j/Y", LongDatePattern: "l, F d, Y", FullDateTimePattern: "l, F d, Y g:i:s A", MonthDayPattern: "F d", ShortTimePattern: "g:i A", LongTimePattern: "g:i:s A", SortableDateTimePattern: "Y-m-d\\TH:i:s", UniversalSortableDateTimePattern: "Y-m-d H:i:sO", YearMonthPattern: "F, Y"};
+Date.patterns = {ISO8601LongPattern: "Y-m-d H:i:s", ISO8601ShortPattern: "Y-m-d", ShortDatePattern: "n/j/Y", LongDatePattern: "l, F d, Y", FullDateTimePattern: "l, F d, Y g:i:s A", MonthDayPattern: "F d", ShortTimePattern: "g:i A", LongTimePattern: "g:i:s A", SortableDateTimePattern: "Y-m-d\\TH:i:s", universalSortableDateTimePattern: "Y-m-d H:i:sO", YearMonthPattern: "F, Y"};
 
 //https://github.com/brandonaaron/jquery-mousewheel/blob/master/jquery.mousewheel.js
 /*

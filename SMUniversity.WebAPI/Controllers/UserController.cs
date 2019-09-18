@@ -75,7 +75,6 @@ namespace SMUniversity.WebAPI.Controllers
                                     UniversityNameEn = _Student.TblUniversity.NameEn,
                                     CollegeNameAr = _Student.TblCollege.NameAr,
                                     CollegeNameEn = _Student.TblCollege.NameEn,
-                                    DateOfBirth = _Student.DateOfBirth,
                                     Email = _Student.Email,
                                     GovernorateNameAr = _Student.TblGovernorate.NameAr,
                                     GovernorateNameEn = _Student.TblGovernorate.NameEn,
@@ -86,6 +85,16 @@ namespace SMUniversity.WebAPI.Controllers
                                     UserType = _UserCred.UserType,
                                     Verified = _Student.Verified,
                                 };
+
+                                //try
+                                //{
+                                //    Data. = DateTime.Parse(_Student.DateOfBirth.ToString());
+                                //}
+                                //catch (Exception)
+                                //{
+
+                                //    throw;
+                                //}
 
                                 _resultHandler.IsSuccessful = true;
                                 _resultHandler.Result = Data;

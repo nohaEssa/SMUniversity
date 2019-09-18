@@ -8,8 +8,8 @@ namespace SMUModels
 {
     public class GovernorateData
     {
-        public int GovernorateID { get; set; }
-        public string NameAr { get; set; }
-        public string NameEn { get; set; }
+        public int GovernorateID { get; set; } = 0;
+        public string NameAr { get; set; } = "";
+        public string NameEn { get; set; } = "";
     }
 }

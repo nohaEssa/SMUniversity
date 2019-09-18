@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script src="~/Scripts/Subject/Edit.js"></script>
 <script src="~/Scripts/Subject/Create.js"></script>
 
 <div id="main-content">
@@ -31,6 +32,8 @@
                         <h3 class="panel-title">تعديل ماده</h3>
                     </div>
                     <form id="EditSubject" action="/Subject/Edit" method="post" class="form-horizontal ls_form" enctype='multipart/form-data'>
+                        <input type="hidden" value="@ViewBag.GeneralSubject" id="GeneralSubject" />
+                        <input type="hidden" value="@Model.ID" id="SubjectID" name="SubjectID" />
                         <div class="panel-body form_view">
                             <div class="row ls_divider">
                                 <div class="form-group">
@@ -52,79 +55,157 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row ls_divider">
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">التخصص</label>
+                                    <label class="col-md-2 control-label">كود الماده</label>
                                     <div class="col-md-10">
-                                        <select class="form-control" id="MajorID" name="MajorID" required>
-                                            <option value="0">اسم التخصص</option>
-                                            @foreach (var major in ViewBag.MajorsList)
+                                        <input type="text"
+                                               class="form-control validate[required] text-input"
+                                               id="SubjectCode" name="SubjectCode" value="@Model.SubjectCode" placeholder="كود الماده" required>
+                                    </div>
+                                    <label hidden="hidden" id="lblSubjectCodeError" class="control-label" style="padding-right: 18%;color:red">تم إدخال الكود من قبل, ادخل كود اخر</label>
+                                </div>
+                            </div>
+                            <div class="row ls_divider">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">نوع الماده</label>
+                                    <div class="col-lg-5 divSessionType">
+                                        @*@if (Model.GeneralSubject)
+        {
+            <div class="radio" style="display:inline-block">
+                <label>
+                    <input type="radio" name="GeneralSubject" id="txtNonGeneralSubject" value="false" required /> جامعيه
+                </label>
+            </div>
+            <div class="radio" style="display:inline-block">
+                <label>
+                    <input type="radio" name="GeneralSubject" id="txtGeneralSubject" value="true" required checked="checked" /> عام
+                </label>
+            </div>
+        }
+        else
+        {
+            <div class="radio" style="display:inline-block">
+                <label>
+                    <input type="radio" name="GeneralSubject" id="txtNonGeneralSubject" value="false" required checked="checked" /> جامعيه
+                </label>
+            </div>
+            <div class="radio" style="display:inline-block">
+                <label>
+                    <input type="radio" name="GeneralSubject" id="txtGeneralSession" value="true" required /> عام
+                </label>
+            </div>
+        }*@
+                                        <div class="radio" style="display:inline-block">
+                                            <label>
+                                                <input type="radio" name="GeneralSubject" id="txtNonGeneralSubject" value="false" required /> جامعيه
+                                            </label>
+                                        </div>
+                                        <div class="radio" style="display:inline-block">
+                                            <label>
+                                                <input type="radio" name="GeneralSubject" id="txtGeneralSubject" value="true" required checked="checked" /> عام
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ls_divider divEduData" hidden="hidden">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">اسم الجامعة</label>
+                                    <div class="col-md-10 ls-group-input">
+                                        <select class="form-control" id="UniversityID" name="UniversityID" onchange="getColleges()" required>
+                                            <option value="0">اسم الجامعة</option>
+                                            @foreach (var uni in ViewBag.UniversitiesList)
                                             {
-                                                if (Model.MajorID != major.ID)
+                                                if (Model.MajorID != null)
                                                 {
-                                                    <option value="@major.ID">@major.NameAr</option>
+                                                    if (Model.TblMajor.TblCollege.UniversityID != uni.ID)
+                                                    {
+                                                        <option value="@uni.ID">@uni.NameAr</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@uni.ID" selected>@uni.NameAr</option>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <option value="@major.ID" selected>@major.NameAr</option>
+                                                    <option value="@uni.ID">@uni.NameAr</option>
                                                 }
                                             }
                                         </select>
                                     </div>
+                                    <label class="col-md-2 control-label">اسم الكلية</label>
+                                    <div class="col-md-10 col-md-offset-2 ls-group-input">
+                                        <select class="form-control" id="CollegeID" name="CollegeID" onchange="getMajors()" required>
+                                            <option value="0">اسم الكلية</option>
+                                        </select>
+                                    </div>
+                                    <label class="col-md-2 control-label">التخصص</label>
+                                    <div class="col-md-10 col-md-offset-2 ls-group-input">
+                                        <select class="form-control input-sm" id="MajorID" name="MajorID" required>
+                                            <option value="0">التخصص</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-
-                            @*<div class="row ls_divider">
-            <div class="form-group">
-                <label class="col-md-2 control-label">المحاضر</label>
-                <div class="col-md-10">
-                    <select id="LecturerIDs" name="LecturerIDs []" multiple="multiple">
-                        @foreach (var lect in ViewBag.LecturersList)
-                        {
-                        <option value="@lect.ID">@lect.FirstNameAr @lect.SecondNameAr @lect.ThirdNameAr</option>
-                        }
-                    </select>
-                </div>
-            </div>
-        </div>*@
+                            @*<div class="row ls_divider divMajor">
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">التخصص</label>
+                                        <div class="col-md-10">
+                                            <select class="form-control" id="MajorID" name="MajorID" required>
+                                                <option value="0">اسم التخصص</option>
+                                                @foreach (var major in ViewBag.MajorsList)
+                                                {
+                                                    if (Model.MajorID != major.ID)
+                                                    {
+                                                        <option value="@major.ID">@major.NameAr</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@major.ID" selected>@major.NameAr</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>*@<br />
                             <br />
-                            <br />
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-upload"></i> تحميل صورة الماده</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <section id="ls-wrapper">
-                                        <!--Image Drop & Upload Wrapper Start-->
-                                        <div id="droparea">
-                                            <div class="dropareainner">
-                                                <p class="dropfiletext">انزل ملف هنا</p>
-                                                <p>او</p>
-                                                <!--Upload Select Button-->
-                                                <p>
-                                                    <input id="uploadbtn" class="uploadbtn" type="button" value="اختر ملف">
-                                                </p>
+                            @*<div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title"><i class="fa fa-upload"></i> تحميل صورة الماده</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <section id="ls-wrapper">
+                                            <!--Image Drop & Upload Wrapper Start-->
+                                            <div id="droparea">
+                                                <div class="dropareainner">
+                                                    <p class="dropfiletext">انزل ملف هنا</p>
+                                                    <p>او</p>
+                                                    <!--Upload Select Button-->
+                                                    <p>
+                                                        <input id="uploadbtn" class="uploadbtn" type="button" value="اختر ملف">
+                                                    </p>
 
 
-                                                <!--Image Effect Finish-->
-                                                <p id="err">تم التحميل اي كلام وكدة يعني (:</p>
+                                                    <!--Image Effect Finish-->
+                                                    <p id="err">تم التحميل اي كلام وكدة يعني (:</p>
+                                                </div>
+                                                <!--Image Upload Input-->
+                                                <input id="upload" name="SubjectPic" type="file" multiple />
                                             </div>
-                                            <!--Image Upload Input-->
-                                            <input id="upload" name="SubjectPic" type="file" multiple />
-                                        </div>
-                                        <!--Image Drop & Upload Wrapper Finish-->
-                                        <p class="message"> حجم الملف <strong>400</strong>فقط</p>
-                                        <!--Upoload Image Preview Wrap Start-->
-                                        <div id="result">
-                                            <!--Upoload Image Preview Wrap Finish-->
-                                        </div>
-                                    </section>
-                                </div>
-                            </div>
+                                            <!--Image Drop & Upload Wrapper Finish-->
+                                            <p class="message"> حجم الملف <strong>400</strong>فقط</p>
+                                            <!--Upoload Image Preview Wrap Start-->
+                                            <div id="result">
+                                                <!--Upoload Image Preview Wrap Finish-->
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>*@
 
                             <div class="form-group" style=" margin: 20px 30px 40px 50px; ">
-                                <button class="submit btn-primary btn" type="submit" name="submit">حفظ</button>
+                                <button class="submit btn-primary btn" type="button" id="submit">حفظ</button>
                             </div>
                         </div>
                     </form>
